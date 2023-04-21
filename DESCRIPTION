@@ -1,10 +1,10 @@
 Package: tiltPlot
-Title: What the Package Does (One Line, Title Case)
+Title: Plots for the 'TILT' Project
 Version: 0.0.0.9000
-Authors@R: 
-    person("Mauro", "Lepore", , "maurolepore@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "https://orcid.org/0000-0002-1986-7988"))
-Description: What the package does (one paragraph).
+Authors@R: c(
+ .
+   )
+Description: Plots for the 'TILT' project.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
