@@ -6,5 +6,6 @@
 #' @importFrom dplyr case_when
 #' @importFrom dplyr mutate
 #' @importFrom dplyr select
+#' @importFrom tibble tribble
 ## usethis namespace: end
 NULL
