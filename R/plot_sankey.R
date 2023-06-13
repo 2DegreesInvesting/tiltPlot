@@ -86,7 +86,8 @@ plot_sankey <- function(data) {
     Target = "IDtarget",
     Value = "value",
     NodeID = "name",
-    colourScale = my_color,
+    # FIXME: This line breaks the plot
+    # colourScale = my_color,
     LinkGroup = "group",
     NodeGroup = "group",
     fontSize = 14
