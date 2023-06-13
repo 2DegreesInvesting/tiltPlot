@@ -74,6 +74,7 @@ plot_sankey <- function(data) {
       )
     )
 
+  # FIXME: `colourScale` breaks the plot
   my_color <- 'd3.scaleOrdinal() .domain(["high", "medium", "low", "other"]) .range(["#e10000", "#3d8c40", #808080", "#808080"])'
 
   links$IDsource <- match(links$source, nodes$name) - 1
@@ -86,7 +87,7 @@ plot_sankey <- function(data) {
     Target = "IDtarget",
     Value = "value",
     NodeID = "name",
-    # FIXME: This line breaks the plot
+    # FIXME: `colourScale` breaks the plot
     # colourScale = my_color,
     LinkGroup = "group",
     NodeGroup = "group",
