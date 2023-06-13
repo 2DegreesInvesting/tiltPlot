@@ -26,6 +26,23 @@ Here is a prototype of what this package might eventually do.
 ## Example
 
 ```{r}
-# TODO
+library(tibble)
+library(networkD3)
+library(dplyr)
+```
+
+
+```{r}
+toy_data <- tibble::tribble(
+  ~bank, ~amount, ~amount_of_disctinct_products, ~PCTR_risk_category, ~tilt_sec,
+  "A", 1, 2, "low", "sector_a",
+  "B", 2, 1, "medium", "sector_b",
+)
+
+toy_data
+```
+
+```{r}
+plot_sankey(toy_data)
 ```
 
