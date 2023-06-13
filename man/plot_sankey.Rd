@@ -2,10 +2,16 @@
 % Please edit documentation in R/plot_sankey.R
 \name{plot_sankey}
 \alias{plot_sankey}
-\title{TODO}
+\title{Create a sankey plot}
 \usage{
 plot_sankey(data)
 }
+\arguments{
+\item{data}{A data frame like \link{toy_data}.}
+}
 \description{
-TODO
+Create a sankey plot
+}
+\examples{
+plot_sankey(toy_data)
 }

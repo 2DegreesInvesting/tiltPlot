@@ -1,5 +1,12 @@
-#' TODO
+#' Create a sankey plot
+#'
+#' @param data A data frame like [toy_data].
+#'
+#' @return
 #' @export
+#'
+#' @examples
+#' plot_sankey(toy_data)
 plot_sankey <- function(data) {
   data_links <- data |>
     mutate(
