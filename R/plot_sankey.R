@@ -4,47 +4,48 @@ plot_sankey <- function(data) {
 
   data_links <- data |>
     mutate(
-      source = bank,
-      target = PCTR_risk_category,
-      value = amount,
-      middle_node2 = tilt_sec
+      source = "bank",
+      target = "PCTR_risk_category",
+      value = "amount",
+      middle_node2 = "tilt_sec"
     )
 
   links <- data_links |>
     select(
-      source = bank,
-      target = tilt_sec,
-      value = amount,
-      group = PCTR_risk_category
+      source = "bank",
+      target = "tilt_sec",
+      value = "amount",
+      group = "PCTR_risk_category"
     )
 
   if ("middle_node2" %in% names(data_links)) {
     links <- data_links |>
       select(
-        bank,
-        source = bank,
-        target = middle_node2,
-        value = amount,
-        group = PCTR_risk_category
+        "bank",
+        source = "bank",
+        target = "middle_node2",
+        value = "amount",
+        group = "PCTR_risk_category"
       )
+    # FIXME? This overwrites `links`. Is this intentional?
     links <- data_links |>
       select(
-        bank,
-        source = middle_node2,
-        target = PCTR_risk_category,
-        value = amount_of_disctinct_products,
-        group = PCTR_risk_category
+        "bank",
+        source = "middle_node2",
+        target = "PCTR_risk_category",
+        value = "amount_of_disctinct_products",
+        group = "PCTR_risk_category"
       ) |>
       bind_rows(links) |>
       as.data.frame()
   } else {
     links <- data_links |>
       select(
-        bank,
-        source = bank,
-        target = PCTR_risk_category,
-        value = amount,
-        group = PCTR_risk_category
+        "bank",
+        source = "bank",
+        target = "PCTR_risk_category",
+        value = "amount",
+        group = "PCTR_risk_category"
       ) |>
       bind_rows(links) |>
       as.data.frame()
