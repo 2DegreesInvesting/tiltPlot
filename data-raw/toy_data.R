@@ -1,4 +1,3 @@
-## code to prepare `toy_data` dataset goes here
 #' TODO : Documentation
 
 toy_data <- tibble::tribble(
