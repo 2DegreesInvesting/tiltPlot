@@ -25,11 +25,12 @@ Here is a prototype of what this package might eventually do.
 
 ## Example
 
+Let us load the toy data set.
+
 ```{r}
-library(tibble)
-library(networkD3)
-library(dplyr)
+library(tiltPlot)
 ```
+
 
 ```{r}
 toy_data
@@ -38,4 +39,3 @@ toy_data
 ```{r}
 plot_sankey(toy_data)
 ```
-
