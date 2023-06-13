@@ -1,7 +1,6 @@
 #' TODO
-#'@export
+#' @export
 plot_sankey <- function(data) {
-
   data_links <- data |>
     mutate(
       source = "bank",
