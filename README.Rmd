@@ -29,8 +29,10 @@ Let us load the toy data set.
 library(tiltPlot)
 ```
 
-```{r eval=interactive()}
+```{r}
 toy_data
+```
 
+```{r eval=interactive()}
 plot_sankey(toy_data)
 ```

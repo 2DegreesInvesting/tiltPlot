@@ -21,6 +21,13 @@ library(tiltPlot)
 
 ``` r
 toy_data
+#> # A tibble: 2 × 5
+#>   bank  amount amount_of_disctinct_products PCTR_risk_category tilt_sec
+#>   <chr>  <dbl>                        <dbl> <chr>              <chr>   
+#> 1 A          1                            2 low                sector_a
+#> 2 B          2                            2 high               sector_b
+```
 
+``` r
 plot_sankey(toy_data)
 ```
