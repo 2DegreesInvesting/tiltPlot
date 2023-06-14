@@ -23,9 +23,6 @@ plot_sankey <- function(data) {
       value = "amount",
       group = "PCTR_risk_category"
     )
-  # FIXME: This is always TRUE because the first code chunks adds the column
-  # `middle_node2`. That is, the `else` branch never runs.
-  # TODO: Replace with hasName()
   if ("middle_node2" %in% names(data_links)) {
     links <- data_links |>
       select(
@@ -35,8 +32,6 @@ plot_sankey <- function(data) {
         value = "amount",
         group = "PCTR_risk_category"
       )
-    # FIXME This overwrites `links`. Is this intentional? If so, can we delete
-    # the code immediately above?
     links <- data_links |>
       select(
         "bank",
@@ -59,11 +54,6 @@ plot_sankey <- function(data) {
       bind_rows(links) |>
       as.data.frame()
   }
-  # TODO: Maybe simplify with ifelse() and tibble()? e.g.:
-  # tibble::tibble(
-  #   name = c("high", "low", "x", "y"),
-  #   group = ifelse(name %in% c("high", "medium", "low"), name, "other")
-  # )
   nodes <- data.frame(
     name = unique(c(as.character(links$source), as.character(links$target)))
   ) |>
@@ -74,7 +64,6 @@ plot_sankey <- function(data) {
       )
     )
 
-  # FIXME: `colourScale` breaks the plot
   my_color <- 'd3.scaleOrdinal() .domain(["high", "medium", "low", "other"]) .range(["#e10000", "#3d8c40", #808080", "#808080"])'
 
   links$IDsource <- match(links$source, nodes$name) - 1
@@ -87,13 +76,10 @@ plot_sankey <- function(data) {
     Target = "IDtarget",
     Value = "value",
     NodeID = "name",
-    # FIXME: `colourScale` breaks the plot
     # colourScale = my_color,
     LinkGroup = "group",
     NodeGroup = "group",
     fontSize = 14
   )
-  # FIXME Return invisible(data). See the tidyverse design guide and search for
-  # "side effect"
   return(p)
 }
