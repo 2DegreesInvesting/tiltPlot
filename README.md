@@ -11,10 +11,16 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 The goal of tiltPlot is to provide plots for the TILT project.
 
-Here is a prototype of what this package might eventually do.
-
 ## Example
 
+Let us load the toy data set.
+
 ``` r
-# TODO
+library(tiltPlot)
+```
+
+``` r
+toy_data
+
+plot_sankey(toy_data)
 ```
