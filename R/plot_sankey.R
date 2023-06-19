@@ -8,22 +8,15 @@
 #' @examples
 #' plot_sankey(toy_data)
 plot_sankey <- function(data) {
-  data_links <- data |>
-    mutate(
-      source = "bank",
-      target = "PCTR_risk_category",
-      value = "amount",
-      middle_node2 = "tilt_sec"
-    )
 
-  links <- data_links |>
-    select(
-      source = "bank",
-      target = "tilt_sec",
-      value = "amount",
-      group = "PCTR_risk_category"
-    )
-  if ("middle_node2" %in% names(data_links)) {
+    data_links <- toy_data |>
+      mutate(
+        source = "bank",
+        target = "PCTR_risk_category",
+        value = "amount",
+        middle_node2 = "tilt_sec"
+      )
+
     links <- data_links |>
       select(
         "bank",
@@ -32,6 +25,7 @@ plot_sankey <- function(data) {
         value = "amount",
         group = "PCTR_risk_category"
       )
+
     links <- data_links |>
       select(
         "bank",
@@ -42,21 +36,10 @@ plot_sankey <- function(data) {
       ) |>
       bind_rows(links) |>
       as.data.frame()
-  } else {
-    links <- data_links |>
-      select(
-        "bank",
-        source = "bank",
-        target = "PCTR_risk_category",
-        value = "amount",
-        group = "PCTR_risk_category"
-      ) |>
-      bind_rows(links) |>
-      as.data.frame()
-  }
+
   nodes <- data.frame(
     name = unique(c(as.character(links$source), as.character(links$target)))
-  ) |>
+    ) |>
     mutate(
       group = case_when(
         name %in% c("high", "medium", "low") ~ name,
