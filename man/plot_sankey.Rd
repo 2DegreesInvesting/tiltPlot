@@ -9,6 +9,9 @@ plot_sankey(data)
 \arguments{
 \item{data}{A data frame like \link{toy_data}.}
 }
+\value{
+Invisible \code{data}.
+}
 \description{
 Create a sankey plot
 }

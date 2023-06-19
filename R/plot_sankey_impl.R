@@ -11,10 +11,10 @@
 #' @examples
 #' plot_sankey(toy_data)
 plot_sankey <- function(data) {
-  data_links <- toy_data |>
+  data_links <- data |>
     mutate(
       source = "bank",
-      target = "PCTR_risk_category",
+      target = "pctr_risk_category",
       value = "amount",
       middle_node2 = "tilt_sec"
     )
@@ -25,16 +25,16 @@ plot_sankey <- function(data) {
       source = "bank",
       target = "middle_node2",
       value = "amount",
-      group = "PCTR_risk_category"
+      group = "pctr_risk_category"
     )
 
   links <- data_links |>
     select(
       "bank",
       source = "middle_node2",
-      target = "PCTR_risk_category",
+      target = "pctr_risk_category",
       value = "amount_of_disctinct_products",
-      group = "PCTR_risk_category"
+      group = "pctr_risk_category"
     ) |>
     bind_rows(links)
 
