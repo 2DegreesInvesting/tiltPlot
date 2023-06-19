@@ -10,7 +10,7 @@
 #'
 #' @examples
 #' plot_sankey(toy_data)
-plot_sankey <- function(data) {
+plot_sankey_impl <- function(data) {
   data_links <- data |>
     mutate(
       source = "bank",
