@@ -10,7 +10,7 @@ plot_sankey(data)
 \item{data}{A data frame like \link{toy_data}.}
 }
 \value{
-Invisible \code{data}.
+#FIXME
 }
 \description{
 Create a sankey plot

@@ -2,18 +2,19 @@
 #'
 #' @param data A data frame like [toy_data].
 #'
-#' @return
+#' @return #FIXME
 #' @export
+#' @importFrom rlang .data
 #'
 #' @examples
 #' plot_sankey(toy_data)
 plot_sankey <- function(data) {
   data_links <- data |>
     mutate(
-      source = bank,
-      target = pctr_risk_category,
-      value = amount,
-      middle_node2 = tilt_sec
+      source = .data$bank,
+      target = .data$pctr_risk_category,
+      value = .data$amount,
+      middle_node2 = .data$tilt_sec
     )
 
   links <- data_links |>
@@ -37,7 +38,7 @@ plot_sankey <- function(data) {
 
   nodes <- tibble(
     name = unique(c(as.character(links$source), as.character(links$target))),
-    group = ifelse(name %in% c("high", "medium", "low"), name, "other")
+    group = ifelse(.data$name %in% c("high", "medium", "low"), .data$name, "other")
   )
 
   # FIXME : this color scale breaks the code.
