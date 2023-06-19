@@ -10,8 +10,8 @@ test_that("returns expected nodes name values", {
   expected_names <- unique(c(
     as.character(toy_data$tilt_sec),
     as.character(toy_data$bank),
-    as.character(toy_data$pctr_risk_category))
-    )
+    as.character(toy_data$pctr_risk_category)
+  ))
   expect_equal(nodes_names, expected_names)
 })
 

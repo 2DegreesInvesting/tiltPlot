@@ -9,12 +9,12 @@
 #' plot_sankey(toy_data)
 plot_sankey <- function(data) {
   data_links <- data |>
-      mutate(
-        source = bank,
-        target = pctr_risk_category,
-        value = amount,
-        middle_node2 = tilt_sec
-      )
+    mutate(
+      source = bank,
+      target = pctr_risk_category,
+      value = amount,
+      middle_node2 = tilt_sec
+    )
 
   links <- data_links |>
     select(
@@ -27,20 +27,20 @@ plot_sankey <- function(data) {
 
   links <- data_links |>
     select(
-        "bank",
-        source = "middle_node2",
-        target = "pctr_risk_category",
-        value = "amount_of_disctinct_products",
-        group = "pctr_risk_category"
-        ) |>
-      bind_rows(links)
+      "bank",
+      source = "middle_node2",
+      target = "pctr_risk_category",
+      value = "amount_of_disctinct_products",
+      group = "pctr_risk_category"
+    ) |>
+    bind_rows(links)
 
   nodes <- tibble(
     name = unique(c(as.character(links$source), as.character(links$target))),
     group = ifelse(name %in% c("high", "medium", "low"), name, "other")
-    )
+  )
 
-  #FIXME : this color scale breaks the code.
+  # FIXME : this color scale breaks the code.
   my_color <- 'd3.scaleOrdinal() .domain(["high", "medium", "low", "other"]) .range(["#e10000", "#3d8c40", #808080", "#808080"])'
 
   links$IDsource <- match(links$source, nodes$name) - 1
@@ -48,6 +48,6 @@ plot_sankey <- function(data) {
 
   plot_sankey_impl(links, nodes, my_color)
 
-  #FIXME: If I return invisible(data), then the plot does not show.
-  #return(invisible(data))
+  # FIXME: If I return invisible(data), then the plot does not show.
+  # return(invisible(data))
 }

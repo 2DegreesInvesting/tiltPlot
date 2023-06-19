@@ -7,9 +7,8 @@
 #' @noRd
 #'
 #' @examples
-#' #TODO
+#' # TODO
 plot_sankey_impl <- function(links, nodes, color) {
-
   p <- networkD3::sankeyNetwork(
     Links = links,
     Nodes = nodes,
