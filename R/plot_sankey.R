@@ -8,7 +8,6 @@
 #' @examples
 #' plot_sankey(toy_data)
 plot_sankey <- function(data) {
-
   data_links <- toy_data |>
       mutate(
         source = "bank",
@@ -18,13 +17,13 @@ plot_sankey <- function(data) {
       )
 
   links <- data_links |>
-      select(
-        "bank",
-        source = "bank",
-        target = "middle_node2",
-        value = "amount",
-        group = "PCTR_risk_category"
-      )
+    select(
+      "bank",
+      source = "bank",
+      target = "middle_node2",
+      value = "amount",
+      group = "PCTR_risk_category"
+    )
 
   links <- data_links |>
     select(
@@ -59,5 +58,5 @@ plot_sankey <- function(data) {
     NodeGroup = "group",
     fontSize = 14
   )
-  return(p)
+  return(invisible(data))
 }
