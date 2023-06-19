@@ -5,7 +5,7 @@ test_that("returns an object of the expected class", {
 })
 
 test_that("returns expected nodes name values", {
-  p <- plot_sankey_impl(toy_data)
+  p <- plot_sankey(toy_data)
   nodes_names <- unique(p$x$nodes$name)
   expected_names <- unique(c(
     as.character(toy_data$tilt_sec),
@@ -16,7 +16,7 @@ test_that("returns expected nodes name values", {
 })
 
 test_that("returns correct nodes group values", {
-  p <- plot_sankey_impl(toy_data)
+  p <- plot_sankey(toy_data)
   group_names <- unique(p$x$nodes$group)
   possible_names <- c("low", "medium", "high", "other")
   expect_true(all(group_names %in% possible_names))
