@@ -5,7 +5,7 @@
 \alias{toy_data}
 \title{Toy data}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 2 rows and 5 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 4 rows and 5 columns.
 }
 \source{
 \verb{@lindadelacombaz}
