@@ -41,6 +41,7 @@ plot_sankey <- function(data) {
     group = ifelse(name %in% c("high", "medium", "low"), name, "other")
     )
 
+  #FIXME : this color scale breaks the code.
   my_color <- 'd3.scaleOrdinal() .domain(["high", "medium", "low", "other"]) .range(["#e10000", "#3d8c40", #808080", "#808080"])'
 
   links$IDsource <- match(links$source, nodes$name) - 1
