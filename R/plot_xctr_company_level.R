@@ -1,6 +1,3 @@
-#####################Product and Input Carbon Transition Risk (PCTR/ICTR)#######################
-##Read the data
-PCTR_data <- readr::read_csv(here("data/pctr_company_level_final_v4.csv"), show_col_types = FALSE)
 ICTR_data <- readr::read_csv(here("data/ictr_company_level_final_v4.csv"), show_col_types = FALSE)
 
 # If we don't delete all NAs, we have a problem to do the plots
