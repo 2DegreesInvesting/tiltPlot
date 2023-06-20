@@ -2,7 +2,7 @@
 #'
 #' @param data A data frame like [toy_data].
 #'
-#' @return #FIXME
+#' @return A sankey plot of class [sankeyNetwork].
 #' @export
 #' @importFrom rlang .data
 #'
@@ -47,8 +47,18 @@ plot_sankey <- function(data) {
   links$IDsource <- match(links$source, nodes$name) - 1
   links$IDtarget <- match(links$target, nodes$name) - 1
 
-  plot_sankey_impl(links, nodes, my_color)
+  p <- networkD3::sankeyNetwork(
+    Links = links,
+    Nodes = nodes,
+    Source = "IDsource",
+    Target = "IDtarget",
+    Value = "value",
+    NodeID = "name",
+    # colourScale = my_color,
+    LinkGroup = "group",
+    NodeGroup = "group",
+    fontSize = 14
+  )
 
-  # FIXME: If I return invisible(data), then the plot does not show.
-  # return(invisible(data))
+  return(p)
 }

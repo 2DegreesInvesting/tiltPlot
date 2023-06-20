@@ -10,7 +10,7 @@ plot_sankey(data)
 \item{data}{A data frame like \link{toy_data}.}
 }
 \value{
-#FIXME
+A sankey plot of class \link{sankeyNetwork}.
 }
 \description{
 Create a sankey plot

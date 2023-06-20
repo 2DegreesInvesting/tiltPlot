@@ -19,6 +19,8 @@ Let us load the toy data set.
 library(tiltPlot)
 ```
 
+### 1. Sankey Plot
+
 ``` r
 toy_data
 #> # A tibble: 4 × 5
