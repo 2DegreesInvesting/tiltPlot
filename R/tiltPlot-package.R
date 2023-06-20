@@ -6,6 +6,7 @@
 #' @importFrom dplyr case_when
 #' @importFrom dplyr filter
 #' @importFrom dplyr mutate
+#' @importFrom dplyr na.omit
 #' @importFrom dplyr select
 #' @importFrom ggplot2 aes
 #' @importFrom ggplot2 element_blank
@@ -22,5 +23,6 @@
 #' @importFrom ggplot2 ylim
 #' @importFrom tibble tibble
 #' @importFrom tibble tribble
+#' @importFrom utils na.omit
 ## usethis namespace: end
 NULL

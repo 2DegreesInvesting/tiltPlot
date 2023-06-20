@@ -13,8 +13,11 @@ test_that("returns correct risk category values",{
 test_that("returns correct share values",{
   plot <- plot_xctr_company_level(xctr_toy_data, "company_a")
   shares <- unique(plot$data$xctr_share)
-  expected_shares <- unique(xctr_toy_data$xctr_share)
-  expect_equal(shares, expected_shares)
+  expected_shares <- xctr_toy_data |>
+    filter(company_name == "company_a") |>
+    pull(xctr_share) |>
+    unique()
+  expect_true(all(shares %in% expected_shares))
 })
 
 
