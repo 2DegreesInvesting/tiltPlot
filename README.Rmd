@@ -21,11 +21,20 @@ knitr::opts_chunk$set(
 
 The goal of tiltPlot is to provide plots for the TILT project. 
 
-Here is a prototype of what this package might eventually do.
-
 ## Example
 
+Let us load the toy data set.
+
 ```{r}
-# TODO
+library(tiltPlot)
 ```
 
+### 1. Sankey Plot 
+
+```{r}
+toy_data
+```
+
+```{r eval=interactive()}
+plot_sankey(toy_data)
+```
