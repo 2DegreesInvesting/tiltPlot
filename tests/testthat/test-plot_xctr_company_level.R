@@ -8,7 +8,16 @@ test_that("returns correct risk category values",{
   risk_categories <- levels(plot$data$xctr_risk_category)
   expected_risk_categories <- c("low", "medium", "high")
   expect_equal(risk_categories, expected_risk_categories)
-
 })
+
+test_that("returns correct share values",{
+  plot <- plot_xctr_company_level(xctr_toy_data, "company_a")
+  shares <- unique(plot$data$xctr_share)
+  expected_shares <- unique(xctr_toy_data$xctr_share)
+  expect_equal(shares, expected_shares)
+})
+
+
+
 
 
