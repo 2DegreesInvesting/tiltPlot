@@ -17,6 +17,7 @@ Depends:
 LazyData: true
 Imports: 
     dplyr,
+    ggplot2,
     networkD3,
     rlang,
     tibble

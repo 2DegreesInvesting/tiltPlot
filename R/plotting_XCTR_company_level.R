@@ -1,9 +1,3 @@
-##Libraries
-library(tidyverse, warn.conflicts = FALSE)
-library(vroom)
-library(here)
-library(ggplot2)
-
 #####################Product and Input Carbon Transition Risk (PCTR/ICTR)#######################
 ##Read the data
 PCTR_data <- readr::read_csv(here("data/pctr_company_level_final_v4.csv"), show_col_types = FALSE)
