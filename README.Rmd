@@ -38,3 +38,17 @@ toy_data
 ```{r eval=interactive()}
 plot_sankey(toy_data)
 ```
+
+### 2. XCTR plot for one company
+
+```{r}
+xctr_toy_data
+```
+
+```{r}
+subset_data <- xctr_toy_data |> 
+  filter(company_name == sample(company_name, 1))
+plot_xctr_company_level(subset_data, company_name)
+```
+
+
