@@ -46,9 +46,7 @@ xctr_toy_data
 ```
 
 ```{r}
-subset_data <- xctr_toy_data |> 
-  filter(company_name == sample(company_name, 1))
-plot_xctr_company_level(subset_data, company_name)
+plot_xctr_company_level(xctr_toy_data, "company_a")
 ```
 
 

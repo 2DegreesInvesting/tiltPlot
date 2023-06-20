@@ -1,18 +1,18 @@
 #' Plot xctr data on a company level
 #'
-#' @param data A data frame like [pctr_toy_data] or [ictr_toy_data].
+#' @param data A data frame like [xctr_toy_data].
 #' @param company_name A string. Name of one company in the data set.
 #'
 #' @return A [ggplot] object.
 #' @export
 #'
 #' @examples
-#' subset_data <- pctr_toy_data |>
-#'  filter(company_name == sample(company_name, 1))]
-#' plot_xctr_company_level(subset_data, company_name)
+#' plot_xctr_company_level(xctr_toy_data, "company_a")
 plot_xctr_company_level <- function(data, company_name) {
 
-  data <- na.omit(data)
+  data <- data |>
+    na.omit() |>
+    filter(company_name == {{ company_name }})
 
   score_colors <- c("low" = "#007F00", "medium" = "#FFC300", "high" = "#FF5733")
   risk_category_order <- c("low", "medium", "high")
