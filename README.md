@@ -23,15 +23,16 @@ library(tiltPlot)
 
 ``` r
 toy_data
-#> # A tibble: 4 × 5
-#>   bank  amount amount_of_disctinct_products pctr_risk_category tilt_sec
-#>   <chr>  <dbl>                        <dbl> <chr>              <chr>   
-#> 1 A          5                            1 low                sector_a
-#> 2 A          5                            1 low                sector_b
-#> 3 B          2                            2 medium             sector_a
-#> 4 B         10                            2 high               sector_b
+#> # A tibble: 4 × 6
+#>   bank  amount company_name amount_of_distinct_pro…¹ pctr_risk_category tilt_sec
+#>   <chr>  <dbl> <chr>                           <dbl> <chr>              <chr>   
+#> 1 A          5 Peter                               2 low                sector_a
+#> 2 A          5 Peter                               2 high               sector_b
+#> 3 B         10 Mario                               1 medium             sector_c
+#> 4 C          8 Mario                               1 low                sector_c
+#> # ℹ abbreviated name: ¹​amount_of_distinct_products
 ```
 
 ``` r
-plot_sankey(toy_data)
+plot_sankey(toy_data, with_company = TRUE)
 ```
