@@ -1,14 +1,3 @@
-#' XCTR toy data set
-#'
-#' @format ## `xctr_toy_data`
-#' A data frame with 6 rows and 3 columns:
-#' \describe{
-#'   \item{company_name}{Company name}
-#'   \item{xctr_risk_category}{Risk category that has low, medium and high as values}
-#'   \item{xctr_share}{Share value}
-#' }
-"xctr_toy_data"
-
 # styler: off
 xctr_toy_data <- tibble::tribble(
   ~company_name, ~xctr_risk_category, ~xctr_share,
