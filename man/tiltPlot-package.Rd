@@ -9,7 +9,7 @@
 Plots for the 'TILT' project.
 }
 \author{
-\strong{Maintainer}: Mauro Lepore \email{maurolepore@gmail.com} (\href{https://orcid.org/0000-0002-1986-7988}{ORCID})
+\strong{Maintainer}: Linda Delacombaz \email{linda@2degrees-investing.org}
 
 Authors:
 \itemize{
