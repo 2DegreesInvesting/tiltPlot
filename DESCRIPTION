@@ -8,6 +8,7 @@ Authors@R: c(
   )
 Description: Plots for the 'TILT' project.
 License: MIT + file LICENSE
+URL: https://2degreesinvesting.github.io/tiltPlot/
 Depends: 
     R (>= 2.10)
 Imports: 
