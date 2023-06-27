@@ -1,6 +1,6 @@
 Package: tiltPlot
 Title: Plots for the 'TILT' Project
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: c(
     person("Linda", "Delacombaz", , "linda@2degrees-investing.org", role = c("aut", "cre")),
     person("Anne", "Schoenauer", , "anne.schoenauer@2degrees-investing.org", role = "aut"),
