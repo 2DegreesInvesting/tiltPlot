@@ -8,6 +8,13 @@
 \description{
 Plots for the 'TILT' project.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://2degreesinvesting.github.io/tiltPlot/}
+}
+
+}
 \author{
 \strong{Maintainer}: Linda Delacombaz \email{linda@2degrees-investing.org}
 
