@@ -9,6 +9,7 @@ test_that("returns expected nodes name values", {
   nodes_names <- unique(p$x$nodes$name)
   expected_names <- unique(c(
     as.character(toy_data$tilt_sec),
+    as.character(toy_data$company_name),
     as.character(toy_data$bank),
     as.character(toy_data$pctr_risk_category)
   ))

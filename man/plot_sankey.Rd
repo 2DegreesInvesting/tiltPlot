@@ -4,10 +4,13 @@
 \alias{plot_sankey}
 \title{Create a sankey plot}
 \usage{
-plot_sankey(data)
+plot_sankey(data, with_company = TRUE)
 }
 \arguments{
 \item{data}{A data frame like \link{toy_data}.}
+
+\item{with_company}{Logical. If TRUE, will plot a node with the company name.
+If FALSE, will plot without the company name node.}
 }
 \value{
 A sankey plot of class \link{sankeyNetwork}.
