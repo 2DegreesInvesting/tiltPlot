@@ -38,5 +38,5 @@ toy_data
 ```
 
 ```{r eval=interactive()}
-plot_sankey(toy_data)
+plot_sankey(toy_data, with_company = TRUE)
 ```

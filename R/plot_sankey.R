@@ -1,6 +1,8 @@
 #' Create a sankey plot
 #'
 #' @param data A data frame like [toy_data].
+#' @param with_company Logical. If TRUE, will plot a node with the company name.
+#' If FALSE, will plot without the company name node.
 #'
 #' @return A sankey plot of class [sankeyNetwork].
 #' @export
@@ -8,30 +10,54 @@
 #'
 #' @examples
 #' plot_sankey(toy_data)
-plot_sankey <- function(data) {
+plot_sankey <- function(data, with_company = TRUE) {
   data_links <- data |>
     mutate(
       source = .data$bank,
       target = .data$pctr_risk_category,
       value = .data$amount,
+      middle_node1 = .data$company_name,
       middle_node2 = .data$tilt_sec
     )
 
-  links <- data_links |>
-    select(
-      "bank",
-      source = "bank",
-      target = "middle_node2",
-      value = "amount",
-      group = "pctr_risk_category"
-    )
+  if(with_company){
+
+    links <- data_links |>
+      select(
+        "bank",
+        source = "bank",
+        target = "middle_node1",
+        value = "amount",
+        group = "pctr_risk_category"
+      )
+
+    links <- data_links |>
+      select(
+        "bank",
+        source = "middle_node1",
+        target = "middle_node2",
+        value = "amount",
+        group = "pctr_risk_category"
+      ) |>
+      bind_rows(links)
+  }else{
+
+    links <- data_links |>
+      select(
+        "bank",
+        source = "bank",
+        target = "middle_node2",
+        value = "amount",
+        group = "pctr_risk_category"
+      )
+  }
 
   links <- data_links |>
     select(
       "bank",
       source = "middle_node2",
       target = "pctr_risk_category",
-      value = "amount_of_disctinct_products",
+      value = "amount",
       group = "pctr_risk_category"
     ) |>
     bind_rows(links)
