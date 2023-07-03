@@ -70,15 +70,16 @@
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">toy_data</span></span>
-<span><span class="co">#&gt; # A tibble: 4 × 5</span></span>
-<span><span class="co">#&gt;   bank  amount amount_of_disctinct_products pctr_risk_category tilt_sec</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;  &lt;dbl&gt;                        &lt;dbl&gt; &lt;chr&gt;              &lt;chr&gt;   </span></span>
-<span><span class="co">#&gt; 1 A          5                            1 low                sector_a</span></span>
-<span><span class="co">#&gt; 2 A          5                            1 low                sector_b</span></span>
-<span><span class="co">#&gt; 3 B          2                            2 medium             sector_a</span></span>
-<span><span class="co">#&gt; 4 B         10                            2 high               sector_b</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 4 × 6</span></span>
+<span><span class="co">#&gt;   bank  amount company_name amount_of_distinct_pro…¹ pctr_risk_category tilt_sec</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;                           &lt;dbl&gt; &lt;chr&gt;              &lt;chr&gt;   </span></span>
+<span><span class="co">#&gt; 1 A          5 Peter                               2 low                sector_a</span></span>
+<span><span class="co">#&gt; 2 A          5 Peter                               2 high               sector_b</span></span>
+<span><span class="co">#&gt; 3 B         10 Mario                               1 medium             sector_c</span></span>
+<span><span class="co">#&gt; 4 C          8 Mario                               1 low                sector_c</span></span>
+<span><span class="co">#&gt; # ℹ abbreviated name: ¹​amount_of_distinct_products</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_sankey.html">plot_sankey</a></span><span class="op">(</span><span class="va">toy_data</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_sankey.html">plot_sankey</a></span><span class="op">(</span><span class="va">toy_data</span>, with_company <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 </div>
