@@ -13,8 +13,10 @@ Depends:
     R (>= 2.10)
 Imports: 
     dplyr,
+    ggplot2,
     networkD3,
     rlang,
+    stats,
     tibble
 Suggests: 
     testthat (>= 3.0.0)
