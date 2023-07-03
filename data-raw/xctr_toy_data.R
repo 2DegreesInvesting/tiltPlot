@@ -1,4 +1,5 @@
 # styler: off
+#FIXME : style if off
 xctr_toy_data <- tibble::tribble(
   ~company_name, ~xctr_risk_category, ~xctr_share,
   "company_a",              "high",         0.5,
