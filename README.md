@@ -39,3 +39,24 @@ toy_data
 ``` r
 plot_sankey(toy_data, with_company = TRUE)
 ```
+
+### 2. XCTR plot for one company
+
+``` r
+xctr_toy_data
+#> # A tibble: 6 × 3
+#>   company_name xctr_risk_category xctr_share
+#>   <chr>        <chr>                   <dbl>
+#> 1 company_a    high                      0.5
+#> 2 company_a    low                       0.5
+#> 3 company_a    medium                    0  
+#> 4 company_b    high                      0  
+#> 5 company_b    medium                    0  
+#> 6 company_b    low                       1
+```
+
+``` r
+plot_xctr_company_level(xctr_toy_data, "company_a")
+```
+
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
