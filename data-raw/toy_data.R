@@ -1,4 +1,5 @@
 # styler: off
+#FIXME : styling is off
 toy_data <- tibble::tribble(
   ~bank, ~amount, ~company_name, ~amount_of_distinct_products, ~pctr_risk_category,  ~tilt_sec,
   "A",       5,       "Peter",                            2,               "low", "sector_a",

@@ -6,6 +6,7 @@
 #'
 #' @return A sankey plot of class [sankeyNetwork].
 #' @export
+#' #TODO: use usethis::import_from("rlang", ".data") instead.
 #' @importFrom rlang .data
 #'
 #' @examples
@@ -21,6 +22,8 @@ plot_sankey <- function(data, with_company = TRUE) {
     )
 
   if(with_company){
+
+    #FIXME : DRY the code https://github.com/2DegreesInvesting/tiltPlot/pull/10#discussion_r1244149088
 
     links <- data_links |>
       select(

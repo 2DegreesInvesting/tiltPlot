@@ -19,7 +19,7 @@ test_that("returns correct share values",{
     unique()
   expect_true(all(shares %in% expected_shares))
 })
-
+# FIXME : usethis::use_tidy_style()
 
 
 

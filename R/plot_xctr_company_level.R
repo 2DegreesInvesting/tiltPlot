@@ -9,18 +9,26 @@
 #' @examples
 #' plot_xctr_company_level(xctr_toy_data, "company_a")
 plot_xctr_company_level <- function(data, company_name) {
+  #TODO: run usethis::use_tidy_style()
 
+  #TODO : do we want to drop NA's everywhere silently ?
   data <- data |>
     na.omit() |>
+    #TODO: remove the {{}} and use .env$company_name
+    #(https://github.com/2DegreesInvesting/tiltPlot/pull/8#discussion_r1242525627)
     filter(company_name == {{ company_name }})
 
   score_colors <- c("low" = "#007F00", "medium" = "#FFC300", "high" = "#FF5733")
   risk_category_order <- c("low", "medium", "high")
 
+  #TODO : use share_var <- names(select(data, matches("_share"))
   share_var <- names(data)[grep("_share", names(data))]
   risk_category_var <- names(data)[grep("_risk_category", names(data))]
 
+  #TODO : check if the names exists : hasName() or check_crucial_names()
+
   # Create a new variable that specifies the order of the levels
+  #TODO : use mutate() instead
   data[[risk_category_var]] <- factor(data[[risk_category_var]], levels = risk_category_order)
 
   # Define the plot
@@ -32,6 +40,7 @@ plot_xctr_company_level <- function(data, company_name) {
          fill = "Risk Categories") +
     theme_classic() +
     scale_fill_manual(values = score_colors) +
+    #TODO : use tiltplot_theme()
     theme(plot.title = element_text(hjust = 0.5, size = 16),
           axis.title = element_text(size = 12),
           axis.text = element_text(size = 10),
@@ -43,6 +52,7 @@ plot_xctr_company_level <- function(data, company_name) {
           panel.spacing.y = unit(0.5, "lines")) +
     ylim(0, 1)
 
+  #FIXME : return p only
   return(plot)
 }
 
