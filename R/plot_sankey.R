@@ -11,7 +11,7 @@
 #' with the same highest risk, we assume equal weights again.
 #' * "best_case" - similar to the worst-case scenario but just with the
 #' lowest-risk category.
-#' * "main-activity" - sometimes banks give one sector classification to one
+#' * "main_activity" - sometimes banks give one sector classification to one
 #' company. However, with our data we know that sometimes the products stem from
 #' different sectors. Knowing that the bank categorizes the product in one
 #' specific sector, we could assume that the bank only finance the product in
