@@ -3,14 +3,14 @@ test_that("returns an object of the expected class", {
   expect_s3_class(plot, "ggplot")
 })
 
-test_that("returns correct risk category values",{
+test_that("returns correct risk category values", {
   plot <- plot_xctr_portfolio_level(xctr_toy_data)
   risk_categories <- levels(plot$data$risk_category_var)
   expected_risk_categories <- c("low", "medium", "high")
   expect_equal(risk_categories, expected_risk_categories)
 })
 
-test_that("returns correct share values",{
+test_that("returns correct share values", {
   plot <- plot_xctr_portfolio_level(xctr_toy_data)
   shares <- unique(plot$data$avg_share_value)
   expected_shares <- xctr_toy_data |>
