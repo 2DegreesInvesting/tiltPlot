@@ -6,7 +6,6 @@
 #'
 #' @return A sankey plot of class [sankeyNetwork].
 #' @export
-#' #TODO: use usethis::import_from("rlang", ".data") instead.
 #' @importFrom rlang .data
 #'
 #' @examples

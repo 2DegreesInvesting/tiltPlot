@@ -25,3 +25,13 @@ check_crucial_names <- function(x, expected_names) {
 
   invisible(x)
 }
+
+abort_missing_names <- function(missing_names) {
+  rlang::abort(
+    "missing_names",
+    message = glue::glue(
+      "Must have missing names:
+      {paste0('`', missing_names, '`', collapse = ', ')}"
+    )
+  )
+}

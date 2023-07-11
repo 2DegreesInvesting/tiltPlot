@@ -7,8 +7,15 @@
 tiltplot_theme()
 }
 \value{
-a ggplot theme
+An object of class "theme", "gg".
 }
 \description{
 TiltPlot theme for the graphs
+}
+\examples{
+library(ggplot2, warn.conflicts = FALSE)
+
+ggplot(mtcars) +
+  geom_histogram(aes(mpg), bins = 10) +
+  tiltplot_theme()
 }

@@ -8,7 +8,7 @@
 #'
 #' ggplot(mtcars) +
 #'   geom_histogram(aes(mpg), bins = 10) +
-#'   theme_2dii()
+#'   tiltplot_theme()
 tiltplot_theme <- function() {
   theme_classic() +
     theme(plot.title = element_text(hjust = 0.5, size = 16),
