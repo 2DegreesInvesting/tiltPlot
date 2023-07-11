@@ -1,13 +1,31 @@
-#' Title
+#' Create a sankey plot
 #'
-#' @param data
-#' @param with_company
-#' @param mode
+#' @param data A data frame like [toy_data].
+#' @param with_company Logical. If TRUE, will plot a node with the company name.
+#' If FALSE, will plot without the company name node.
+#' @param mode String. Several modes can be chosen by the user :
+#' * "equal_weight" means to divide the amount of the loan by the number of
+#' products of the company.
+#' * "worst_case" means to weigh the loan as such that we assume that all money
+#' goes into the highest risk product. If there are two or more products associated
+#' with the same highest risk, we assume equal weights again.
+#' * "best_case" - similar to the worst-case scenario but just with the
+#' lowest-risk category.
+#' * "main-activity" - sometimes banks give one sector classification to one
+#' company. However, with our data we know that sometimes the products stem from
+#' different sectors. Knowing that the bank categorizes the product in one
+#' specific sector, we could assume that the bank only finance the product in
+#' the sector that it categories the company in.
 #'
-#' @return
+#' @return A sankey plot of class [ggaluvial].
 #' @export
 #'
 #' @examples
+#' # Plot with equal weight and with company name
+#' plot_sankey(toy_data)
+#'
+#' # Plot with best_case weight
+#' plot_sankey(toy_data, mode = "best_case")
 plot_sankey <- function(data, with_company = TRUE, mode = "equal_weight") {
 
   if(with_company){
@@ -45,19 +63,5 @@ plot_sankey <- function(data, with_company = TRUE, mode = "equal_weight") {
       labs(fill= "amount")+
       ggtitle("Sankey Plot",
               paste("Stratified by the amount of loan by the bank and", mode, "mode"))
-
   }
-
-p <- ggplot::ggplot(data = data,
-         aes(axis1 = Class, axis2 = Sex, axis3 = Age,
-             y = Freq)) +
-    scale_x_discrete(limits = c("Class", "Sex", "Age"), expand = c(.2, .05)) +
-    xlab("Demographic") +
-    geom_alluvium(aes(fill = Survived)) +
-    geom_stratum() +
-    geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
-    theme_minimal() +
-    ggtitle("passengers on the maiden voyage of the Titanic",
-            "stratified by demographics and survival")
-
 }
