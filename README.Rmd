@@ -51,4 +51,10 @@ xctr_toy_data
 plot_xctr_company_level(xctr_toy_data, "company_a")
 ```
 
+### 3. XCTR plot on the portfolio level
+
+```{r}
+plot_xctr_portfolio_level(xctr_toy_data)
+```
+
 
