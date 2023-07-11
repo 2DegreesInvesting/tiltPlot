@@ -5,8 +5,8 @@ test_that("returns an object of the expected class", {
 
 test_that("returns correct risk category values",{
   plot <- plot_xctr_company_level(xctr_toy_data, "company_a")
-  risk_categories <- levels(plot$data$xctr_risk_category)
-  expected_risk_categories <- c("low", "medium", "high")
+  risk_categories <- plot$data$xctr_risk_category
+  expected_risk_categories <- c("high", "low", "medium")
   expect_equal(risk_categories, expected_risk_categories)
 })
 
