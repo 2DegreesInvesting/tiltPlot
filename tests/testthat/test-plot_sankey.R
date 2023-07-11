@@ -5,10 +5,8 @@ test_that("returns an object of the expected class", {
 
 test_that("returns expected data name values", {
   p <- plot_sankey(toy_data)
-  plot_names <- unique(p$data) |>
-    colnames()
-  expected_names <- toy_data |>
-    colnames()
+  plot_names <- p$data |> colnames()
+  expected_names <- toy_data |> colnames()
   expect_equal(plot_names, expected_names)
 })
 
