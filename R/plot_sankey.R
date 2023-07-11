@@ -17,7 +17,7 @@
 #' specific sector, we could assume that the bank only finance the product in
 #' the sector that it categories the company in.
 #'
-#' @return A sankey plot of class [ggaluvial].
+#' @return A sankey plot of class [ggalluvial].
 #' @export
 #'
 #' @examples
@@ -30,17 +30,17 @@ plot_sankey <- function(data, with_company = TRUE, mode = "equal_weight") {
 
   if(with_company){
 
-    p <- ggplot2::ggplot(data = toy_data,
-              aes(axis1 = kg_id, axis2 = company_name, axis3 = tilt_sector, axis4 = pctr_risk_category)) +
+    p <- ggplot2::ggplot(data = data,
+              aes(axis1 = .data$kg_id, axis2 = .data$company_name, axis3 = .data$tilt_sector, axis4 = .data$pctr_risk_category)) +
       scale_x_discrete(limits = c("Bank", "Company", "Tilt Sector", "PCTR risk category"), expand = c(.2, .05)) +
       geom_alluvium(aes(fill = case_when(
-        mode == "equal_weight" ~ equal_weight_finance,
-        mode == "worst_case" ~ worst_case_finance,
-        mode == "best_case" ~ best_case_finance,
-        mode == "main_activity" ~ main_activity
+        mode == "equal_weight" ~ .data$equal_weight_finance,
+        mode == "worst_case" ~ .data$worst_case_finance,
+        mode == "best_case" ~ .data$best_case_finance,
+        mode == "main_activity" ~ .data$main_activity
       ))) +
       geom_stratum() +
-      geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
+      geom_text(stat = StatStratum, aes(label = after_stat(.data$stratum))) +
       theme_minimal() +
       labs(fill= "amount")+
       ggtitle("Sankey Plot",
@@ -48,17 +48,17 @@ plot_sankey <- function(data, with_company = TRUE, mode = "equal_weight") {
 
   }else{
 
-    p <- ggplot2::ggplot(data = toy_data,
-                         aes(axis1 = kg_id, axis2 = tilt_sector, axis3 = pctr_risk_category)) +
+    p <- ggplot2::ggplot(data = data,
+                         aes(axis1 = .data$kg_id, axis2 = .data$tilt_sector, axis3 = .data$pctr_risk_category)) +
       scale_x_discrete(limits = c("Bank", "Tilt Sector", "PCTR risk category"), expand = c(.2, .05)) +
       geom_alluvium(aes(fill = case_when(
-        mode == "equal_weight" ~ equal_weight_finance,
-        mode == "worst_case" ~ worst_case_finance,
-        mode == "best_case" ~ best_case_finance,
-        mode == "main_activity" ~ main_activity
+        mode == "equal_weight" ~ .data$equal_weight_finance,
+        mode == "worst_case" ~ .data$worst_case_finance,
+        mode == "best_case" ~ .data$best_case_finance,
+        mode == "main_activity" ~ .data$main_activity
       ))) +
       geom_stratum() +
-      geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
+      geom_text(stat = StatStratum, aes(label = after_stat(.data$stratum))) +
       theme_minimal() +
       labs(fill= "amount")+
       ggtitle("Sankey Plot",

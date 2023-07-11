@@ -3,12 +3,29 @@
     Code
       toy_data
     Output
-      # A tibble: 4 x 6
-        bank  amount company_name amount_of_distinct_pro~1 pctr_risk_category tilt_sec
-        <chr>  <dbl> <chr>                           <dbl> <chr>              <chr>   
-      1 A          5 Peter                               2 low                sector_a
-      2 A          5 Peter                               2 high               sector_b
-      3 B         10 Mario                               1 medium             sector_c
-      4 C          8 Mario                               1 low                sector_c
-      # i abbreviated name: 1: amount_of_distinct_products
+      # A tibble: 19 x 12
+         kg_id  amount_total company_name  wz    amount_of_distinct_products
+         <chr>         <int> <chr>         <chr>                       <int>
+       1 bank_a         1000 peter peasant A                               1
+       2 bank_a         1000 peter         B                               2
+       3 bank_a         1000 peter         B                               2
+       4 bank_a         1000 pasant        A                               2
+       5 bank_a         1000 pasant        A                               2
+       6 bank_a         1000 mauro         C                               2
+       7 bank_a         1000 mauro         C                               2
+       8 bank_a         1000 mirja         D                               2
+       9 bank_a         1000 mirja         D                               2
+      10 bank_a         1000 bruno         B                               3
+      11 bank_a         1000 bruno         B                               3
+      12 bank_a         1000 bruno         B                               3
+      13 bank_a         1000 tilman        D                               3
+      14 bank_a         1000 tilman        D                               3
+      15 bank_a         1000 tilman        D                               3
+      16 bank_b          500 peter peasant A                               1
+      17 bank_b          500 tilman        D                               3
+      18 bank_b          500 tilman        D                               3
+      19 bank_b          500 tilman        D                               3
+      # i 7 more variables: pctr_risk_category <chr>, product_name <chr>,
+      #   tilt_sector <chr>, equal_weight_finance <dbl>, worst_case_finance <int>,
+      #   best_case_finance <int>, main_activity <int>
 
