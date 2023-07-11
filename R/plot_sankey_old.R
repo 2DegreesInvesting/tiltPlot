@@ -20,8 +20,7 @@ plot_sankey_old <- function(data, with_company = TRUE) {
       middle_node2 = .data$tilt_sec
     )
 
-  if(with_company){
-
+  if (with_company) {
     links <- data_links |>
       select(
         "bank",
@@ -40,8 +39,7 @@ plot_sankey_old <- function(data, with_company = TRUE) {
         group = "pctr_risk_category"
       ) |>
       bind_rows(links)
-  }else{
-
+  } else {
     links <- data_links |>
       select(
         "bank",
