@@ -41,6 +41,7 @@ plot_sankey <- function(data, with_company = TRUE, mode = "equal_weight") {
       ))) +
       geom_stratum() +
       geom_text(stat = StatStratum, aes(label = after_stat(.data$stratum))) +
+      #TODO : create tilt_theme()
       theme_minimal() +
       labs(fill = "amount") +
       ggtitle(
