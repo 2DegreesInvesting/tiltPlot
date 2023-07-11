@@ -38,7 +38,7 @@ toy_data
 ```
 
 ```{r eval=interactive()}
-plot_sankey(toy_data, with_company = TRUE)
+plot_sankey(toy_data, with_company = TRUE, mode = "equal_weight")
 ```
 
 ### 2. XCTR plot for one company

@@ -64,4 +64,6 @@ plot_sankey <- function(data, with_company = TRUE, mode = "equal_weight") {
       ggtitle("Sankey Plot",
               paste("Stratified by the amount of loan by the bank and", mode, "mode"))
   }
+
+  return(p)
 }
