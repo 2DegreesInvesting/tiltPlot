@@ -14,10 +14,12 @@ Depends:
 Imports: 
     dplyr,
     ggplot2,
+    glue,
     networkD3,
     rlang,
     stats,
-    tibble
+    tibble,
+    tidyselect
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
