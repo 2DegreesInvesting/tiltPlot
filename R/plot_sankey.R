@@ -1,90 +1,63 @@
-#' Create a sankey plot
+#' Title
 #'
-#' @param data A data frame like [toy_data].
-#' @param with_company Logical. If TRUE, will plot a node with the company name.
-#' If FALSE, will plot without the company name node.
+#' @param data
+#' @param with_company
+#' @param mode
 #'
-#' @return A sankey plot of class [sankeyNetwork].
+#' @return
 #' @export
-#' @importFrom rlang .data
 #'
 #' @examples
-#' plot_sankey(toy_data)
-plot_sankey <- function(data, with_company = TRUE) {
-  data_links <- data |>
-    mutate(
-      source = .data$bank,
-      target = .data$pctr_risk_category,
-      value = .data$amount,
-      middle_node1 = .data$company_name,
-      middle_node2 = .data$tilt_sec
-    )
+plot_sankey <- function(data, with_company = TRUE, mode = "equal_weight") {
 
   if(with_company){
 
-    links <- data_links |>
-      select(
-        "bank",
-        source = "bank",
-        target = "middle_node1",
-        value = "amount",
-        group = "pctr_risk_category"
-      )
+    p <- ggplot2::ggplot(data = toy_data,
+              aes(axis1 = kg_id, axis2 = company_name, axis3 = tilt_sector, axis4 = pctr_risk_category)) +
+      scale_x_discrete(limits = c("Bank", "Company", "Tilt Sector", "PCTR risk category"), expand = c(.2, .05)) +
+      geom_alluvium(aes(fill = case_when(
+        mode == "equal_weight" ~ equal_weight_finance,
+        mode == "worst_case" ~ worst_case_finance,
+        mode == "best_case" ~ best_case_finance,
+        mode == "main_activity" ~ main_activity
+      ))) +
+      geom_stratum() +
+      geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
+      theme_minimal() +
+      labs(fill= "amount")+
+      ggtitle("Sankey Plot",
+               paste("Stratified by the amount of loan by the bank and", mode, "mode"))
 
-    links <- data_links |>
-      select(
-        "bank",
-        source = "middle_node1",
-        target = "middle_node2",
-        value = "amount",
-        group = "pctr_risk_category"
-      ) |>
-      bind_rows(links)
   }else{
 
-    links <- data_links |>
-      select(
-        "bank",
-        source = "bank",
-        target = "middle_node2",
-        value = "amount",
-        group = "pctr_risk_category"
-      )
+    p <- ggplot2::ggplot(data = toy_data,
+                         aes(axis1 = kg_id, axis2 = tilt_sector, axis3 = pctr_risk_category)) +
+      scale_x_discrete(limits = c("Bank", "Tilt Sector", "PCTR risk category"), expand = c(.2, .05)) +
+      geom_alluvium(aes(fill = case_when(
+        mode == "equal_weight" ~ equal_weight_finance,
+        mode == "worst_case" ~ worst_case_finance,
+        mode == "best_case" ~ best_case_finance,
+        mode == "main_activity" ~ main_activity
+      ))) +
+      geom_stratum() +
+      geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
+      theme_minimal() +
+      labs(fill= "amount")+
+      ggtitle("Sankey Plot",
+              paste("Stratified by the amount of loan by the bank and", mode, "mode"))
+
   }
 
-  links <- data_links |>
-    select(
-      "bank",
-      source = "middle_node2",
-      target = "pctr_risk_category",
-      value = "amount",
-      group = "pctr_risk_category"
-    ) |>
-    bind_rows(links)
+p <- ggplot::ggplot(data = data,
+         aes(axis1 = Class, axis2 = Sex, axis3 = Age,
+             y = Freq)) +
+    scale_x_discrete(limits = c("Class", "Sex", "Age"), expand = c(.2, .05)) +
+    xlab("Demographic") +
+    geom_alluvium(aes(fill = Survived)) +
+    geom_stratum() +
+    geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
+    theme_minimal() +
+    ggtitle("passengers on the maiden voyage of the Titanic",
+            "stratified by demographics and survival")
 
-  nodes <- tibble(
-    name = unique(c(as.character(links$source), as.character(links$target))),
-    group = ifelse(.data$name %in% c("high", "medium", "low"), .data$name, "other")
-  )
-
-  # FIXME : this color scale breaks the code.
-  my_color <- 'd3.scaleOrdinal() .domain(["high", "medium", "low", "other"]) .range(["#e10000", "#3d8c40", #808080", "#808080"])'
-
-  links$IDsource <- match(links$source, nodes$name) - 1
-  links$IDtarget <- match(links$target, nodes$name) - 1
-
-  p <- networkD3::sankeyNetwork(
-    Links = links,
-    Nodes = nodes,
-    Source = "IDsource",
-    Target = "IDtarget",
-    Value = "value",
-    NodeID = "name",
-    # colourScale = my_color,
-    LinkGroup = "group",
-    NodeGroup = "group",
-    fontSize = 14
-  )
-
-  return(p)
 }
