@@ -42,7 +42,7 @@ plot_xctr <- function(data, company_name = NULL, portfolio_level = FALSE) {
       group_by(.data$benchmark, risk_category_var) |>
       summarise(avg_share_value = mean(.data[[share_var]]))
 
-    ggplot(data_grouped, aes(x = .data$risk_category_var, y = avg_share_value, fill = .data$risk_category_var)) +
+    ggplot(data_grouped, aes(x = .data$risk_category_var, y = .data$avg_share_value, fill = .data$risk_category_var)) +
       geom_bar(stat = "identity", position = "dodge", alpha = 0.8, width = 0.6) +
       facet_wrap(~ .data$benchmark, scales = "fixed") +
       labs(
