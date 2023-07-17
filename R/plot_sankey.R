@@ -33,7 +33,11 @@ plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight", "wor
 
   p <- ggplot2::ggplot(
     data = data,
-    aes(axis1 = .data$kg_id, axis3 = .data$tilt_sector, axis4 = .data$pctr_risk_category)
+    aes(
+      axis1 = .data$kg_id,
+      axis3 = .data$tilt_sector,
+      axis4 = factor(.data$pctr_risk_category, levels = c("low", "medium", "high"))
+    )
   ) +
     scale_x_discrete(
       limits = limits,
