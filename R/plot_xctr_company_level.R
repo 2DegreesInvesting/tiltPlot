@@ -28,7 +28,8 @@ plot_xctr_company_level <- function(data, company_name) {
   data <- data |>
     mutate(risk_category_var = factor(
       data[[risk_category_var]],
-      levels = c("low", "medium", "high")))
+      levels = c("low", "medium", "high")
+    ))
 
   ggplot(data, aes(x = .data$risk_category_var, y = .data[[share_var]], fill = .data$risk_category_var)) +
     geom_bar(stat = "identity", position = "dodge", alpha = 0.8, width = 0.6) +
