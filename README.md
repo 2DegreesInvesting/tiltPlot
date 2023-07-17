@@ -79,7 +79,7 @@ plot_sankey(sankey_toy_data, with_company = FALSE, mode = "best_case")
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
-### 2. XCTR plot for one company
+### 2. XCTR plot for one company, without financial data
 
 ``` r
 xctr_toy_data
@@ -100,7 +100,7 @@ plot_xctr_company_level(xctr_toy_data, "company_a")
 
 <img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
 
-### 3. XCTR plot on the portfolio level
+### 3. XCTR plot on the portfolio level, without financial data
 
 ``` r
 plot_xctr_portfolio_level(xctr_toy_data)

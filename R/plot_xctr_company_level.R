@@ -14,8 +14,6 @@ plot_xctr_company_level <- function(data, company_name) {
     na.omit() |>
     filter(company_name == .env$company_name)
 
-  score_colors <- c("low" = "#007F00", "medium" = "#FFC300", "high" = "#FF5733")
-
   crucial_names <- c(
     names(select(data, matches("_share"))),
     names(select(data, matches("_risk_category")))
@@ -30,6 +28,8 @@ plot_xctr_company_level <- function(data, company_name) {
       data[[risk_category_var]],
       levels = c("low", "medium", "high")
     ))
+
+  score_colors <- c("low" = "#007F00", "medium" = "#FFC300", "high" = "#FF5733")
 
   ggplot(data, aes(x = .data$risk_category_var, y = .data[[share_var]], fill = .data$risk_category_var)) +
     geom_bar(stat = "identity", position = "dodge", alpha = 0.8, width = 0.6) +
