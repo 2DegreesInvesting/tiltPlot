@@ -25,17 +25,75 @@ library(tiltPlot)
 ### 1. Sankey Plot
 
 ``` r
-toy_data
-#> # A tibble: 4 × 6
-#>   bank  amount company_name amount_of_distinct_pro…¹ pctr_risk_category tilt_sec
-#>   <chr>  <dbl> <chr>                           <dbl> <chr>              <chr>   
-#> 1 A          5 Peter                               2 low                sector_a
-#> 2 A          5 Peter                               2 high               sector_b
-#> 3 B         10 Mario                               1 medium             sector_c
-#> 4 C          8 Mario                               1 low                sector_c
-#> # ℹ abbreviated name: ¹​amount_of_distinct_products
+sankey_toy_data
+#> # A tibble: 19 × 12
+#>    kg_id  amount_total company_name  wz    amount_of_distinct_products
+#>    <chr>         <int> <chr>         <chr>                       <int>
+#>  1 bank_a         1000 peter peasant A                               1
+#>  2 bank_a         1000 peter         B                               2
+#>  3 bank_a         1000 peter         B                               2
+#>  4 bank_a         1000 pasant        A                               2
+#>  5 bank_a         1000 pasant        A                               2
+#>  6 bank_a         1000 mauro         C                               2
+#>  7 bank_a         1000 mauro         C                               2
+#>  8 bank_a         1000 mirja         D                               2
+#>  9 bank_a         1000 mirja         D                               2
+#> 10 bank_a         1000 bruno         B                               3
+#> 11 bank_a         1000 bruno         B                               3
+#> 12 bank_a         1000 bruno         B                               3
+#> 13 bank_a         1000 tilman        D                               3
+#> 14 bank_a         1000 tilman        D                               3
+#> 15 bank_a         1000 tilman        D                               3
+#> 16 bank_b          500 peter peasant A                               1
+#> 17 bank_b          500 tilman        D                               3
+#> 18 bank_b          500 tilman        D                               3
+#> 19 bank_b          500 tilman        D                               3
+#> # ℹ 7 more variables: pctr_risk_category <chr>, product_name <chr>,
+#> #   tilt_sector <chr>, equal_weight_finance <dbl>, worst_case_finance <int>,
+#> #   best_case_finance <int>, main_activity <int>
+```
+
+Here is the default Sankey Plot. By default the function plots with
+companies and uses an “equal_weight” mode.
+
+``` r
+plot_sankey(sankey_toy_data)
+```
+
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+
+You can also choose to have the plot without the company node.
+
+``` r
+plot_sankey(sankey_toy_data, with_company = FALSE)
+```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+
+Finally, the user can choose different modes to plot the Sankey plot if
+financial data is available.
+
+``` r
+plot_sankey(sankey_toy_data, with_company = FALSE, mode = "best_case")
+```
+
+### 2. XCTR plot for one company
+
+``` r
+xctr_toy_data
+#> # A tibble: 6 × 3
+#>   company_name xctr_risk_category xctr_share
+#>   <chr>        <chr>                   <dbl>
+#> 1 company_a    high                      0.5
+#> 2 company_a    low                       0.5
+#> 3 company_a    medium                    0  
+#> 4 company_b    high                      0  
+#> 5 company_b    medium                    0  
+#> 6 company_b    low                       1
 ```
 
 ``` r
-plot_sankey(toy_data, with_company = TRUE)
+plot_xctr_company_level(xctr_toy_data, "company_a")
 ```
+
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />

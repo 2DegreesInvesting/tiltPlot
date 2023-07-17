@@ -13,8 +13,8 @@ Depends:
     R (>= 2.10)
 Imports: 
     dplyr,
+    ggalluvial,
     ggplot2,
-    networkD3,
     rlang,
     stats,
     tibble
