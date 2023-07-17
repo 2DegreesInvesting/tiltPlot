@@ -37,8 +37,24 @@ library(tiltPlot)
 toy_data
 ```
 
+
+Here is the default Sankey Plot. By default the function plots with companies and uses an "equal_weight" mode.
+
+```{r}
+plot_sankey(toy_data)
+```
+
+
+You can also choose to have the plot without the company node.
+
+```{r}
+plot_sankey(toy_data, with_company = FALSE)
+```
+
+Finally, you can choose different modes to plot the Sankey plot.
+
 ```{r eval=interactive()}
-plot_sankey(toy_data, with_company = TRUE, mode = "equal_weight")
+plot_sankey(toy_data, with_company = FALSE, mode = "best_case")
 ```
 
 ### 2. XCTR plot for one company

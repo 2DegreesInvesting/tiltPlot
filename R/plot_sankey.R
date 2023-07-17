@@ -26,48 +26,38 @@
 #'
 #' # Plot with best_case weight
 #' plot_sankey(toy_data, mode = "best_case")
-plot_sankey <- function(data, with_company = TRUE, mode = "equal_weight") {
+plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
+  mode <- arg_match(mode)
+
+  limits <- c("Bank", if (with_company) "Company", NULL, "Tilt Sector", "PCTR risk category")
+
+  p <- ggplot2::ggplot(
+    data = data,
+    aes(axis1 = .data$kg_id, axis3 = .data$tilt_sector, axis4 = .data$pctr_risk_category)
+  ) +
+    scale_x_discrete(
+      limits = limits,
+      expand = c(.2, .05)
+    ) +
+    geom_alluvium(aes(
+      fill = case_when(
+        mode == "equal_weight" ~ .data$equal_weight_finance,
+        mode == "worst_case" ~ .data$worst_case_finance,
+        mode == "best_case" ~ .data$best_case_finance,
+        mode == "main_activity" ~ .data$main_activity
+      )
+    )) +
+    geom_stratum() +
+    geom_text(stat = StatStratum, aes(label = after_stat(.data$stratum))) +
+    theme_minimal() +
+    labs(fill = "amount") +
+    ggtitle(
+      "Sankey Plot",
+      paste("Stratified by the amount of loan by the bank and", mode, "mode")
+    )
+
   if (with_company) {
-    p <- ggplot2::ggplot(
-      data = data,
-      aes(axis1 = .data$kg_id, axis2 = .data$company_name, axis3 = .data$tilt_sector, axis4 = .data$pctr_risk_category)
-    ) +
-      scale_x_discrete(limits = c("Bank", "Company", "Tilt Sector", "PCTR risk category"), expand = c(.2, .05)) +
-      geom_alluvium(aes(fill = case_when(
-        mode == "equal_weight" ~ .data$equal_weight_finance,
-        mode == "worst_case" ~ .data$worst_case_finance,
-        mode == "best_case" ~ .data$best_case_finance,
-        mode == "main_activity" ~ .data$main_activity
-      ))) +
-      geom_stratum() +
-      geom_text(stat = StatStratum, aes(label = after_stat(.data$stratum))) +
-      #TODO : create tilt_theme()
-      theme_minimal() +
-      labs(fill = "amount") +
-      ggtitle(
-        "Sankey Plot",
-        paste("Stratified by the amount of loan by the bank and", mode, "mode")
-      )
-  } else {
-    p <- ggplot2::ggplot(
-      data = data,
-      aes(axis1 = .data$kg_id, axis2 = .data$tilt_sector, axis3 = .data$pctr_risk_category)
-    ) +
-      scale_x_discrete(limits = c("Bank", "Tilt Sector", "PCTR risk category"), expand = c(.2, .05)) +
-      geom_alluvium(aes(fill = case_when(
-        mode == "equal_weight" ~ .data$equal_weight_finance,
-        mode == "worst_case" ~ .data$worst_case_finance,
-        mode == "best_case" ~ .data$best_case_finance,
-        mode == "main_activity" ~ .data$main_activity
-      ))) +
-      geom_stratum() +
-      geom_text(stat = StatStratum, aes(label = after_stat(.data$stratum))) +
-      theme_minimal() +
-      labs(fill = "amount") +
-      ggtitle(
-        "Sankey Plot",
-        paste("Stratified by the amount of loan by the bank and", mode, "mode")
-      )
+    p <- p + aes(axis2 = .data$company_name)
   }
 
   return(p)

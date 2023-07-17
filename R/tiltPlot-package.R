@@ -31,6 +31,7 @@
 #' @importFrom ggplot2 unit
 #' @importFrom ggplot2 ylim
 #' @importFrom rlang .data
+#' @importFrom rlang arg_match
 #' @importFrom stats na.omit
 #' @importFrom tibble tibble
 #' @importFrom tibble tribble
