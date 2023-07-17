@@ -1,92 +1,68 @@
 #' Create a sankey plot
 #'
-#' @param data A data frame like [toy_data].
+#' @param data A data frame like [sankey_toy_data].
 #' @param with_company Logical. If TRUE, will plot a node with the company name.
 #' If FALSE, will plot without the company name node.
+#' @param mode String. Several modes can be chosen by the user :
+#' * "equal_weight" means to divide the amount of the loan by the number of
+#' products of the company.
+#' * "worst_case" means to weigh the loan as such that we assume that all money
+#' goes into the highest risk product. If there are two or more products associated
+#' with the same highest risk, we assume equal weights again.
+#' * "best_case" - similar to the worst-case scenario but just with the
+#' lowest-risk category.
+#' * "main_activity" - sometimes banks give one sector classification to one
+#' company. However, with our data we know that sometimes the products stem from
+#' different sectors. Knowing that the bank categorizes the product in one
+#' specific sector, we could assume that the bank only finance the product in
+#' the sector that it categories the company in.
 #'
-#' @return A sankey plot of class [sankeyNetwork].
+#' @return A sankey plot of class [ggalluvial].
 #' @export
-#' @importFrom rlang .data
 #'
 #' @examples
-#' plot_sankey(toy_data)
-plot_sankey <- function(data, with_company = TRUE) {
-  data_links <- data |>
-    mutate(
-      source = .data$bank,
-      target = .data$pctr_risk_category,
-      value = .data$amount,
-      middle_node1 = .data$company_name,
-      middle_node2 = .data$tilt_sec
+#' # Plot with equal weight and with company name
+#' plot_sankey(sankey_toy_data)
+#'
+#' # Plot with best_case weight
+#' plot_sankey(sankey_toy_data, mode = "best_case")
+plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
+  mode <- arg_match(mode)
+
+  limits <- c("Bank", if (with_company) "Company", NULL, "Tilt Sector", "PCTR risk category")
+
+  p <- ggplot2::ggplot(
+    data = data,
+    aes(
+      axis1 = .data$kg_id,
+      axis3 = .data$tilt_sector,
+      axis4 = factor(.data$pctr_risk_category, levels = c("low", "medium", "high"))
+    )
+  ) +
+    scale_x_discrete(
+      limits = limits,
+      expand = c(.2, .05)
+    ) +
+    geom_alluvium(aes(
+      fill = case_when(
+        mode == "equal_weight" ~ .data$equal_weight_finance,
+        mode == "worst_case" ~ .data$worst_case_finance,
+        mode == "best_case" ~ .data$best_case_finance,
+        mode == "main_activity" ~ .data$main_activity
+      )
+    )) +
+    geom_stratum() +
+    geom_text(stat = StatStratum, aes(label = after_stat(.data$stratum))) +
+    theme_minimal() +
+    labs(fill = "amount") +
+    ggtitle(
+      "Sankey Plot",
+      paste("Stratified by the amount of loan by the bank and", mode, "mode")
     )
 
-  if(with_company){
-
-    #FIXME : DRY the code https://github.com/2DegreesInvesting/tiltPlot/pull/10#discussion_r1244149088
-
-    links <- data_links |>
-      select(
-        "bank",
-        source = "bank",
-        target = "middle_node1",
-        value = "amount",
-        group = "pctr_risk_category"
-      )
-
-    links <- data_links |>
-      select(
-        "bank",
-        source = "middle_node1",
-        target = "middle_node2",
-        value = "amount",
-        group = "pctr_risk_category"
-      ) |>
-      bind_rows(links)
-  }else{
-
-    links <- data_links |>
-      select(
-        "bank",
-        source = "bank",
-        target = "middle_node2",
-        value = "amount",
-        group = "pctr_risk_category"
-      )
+  if (with_company) {
+    p <- p + aes(axis2 = .data$company_name)
   }
-
-  links <- data_links |>
-    select(
-      "bank",
-      source = "middle_node2",
-      target = "pctr_risk_category",
-      value = "amount",
-      group = "pctr_risk_category"
-    ) |>
-    bind_rows(links)
-
-  nodes <- tibble(
-    name = unique(c(as.character(links$source), as.character(links$target))),
-    group = ifelse(.data$name %in% c("high", "medium", "low"), .data$name, "other")
-  )
-
-  # FIXME : this color scale breaks the code.
-  my_color <- 'd3.scaleOrdinal() .domain(["high", "medium", "low", "other"]) .range(["#e10000", "#3d8c40", #808080", "#808080"])'
-
-  links$IDsource <- match(links$source, nodes$name) - 1
-  links$IDtarget <- match(links$target, nodes$name) - 1
-
-  p <- networkD3::sankeyNetwork(
-    Links = links,
-    Nodes = nodes,
-    Source = "IDsource",
-    Target = "IDtarget",
-    Value = "value",
-    NodeID = "name",
-    # colourScale = my_color,
-    LinkGroup = "group",
-    NodeGroup = "group",
-    fontSize = 14
-  )
 
   return(p)
 }

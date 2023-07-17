@@ -1,3 +1,3 @@
 test_that("hasn't changed", {
-  expect_snapshot(toy_data)
+  expect_snapshot(sankey_toy_data)
 })
