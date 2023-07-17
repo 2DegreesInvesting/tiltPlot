@@ -8,24 +8,23 @@
 #' @examples
 #' plot_xctr_portfolio_level(xctr_toy_data)
 plot_xctr_portfolio_level <- function(data) {
-  risk_category_order <- c("low", "medium", "high")
-
-  data |> check_crucial_names(c(
+  crucial_names <- c(
     names(select(data, matches("_share"))),
     names(select(data, matches("_risk_category")))
-  ))
+  )
+  data |> check_crucial_names(crucial_names)
 
   risk_category_var <- names(select(data, matches("_risk_category")))
   share_var <- names(data)[grep("_share", names(data))]
 
   data <- data |>
-    mutate(risk_category_var = factor(data[[risk_category_var]], levels = risk_category_order))
+    mutate(risk_category_var = factor(data[[risk_category_var]], levels = c("low", "medium", "high")))
 
   score_colors <- c("low" = "#007F00", "medium" = "#FFC300", "high" = "#FF5733")
 
   xctr_portfolio_grouped <- data |>
     group_by(.data$benchmark, risk_category_var) |>
-    summarise(avg_share_value = mean(.data$xctr_share))
+    summarise(avg_share_value = mean(.data[[share_var]]))
 
   ggplot(xctr_portfolio_grouped, aes(x = .data$risk_category_var, y = .data$avg_share_value, fill = .data$risk_category_var)) +
     geom_bar(stat = "identity", position = "dodge", alpha = 0.8, width = 0.6) +

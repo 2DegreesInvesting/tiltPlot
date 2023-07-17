@@ -9,26 +9,28 @@
 #' @examples
 #' plot_xctr_company_level(xctr_toy_data, "company_a")
 plot_xctr_company_level <- function(data, company_name) {
-  # TODO : do we want to drop NA's everywhere silently ?
+  # TODO: do we want to drop NA's everywhere silently?
   data <- data |>
     na.omit() |>
     filter(company_name == .env$company_name)
 
   score_colors <- c("low" = "#007F00", "medium" = "#FFC300", "high" = "#FF5733")
-  risk_category_order <- c("low", "medium", "high")
 
-  data |> check_crucial_names(c(
+  crucial_names <- c(
     names(select(data, matches("_share"))),
     names(select(data, matches("_risk_category")))
-  ))
+  )
+  data |> check_crucial_names(crucial_names)
 
   share_var <- names(select(data, matches("_share")))
   risk_category_var <- names(select(data, matches("_risk_category")))
 
   data <- data |>
-    mutate(risk_category_var = factor(data[[risk_category_var]], levels = risk_category_order))
+    mutate(risk_category_var = factor(
+      data[[risk_category_var]],
+      levels = c("low", "medium", "high")))
 
-  ggplot(data, aes(x = !!sym(risk_category_var), y = !!sym(share_var), fill = !!sym(risk_category_var))) +
+  ggplot(data, aes(x = .data$risk_category_var, y = .data[[share_var]], fill = .data$risk_category_var)) +
     geom_bar(stat = "identity", position = "dodge", alpha = 0.8, width = 0.6) +
     facet_wrap(~ .data$risk_category_var, scales = "fixed") +
     labs(
