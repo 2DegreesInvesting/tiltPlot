@@ -53,8 +53,27 @@ toy_data
 #> #   best_case_finance <int>, main_activity <int>
 ```
 
+Here is the default Sankey Plot. By default the function plots with
+companies and uses an “equal_weight” mode.
+
 ``` r
-plot_sankey(toy_data, with_company = TRUE, mode = "equal_weight")
+plot_sankey(toy_data)
+```
+
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+
+You can also choose to have the plot without the company node.
+
+``` r
+plot_sankey(toy_data, with_company = FALSE)
+```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+
+Finally, you can choose different modes to plot the Sankey plot.
+
+``` r
+plot_sankey(toy_data, with_company = FALSE, mode = "best_case")
 ```
 
 ### 2. XCTR plot for one company
@@ -76,4 +95,4 @@ xctr_toy_data
 plot_xctr_company_level(xctr_toy_data, "company_a")
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
