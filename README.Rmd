@@ -54,7 +54,7 @@ plot_sankey(sankey_toy_data, with_company = FALSE)
 Finally, the user can choose different modes to plot the Sankey plot if financial data
 is available.
 
-```{r eval=interactive()}
+```{r}
 plot_sankey(sankey_toy_data, with_company = FALSE, mode = "best_case")
 ```
 

@@ -77,6 +77,8 @@ financial data is available.
 plot_sankey(sankey_toy_data, with_company = FALSE, mode = "best_case")
 ```
 
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+
 ### 2. XCTR plot for one company
 
 ``` r
