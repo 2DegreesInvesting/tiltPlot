@@ -2,5 +2,5 @@
 #'
 #' @source `@lindadelacombaz`
 #' @examples
-#' toy_data
-"toy_data"
+#' sankey_toy_data
+"sankey_toy_data"

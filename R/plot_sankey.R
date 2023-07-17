@@ -1,6 +1,6 @@
 #' Create a sankey plot
 #'
-#' @param data A data frame like [toy_data].
+#' @param data A data frame like [sankey_toy_data].
 #' @param with_company Logical. If TRUE, will plot a node with the company name.
 #' If FALSE, will plot without the company name node.
 #' @param mode String. Several modes can be chosen by the user :
@@ -22,10 +22,10 @@
 #'
 #' @examples
 #' # Plot with equal weight and with company name
-#' plot_sankey(toy_data)
+#' plot_sankey(sankey_toy_data)
 #'
 #' # Plot with best_case weight
-#' plot_sankey(toy_data, mode = "best_case")
+#' plot_sankey(sankey_toy_data, mode = "best_case")
 plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
   mode <- arg_match(mode)
 

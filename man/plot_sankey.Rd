@@ -4,10 +4,14 @@
 \alias{plot_sankey}
 \title{Create a sankey plot}
 \usage{
-plot_sankey(data, with_company = TRUE, mode = "equal_weight")
+plot_sankey(
+  data,
+  with_company = TRUE,
+  mode = c("equal_weight", "worst_case", "best_case", "main_activity")
+)
 }
 \arguments{
-\item{data}{A data frame like \link{toy_data}.}
+\item{data}{A data frame like \link{sankey_toy_data}.}
 
 \item{with_company}{Logical. If TRUE, will plot a node with the company name.
 If FALSE, will plot without the company name node.}
@@ -36,8 +40,8 @@ Create a sankey plot
 }
 \examples{
 # Plot with equal weight and with company name
-plot_sankey(toy_data)
+plot_sankey(sankey_toy_data)
 
 # Plot with best_case weight
-plot_sankey(toy_data, mode = "best_case")
+plot_sankey(sankey_toy_data, mode = "best_case")
 }
