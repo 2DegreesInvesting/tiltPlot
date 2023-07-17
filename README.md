@@ -81,42 +81,27 @@ plot_sankey(sankey_toy_data, with_company = FALSE, mode = "best_case")
 
 ``` r
 xctr_toy_data
-#> # A tibble: 6 × 3
-#>   company_name xctr_risk_category xctr_share
-#>   <chr>        <chr>                   <dbl>
-#> 1 company_a    high                      0.5
-#> 2 company_a    low                       0.5
-#> 3 company_a    medium                    0  
-#> 4 company_b    high                      0  
-#> 5 company_b    medium                    0  
-#> 6 company_b    low                       1
+#> # A tibble: 6 × 4
+#>   company_name xctr_risk_category xctr_share benchmark
+#>   <chr>        <chr>                   <dbl> <chr>    
+#> 1 company_a    high                      0.5 unit     
+#> 2 company_a    low                       0.5 unit     
+#> 3 company_a    medium                    0   unit     
+#> 4 company_b    high                      0   tilt_sec 
+#> 5 company_b    medium                    0   tilt_sec 
+#> 6 company_b    low                       1   tilt_sec
 ```
 
 ``` r
 plot_xctr_company_level(xctr_toy_data, "company_a")
 ```
 
-<<<<<<< HEAD
-### 2. XCTR plot for one company
-
-``` r
-xctr_toy_data
-#> # A tibble: 6 × 3
-#>   company_name xctr_risk_category xctr_share
-#>   <chr>        <chr>                   <dbl>
-#> 1 company_a    high                      0.5
-#> 2 company_a    low                       0.5
-#> 3 company_a    medium                    0  
-#> 4 company_b    high                      0  
-#> 5 company_b    medium                    0  
-#> 6 company_b    low                       1
-```
-
-``` r
-plot_xctr_company_level(xctr_toy_data, "company_a")
-```
-
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
-=======
 <img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
->>>>>>> main
+
+### 3. XCTR plot on the portfolio level
+
+``` r
+plot_xctr_portfolio_level(xctr_toy_data)
+```
+
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
