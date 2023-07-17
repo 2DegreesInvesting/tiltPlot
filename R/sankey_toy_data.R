@@ -1,4 +1,4 @@
-#' Toy data
+#' Sankey toy data
 #'
 #' @source `@lindadelacombaz`
 #' @examples

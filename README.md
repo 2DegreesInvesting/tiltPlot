@@ -25,7 +25,7 @@ library(tiltPlot)
 ### 1. Sankey Plot
 
 ``` r
-toy_data
+sankey_toy_data
 #> # A tibble: 19 × 12
 #>    kg_id  amount_total company_name  wz    amount_of_distinct_products
 #>    <chr>         <int> <chr>         <chr>                       <int>
@@ -57,7 +57,7 @@ Here is the default Sankey Plot. By default the function plots with
 companies and uses an “equal_weight” mode.
 
 ``` r
-plot_sankey(toy_data)
+plot_sankey(sankey_toy_data)
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
@@ -65,15 +65,16 @@ plot_sankey(toy_data)
 You can also choose to have the plot without the company node.
 
 ``` r
-plot_sankey(toy_data, with_company = FALSE)
+plot_sankey(sankey_toy_data, with_company = FALSE)
 ```
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
-Finally, you can choose different modes to plot the Sankey plot.
+Finally, the user can choose different modes to plot the Sankey plot if
+financial data is available.
 
 ``` r
-plot_sankey(toy_data, with_company = FALSE, mode = "best_case")
+plot_sankey(sankey_toy_data, with_company = FALSE, mode = "best_case")
 ```
 
 ### 2. XCTR plot for one company
