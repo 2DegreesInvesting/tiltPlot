@@ -15,7 +15,6 @@ Imports:
     dplyr,
     ggalluvial,
     ggplot2,
-    networkD3,
     rlang,
     stats,
     tibble
