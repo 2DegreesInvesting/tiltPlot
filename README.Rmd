@@ -58,20 +58,22 @@ is available.
 plot_sankey(sankey_toy_data, with_company = FALSE, mode = "best_case")
 ```
 
-### 2. XCTR plot for one company, without financial data
+### 2. XCTR plot without financial data
 
 ```{r}
 xctr_toy_data
 ```
 
+Plot on a company-level:
+
 ```{r}
-plot_xctr_company_level(xctr_toy_data, "company_a")
+plot_xctr(xctr_toy_data, "company_a")
 ```
 
-### 3. XCTR plot on the portfolio level, without financial data
+Plot on a portfolio-level:
 
 ```{r}
-plot_xctr_portfolio_level(xctr_toy_data)
+plot_xctr(xctr_toy_data, portfolio_level = TRUE)
 ```
 
 

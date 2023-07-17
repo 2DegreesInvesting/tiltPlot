@@ -8,6 +8,11 @@
 #' @examples
 #' plot_xctr_portfolio_level(xctr_toy_data)
 plot_xctr_portfolio_level <- function(data) {
+  # TODO: do we want to drop NA's everywhere silently?
+  data <- data |>
+    na.omit() |>
+    filter(company_name == .env$company_name)
+
   crucial_names <- c(
     names(select(data, matches("_share"))),
     names(select(data, matches("_risk_category")))
