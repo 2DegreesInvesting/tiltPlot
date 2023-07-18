@@ -14,11 +14,8 @@ coverage](https://codecov.io/gh/2DegreesInvesting/tiltPlot/branch/main/graph/bad
 
 The goal of tiltPlot is to provide plots for the TILT project.
 
-## Example
-
-Let us load the toy data set.
-
 ``` r
+library(ggplot2)
 library(tiltPlot)
 ```
 
@@ -77,23 +74,38 @@ financial data is available.
 plot_sankey(sankey_toy_data, with_company = FALSE, mode = "best_case")
 ```
 
-### 2. XCTR plot for one company
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+
+### 2. XCTR plots without financial data
 
 ``` r
 xctr_toy_data
-#> # A tibble: 6 × 3
-#>   company_name xctr_risk_category xctr_share
-#>   <chr>        <chr>                   <dbl>
-#> 1 company_a    high                      0.5
-#> 2 company_a    low                       0.5
-#> 3 company_a    medium                    0  
-#> 4 company_b    high                      0  
-#> 5 company_b    medium                    0  
-#> 6 company_b    low                       1
+#> # A tibble: 6 × 4
+#>   company_name xctr_risk_category xctr_share benchmark
+#>   <chr>        <chr>                   <dbl> <chr>    
+#> 1 company_a    high                      0.5 unit     
+#> 2 company_a    low                       0.5 unit     
+#> 3 company_a    medium                    0   unit     
+#> 4 company_b    high                      0   tilt_sec 
+#> 5 company_b    medium                    0   tilt_sec 
+#> 6 company_b    low                       1   tilt_sec
 ```
 
+Plot on a company-level:
+
 ``` r
-plot_xctr_company_level(xctr_toy_data, "company_a")
+plot_xctr_company(xctr_toy_data, "company_a") +
+  # You can customize your plots as usual with ggplot2: https://ggplot2.tidyverse.org/
+  labs(title = "Risk distribution of all products on a company level") 
 ```
 
 <img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+
+Plot on a portfolio-level:
+
+``` r
+plot_xctr_portfolio(xctr_toy_data) +
+  labs(title = "Risk distribution of all products on a portfolio level")
+```
+
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />

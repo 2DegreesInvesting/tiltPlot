@@ -5,7 +5,7 @@
 \alias{xctr_toy_data}
 \title{XCTR toy data}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 6 rows and 3 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 6 rows and 4 columns.
 }
 \source{
 \verb{@lindadelacombaz}

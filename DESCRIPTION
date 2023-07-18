@@ -15,9 +15,11 @@ Imports:
     dplyr,
     ggalluvial,
     ggplot2,
+    glue,
     rlang,
     stats,
-    tibble
+    tibble,
+    tidyselect
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
