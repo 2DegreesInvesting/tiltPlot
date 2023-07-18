@@ -23,3 +23,5 @@ theme_tiltplot <- function() {
       panel.spacing.y = unit(0.5, "lines")
     )
 }
+
+score_colors <- function(...) c("low" = "#007F00", "medium" = "#FFC300", "high" = "#FF5733")

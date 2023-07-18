@@ -28,16 +28,11 @@ plot_xctr_portfolio <- function(data) {
     group_by(.data$benchmark, risk_category_var) |>
     summarise(avg_share_value = mean(.data[[share_var]]))
 
-  score_colors <- c("low" = "#007F00", "medium" = "#FFC300", "high" = "#FF5733")
+  score_colors <- score_colors()
 
   ggplot(xctr_portfolio_grouped, aes(x = .data$risk_category_var, y = .data$avg_share_value, fill = .data$risk_category_var)) +
-    geom_bar(stat = "identity", position = "dodge", alpha = 0.8, width = 0.6) +
+    geom_bar(stat = "identity") +
     facet_wrap(~ .data$benchmark, scales = "fixed") +
-    labs(
-      title = paste("Risk distribution (", share_var, ") of all input products in the portfolio"),
-      x = "Risk categories", y = "Risk categories of input products (%)",
-      fill = "Risk Categories"
-    ) +
     scale_fill_manual(values = score_colors) +
     theme_tiltplot() +
     ylim(0, 1)

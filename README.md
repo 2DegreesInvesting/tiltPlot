@@ -14,10 +14,6 @@ coverage](https://codecov.io/gh/2DegreesInvesting/tiltPlot/branch/main/graph/bad
 
 The goal of tiltPlot is to provide plots for the TILT project.
 
-## Example
-
-Let us load the toy data set.
-
 ``` r
 library(tiltPlot)
 ```
@@ -97,7 +93,8 @@ xctr_toy_data
 Plot on a company-level:
 
 ``` r
-plot_xctr_company(xctr_toy_data, "company_a")
+plot_xctr_company(xctr_toy_data, "company_a") +
+  ggplot2::labs(title = "Risk distribution of all products on a company level") 
 ```
 
 <img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
@@ -105,7 +102,8 @@ plot_xctr_company(xctr_toy_data, "company_a")
 Plot on a portfolio-level:
 
 ``` r
-plot_xctr_portfolio(xctr_toy_data)
+plot_xctr_portfolio(xctr_toy_data) +
+  ggplot2::labs(title = "Risk distribution of all products on a portfolio level")
 ```
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />

@@ -29,16 +29,11 @@ plot_xctr_company <- function(data, company_name) {
       levels = c("low", "medium", "high")
     ))
 
-  score_colors <- c("low" = "#007F00", "medium" = "#FFC300", "high" = "#FF5733")
+  score_colors <- score_colors()
 
   ggplot(data, aes(x = .data$risk_category_var, y = .data[[share_var]], fill = .data$risk_category_var)) +
-    geom_bar(stat = "identity", position = "dodge", alpha = 0.8, width = 0.6) +
+    geom_bar(stat = "identity") +
     facet_wrap(~ .data$risk_category_var, scales = "fixed") +
-    labs(
-      title = paste("Risk distribution of all products produced by", company_name),
-      x = "Risk categories", y = paste("Risk categories of", share_var, "(%)"),
-      fill = "Risk Categories"
-    ) +
     scale_fill_manual(values = score_colors) +
     theme_tiltplot() +
     ylim(0, 1)
