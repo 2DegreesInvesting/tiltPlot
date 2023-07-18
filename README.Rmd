@@ -24,6 +24,7 @@ knitr::opts_chunk$set(
 The goal of tiltPlot is to provide plots for the TILT project. 
 
 ```{r}
+library(ggplot2)
 library(tiltPlot)
 ```
 
