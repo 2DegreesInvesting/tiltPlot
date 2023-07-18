@@ -62,7 +62,8 @@ Plot on a company-level:
 
 ```{r}
 plot_xctr_company(xctr_toy_data, "company_a") +
-  ggplot2::labs(title = "Risk distribution of all products on a company level") 
+  # You can customize your plots as usual with ggplot2: https://ggplot2.tidyverse.org/
+  labs(title = "Risk distribution of all products on a company level") 
 ```
 
 Plot on a portfolio-level:
