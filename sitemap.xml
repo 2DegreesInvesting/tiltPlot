@@ -25,10 +25,16 @@
     <loc>https://2degreesinvesting.github.io/tiltPlot/reference/plot_sankey.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/plot_xctr_company_level.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/plot_xctr_company.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/plot_xctr_portfolio.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltPlot/reference/sankey_toy_data.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/theme_tiltplot.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltPlot/reference/tiltPlot-package.html</loc>
