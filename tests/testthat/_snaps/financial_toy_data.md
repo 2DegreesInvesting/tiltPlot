@@ -1,7 +1,7 @@
 # hasn't changed
 
     Code
-      sankey_toy_data
+      financial_toy_data
     Output
       # A tibble: 19 x 12
          kg_id  amount_total company_name  wz    amount_of_distinct_products
@@ -25,7 +25,7 @@
       17 bank_b          500 tilman        D                               3
       18 bank_b          500 tilman        D                               3
       19 bank_b          500 tilman        D                               3
-      # i 7 more variables: pctr_risk_category <chr>, product_name <chr>,
+      # i 7 more variables: xctr_risk_category <chr>, product_name <chr>,
       #   tilt_sector <chr>, equal_weight_finance <dbl>, worst_case_finance <int>,
       #   best_case_finance <int>, main_activity <int>
 

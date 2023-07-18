@@ -22,10 +22,10 @@
 #'
 #' @examples
 #' # Plot with equal weight and with company name
-#' plot_sankey(sankey_toy_data)
+#' plot_sankey(financial_toy_data)
 #'
 #' # Plot with best_case weight
-#' plot_sankey(sankey_toy_data, mode = "best_case")
+#' plot_sankey(financial_toy_data, mode = "best_case")
 plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
   mode <- arg_match(mode)
 

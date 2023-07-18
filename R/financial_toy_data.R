@@ -2,5 +2,5 @@
 #'
 #' @source `@lindadelacombaz`
 #' @examples
-#' sankey_toy_data
-"sankey_toy_data"
+#' financial_toy_data
+"financial_toy_data"

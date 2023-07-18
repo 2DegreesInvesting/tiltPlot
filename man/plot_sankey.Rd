@@ -40,8 +40,8 @@ Create a sankey plot
 }
 \examples{
 # Plot with equal weight and with company name
-plot_sankey(sankey_toy_data)
+plot_sankey(financial_toy_data)
 
 # Plot with best_case weight
-plot_sankey(sankey_toy_data, mode = "best_case")
+plot_sankey(financial_toy_data, mode = "best_case")
 }
