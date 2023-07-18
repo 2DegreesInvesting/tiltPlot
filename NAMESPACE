@@ -2,7 +2,7 @@
 
 export(plot_sankey)
 export(plot_xctr)
-export(tiltplot_theme)
+export(theme_tiltplot)
 importFrom(dplyr,bind_rows)
 importFrom(dplyr,case_when)
 importFrom(dplyr,filter)

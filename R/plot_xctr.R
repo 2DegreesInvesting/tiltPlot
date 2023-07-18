@@ -51,7 +51,7 @@ plot_xctr <- function(data, company_name = NULL, portfolio_level = FALSE) {
         fill = "Risk Categories"
       ) +
       scale_fill_manual(values = score_colors) +
-      tiltplot_theme() +
+      theme_tiltplot() +
       ylim(0, 1)
   } else {
     if (is.null(company_name)) {
