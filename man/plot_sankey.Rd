@@ -11,7 +11,7 @@ plot_sankey(
 )
 }
 \arguments{
-\item{data}{A data frame like \link{sankey_toy_data}.}
+\item{data}{A data frame like \link{financial_toy_data}.}
 
 \item{with_company}{Logical. If TRUE, will plot a node with the company name.
 If FALSE, will plot without the company name node.}
