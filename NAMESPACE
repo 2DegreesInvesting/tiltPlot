@@ -2,7 +2,7 @@
 
 export(plot_sankey)
 export(plot_xctr_company)
-export(plot_xctr_portfolio_level)
+export(plot_xctr_portfolio)
 export(theme_tiltplot)
 importFrom(dplyr,bind_rows)
 importFrom(dplyr,case_when)
