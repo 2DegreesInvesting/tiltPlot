@@ -37,20 +37,21 @@ financial
 Here is the default Sankey Plot. By default the function plots with companies and uses an "equal_weight" mode.
 
 ```{r}
-plot_sankey(financial)
+fin <- financial
+plot_sankey(fin)
 ```
 
 You can also choose to have the plot without the company node.
 
 ```{r}
-plot_sankey(financial, with_company = FALSE)
+plot_sankey(fin, with_company = FALSE)
 ```
 
 Finally, the user can choose different modes to plot the Sankey plot if financial data
 is available.
 
 ```{r}
-plot_sankey(financial, with_company = FALSE, mode = "best_case")
+plot_sankey(fin, with_company = FALSE, mode = "best_case")
 ```
 
 ### 2. XCTR plots without financial data

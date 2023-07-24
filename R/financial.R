@@ -1,4 +1,4 @@
-#' Sankey toy data
+#' Financial toy data
 #'
 #' @source `@lindadelacombaz`
 #' @examples

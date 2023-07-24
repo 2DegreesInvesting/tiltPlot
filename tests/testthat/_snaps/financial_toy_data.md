@@ -1,7 +1,7 @@
 # hasn't changed
 
     Code
-      financial_toy_data
+      financial
     Output
       # A tibble: 19 x 12
          kg_id  amount_total company_name  wz    amount_of_distinct_products

@@ -33,7 +33,7 @@ plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight", "wor
 
   limits <- c("Bank", if (with_company) "Company", NULL, "Tilt Sector", risk_category_var)
 
-  p <- ggplot2::ggplot(
+  p <- ggplot(
     data = data,
     aes(
       axis1 = .data$kg_id,
