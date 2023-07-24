@@ -1,6 +1,6 @@
 #' Create a sankey plot
 #'
-#' @param data A data frame like [sankey_toy_data].
+#' @param data A data frame like [financial].
 #' @param with_company Logical. If TRUE, will plot a node with the company name.
 #' If FALSE, will plot without the company name node.
 #' @param mode String. Several modes can be chosen by the user :
@@ -22,21 +22,23 @@
 #'
 #' @examples
 #' # Plot with equal weight and with company name
-#' plot_sankey(sankey_toy_data)
+#' plot_sankey(financial)
 #'
 #' # Plot with best_case weight
-#' plot_sankey(sankey_toy_data, mode = "best_case")
+#' plot_sankey(financial, mode = "best_case")
 plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
   mode <- arg_match(mode)
 
-  limits <- c("Bank", if (with_company) "Company", NULL, "Tilt Sector", "PCTR risk category")
+  risk_category_var <- names(select(data, matches("_risk_category")))
 
-  p <- ggplot2::ggplot(
+  limits <- c("Bank", if (with_company) "Company", NULL, "Tilt Sector", risk_category_var)
+
+  p <- ggplot(
     data = data,
     aes(
       axis1 = .data$kg_id,
       axis3 = .data$tilt_sector,
-      axis4 = factor(.data$pctr_risk_category, levels = c("low", "medium", "high"))
+      axis4 = factor(.data[[risk_category_var]], levels = c("low", "medium", "high"))
     )
   ) +
     scale_x_discrete(
