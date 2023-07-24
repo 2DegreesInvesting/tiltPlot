@@ -1,5 +1,5 @@
 # styler: off
-financial_toy_data <- tibble::tribble(
+financial <- tibble::tribble(
     ~kg_id, ~amount_total,   ~company_name, ~wz, ~amount_of_distinct_products, ~xctr_risk_category, ~product_name, ~tilt_sector, ~equal_weight_finance, ~worst_case_finance, ~best_case_finance, ~main_activity,
   "bank_a",         1000L, "peter peasant", "A",                           1L,               "low",         "car",          "D",                  1000,               1000L,              1000L,             NA,
   "bank_a",         1000L,         "peter", "B",                           2L,               "low",      "banana",          "A",                   500,                500L,               500L,             0L,
@@ -23,4 +23,4 @@ financial_toy_data <- tibble::tribble(
   )
 # styler: on
 
-usethis::use_data(financial_toy_data, overwrite = TRUE)
+usethis::use_data(financial, overwrite = TRUE)
