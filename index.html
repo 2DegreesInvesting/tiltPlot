@@ -66,7 +66,7 @@
 <h3 id="id_1-sankey-plot">1. Sankey Plot<a class="anchor" aria-label="anchor" href="#id_1-sankey-plot"></a>
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sankey_toy_data</span></span>
+<code class="sourceCode R"><span><span class="va">financial</span></span>
 <span><span class="co">#&gt; # A tibble: 19 × 12</span></span>
 <span><span class="co">#&gt;    kg_id  amount_total company_name  wz    amount_of_distinct_products</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;                       &lt;int&gt;</span></span>
@@ -89,20 +89,21 @@
 <span><span class="co">#&gt; 17 bank_b          500 tilman        D                               3</span></span>
 <span><span class="co">#&gt; 18 bank_b          500 tilman        D                               3</span></span>
 <span><span class="co">#&gt; 19 bank_b          500 tilman        D                               3</span></span>
-<span><span class="co">#&gt; # ℹ 7 more variables: pctr_risk_category &lt;chr&gt;, product_name &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; # ℹ 7 more variables: xctr_risk_category &lt;chr&gt;, product_name &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   tilt_sector &lt;chr&gt;, equal_weight_finance &lt;dbl&gt;, worst_case_finance &lt;int&gt;,</span></span>
 <span><span class="co">#&gt; #   best_case_finance &lt;int&gt;, main_activity &lt;int&gt;</span></span></code></pre></div>
 <p>Here is the default Sankey Plot. By default the function plots with companies and uses an “equal_weight” mode.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_sankey.html">plot_sankey</a></span><span class="op">(</span><span class="va">sankey_toy_data</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">fin</span> <span class="op">&lt;-</span> <span class="va">financial</span></span>
+<span><span class="fu"><a href="reference/plot_sankey.html">plot_sankey</a></span><span class="op">(</span><span class="va">fin</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="100%"></p>
 <p>You can also choose to have the plot without the company node.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_sankey.html">plot_sankey</a></span><span class="op">(</span><span class="va">sankey_toy_data</span>, with_company <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_sankey.html">plot_sankey</a></span><span class="op">(</span><span class="va">fin</span>, with_company <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="100%"></p>
 <p>Finally, the user can choose different modes to plot the Sankey plot if financial data is available.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_sankey.html">plot_sankey</a></span><span class="op">(</span><span class="va">sankey_toy_data</span>, with_company <span class="op">=</span> <span class="cn">FALSE</span>, mode <span class="op">=</span> <span class="st">"best_case"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_sankey.html">plot_sankey</a></span><span class="op">(</span><span class="va">fin</span>, with_company <span class="op">=</span> <span class="cn">FALSE</span>, mode <span class="op">=</span> <span class="st">"best_case"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="100%"></p>
 </div>
 <div class="section level3">
@@ -123,7 +124,7 @@
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/plot_xctr_company.html">plot_xctr_company</a></span><span class="op">(</span><span class="va">xctr_toy_data</span>, <span class="st">"company_a"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="co"># You can customize your plots as usual with ggplot2: https://ggplot2.tidyverse.org/</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Risk distribution of all products on a company level"</span><span class="op">)</span> </span></code></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Risk distribution of all products on a company level"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-8-1.png" width="100%"></p>
 <p>Plot on a portfolio-level:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">

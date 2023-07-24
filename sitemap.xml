@@ -19,6 +19,9 @@
     <loc>https://2degreesinvesting.github.io/tiltPlot/news/index.html</loc>
   </url>
   <url>
+    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/financial.html</loc>
+  </url>
+  <url>
     <loc>https://2degreesinvesting.github.io/tiltPlot/reference/index.html</loc>
   </url>
   <url>
@@ -29,9 +32,6 @@
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltPlot/reference/plot_xctr_portfolio.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/sankey_toy_data.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltPlot/reference/theme_tiltplot.html</loc>
