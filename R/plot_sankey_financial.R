@@ -1,4 +1,4 @@
-#' Create a sankey plot
+#' Create a sankey plot with financial data
 #'
 #' @param data A data frame like [financial].
 #' @param with_company Logical. If TRUE, will plot a node with the company name.
@@ -22,11 +22,11 @@
 #'
 #' @examples
 #' # Plot with equal weight and with company name
-#' plot_sankey(financial)
+#' plot_sankey_financial(financial)
 #'
 #' # Plot with best_case weight
-#' plot_sankey(financial, mode = "best_case")
-plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
+#' plot_sankey_financial(financial, mode = "best_case")
+plot_sankey_financial <- function(data, with_company = TRUE, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
   mode <- arg_match(mode)
 
   #TODO : Check crucial names

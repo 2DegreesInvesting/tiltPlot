@@ -14,6 +14,8 @@ plot_xctr_company_financial(
 \item{data}{A data frame like \link{financial}.}
 
 \item{company_name}{A string. Name of one company in the data set.}
+
+\item{mode}{A string. Name of the financial weight.}
 }
 \value{
 A \link{ggplot} object.

@@ -1,21 +1,18 @@
-#' Plot xctr data on a company level with financial data
+#' Plot xctr data on a portfolio level, with financial data
 #'
 #' @param data A data frame like [financial].
-#' @param company_name A string. Name of one company in the data set.
 #' @param mode A string. Name of the financial weight.
 #'
 #' @return A [ggplot] object.
 #' @export
 #'
 #' @examples
-#' plot_xctr_company_financial(financial, company_name = "peter", mode = "best_case")
-plot_xctr_company_financial <- function(data, company_name, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
-  mode <- arg_match(mode)
+#' plot_xctr_portfolio_financial(financial, mode = "worst_case")
+plot_xctr_portfolio_financial <- function(data, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
 
   # TODO: do we want to drop NA's everywhere silently?
-  data <- data |>
-    na.omit() |>
-    filter(company_name == .env$company_name)
+  #data <- data |>
+    #na.omit()
 
   crucial_names <- c(
     names(select(data, matches("_risk_category"))),
@@ -44,9 +41,13 @@ plot_xctr_company_financial <- function(data, company_name, mode = c("equal_weig
     "main_activity" = "main_activity"
   )
 
-  ggplot(data, aes(x = .data$risk_category_var, y = .data[[y_var]], fill = .data$risk_category_var)) +
+  xctr_portfolio_grouped <- data |>
+    group_by(.data$benchmark, risk_category_var) |>
+    summarise(avg_financial_value = mean(.data[[y_var]]))
+
+  ggplot(xctr_portfolio_grouped, aes(x = risk_category_var, y = avg_financial_value, fill = risk_category_var)) +
     geom_bar(stat = "identity") +
-    facet_wrap(~ .data$benchmark, scales = "fixed") +
+    facet_wrap(~ benchmark, scales = "fixed") +
     scale_fill_manual(values = score_colors) +
     theme_tiltplot()
 }
