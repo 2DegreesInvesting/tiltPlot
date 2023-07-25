@@ -33,7 +33,7 @@ plot_xctr_company <- function(data, company_name) {
 
   ggplot(data, aes(x = .data$risk_category_var, y = .data[[share_var]], fill = .data$risk_category_var)) +
     geom_bar(stat = "identity") +
-    facet_wrap(~ .data$risk_category_var, scales = "fixed") +
+    facet_wrap(~ .data$benchmark, scales = "fixed") +
     scale_fill_manual(values = score_colors) +
     theme_tiltplot() +
     ylim(0, 1)
