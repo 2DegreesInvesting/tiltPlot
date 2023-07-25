@@ -14,7 +14,7 @@ plot_xctr_company_financial <- function(data, company_name, mode = c("equal_weig
 
   # TODO: do we want to drop NA's everywhere silently?
   data <- data |>
-    na.omit() |>
+    drop_na(-c(.data$equal_weight_finance, .data$worst_case_finance, .data$best_case_finance, .data$main_activity)) |>
     filter(company_name == .env$company_name)
 
   crucial_names <- c(
