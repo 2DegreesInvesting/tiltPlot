@@ -51,7 +51,7 @@ Finally, the user can choose different modes to plot the Sankey plot if financia
 is available.
 
 ```{r}
-plot_sankey(fin, with_company = FALSE, mode = "best_case")
+plot_sankey(fin, with_company = FALSE, mode = "best_case_finance")
 ```
 
 ### 2. XCTR plots without financial data

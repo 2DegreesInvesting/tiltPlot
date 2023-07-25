@@ -25,8 +25,8 @@
 #' plot_sankey(financial)
 #'
 #' # Plot with best_case weight
-#' plot_sankey(financial, mode = "best_case")
-plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
+#' plot_sankey(financial, mode = "best_case_finance")
+plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight_finance", "worst_case_finance", "best_case_finance", "main_activity")) {
   mode <- arg_match(mode)
 
   risk_category_var <- names(select(data, matches("_risk_category")))
@@ -36,27 +36,23 @@ plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight", "wor
   p <- ggplot(
     data = data,
     aes(
+      y = .data[[mode]],
       axis1 = .data$kg_id,
       axis3 = .data$tilt_sector,
-      axis4 = factor(.data[[risk_category_var]], levels = c("low", "medium", "high"))
+      axis4 = factor(.data[[risk_category_var]], levels = c("low", "medium", "high")),
+      fill = factor(.data[[risk_category_var]], levels = c("low", "medium", "high"))
     )
   ) +
     scale_x_discrete(
       limits = limits,
       expand = c(.2, .05)
     ) +
-    geom_alluvium(aes(
-      fill = case_when(
-        mode == "equal_weight" ~ .data$equal_weight_finance,
-        mode == "worst_case" ~ .data$worst_case_finance,
-        mode == "best_case" ~ .data$best_case_finance,
-        mode == "main_activity" ~ .data$main_activity
-      )
-    )) +
+    geom_alluvium() +
     geom_stratum() +
     geom_text(stat = StatStratum, aes(label = after_stat(.data$stratum))) +
+    scale_fill_manual(values = score_colors()) +
     theme_minimal() +
-    labs(fill = "amount") +
+    labs(fill = "Risk Categories") +
     ggtitle(
       "Sankey Plot",
       paste("Stratified by the amount of loan by the bank and", mode, "mode")

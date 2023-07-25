@@ -7,7 +7,8 @@
 plot_sankey(
   data,
   with_company = TRUE,
-  mode = c("equal_weight", "worst_case", "best_case", "main_activity")
+  mode = c("equal_weight_finance", "worst_case_finance", "best_case_finance",
+    "main_activity")
 )
 }
 \arguments{
@@ -43,5 +44,5 @@ Create a sankey plot
 plot_sankey(financial)
 
 # Plot with best_case weight
-plot_sankey(financial, mode = "best_case")
+plot_sankey(financial, mode = "best_case_finance")
 }
