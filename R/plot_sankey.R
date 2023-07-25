@@ -22,11 +22,11 @@
 #'
 #' @examples
 #' # Plot with equal weight and with company name
-#' plot_sankey_financial(financial)
+#' plot_sankey(financial)
 #'
 #' # Plot with best_case weight
-#' plot_sankey_financial(financial, mode = "best_case")
-plot_sankey_financial <- function(data, with_company = TRUE, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
+#' plot_sankey(financial, mode = "best_case")
+plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
   mode <- arg_match(mode)
 
   #TODO : Check crucial names
@@ -34,6 +34,7 @@ plot_sankey_financial <- function(data, with_company = TRUE, mode = c("equal_wei
 
   limits <- c("Bank", if (with_company) "Company", NULL, "Tilt Sector", risk_category_var)
 
+  #TODO : color code per low, medium and high
   p <- ggplot(
     data = data,
     aes(

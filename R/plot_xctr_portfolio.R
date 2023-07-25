@@ -30,7 +30,7 @@ plot_xctr_portfolio <- function(data) {
 
   score_colors <- score_colors()
 
-  ggplot(xctr_portfolio_grouped, aes(x = risk_category_var, y = avg_share_value, fill = risk_category_var)) +
+  ggplot(xctr_portfolio_grouped, aes(x = .data$risk_category_var, y = .data$avg_share_value, fill = .data$risk_category_var)) +
     geom_bar(stat = "identity") +
     facet_wrap(~benchmark, scales = "fixed") +
     scale_fill_manual(values = score_colors) +
