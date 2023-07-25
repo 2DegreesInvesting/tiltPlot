@@ -9,7 +9,7 @@
 #' @examples
 #' plot_xctr_portfolio_financial(financial, mode = "worst_case")
 plot_xctr_portfolio_financial <- function(data, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
-
+  mode <- arg_match(mode)
   # TODO: do we want to drop NA's everywhere silently?
   #data <- data |>
     #na.omit()
