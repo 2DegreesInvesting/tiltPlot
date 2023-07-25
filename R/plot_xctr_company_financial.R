@@ -36,8 +36,7 @@ plot_xctr_company_financial <- function(data, company_name, mode = c("equal_weig
 
   score_colors <- score_colors()
 
-  y_var <- switch(
-    mode,
+  y_var <- switch(mode,
     "equal_weight" = "equal_weight_finance",
     "worst_case" = "worst_case_finance",
     "best_case" = "best_case_finance",

@@ -11,8 +11,8 @@
 plot_xctr_portfolio_financial <- function(data, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
   mode <- arg_match(mode)
   # TODO: do we want to drop NA's everywhere silently?
-  #data <- data |>
-    #na.omit()
+  # data <- data |>
+  # na.omit()
 
   crucial_names <- c(
     names(select(data, matches("_risk_category"))),
@@ -33,8 +33,7 @@ plot_xctr_portfolio_financial <- function(data, mode = c("equal_weight", "worst_
 
   score_colors <- score_colors()
 
-  y_var <- switch(
-    mode,
+  y_var <- switch(mode,
     "equal_weight" = "equal_weight_finance",
     "worst_case" = "worst_case_finance",
     "best_case" = "best_case_finance",
@@ -47,7 +46,7 @@ plot_xctr_portfolio_financial <- function(data, mode = c("equal_weight", "worst_
 
   ggplot(xctr_portfolio_grouped, aes(x = .data$risk_category_var, y = .data$avg_financial_value, fill = .data$risk_category_var)) +
     geom_bar(stat = "identity") +
-    facet_wrap(~ benchmark, scales = "fixed") +
+    facet_wrap(~benchmark, scales = "fixed") +
     scale_fill_manual(values = score_colors) +
     theme_tiltplot()
 }

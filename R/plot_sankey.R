@@ -29,12 +29,12 @@
 plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
   mode <- arg_match(mode)
 
-  #TODO : Check crucial names
+  # TODO : Check crucial names
   risk_category_var <- names(select(data, matches("_risk_category")))
 
   limits <- c("Bank", if (with_company) "Company", NULL, "Tilt Sector", risk_category_var)
 
-  #TODO : color code per low, medium and high
+  # TODO : color code per low, medium and high
   p <- ggplot(
     data = data,
     aes(
