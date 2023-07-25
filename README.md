@@ -105,7 +105,7 @@ plot_xctr_company_financial(fin, "peter", mode = "worst_case") +
 On a portfolio level:
 
 ``` r
-plot_xctr_portfolio_financial(fin, mode = "best_case")+
+plot_xctr_portfolio_financial(fin, mode = "best_case") +
   labs(title = "Risk distribution of all products on a portfolio level, best case scenario")
 ```
 
