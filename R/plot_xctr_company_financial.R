@@ -34,8 +34,6 @@ plot_xctr_company_financial <- function(data, company_name, mode = c("equal_weig
       levels = c("low", "medium", "high")
     ))
 
-  score_colors <- score_colors()
-
   y_var <- switch(mode,
     "equal_weight" = "equal_weight_finance",
     "worst_case" = "worst_case_finance",
@@ -46,6 +44,6 @@ plot_xctr_company_financial <- function(data, company_name, mode = c("equal_weig
   ggplot(data, aes(x = .data$risk_category_var, y = .data[[y_var]], fill = .data$risk_category_var)) +
     geom_bar(stat = "identity") +
     facet_wrap(~ .data$benchmark, scales = "fixed") +
-    scale_fill_manual(values = score_colors) +
+    fill_score_colors() +
     theme_tiltplot()
 }

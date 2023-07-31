@@ -29,12 +29,10 @@ plot_xctr_company <- function(data, company_name) {
       levels = c("low", "medium", "high")
     ))
 
-  score_colors <- score_colors()
-
   ggplot(data, aes(x = .data$risk_category_var, y = .data[[share_var]], fill = .data$risk_category_var)) +
     geom_bar(stat = "identity") +
     facet_wrap(~ .data$benchmark, scales = "fixed") +
-    scale_fill_manual(values = score_colors) +
+    fill_score_colors() +
     theme_tiltplot() +
     ylim(0, 1)
 }

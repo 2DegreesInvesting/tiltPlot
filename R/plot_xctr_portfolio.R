@@ -28,12 +28,10 @@ plot_xctr_portfolio <- function(data) {
     group_by(.data$benchmark, risk_category_var) |>
     summarise(avg_share_value = mean(.data[[share_var]]))
 
-  score_colors <- score_colors()
-
   ggplot(xctr_portfolio_grouped, aes(x = .data$risk_category_var, y = .data$avg_share_value, fill = .data$risk_category_var)) +
     geom_bar(stat = "identity") +
     facet_wrap(~.data$benchmark, scales = "fixed") +
-    scale_fill_manual(values = score_colors) +
+    fill_score_colors() +
     theme_tiltplot() +
     ylim(0, 1)
 }
