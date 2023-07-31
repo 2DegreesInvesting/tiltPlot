@@ -87,7 +87,13 @@ On a company level:
 ```{r}
 no_fin <- without_financial
 
-plot_xctr_company(no_fin, "peter")
+plot_xctr(no_fin, "peter")
+```
+
+On a portfolio level : 
+
+```{r}
+plot_xctr(no_fin)
 ```
 
 

@@ -7,7 +7,7 @@
 plot_xctr_portfolio(data)
 }
 \arguments{
-\item{data}{A data frame like \link{xctr_toy_data}.}
+\item{data}{A data frame like \link{without_financial}.}
 }
 \value{
 A \link{ggplot} object.
@@ -16,5 +16,5 @@ A \link{ggplot} object.
 Plot xctr data on a portfolio level
 }
 \examples{
-plot_xctr_portfolio(xctr_toy_data)
+plot_xctr_portfolio(without_financial)
 }
