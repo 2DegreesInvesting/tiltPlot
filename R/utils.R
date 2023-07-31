@@ -57,9 +57,9 @@ abort_missing_names <- function(missing_names) {
 #' # Returns: "worst_case_finance"
 switch_mode <- function(mode) {
   switch(mode,
-         "equal_weight" = "equal_weight_finance",
-         "worst_case" = "worst_case_finance",
-         "best_case" = "best_case_finance",
-         "main_activity" = "main_activity"
+    "equal_weight" = "equal_weight_finance",
+    "worst_case" = "worst_case_finance",
+    "best_case" = "best_case_finance",
+    "main_activity" = "main_activity"
   )
 }
