@@ -41,7 +41,6 @@ plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight_financ
 
   limits <- c("Bank", if (with_company) "Company", NULL, "Tilt Sector", risk_category_var)
 
-  # TODO : color code per low, medium and high
   p <- ggplot(
     data = data,
     aes(
@@ -59,7 +58,7 @@ plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight_financ
     geom_alluvium() +
     geom_stratum() +
     geom_text(stat = StatStratum, aes(label = after_stat(.data$stratum))) +
-    scale_fill_manual(values = score_colors()) +
+    fill_score_colors() +
     theme_minimal() +
     labs(fill = "Risk Categories") +
     ggtitle(
