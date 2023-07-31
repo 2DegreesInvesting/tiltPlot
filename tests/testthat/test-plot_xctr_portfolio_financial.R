@@ -12,9 +12,9 @@ test_that("returns correct risk category values", {
 
 test_that("returns correct benchmark values", {
   plot <- plot_xctr_portfolio_financial(financial)
-  shares <- unique(plot$data$benchmark)
-  expected_shares <- financial |>
+  benchmarks <- unique(plot$data$benchmark)
+  expected_benchmarks <- financial |>
     pull(benchmark) |>
     unique()
-  expect_true(all(shares %in% expected_shares))
+  expect_true(all(benchmarks %in% expected_benchmarks))
 })
