@@ -15,12 +15,11 @@ plot_xctr_company <- function(data, company_name) {
     filter(company_name == .env$company_name)
 
   crucial <- c(
-    "_share",
+    "benchmark",
     "_risk_category"
   )
   data |> check_crucial_names(c(names(select(data, matches(crucial)))))
 
-  share_var <- names(select(data, matches("_share")))
   risk_category_var <- names(select(data, matches("_risk_category")))
 
   data <- data |>
@@ -29,7 +28,13 @@ plot_xctr_company <- function(data, company_name) {
       levels = c("low", "medium", "high")
     ))
 
-  ggplot(data, aes(x = .data$risk_category_var, y = .data[[share_var]], fill = .data$risk_category_var)) +
+  data <- data |>
+    group_by(risk_category_var, benchmark) |>
+    summarize(count = n()) |>
+    group_by(benchmark) |>
+    mutate(percentage = count / sum(count))
+
+  ggplot(data, aes(x = .data$risk_category_var, y = .data$percentage, fill = .data$risk_category_var)) +
     geom_bar(stat = "identity") +
     facet_wrap(~ .data$benchmark, scales = "fixed") +
     fill_score_colors() +

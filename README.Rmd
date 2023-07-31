@@ -68,7 +68,6 @@ plot_xctr_company_financial(fin, "peter", mode = "worst_case") +
   labs(title = "Risk distribution of all products on a company level, on a financial weight")
 ```
 
-
 On a portfolio level:
 
 ```{r}
@@ -76,5 +75,19 @@ plot_xctr_portfolio_financial(fin, mode = "best_case") +
   labs(title = "Risk distribution of all products on a portfolio level, best case scenario")
 ```
 
+
+### 3. XCTR plots without financial data
+
+```{r}
+without_financial
+```
+
+On a company level:
+
+```{r}
+no_fin <- without_financial
+
+plot_xctr_company(no_fin, "peter")
+```
 
 
