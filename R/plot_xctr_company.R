@@ -1,13 +1,13 @@
-#' Plot xctr data on a company level
+#' Plot xctr data on a company level, without financial data
 #'
-#' @param data A data frame like [xctr_toy_data].
+#' @param data A data frame like [without_financial].
 #' @param company_name A string. Name of one company in the data set.
 #'
 #' @return A [ggplot] object.
 #' @export
 #'
 #' @examples
-#' plot_xctr_company(xctr_toy_data, "company_a")
+#' plot_xctr_company(without_financial, "peter")
 plot_xctr_company <- function(data, company_name) {
   # TODO: do we want to drop NA's everywhere silently?
   data <- data |>
