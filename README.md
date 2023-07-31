@@ -110,3 +110,33 @@ plot_xctr_portfolio_financial(fin, mode = "best_case") +
 ```
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+
+### 3. XCTR plots without financial data
+
+``` r
+without_financial
+#> # A tibble: 58 × 5
+#>    company_name  xctr_risk_category benchmark     product_name tilt_sector
+#>    <chr>         <chr>              <chr>         <chr>        <chr>      
+#>  1 peter peasant high               all           car          D          
+#>  2 peter peasant high               unit          car          D          
+#>  3 peter peasant medium             tilt_sec      car          D          
+#>  4 peter peasant medium             unit_tilt_sec car          D          
+#>  5 peter peasant low                isic_sec      car          D          
+#>  6 peter peasant low                unit_isic_sec car          D          
+#>  7 peter         high               all           banana       A          
+#>  8 peter         high               unit          banana       A          
+#>  9 peter         medium             tilt_sec      banana       A          
+#> 10 peter         medium             unit_tilt_sec banana       A          
+#> # ℹ 48 more rows
+```
+
+On a company level:
+
+``` r
+no_fin <- without_financial
+
+plot_xctr_company(no_fin, "peter")
+```
+
+<img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
