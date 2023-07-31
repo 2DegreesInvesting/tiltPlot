@@ -34,14 +34,7 @@ plot_xctr_company_financial <- function(data, company_name, mode = c("equal_weig
       levels = c("low", "medium", "high")
     ))
 
-  y_var <- switch(mode,
-    "equal_weight" = "equal_weight_finance",
-    "worst_case" = "worst_case_finance",
-    "best_case" = "best_case_finance",
-    "main_activity" = "main_activity"
-  )
-
-  ggplot(data, aes(x = .data$risk_category_var, y = .data[[y_var]], fill = .data$risk_category_var)) +
+  ggplot(data, aes(x = .data$risk_category_var, y = .data[[switch_mode(mode)]], fill = .data$risk_category_var)) +
     geom_bar(stat = "identity") +
     facet_wrap(~ .data$benchmark, scales = "fixed") +
     fill_score_colors() +

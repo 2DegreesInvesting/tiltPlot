@@ -31,16 +31,9 @@ plot_xctr_portfolio_financial <- function(data, mode = c("equal_weight", "worst_
       levels = c("low", "medium", "high")
     ))
 
-  y_var <- switch(mode,
-    "equal_weight" = "equal_weight_finance",
-    "worst_case" = "worst_case_finance",
-    "best_case" = "best_case_finance",
-    "main_activity" = "main_activity"
-  )
-
   xctr_portfolio_grouped <- data |>
     group_by(.data$benchmark, risk_category_var) |>
-    summarise(avg_financial_value = mean(.data[[y_var]]))
+    summarise(avg_financial_value = mean(.data[[switch_mode(mode)]]))
 
   ggplot(xctr_portfolio_grouped, aes(x = .data$risk_category_var, y = .data$avg_financial_value, fill = .data$risk_category_var)) +
     geom_bar(stat = "identity") +
