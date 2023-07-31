@@ -25,8 +25,8 @@
 #' plot_sankey(financial)
 #'
 #' # Plot with best_case weight
-#' plot_sankey(financial, mode = "best_case_finance")
-plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight_finance", "worst_case_finance", "best_case_finance", "main_activity")) {
+#' plot_sankey(financial, mode = "best_case")
+plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
   mode <- arg_match(mode)
 
   crucial <- c(
@@ -44,7 +44,7 @@ plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight_financ
   p <- ggplot(
     data = data,
     aes(
-      y = .data[[mode]],
+      y = .data[[switch_mode(mode)]],
       axis1 = .data$kg_id,
       axis3 = .data$tilt_sector,
       axis4 = factor(.data[[risk_category_var]], levels = c("low", "medium", "high")),

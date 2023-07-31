@@ -64,7 +64,7 @@ Finally, the user can choose different modes to plot the Sankey plot
 with financial data available.
 
 ``` r
-plot_sankey(fin, with_company = FALSE, mode = "best_case_finance")
+plot_sankey(fin, with_company = FALSE, mode = "best_case")
 ```
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />

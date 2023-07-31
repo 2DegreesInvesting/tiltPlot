@@ -51,7 +51,7 @@ plot_sankey(fin, with_company = FALSE)
 Finally, the user can choose different modes to plot the Sankey plot with financial data available.
 
 ```{r}
-plot_sankey(fin, with_company = FALSE, mode = "best_case_finance")
+plot_sankey(fin, with_company = FALSE, mode = "best_case")
 ```
 
 ### 2. XCTR plots with financial data
