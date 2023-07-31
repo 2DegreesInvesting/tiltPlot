@@ -28,7 +28,8 @@ library(ggplot2)
 library(tiltPlot)
 ```
 
-### 1. Sankey Plot 
+
+### 1. Sankey Plot with financial data
 
 ```{r}
 financial
@@ -47,30 +48,33 @@ You can also choose to have the plot without the company node.
 plot_sankey(fin, with_company = FALSE)
 ```
 
-Finally, the user can choose different modes to plot the Sankey plot if financial data
-is available.
+Finally, the user can choose different modes to plot the Sankey plot with financial data available.
 
 ```{r}
 plot_sankey(fin, with_company = FALSE, mode = "best_case")
 ```
 
-### 2. XCTR plots without financial data
+### 2. XCTR plots with financial data
 
 ```{r}
-xctr_toy_data
+financial
 ```
 
-Plot on a company-level:
+On a company level:
 
 ```{r}
-plot_xctr_company(xctr_toy_data, "company_a") +
-  # You can customize your plots as usual with ggplot2: https://ggplot2.tidyverse.org/
-  labs(title = "Risk distribution of all products on a company level")
+fin <- financial
+plot_xctr_company_financial(fin, "peter", mode = "worst_case") +
+  labs(title = "Risk distribution of all products on a company level, on a financial weight")
 ```
 
-Plot on a portfolio-level:
+
+On a portfolio level:
 
 ```{r}
-plot_xctr_portfolio(xctr_toy_data) +
-  labs(title = "Risk distribution of all products on a portfolio level")
+plot_xctr_portfolio_financial(fin, mode = "best_case") +
+  labs(title = "Risk distribution of all products on a portfolio level, best case scenario")
 ```
+
+
+

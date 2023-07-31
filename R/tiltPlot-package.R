@@ -39,6 +39,7 @@
 #' @importFrom stats na.omit
 #' @importFrom tibble tibble
 #' @importFrom tibble tribble
+#' @importFrom tidyr drop_na
 #' @importFrom tidyselect matches
 ## usethis namespace: end
 NULL
