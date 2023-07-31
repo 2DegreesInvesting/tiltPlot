@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_sankey.R
 \name{plot_sankey}
 \alias{plot_sankey}
-\title{Create a sankey plot}
+\title{Create a sankey plot with financial data}
 \usage{
 plot_sankey(
   data,
@@ -37,7 +37,7 @@ the sector that it categories the company in.
 A sankey plot of class \link{ggalluvial}.
 }
 \description{
-Create a sankey plot
+Create a sankey plot with financial data
 }
 \examples{
 # Plot with equal weight and with company name

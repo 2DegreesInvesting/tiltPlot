@@ -35,3 +35,31 @@ abort_missing_names <- function(missing_names) {
     )
   )
 }
+
+
+#' Switch mode function
+#'
+#' Given a mode, this function returns the corresponding finance-related mode name
+#' in the data set.
+#'
+#' @param mode A character string specifying the mode to be switched.
+#'
+#' @return A character string representing the finance-related mode name that corresponds
+#'   to the input mode. If the input mode is not one of the supported options, NULL is returned.
+#'
+#' @export
+#'
+#' @examples
+#' switch_mode("equal_weight")
+#' # Returns: "equal_weight_finance"
+#'
+#' switch_mode("worst_case")
+#' # Returns: "worst_case_finance"
+switch_mode <- function(mode) {
+  switch(mode,
+    "equal_weight" = "equal_weight_finance",
+    "worst_case" = "worst_case_finance",
+    "best_case" = "best_case_finance",
+    "main_activity" = "main_activity"
+  )
+}

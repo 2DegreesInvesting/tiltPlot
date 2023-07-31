@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_xctr_portfolio.R
 \name{plot_xctr_portfolio}
 \alias{plot_xctr_portfolio}
-\title{Plot xctr data on a company level}
+\title{Plot xctr data on a portfolio level}
 \usage{
 plot_xctr_portfolio(data)
 }
@@ -13,7 +13,7 @@ plot_xctr_portfolio(data)
 A \link{ggplot} object.
 }
 \description{
-Plot xctr data on a company level
+Plot xctr data on a portfolio level
 }
 \examples{
 plot_xctr_portfolio(xctr_toy_data)

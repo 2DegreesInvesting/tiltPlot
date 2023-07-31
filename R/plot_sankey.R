@@ -1,4 +1,4 @@
-#' Create a sankey plot
+#' Create a sankey plot with financial data
 #'
 #' @param data A data frame like [financial].
 #' @param with_company Logical. If TRUE, will plot a node with the company name.
@@ -29,10 +29,19 @@
 plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight_finance", "worst_case_finance", "best_case_finance", "main_activity")) {
   mode <- arg_match(mode)
 
+  crucial <- c(
+    "main_activity",
+    "_risk_category",
+    "equal_weight_finance",
+    "worst_case_finance",
+    "best_case_finance"
+  )
+  data |> check_crucial_names(c(names(select(data, matches(crucial)))))
   risk_category_var <- names(select(data, matches("_risk_category")))
 
   limits <- c("Bank", if (with_company) "Company", NULL, "Tilt Sector", risk_category_var)
 
+  # TODO : color code per low, medium and high
   p <- ggplot(
     data = data,
     aes(
