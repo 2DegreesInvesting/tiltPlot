@@ -21,8 +21,8 @@ Generate bar plots showing the distribution of xctr_risk_category percentages fo
 }
 \examples{
 # Example 1: Generate the plot for the entire portfolio
-plot_xctr(data)
+plot_xctr(without_financial)
 
 # Example 2: Generate the plot for a specific company
-plot_xctr(data, company_name = "peter peasant")
+plot_xctr(without_financial, company_name = "peter peasant")
 }

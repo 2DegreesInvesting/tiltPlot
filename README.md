@@ -136,7 +136,15 @@ On a company level:
 ``` r
 no_fin <- without_financial
 
-plot_xctr_company(no_fin, "peter")
+plot_xctr(no_fin, "peter")
 ```
 
 <img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
+
+On a portfolio level :
+
+``` r
+plot_xctr(no_fin)
+```
+
+<img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />

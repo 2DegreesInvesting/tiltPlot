@@ -2,9 +2,7 @@
 
 export(plot_sankey)
 export(plot_xctr)
-export(plot_xctr_company)
 export(plot_xctr_company_financial)
-export(plot_xctr_portfolio)
 export(plot_xctr_portfolio_financial)
 export(switch_mode)
 export(theme_tiltplot)

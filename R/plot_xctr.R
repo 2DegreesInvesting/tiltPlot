@@ -13,10 +13,10 @@
 #'
 #' @examples
 #' # Example 1: Generate the plot for the entire portfolio
-#' plot_xctr(data)
+#' plot_xctr(without_financial)
 #'
 #' # Example 2: Generate the plot for a specific company
-#' plot_xctr(data, company_name = "peter peasant")
+#' plot_xctr(without_financial, company_name = "peter peasant")
 plot_xctr <- function(data, company_name = NULL) {
   # TODO: do we want to drop NA's everywhere silently?
   data <- data |>
@@ -38,10 +38,10 @@ plot_xctr <- function(data, company_name = NULL) {
   }
 
   data <- data |>
-    group_by(risk_category_var, benchmark) |>
+    group_by(risk_category_var, .data$benchmark) |>
     summarize(count = n()) |>
-    group_by(benchmark) |>
-    mutate(percentage = count / sum(count))
+    group_by(.data$benchmark) |>
+    mutate(percentage = .data$count / sum(.data$count))
 
   ggplot(data, aes(x = .data$risk_category_var, y = .data$percentage, fill = .data$risk_category_var)) +
     geom_bar(stat = "identity") +
