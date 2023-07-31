@@ -12,11 +12,11 @@ plot_xctr_portfolio <- function(data) {
   data <- data |>
     na.omit()
 
-  crucial_names <- c(
-    names(select(data, matches("_share"))),
-    names(select(data, matches("_risk_category")))
+  crucial <- c(
+    "_share",
+    "_risk_category"
   )
-  data |> check_crucial_names(crucial_names)
+  data |> check_crucial_names(c(names(select(data, matches(crucial)))))
 
   risk_category_var <- names(select(data, matches("_risk_category")))
   share_var <- names(data)[grep("_share", names(data))]

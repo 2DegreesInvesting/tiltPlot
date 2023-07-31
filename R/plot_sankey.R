@@ -29,7 +29,14 @@
 plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
   mode <- arg_match(mode)
 
-  # TODO : Check crucial names
+  crucial <- c(
+    "main_activity",
+    "_risk_category",
+    "equal_weight_finance",
+    "worst_case_finance",
+    "best_case_finance"
+  )
+  data |> check_crucial_names(c(names(select(data, matches(crucial)))))
   risk_category_var <- names(select(data, matches("_risk_category")))
 
   limits <- c("Bank", if (with_company) "Company", NULL, "Tilt Sector", risk_category_var)

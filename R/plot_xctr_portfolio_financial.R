@@ -14,14 +14,14 @@ plot_xctr_portfolio_financial <- function(data, mode = c("equal_weight", "worst_
   data <- data |>
     drop_na(-c(.data$equal_weight_finance, .data$worst_case_finance, .data$best_case_finance, .data$main_activity))
 
-  crucial_names <- c(
-    names(select(data, matches("_risk_category"))),
-    names(select(data, matches("equal_weight_finance"))),
-    names(select(data, matches("worst_case_finance"))),
-    names(select(data, matches("best_case_finance"))),
-    names(select(data, matches("main_activity")))
+  crucial <- c(
+    "main_activity",
+    "_risk_category",
+    "equal_weight_finance",
+    "worst_case_finance",
+    "best_case_finance"
   )
-  data |> check_crucial_names(crucial_names)
+  data |> check_crucial_names(c(names(select(data, matches(crucial)))))
 
   risk_category_var <- names(select(data, matches("_risk_category")))
 

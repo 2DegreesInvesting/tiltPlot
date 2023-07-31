@@ -14,11 +14,11 @@ plot_xctr_company <- function(data, company_name) {
     na.omit() |>
     filter(company_name == .env$company_name)
 
-  crucial_names <- c(
-    names(select(data, matches("_share"))),
-    names(select(data, matches("_risk_category")))
+  crucial <- c(
+    "_share",
+    "_risk_category"
   )
-  data |> check_crucial_names(crucial_names)
+  data |> check_crucial_names(c(names(select(data, matches(crucial)))))
 
   share_var <- names(select(data, matches("_share")))
   risk_category_var <- names(select(data, matches("_risk_category")))
