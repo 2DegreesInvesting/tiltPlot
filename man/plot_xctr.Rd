@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_xctr.R
 \name{plot_xctr}
 \alias{plot_xctr}
-\title{Plot xctr data on a company or portfolio level, without financial data}
+\title{Plot xctr data without financial data}
 \usage{
 plot_xctr(data)
 }
