@@ -21,6 +21,7 @@
 #' @importFrom ggplot2 element_text
 #' @importFrom ggplot2 facet_wrap
 #' @importFrom ggplot2 geom_bar
+#' @importFrom ggplot2 geom_col
 #' @importFrom ggplot2 geom_label
 #' @importFrom ggplot2 geom_text
 #' @importFrom ggplot2 ggplot

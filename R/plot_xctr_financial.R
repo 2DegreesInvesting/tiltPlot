@@ -56,7 +56,7 @@ plot_xctr_financial <- function(data, company_name = NULL, mode = c("equal_weigh
   }
 
   ggplot(data, aes(x = .data$risk_category_var, y = .data[[y_label]], fill = .data$risk_category_var)) +
-    geom_bar(stat = "identity") +
+    geom_col() +
     facet_wrap(~ .data$benchmark, scales = "fixed") +
     fill_score_colors() +
     theme_tiltplot() +
