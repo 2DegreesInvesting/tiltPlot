@@ -146,8 +146,8 @@ To plot on a company level:
 ``` r
 no_fin <- without_financial
 
-no_fin |> 
-  filter(company_name == "peter") |> 
+no_fin |>
+  filter(company_name == "peter") |>
   plot_xctr() +
   labs(title = "Risk distribution of all products on a company level")
 ```
