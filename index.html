@@ -61,6 +61,15 @@
 <p>The goal of tiltPlot is to provide plots for the TILT project.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://2degreesinvesting.github.io/tiltPlot/">tiltPlot</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="id_1-sankey-plot-with-financial-data">1. Sankey Plot with financial data<a class="anchor" aria-label="anchor" href="#id_1-sankey-plot-with-financial-data"></a>
@@ -123,14 +132,49 @@
 <p>On a company level:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fin</span> <span class="op">&lt;-</span> <span class="va">financial</span></span>
-<span><span class="fu"><a href="reference/plot_xctr_company_financial.html">plot_xctr_company_financial</a></span><span class="op">(</span><span class="va">fin</span>, <span class="st">"peter"</span>, mode <span class="op">=</span> <span class="st">"worst_case"</span><span class="op">)</span> <span class="op">+</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/plot_xctr_financial.html">plot_xctr_financial</a></span><span class="op">(</span><span class="va">fin</span>, <span class="st">"peter"</span>, mode <span class="op">=</span> <span class="st">"worst_case"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Risk distribution of all products on a company level, on a financial weight"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-8-1.png" width="100%"></p>
 <p>On a portfolio level:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_xctr_portfolio_financial.html">plot_xctr_portfolio_financial</a></span><span class="op">(</span><span class="va">fin</span>, mode <span class="op">=</span> <span class="st">"best_case"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Risk distribution of all products on a portfolio level, best case scenario"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_xctr_financial.html">plot_xctr_financial</a></span><span class="op">(</span><span class="va">fin</span>, mode <span class="op">=</span> <span class="st">"worst_case"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Risk distribution of all products on a portfolio level, on a financial weight"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-9-1.png" width="100%"></p>
+</div>
+<div class="section level3">
+<h3 id="id_3-xctr-plots-without-financial-data">3. XCTR plots without financial data<a class="anchor" aria-label="anchor" href="#id_3-xctr-plots-without-financial-data"></a>
+</h3>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">without_financial</span></span>
+<span><span class="co">#&gt; # A tibble: 58 × 5</span></span>
+<span><span class="co">#&gt;    company_name  xctr_risk_category benchmark     product_name tilt_sector</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;         &lt;chr&gt;              &lt;chr&gt;         &lt;chr&gt;        &lt;chr&gt;      </span></span>
+<span><span class="co">#&gt;  1 peter peasant high               all           car          D          </span></span>
+<span><span class="co">#&gt;  2 peter peasant high               unit          car          D          </span></span>
+<span><span class="co">#&gt;  3 peter peasant medium             tilt_sec      car          D          </span></span>
+<span><span class="co">#&gt;  4 peter peasant medium             unit_tilt_sec car          D          </span></span>
+<span><span class="co">#&gt;  5 peter peasant low                isic_sec      car          D          </span></span>
+<span><span class="co">#&gt;  6 peter peasant low                unit_isic_sec car          D          </span></span>
+<span><span class="co">#&gt;  7 peter         high               all           banana       A          </span></span>
+<span><span class="co">#&gt;  8 peter         high               unit          banana       A          </span></span>
+<span><span class="co">#&gt;  9 peter         medium             tilt_sec      banana       A          </span></span>
+<span><span class="co">#&gt; 10 peter         medium             unit_tilt_sec banana       A          </span></span>
+<span><span class="co">#&gt; # ℹ 48 more rows</span></span></code></pre></div>
+<p>To plot on a company level:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">no_fin</span> <span class="op">&lt;-</span> <span class="va">without_financial</span></span>
+<span></span>
+<span><span class="va">no_fin</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">company_name</span> <span class="op">==</span> <span class="st">"peter"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="reference/plot_xctr.html">plot_xctr</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Risk distribution of all products on a company level"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-11-1.png" width="100%"></p>
+<p>On a portfolio level :</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_xctr.html">plot_xctr</a></span><span class="op">(</span><span class="va">no_fin</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Risk distribution of all products on a portfolio level"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-12-1.png" width="100%"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="license">

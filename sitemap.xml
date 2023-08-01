@@ -31,19 +31,10 @@
     <loc>https://2degreesinvesting.github.io/tiltPlot/reference/plot_sankey.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/plot_xctr_company.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/plot_xctr.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/plot_xctr_company_financial.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/plot_xctr_portfolio.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/plot_xctr_portfolio_financial.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/switch_mode.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/plot_xctr_financial.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltPlot/reference/theme_tiltplot.html</loc>
@@ -53,8 +44,5 @@
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltPlot/reference/without_financial.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/xctr_toy_data.html</loc>
   </url>
 </urlset>
