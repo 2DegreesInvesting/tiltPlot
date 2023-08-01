@@ -21,9 +21,9 @@ plot_xctr_portfolio_financial <- function(data, mode = c("equal_weight", "worst_
     "worst_case_finance",
     "best_case_finance"
   )
-  data |> check_crucial_names(c(names(select(data, matches(crucial)))))
+  data |> check_crucial_names(names_matching(data, crucial))
 
-  risk_category_var <- names(select(data, matches("_risk_category")))
+  risk_category_var <- names_matching(data, "_risk_category")
 
   data <- data |>
     mutate(risk_category_var = factor(

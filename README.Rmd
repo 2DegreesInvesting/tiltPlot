@@ -64,6 +64,7 @@ On a company level:
 
 ```{r}
 fin <- financial
+
 plot_xctr_financial(fin, "peter", mode = "worst_case") +
   labs(title = "Risk distribution of all products on a company level, on a financial weight")
 ```
@@ -82,12 +83,14 @@ plot_xctr_financial(fin, mode = "worst_case") +
 without_financial
 ```
 
-On a company level:
+To plot on a company level:
 
 ```{r}
 no_fin <- without_financial
 
-plot_xctr(no_fin, "peter") +
+no_fin |> 
+  filter(company_name == "peter") |> 
+  plot_xctr() +
   labs(title = "Risk distribution of all products on a company level")
 ```
 

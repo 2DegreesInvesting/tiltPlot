@@ -36,7 +36,6 @@ abort_missing_names <- function(missing_names) {
   )
 }
 
-
 #' Switch mode function
 #'
 #' Given a mode, this function returns the corresponding finance-related mode name
@@ -62,4 +61,25 @@ switch_mode <- function(mode) {
     "best_case" = "best_case_finance",
     "main_activity" = "main_activity"
   )
+}
+
+#' Get column names matching a specific pattern
+#'
+#' This function takes a data frame and a pattern as input and returns the column names
+#' that match the given pattern.
+#'
+#' @param data A data frame.
+#' @param pattern A regular expression pattern to match column names.
+#'
+#' @return A character vector containing the column names that match the pattern.
+#'
+#' @export
+#'
+#' @examples
+#' data <- data.frame(abc = 1:5)
+#'
+#' # Get column names containing "ab"
+#' names_matching(data, "ab")
+names_matching <- function(data, pattern) {
+  names(select(data, matches(pattern)))
 }
