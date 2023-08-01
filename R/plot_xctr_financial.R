@@ -45,7 +45,7 @@ plot_xctr_financial <- function(data, company_name = NULL, mode = c("equal_weigh
 
   data <- if (is.null(company_name)) {
     data |>
-      group_by(.data$benchmark, risk_category_var) |>
+      group_by(.data$benchmark, .data$risk_category_var) |>
       summarise(avg_financial_value = mean(.data[[y_var]]))
   } else {
     data |>
