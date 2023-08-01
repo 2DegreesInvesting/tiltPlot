@@ -87,7 +87,7 @@ On a company level:
 ```{r}
 no_fin <- without_financial
 
-plot_xctr(no_fin, "peter")  +
+plot_xctr(no_fin, "peter") +
   labs(title = "Risk distribution of all products on a company level")
 ```
 
