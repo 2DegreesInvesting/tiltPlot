@@ -96,7 +96,7 @@ On a company level:
 
 ``` r
 fin <- financial
-plot_xctr_company_financial(fin, "peter", mode = "worst_case") +
+plot_xctr_financial(fin, "peter", mode = "worst_case") +
   labs(title = "Risk distribution of all products on a company level, on a financial weight")
 ```
 
@@ -105,8 +105,8 @@ plot_xctr_company_financial(fin, "peter", mode = "worst_case") +
 On a portfolio level:
 
 ``` r
-plot_xctr_portfolio_financial(fin, mode = "best_case") +
-  labs(title = "Risk distribution of all products on a portfolio level, best case scenario")
+plot_xctr_financial(fin, mode = "worst_case") +
+  labs(title = "Risk distribution of all products on a portfolio level, on a financial weight")
 ```
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
@@ -136,7 +136,8 @@ On a company level:
 ``` r
 no_fin <- without_financial
 
-plot_xctr(no_fin, "peter")
+plot_xctr(no_fin, "peter")  +
+  labs(title = "Risk distribution of all products on a company level")
 ```
 
 <img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
@@ -144,7 +145,8 @@ plot_xctr(no_fin, "peter")
 On a portfolio level :
 
 ``` r
-plot_xctr(no_fin)
+plot_xctr(no_fin) +
+  labs(title = "Risk distribution of all products on a portfolio level")
 ```
 
 <img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
