@@ -33,7 +33,7 @@ plot_xctr <- function(data) {
     mutate(proportion = .data$count / sum(.data$count))
 
   ggplot(data, aes(x = .data$risk_category_var, y = .data$proportion, fill = .data$risk_category_var)) +
-    #TODO : Create a little wrapper function
+    # TODO : Create a little wrapper function
     geom_col() +
     facet_wrap(~ .data$benchmark, scales = "fixed") +
     fill_score_colors() +

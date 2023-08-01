@@ -99,7 +99,7 @@ as_risk_category <- function(x) {
 }
 
 check_levels <- function(x) {
-  stopifnot(all(sort(unique(x))  %in% sort(risk_category_levels())))
+  stopifnot(all(sort(unique(x)) %in% sort(risk_category_levels())))
 }
 
 risk_category_levels <- function() c("low", "medium", "high")
