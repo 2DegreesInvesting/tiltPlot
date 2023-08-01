@@ -4,14 +4,10 @@
 \alias{plot_xctr}
 \title{Plot xctr data on a company or portfolio level, without financial data}
 \usage{
-plot_xctr(data, company_name = NULL)
+plot_xctr(data)
 }
 \arguments{
 \item{data}{A data frame like \link{without_financial}}
-
-\item{company_name}{(Optional) A character string specifying the company name.
-If provided, the function will generate the plot for the specified company only.
-If NULL (default), the plot will be generated for the entire portfolio.}
 }
 \value{
 A \link{ggplot} object.
@@ -20,9 +16,5 @@ A \link{ggplot} object.
 Generate bar plots showing the distribution of xctr_risk_category percentages for each benchmark.
 }
 \examples{
-# Example 1: Generate the plot for the entire portfolio
 plot_xctr(without_financial)
-
-# Example 2: Generate the plot for a specific company
-plot_xctr(without_financial, company_name = "peter peasant")
 }

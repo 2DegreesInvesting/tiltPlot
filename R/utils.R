@@ -46,14 +46,13 @@ abort_missing_names <- function(missing_names) {
 #' @return A character string representing the finance-related mode name that corresponds
 #'   to the input mode. If the input mode is not one of the supported options, NULL is returned.
 #'
-#' @export
-#'
 #' @examples
 #' switch_mode("equal_weight")
 #' # Returns: "equal_weight_finance"
 #'
 #' switch_mode("worst_case")
 #' # Returns: "worst_case_finance"
+#' @noRd
 switch_mode <- function(mode) {
   switch(mode,
     "equal_weight" = "equal_weight_finance",
@@ -73,13 +72,34 @@ switch_mode <- function(mode) {
 #'
 #' @return A character vector containing the column names that match the pattern.
 #'
-#' @export
-#'
 #' @examples
 #' data <- data.frame(abc = 1:5)
 #'
 #' # Get column names containing "ab"
 #' names_matching(data, "ab")
+#' @noRd
 names_matching <- function(data, pattern) {
   names(select(data, matches(pattern)))
 }
+
+
+#' Convert vector to risk category
+#'
+#' @param x
+#'
+#' @return A factor representing the risk category with levels: "low", "medium", and "high".
+#'
+#' @examples
+#' x <- c("low", "low")
+#' as_risk_category(x)
+#' @noRd
+as_risk_category <- function(x) {
+  check_levels(x)
+  factor(x, levels = risk_category_levels())
+}
+
+check_levels <- function(x) {
+  stopifnot(all(sort(unique(x))  %in% sort(risk_category_levels())))
+}
+
+risk_category_levels <- function() c("low", "medium", "high")

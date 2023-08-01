@@ -35,13 +35,10 @@ plot_xctr_financial <- function(data, company_name = NULL, mode = c("equal_weigh
   )
   data |> check_crucial_names(names_matching(data, crucial))
 
-  risk_category_var <- names_matching(data, "_risk_category")
+  risk_var <- names_matching(data, "_risk_category")
 
   data <- data |>
-    mutate(risk_category_var = factor(
-      data[[risk_category_var]],
-      levels = c("low", "medium", "high")
-    ))
+    mutate(risk_category_var = as_risk_category(data[[risk_var]]))
 
   y_var <- switch_mode(mode)
   y_label <- if (is.null(company_name)) "avg_financial_value" else y_var

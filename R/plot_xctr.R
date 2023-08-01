@@ -21,13 +21,13 @@ plot_xctr <- function(data) {
   )
   data |> check_crucial_names(names_matching(data, crucial))
 
-  risk_category_var <- names_matching(data, "_risk_category")
+  risk_var <- names_matching(data, "_risk_category")
 
   data <- data |>
-    mutate(risk_category_var = factor(data[[risk_category_var]], levels = c("low", "medium", "high")))
+    mutate(risk_category_var = as_risk_category(data[[risk_var]]))
 
   data <- data |>
-    group_by(risk_category_var, .data$benchmark) |>
+    group_by(.data$risk_category_var, .data$benchmark) |>
     summarize(count = n()) |>
     group_by(.data$benchmark) |>
     mutate(proportion = .data$count / sum(.data$count))
