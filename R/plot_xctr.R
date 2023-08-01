@@ -1,4 +1,4 @@
-#' Plot xctr data on a company or portfolio level, without financial data
+#' Plot xctr data without financial data
 #'
 #' Generate bar plots showing the distribution of xctr_risk_category percentages for each benchmark.
 #'
