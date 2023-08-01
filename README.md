@@ -16,6 +16,15 @@ The goal of tiltPlot is to provide plots for the TILT project.
 
 ``` r
 library(ggplot2)
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
 library(tiltPlot)
 ```
 
@@ -96,6 +105,7 @@ On a company level:
 
 ``` r
 fin <- financial
+
 plot_xctr_financial(fin, "peter", mode = "worst_case") +
   labs(title = "Risk distribution of all products on a company level, on a financial weight")
 ```
@@ -131,12 +141,14 @@ without_financial
 #> # ℹ 48 more rows
 ```
 
-On a company level:
+To plot on a company level:
 
 ``` r
 no_fin <- without_financial
 
-plot_xctr(no_fin, "peter")  +
+no_fin |> 
+  filter(company_name == "peter") |> 
+  plot_xctr() +
   labs(title = "Risk distribution of all products on a company level")
 ```
 

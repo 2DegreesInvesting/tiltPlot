@@ -2,9 +2,7 @@
 
 export(plot_sankey)
 export(plot_xctr)
-export(plot_xctr_company_financial)
 export(plot_xctr_financial)
-export(plot_xctr_portfolio_financial)
 export(theme_tiltplot)
 importFrom(dplyr,bind_rows)
 importFrom(dplyr,case_when)
