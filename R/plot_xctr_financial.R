@@ -24,7 +24,7 @@ plot_xctr_financial <- function(data, company_name = NULL, mode = c("equal_weigh
 
   # TODO: do we want to drop NA's everywhere silently?
   data <- data |>
-    drop_na(-c(.data$equal_weight_finance, .data$worst_case_finance, .data$best_case_finance, .data$main_activity))
+    drop_na(-c(.data$equal_weight_finance, .data$worst_case_finance, .data$best_case_finance, .data$main_activity)) #unstable
 
   crucial <- c(
     "main_activity",
@@ -35,7 +35,7 @@ plot_xctr_financial <- function(data, company_name = NULL, mode = c("equal_weigh
   )
   data |> check_crucial_names(names_matching(data, crucial))
 
-  risk_var <- names_matching(data, "_risk_category")
+  risk_var <- names_matching(data, "_risk_category") #unstable
 
   data <- data |>
     mutate(risk_category_var = as_risk_category(data[[risk_var]]))
