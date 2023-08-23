@@ -16,20 +16,20 @@ plot_xctr <- function(data) {
     na.omit()
 
   crucial <- c(
-    "benchmark",
-    "_risk_category"
+    benchmark(),
+    risk_category()
   )
   data |> check_crucial_names(names_matching(data, crucial))
 
-  risk_var <- names_matching(data, "_risk_category")
+  risk_var <- names_matching(data, risk_category())
 
   data <- data |>
     mutate(risk_category_var = as_risk_category(data[[risk_var]]))
 
   data <- data |>
-    group_by(.data$risk_category_var, .data$benchmark) |>
+    group_by(.data$risk_category_var, .data$benchmark()) |>
     summarize(count = n()) |>
-    group_by(.data$benchmark) |>
+    group_by(.data$benchmark()) |>
     mutate(proportion = .data$count / sum(.data$count))
 
   ggplot(data, aes(x = .data$risk_category_var, y = .data$proportion, fill = .data$risk_category_var)) +

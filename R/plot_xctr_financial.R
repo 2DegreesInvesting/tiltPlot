@@ -22,30 +22,24 @@
 plot_xctr_financial <- function(data, company_name = NULL, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
   mode <- arg_match(mode)
 
-  # TODO: do we want to drop NA's everywhere silently?
-  data <- data |>
-    drop_na(-c(.data$equal_weight_finance, .data$worst_case_finance, .data$best_case_finance, .data$main_activity)) #unstable
-
   crucial <- c(
-    "main_activity",
-    "_risk_category",
-    "equal_weight_finance",
-    "worst_case_finance",
-    "best_case_finance"
+    main_activity(),
+    risk_category(),
+    equal_weight_finance(),
+    worst_case_finance(),
+    best_case_finance()
   )
-  data |> check_crucial_names(names_matching(data, crucial))
-
-  risk_var <- names_matching(data, "_risk_category") #unstable
 
   data <- data |>
-    mutate(risk_category_var = as_risk_category(data[[risk_var]]))
+    prepare_financial_data() |>
+    check_data(crucial)
 
   y_var <- switch_mode(mode)
   y_label <- if (is.null(company_name)) "avg_financial_value" else y_var
 
   data <- if (is.null(company_name)) {
     data |>
-      group_by(.data$benchmark, .data$risk_category_var) |>
+      group_by(.data$benchmark(), .data$risk_category_var()) |>
       summarise(avg_financial_value = mean(.data[[y_var]]))
   } else {
     data |>
