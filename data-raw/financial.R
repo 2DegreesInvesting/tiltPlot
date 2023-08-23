@@ -119,4 +119,3 @@ financial <- tibble::tribble(
 # styler: on
 
 usethis::use_data(financial, overwrite = TRUE)
-

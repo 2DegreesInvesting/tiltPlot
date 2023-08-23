@@ -15,7 +15,3 @@ prepare_financial_data <- function(data) {
 
   return(data)
 }
-
-
-
-
