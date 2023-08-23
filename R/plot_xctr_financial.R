@@ -22,6 +22,9 @@
 plot_xctr_financial <- function(data, company_name = NULL, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
   mode <- arg_match(mode)
 
+  data <- data |>
+    drop_na(-c(.data$equal_weight_finance, .data$worst_case_finance, .data$best_case_finance, .data$main_activity))
+
   crucial <- c(
     main_activity(),
     risk_category(),
@@ -29,17 +32,19 @@ plot_xctr_financial <- function(data, company_name = NULL, mode = c("equal_weigh
     worst_case_finance(),
     best_case_finance()
   )
+  data |> check_data(crucial)
+
+  risk_var <- names_matching(data, risk_category())
 
   data <- data |>
-    prepare_financial_data() |>
-    check_data(crucial)
+    mutate(risk_category_var = as_risk_category(data[[risk_var]]))
 
   y_var <- switch_mode(mode)
   y_label <- if (is.null(company_name)) "avg_financial_value" else y_var
 
   data <- if (is.null(company_name)) {
     data |>
-      group_by(.data$benchmark(), .data$risk_category_var()) |>
+      group_by(.data$benchmark, .data$risk_category_var) |>
       summarise(avg_financial_value = mean(.data[[y_var]]))
   } else {
     data |>
