@@ -30,11 +30,11 @@ plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight", "wor
   mode <- arg_match(mode)
 
   crucial <- c(
-    "main_activity",
+    main_activity(),
     risk_category(),
-    "equal_weight_finance",
-    "worst_case_finance",
-    "best_case_finance"
+    equal_weight_finance(),
+    worst_case_finance(),
+    best_case_finance()
   )
   data |> check_crucial_names(names_matching(data, crucial))
   risk_var <- names_matching(data, risk_category())
