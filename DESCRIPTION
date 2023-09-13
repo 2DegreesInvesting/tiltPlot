@@ -8,7 +8,7 @@ Authors@R: c(
   )
 Description: Plots for the 'TILT' project.
 License: MIT + file LICENSE
-URL: https://2degreesinvesting.github.io/tiltPlot/
+URL: https://2degreesinvesting.github.io/tiltPlot/, https://github.com/2DegreesInvesting/tiltPlot
 Depends: 
     R (>= 2.10)
 Imports: 
@@ -28,3 +28,4 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+BugReports: https://github.com/2DegreesInvesting/tiltPlot/issues
