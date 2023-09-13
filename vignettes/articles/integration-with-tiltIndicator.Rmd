@@ -38,7 +38,7 @@ at_product_level <- unnest_product(emissions_profile)
 Adapt the ouput of tiltIindicator to the input of tiltPlot.
 
 ```{r}
-at_product_level <- at_product_level |> 
+at_product_level <- at_product_level |>
   rename(xctr_risk_category = risk_category, benchmark = grouped_by)
 ```
 
@@ -47,8 +47,3 @@ Visualize.
 ```{r}
 plot_xctr(at_product_level)
 ```
-
-
-
-
-
