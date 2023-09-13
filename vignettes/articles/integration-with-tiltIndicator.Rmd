@@ -1,0 +1,54 @@
+---
+title: "Integration with other components of the tilt system"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Setup.
+
+```{r setup}
+library(tiltToyData)
+library(tiltIndicator)
+library(tiltPlot)
+library(dplyr, warn.conflicts = FALSE)
+library(readr, warn.conflicts = FALSE)
+
+options(readr.show_col_types = FALSE)
+```
+
+Data.
+
+```{r}
+companies <- read_csv(toy_emissions_profile_any_companies())
+products <- read_csv(toy_emissions_profile_products())
+```
+
+Apply tilt methodology.
+
+```{r}
+emissions_profile <- emissions_profile(companies, products)
+at_product_level <- unnest_product(emissions_profile)
+```
+
+Adapt the ouput of tiltIindicator to the input of tiltPlot.
+
+```{r}
+at_product_level <- at_product_level |> 
+  rename(xctr_risk_category = risk_category, benchmark = grouped_by)
+```
+
+Visualize.
+
+```{r}
+plot_xctr(at_product_level)
+```
+
+
+
+
+
