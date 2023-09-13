@@ -25,10 +25,9 @@ The goal of tiltPlot is to provide plots for the TILT project.
 
 ```{r}
 library(ggplot2)
-library(dplyr)
+library(dplyr, warn.conflicts = FALSE)
 library(tiltPlot)
 ```
-
 
 ### 1. Sankey Plot with financial data
 
