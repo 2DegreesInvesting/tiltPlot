@@ -42,8 +42,15 @@ at_product_level <- at_product_level |>
   rename(xctr_risk_category = risk_category, benchmark = grouped_by)
 ```
 
-Visualize.
+Visualize all companies.
 
 ```{r}
 plot_xctr(at_product_level)
+```
+
+Visualize one specific company.
+
+```{r}
+first_company <- filter(at_product_level, companies_id %in% first(companies_id))
+plot_xctr(first_company)
 ```
