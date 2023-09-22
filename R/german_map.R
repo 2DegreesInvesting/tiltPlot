@@ -37,14 +37,21 @@ create_german_map <- function(data, selected_benchmark, selected_finance_weight)
     inner_join(nuts_de, by = "geo")
 
   #Merge Shapefile with financial data
-  financial_geo <- financial %>%
-    right_join(SHP_test, by = "postcode") %>%
+  financial_test <- financial[c(1, 7), ]
+
+  financial_geo <- financial_test %>%
+    left_join(SHP_test, by = "postcode") %>%
     st_as_sf()
 
   #Create map based on financial geo
   financial_geo %>%
     ggplot(aes(fill = xctr_risk_category)) +
     geom_sf()
+
+  ggplot() +
+    geom_sf(data = financial_geo, mapping = aes(fill = xctr_risk_category), show.legend = TRUE) +
+    geom_sf(data = SHP_1, fill = NA) +
+    coord_sf()
 
   #European map
   SHP_28 <- SHP_0 %>%
@@ -58,9 +65,5 @@ create_german_map <- function(data, selected_benchmark, selected_finance_weight)
     geom_sf() +
     scale_x_continuous(limits = c(-10, 35)) +
     scale_y_continuous(limits = c(35, 65))
-
-
-
-
 
 }
