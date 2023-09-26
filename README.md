@@ -14,6 +14,17 @@ coverage](https://codecov.io/gh/2DegreesInvesting/tiltPlot/branch/main/graph/bad
 
 The goal of tiltPlot is to provide plots for the TILT project.
 
+## Installation
+
+You can install the development version of tiltPlot from GitHub with:
+
+``` r
+# install.packages("pak")
+pak::pak("2DegreesInvesting/tiltPlot")
+```
+
+## Example
+
 ``` r
 library(ggplot2)
 library(dplyr)
@@ -146,8 +157,8 @@ To plot on a company level:
 ``` r
 no_fin <- without_financial
 
-no_fin |> 
-  filter(company_name == "peter") |> 
+no_fin |>
+  filter(company_name == "peter") |>
   plot_xctr() +
   labs(title = "Risk distribution of all products on a company level")
 ```
