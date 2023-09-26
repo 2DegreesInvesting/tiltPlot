@@ -13,31 +13,31 @@ german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt
   risk_var <- names_matching(data, "_risk_category")
 
   #Shapefile for European countries
-  SHP_0 <- get_eurostat_geospatial(resolution = 10,
+  shp_0 <- get_eurostat_geospatial(resolution = 10,
                           nuts_level = 3,
                           year = 2016,
                           crs = 3035)
 
   #Filter for Germany
-  SHP_1 <- SHP_0 |>
+  shp_1 <- shp_0 |>
     filter(CNTR_CODE == "DE") |>
     select(geo = NUTS_ID, geometry) |>
     arrange(geo) |>
     st_as_sf()
 
   #Merge to have zip codes with NUTS file
-  SHP_1 <- SHP_1 |>
+  shp_1 <- shp_1 |>
     inner_join(nuts_de, by = "geo")
 
-  #Merge Shapefile with financial data
+  #Merge shapefile with financial data
   financial_geo <- financial |>
     filter(benchmark == "isic_sec") |>
-    left_join(SHP_1, by = "postcode") |>
+    left_join(shp_1, by = "postcode") |>
     st_as_sf()
 
-  #Create map based on financial geo : two layers; financial data and map
+  #Create map based on financial geo with two layers; financial data and map
   ggplot() +
     geom_sf(data = financial_geo, mapping = aes(fill = xctr_risk_category), show.legend = TRUE) +
-    geom_sf(data = SHP_1, fill = NA) +
+    geom_sf(data = shp_1, fill = NA) +
     coord_sf()
 }
