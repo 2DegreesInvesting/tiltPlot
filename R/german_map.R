@@ -20,9 +20,9 @@ german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt
 
   #Filter for Germany
   shp_1 <- shp_0 |>
-    filter(CNTR_CODE == "DE") |>
-    select(geo = NUTS_ID, geometry) |>
-    arrange(geo) |>
+    filter(.data$CNTR_CODE == "DE") |>
+    select(geo = .data$NUTS_ID, .data$geometry) |>
+    arrange(.data$geo) |>
     st_as_sf()
 
   #Merge to have zip codes with NUTS file
