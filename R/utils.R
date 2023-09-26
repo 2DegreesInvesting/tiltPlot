@@ -57,8 +57,7 @@ switch_mode <- function(mode) {
   switch(mode,
     "equal_weight" = "equal_weight_finance",
     "worst_case" = "worst_case_finance",
-    "best_case" = "best_case_finance",
-    "main_activity" = "main_activity"
+    "best_case" = "best_case_finance"
   )
 }
 

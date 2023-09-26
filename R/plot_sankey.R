@@ -11,11 +11,6 @@
 #' with the same highest risk, we assume equal weights again.
 #' * "best_case" - similar to the worst-case scenario but just with the
 #' lowest-risk category.
-#' * "main_activity" - sometimes banks give one sector classification to one
-#' company. However, with our data we know that sometimes the products stem from
-#' different sectors. Knowing that the bank categorizes the product in one
-#' specific sector, we could assume that the bank only finance the product in
-#' the sector that it categories the company in.
 #'
 #' @return A sankey plot of class [ggalluvial].
 #' @export
@@ -30,7 +25,6 @@ plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight", "wor
   mode <- arg_match(mode)
 
   crucial <- c(
-    "main_activity",
     "_risk_category",
     "equal_weight_finance",
     "worst_case_finance",
@@ -45,7 +39,7 @@ plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight", "wor
     data = data,
     aes(
       y = .data[[switch_mode(mode)]],
-      axis1 = .data$kg_id,
+      axis1 = .data$bank_id,
       axis3 = .data$tilt_sector,
       axis4 = as_risk_category(.data[[risk_var]]),
       fill = as_risk_category(.data[[risk_var]])

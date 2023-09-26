@@ -33,22 +33,22 @@ library(tiltPlot)
 ``` r
 financial
 #> # A tibble: 114 × 13
-#>    kg_id  amount_total company_name  wz    amount_of_distinct_products
-#>    <chr>         <int> <chr>         <chr>                       <int>
-#>  1 bank_a         1000 peter peasant A                               1
-#>  2 bank_a         1000 peter peasant A                               1
-#>  3 bank_a         1000 peter peasant A                               1
-#>  4 bank_a         1000 peter peasant A                               1
-#>  5 bank_a         1000 peter peasant A                               1
-#>  6 bank_a         1000 peter peasant A                               1
-#>  7 bank_a         1000 peter         B                               2
-#>  8 bank_a         1000 peter         B                               2
-#>  9 bank_a         1000 peter         B                               2
-#> 10 bank_a         1000 peter         B                               2
+#>    bank_id amount_total company_name postcode wz    xctr_risk_category benchmark
+#>    <chr>          <int> <chr>           <int> <chr> <chr>              <chr>    
+#>  1 bank_b           500 peter peasa…    53773 A     high               all      
+#>  2 bank_b           500 peter peasa…    53773 A     high               unit     
+#>  3 bank_b           500 peter peasa…    53773 A     medium             tilt_sec 
+#>  4 bank_b           500 peter peasa…    53773 A     medium             unit_til…
+#>  5 bank_b           500 peter peasa…    53773 A     low                isic_sec 
+#>  6 bank_b           500 peter peasa…    53773 A     medium             unit_isi…
+#>  7 bank_b           500 tilman          12043 D     low                all      
+#>  8 bank_b           500 tilman          12043 D     low                unit     
+#>  9 bank_b           500 tilman          12043 D     medium             tilt_sec 
+#> 10 bank_b           500 tilman          12043 D     medium             unit_til…
 #> # ℹ 104 more rows
-#> # ℹ 8 more variables: xctr_risk_category <chr>, benchmark <chr>,
-#> #   product_name <chr>, tilt_sector <chr>, equal_weight_finance <dbl>,
-#> #   worst_case_finance <int>, best_case_finance <int>, main_activity <int>
+#> # ℹ 6 more variables: product_name <chr>, tilt_sector <chr>,
+#> #   amount_of_distinct_products <int>, equal_weight_finance <dbl>,
+#> #   worst_case_finance <int>, best_case_finance <int>
 ```
 
 Here is the default Sankey Plot. By default the function plots with
@@ -83,22 +83,22 @@ plot_sankey(fin, with_company = FALSE, mode = "best_case")
 ``` r
 financial
 #> # A tibble: 114 × 13
-#>    kg_id  amount_total company_name  wz    amount_of_distinct_products
-#>    <chr>         <int> <chr>         <chr>                       <int>
-#>  1 bank_a         1000 peter peasant A                               1
-#>  2 bank_a         1000 peter peasant A                               1
-#>  3 bank_a         1000 peter peasant A                               1
-#>  4 bank_a         1000 peter peasant A                               1
-#>  5 bank_a         1000 peter peasant A                               1
-#>  6 bank_a         1000 peter peasant A                               1
-#>  7 bank_a         1000 peter         B                               2
-#>  8 bank_a         1000 peter         B                               2
-#>  9 bank_a         1000 peter         B                               2
-#> 10 bank_a         1000 peter         B                               2
+#>    bank_id amount_total company_name postcode wz    xctr_risk_category benchmark
+#>    <chr>          <int> <chr>           <int> <chr> <chr>              <chr>    
+#>  1 bank_b           500 peter peasa…    53773 A     high               all      
+#>  2 bank_b           500 peter peasa…    53773 A     high               unit     
+#>  3 bank_b           500 peter peasa…    53773 A     medium             tilt_sec 
+#>  4 bank_b           500 peter peasa…    53773 A     medium             unit_til…
+#>  5 bank_b           500 peter peasa…    53773 A     low                isic_sec 
+#>  6 bank_b           500 peter peasa…    53773 A     medium             unit_isi…
+#>  7 bank_b           500 tilman          12043 D     low                all      
+#>  8 bank_b           500 tilman          12043 D     low                unit     
+#>  9 bank_b           500 tilman          12043 D     medium             tilt_sec 
+#> 10 bank_b           500 tilman          12043 D     medium             unit_til…
 #> # ℹ 104 more rows
-#> # ℹ 8 more variables: xctr_risk_category <chr>, benchmark <chr>,
-#> #   product_name <chr>, tilt_sector <chr>, equal_weight_finance <dbl>,
-#> #   worst_case_finance <int>, best_case_finance <int>, main_activity <int>
+#> # ℹ 6 more variables: product_name <chr>, tilt_sector <chr>,
+#> #   amount_of_distinct_products <int>, equal_weight_finance <dbl>,
+#> #   worst_case_finance <int>, best_case_finance <int>
 ```
 
 On a company level:
@@ -146,8 +146,8 @@ To plot on a company level:
 ``` r
 no_fin <- without_financial
 
-no_fin |> 
-  filter(company_name == "peter") |> 
+no_fin |>
+  filter(company_name == "peter") |>
   plot_xctr() +
   labs(title = "Risk distribution of all products on a company level")
 ```

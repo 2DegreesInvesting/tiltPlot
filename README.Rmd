@@ -102,4 +102,3 @@ plot_xctr(no_fin) +
   labs(title = "Risk distribution of all products on a portfolio level")
 ```
 
-
