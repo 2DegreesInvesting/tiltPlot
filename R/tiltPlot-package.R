@@ -39,6 +39,7 @@
 #' @importFrom rlang .data
 #' @importFrom rlang .env
 #' @importFrom rlang arg_match
+#' @importFrom sf sf_proj_network
 #' @importFrom stats na.omit
 #' @importFrom tibble tibble
 #' @importFrom tibble tribble

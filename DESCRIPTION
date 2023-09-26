@@ -17,6 +17,7 @@ Imports:
     ggplot2,
     glue,
     rlang,
+    sf,
     stats,
     tibble,
     tidyr,
