@@ -21,7 +21,7 @@
 #'
 #' # Plot with best_case weight
 #' plot_sankey(financial, mode = "best_case")
-plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
+plot_sankey <- function(data, with_company = TRUE, mode = c("equal_weight", "worst_case", "best_case")) {
   mode <- arg_match(mode)
 
   crucial <- c(

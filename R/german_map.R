@@ -4,7 +4,6 @@ german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt
   finance_weight <- arg_match(finance_weight)
 
   crucial <- c(
-    "main_activity",
     "_risk_category",
     "equal_weight_finance",
     "worst_case_finance",

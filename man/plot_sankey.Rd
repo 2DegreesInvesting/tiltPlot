@@ -7,7 +7,7 @@
 plot_sankey(
   data,
   with_company = TRUE,
-  mode = c("equal_weight", "worst_case", "best_case", "main_activity")
+  mode = c("equal_weight", "worst_case", "best_case")
 )
 }
 \arguments{
