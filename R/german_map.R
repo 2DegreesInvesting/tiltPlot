@@ -1,4 +1,17 @@
-create_german_map <- function(data, selected_benchmark, selected_finance_weight) {
+german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt_sec", "isic_sec", "unit_isic_sec"), finance_weight = c("equal_weight", "worst_case", "best_case", "main_activity")) {
+
+  benchmark <- arg_match(benchmark)
+  finance_weight <- arg_match(finance_weight)
+
+  crucial <- c(
+    "main_activity",
+    "_risk_category",
+    "equal_weight_finance",
+    "worst_case_finance",
+    "best_case_finance"
+  )
+  data |> check_crucial_names(names_matching(data, crucial))
+  risk_var <- names_matching(data, "_risk_category")
 
   #Shapefile for European countries
   SHP_0 <- get_eurostat_geospatial(resolution = 10,
@@ -6,34 +19,21 @@ create_german_map <- function(data, selected_benchmark, selected_finance_weight)
                           year = 2016,
                           crs = 3035)
 
-  #Shapefile for Germany
-  SHP_1 <- SHP_0 %>%
-    filter(CNTR_CODE == "DE") %>%
-    select(geo = NUTS_ID, geometry) %>%
-    arrange(geo) %>%
+  #Filter for Germany
+  SHP_1 <- SHP_0 |>
+    filter(CNTR_CODE == "DE") |>
+    select(geo = NUTS_ID, geometry) |>
+    arrange(geo) |>
     st_as_sf()
 
-  #NUTS3 to zip file
-  #Source from European Commission: https://gisco-services.ec.europa.eu/tercet/flat-files
-  nuts_de <- read_csv2(
-    here("NUTS_DE.csv"),
-    col_types = cols(
-      NUTS3 = col_character(),  # Specify the data type for the "geo" column
-      CODE = col_integer()  # Specify the data type for the "postcode" column
-    ),
-    quote = "'"
-  )
-
-  colnames(nuts_de) <- c("geo", "postcode")
-
   #Merge to have zip codes with NUTS file
-  SHP_1 <- SHP_1 %>%
+  SHP_1 <- SHP_1 |>
     inner_join(nuts_de, by = "geo")
 
   #Merge Shapefile with financial data
-  financial_geo <- financial %>%
-    filter(benchmark == "isic_sec") %>%
-    left_join(SHP_1, by = "postcode") %>%
+  financial_geo <- financial |>
+    filter(benchmark == "isic_sec") |>
+    left_join(SHP_1, by = "postcode") |>
     st_as_sf()
 
   #Create map based on financial geo : two layers; financial data and map
