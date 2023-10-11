@@ -106,7 +106,7 @@ plot_xctr(no_fin) +
 
 
 ```{r}
-german_map(financial)
+german_map(financial, benchmark = "unit_isic_sec")
 ```
 
 

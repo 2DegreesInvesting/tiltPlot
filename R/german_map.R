@@ -1,6 +1,6 @@
 german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt_sec", "isic_sec", "unit_isic_sec"), finance_weight = c("equal_weight", "worst_case", "best_case")) {
 
-  benchmark <- arg_match(benchmark)
+  benchmark_arg <- arg_match(benchmark)
   finance_weight <- arg_match(finance_weight)
 
   crucial <- c(
@@ -30,8 +30,8 @@ german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt
     inner_join(nuts_de, by = "geo")
 
   # merge shapefile with financial data
-  financial_geo <- financial |>
-    filter(benchmark == "unit_isic_sec") |>
+  financial_geo <- data |>
+    filter(benchmark == benchmark_arg) |>
     left_join(shp_1, by = "postcode") |>
     st_as_sf()
 
@@ -39,7 +39,8 @@ german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt
     group_by(postcode, xctr_risk_category) |>
     summarize(count = n()) |>
     group_by(postcode) |>
-    mutate(proportion = count / sum(count))
+    mutate(proportion = count / sum(count)) |>
+    ungroup()
 
   # apply custom_gradient_color to each row
   aggregated_data <- aggregated_data |>
