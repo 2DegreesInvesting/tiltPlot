@@ -15,6 +15,7 @@
 #' @importFrom dplyr select
 #' @importFrom dplyr summarise
 #' @importFrom dplyr summarize
+#' @importFrom dplyr ungroup
 #' @importFrom eurostat get_eurostat_geospatial
 #' @importFrom ggalluvial geom_alluvium
 #' @importFrom ggalluvial geom_stratum
