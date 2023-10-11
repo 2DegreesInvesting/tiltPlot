@@ -104,7 +104,6 @@ plot_xctr(no_fin) +
 
 ### 4. German map with financial data
 
-
 ```{r}
 german_map(financial, benchmark = "unit_isic_sec")
 ```

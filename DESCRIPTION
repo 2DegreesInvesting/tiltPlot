@@ -17,6 +17,7 @@ Imports:
     ggalluvial,
     ggplot2,
     glue,
+    purrr,
     rlang,
     sf,
     stats,

@@ -54,7 +54,7 @@ german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt
     coord_sf()
 }
 
-custom_gradient_color <- function(high, medium, low) {
+ custom_gradient_color <- function(high, medium, low) {
   # define RGB values for "high," "medium," and "low"
   high_color <- c(1, 0, 0)   # Red
   medium_color <- c(1, 0.5, 0)  # Orange

@@ -42,6 +42,7 @@
 #' @importFrom ggplot2 unit
 #' @importFrom ggplot2 ylim
 #' @importFrom glue glue
+#' @importFrom purrr pmap
 #' @importFrom rlang .data
 #' @importFrom rlang .env
 #' @importFrom rlang arg_match
@@ -50,6 +51,7 @@
 #' @importFrom tibble tibble
 #' @importFrom tibble tribble
 #' @importFrom tidyr drop_na
+#' @importFrom tidyr pivot_wider
 #' @importFrom tidyselect matches
 ## usethis namespace: end
 NULL
