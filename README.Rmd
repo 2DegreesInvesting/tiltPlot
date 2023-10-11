@@ -102,3 +102,12 @@ plot_xctr(no_fin) +
   labs(title = "Risk distribution of all products on a portfolio level")
 ```
 
+### 4. German map with financial data
+
+
+```{r}
+german_map(financial)
+```
+
+
+
