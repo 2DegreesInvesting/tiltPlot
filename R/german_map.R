@@ -34,12 +34,13 @@ german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt
   shp_0 <- get_eurostat_geospatial(resolution = 10,
                           nuts_level = 3,
                           year = 2016,
-                          crs = 3035)
+                          crs = 3035,
+                          make_valid = TRUE)
 
-  # filter for germany
+  # filter for Germany
   shp_1 <- shp_0 |>
     filter(.data$CNTR_CODE == "DE") |>
-    select(geo = .data$NUTS_ID, .data$geometry) |>
+    select(geo = "NUTS_ID", "geometry") |>
     arrange(.data$geo) |>
     st_as_sf()
 
@@ -67,7 +68,7 @@ german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt
 
   # create map based on financial geo with two layers; financial data and map
   ggplot() +
-    geom_sf(data = aggregated_data, mapping = aes(fill = .data$color), show.legend = TRUE) +
+    geom_sf(data = aggregated_data, mapping = aes(fill = .data$color)) +
     geom_sf(data = shp_1, fill = NA) +
     coord_sf()
 }
@@ -78,10 +79,10 @@ german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt
   medium_color <- c(1, 0.5, 0)  # Orange
   low_color <- c(0, 1, 0)  # Green
 
-  # interpolate the colors based on proportions
+  # interpolate the colors based on proportions : 1 is highest intensity
   final_color <- high_color * high + medium_color * medium + low_color * low
 
-  # Find a way to translate for a scale
+  # find a way to translate for a scale
   final_color <- do.call(rgb, as.list(final_color))
 
   return(final_color)
