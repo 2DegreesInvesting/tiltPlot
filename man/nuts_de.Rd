@@ -20,4 +20,4 @@ Correspondence table between German postcodes and NUTS level 3 codes
 \examples{
 nuts_de
 }
-\keyword{datasets}
+\keyword{internal}

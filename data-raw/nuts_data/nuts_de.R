@@ -11,4 +11,4 @@ nuts_de <- read_csv2(
 
 colnames(nuts_de) <- c("geo", "postcode")
 
-usethis::use_data(nuts_de, overwrite = TRUE)
+usethis::use_data(nuts_de, internal = TRUE, overwrite = TRUE)

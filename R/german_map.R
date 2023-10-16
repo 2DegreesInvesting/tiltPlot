@@ -1,3 +1,20 @@
+#' Create a German map with the risk color of each region
+#'
+#' @param data A data frame like [financial]
+#' @param benchmark The mode of benchmark to plot.
+#' It can be one of "all", "unit" or "tilt_sec", "unit_tilt_sec", "isic_sec"
+#' or "unit_isic_sec". If nothing is chosen, "all" is the default mode.
+#'
+#' @param finance_weight The mode of financial data to plot.
+#' It can be one of "equal_weight", "worst_case" or "best_case". If nothing is
+#' chosen, "equal_weight" is the default mode.
+#'
+#' @return A ggplot2 object representing the german data plot.
+#' @export
+#'
+#' @examples
+#' # Plot a German map with a "unit" benchmark and equal_weight finance
+#' german_map(financial, benchmark = "unit")
 german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt_sec", "isic_sec", "unit_isic_sec"), finance_weight = c("equal_weight", "worst_case", "best_case")) {
 
   benchmark_arg <- arg_match(benchmark)
