@@ -1,6 +1,7 @@
 german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt_sec", "isic_sec", "unit_isic_sec"), finance_weight = c("equal_weight", "worst_case", "best_case")) {
 
   benchmark_arg <- arg_match(benchmark)
+  #FIXME : Correct the columns of financial values
   finance_weight <- arg_match(finance_weight)
 
   crucial <- c(
@@ -36,20 +37,20 @@ german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt
     st_as_sf()
 
   aggregated_data <- financial_geo |>
-    group_by(postcode, xctr_risk_category) |>
+    group_by(.data$postcode, .data$xctr_risk_category) |>
     summarize(count = n()) |>
-    group_by(postcode) |>
-    mutate(proportion = count / sum(count)) |>
+    group_by(.data$postcode) |>
+    mutate(proportion = .data$count / sum(.data$count)) |>
     ungroup()
 
   # apply custom_gradient_color to each row
   aggregated_data <- aggregated_data |>
     pivot_wider(names_from = "xctr_risk_category", values_from = "proportion", values_fill = 0) |>
-    mutate(color = pmap(list(high, medium, low), custom_gradient_color))
+    mutate(color = pmap(list(.data$high, .data$medium, .data$low), custom_gradient_color))
 
   # create map based on financial geo with two layers; financial data and map
   ggplot() +
-    geom_sf(data = aggregated_data, mapping = aes(fill = color), show.legend = TRUE) +
+    geom_sf(data = aggregated_data, mapping = aes(fill = .data$color), show.legend = TRUE) +
     geom_sf(data = shp_1, fill = NA) +
     coord_sf()
 }
@@ -62,6 +63,8 @@ german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt
 
   # interpolate the colors based on proportions
   final_color <- high_color * high + medium_color * medium + low_color * low
+
+  # Find a way to translate for a scale
   final_color <- do.call(rgb, as.list(final_color))
 
   return(final_color)

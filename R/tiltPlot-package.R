@@ -43,6 +43,7 @@
 #' @importFrom ggplot2 unit
 #' @importFrom ggplot2 ylim
 #' @importFrom glue glue
+#' @importFrom grDevices rgb
 #' @importFrom purrr pmap
 #' @importFrom rlang .data
 #' @importFrom rlang .env
