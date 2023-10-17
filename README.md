@@ -163,16 +163,12 @@ plot_xctr(no_fin) +
 
 <img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
 
-### 4. German map without financial data
+### 4. Create a German map with risk categories color gradient
 
 ``` r
 german_map(financial, benchmark = "unit_isic_sec")
-#> Object cached at /tmp/RtmpUlyBmw/eurostat/sf10320163035.RData
-#> Reading cache file /tmp/RtmpUlyBmw/eurostat/sf10320163035.RData
-#> sf at resolution 1: 10  from year  2016  read from cache file:  /tmp/RtmpUlyBmw/eurostat/sf10320163035.RData
-#> Warning in get_eurostat_geospatial(resolution = 10, nuts_level = 3, year =
-#> 2016, : Default of 'make_valid' for 'output_class="sf"' will be changed in the
-#> future (see function details).
+#> Object cached at /tmp/RtmpLLTpND/eurostat/sf10320163035.RData
+#> sf at resolution 1: 10  cached at:  /tmp/RtmpLLTpND/eurostat/sf10320163035.RData
 ```
 
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
