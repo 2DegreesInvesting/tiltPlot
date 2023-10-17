@@ -17,7 +17,7 @@ german_map(
 It can be one of "all", "unit" or "tilt_sec", "unit_tilt_sec", "isic_sec"
 or "unit_isic_sec". If nothing is chosen, "all" is the default mode.}
 
-\item{finance_weight}{The mode of financial data to plot.
+\item{finance_weight}{The mode of financial data to plot (#TODO : fix financial columns).
 It can be one of "equal_weight", "worst_case" or "best_case". If nothing is
 chosen, "equal_weight" is the default mode.}
 }

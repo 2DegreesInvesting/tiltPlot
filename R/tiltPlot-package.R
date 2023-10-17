@@ -32,6 +32,7 @@
 #' @importFrom ggplot2 geom_sf
 #' @importFrom ggplot2 geom_text
 #' @importFrom ggplot2 ggplot
+#' @importFrom ggplot2 ggplot_build
 #' @importFrom ggplot2 ggtitle
 #' @importFrom ggplot2 labs
 #' @importFrom ggplot2 scale_fill_manual

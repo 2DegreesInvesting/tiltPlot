@@ -102,7 +102,7 @@ plot_xctr(no_fin) +
   labs(title = "Risk distribution of all products on a portfolio level")
 ```
 
-### 4. German map without financial data
+### 4. Create a German map with risk categories color gradient
 
 ```{r}
 german_map(financial, benchmark = "unit_isic_sec")
