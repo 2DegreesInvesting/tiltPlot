@@ -16,9 +16,8 @@
 #' # Plot a German map with a "unit" benchmark and equal_weight finance
 #' german_map(financial, benchmark = "unit")
 german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt_sec", "isic_sec", "unit_isic_sec"), finance_weight = c("equal_weight", "worst_case", "best_case")) {
-
   benchmark_arg <- arg_match(benchmark)
-  #FIXME : Correct the columns of financial values
+  # FIXME : Correct the columns of financial values
   finance_weight <- arg_match(finance_weight)
 
   crucial <- c(
@@ -31,11 +30,13 @@ german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt
   risk_var <- names_matching(data, "_risk_category")
 
   # get shapefile of European countries
-  shp_0 <- get_eurostat_geospatial(resolution = 10,
-                          nuts_level = 3,
-                          year = 2016,
-                          crs = 3035,
-                          make_valid = TRUE)
+  shp_0 <- get_eurostat_geospatial(
+    resolution = 10,
+    nuts_level = 3,
+    year = 2016,
+    crs = 3035,
+    make_valid = TRUE
+  )
 
   # filter for Germany
   shp_1 <- shp_0 |>
@@ -73,11 +74,11 @@ german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt
     coord_sf()
 }
 
- custom_gradient_color <- function(high, medium, low) {
+custom_gradient_color <- function(high, medium, low) {
   # define RGB values for "high," "medium," and "low"
-  high_color <- c(1, 0, 0)   # Red
-  medium_color <- c(1, 0.5, 0)  # Orange
-  low_color <- c(0, 1, 0)  # Green
+  high_color <- c(1, 0, 0) # Red
+  medium_color <- c(1, 0.5, 0) # Orange
+  low_color <- c(0, 1, 0) # Green
 
   # interpolate the colors based on proportions : 1 is highest intensity
   final_color <- high_color * high + medium_color * medium + low_color * low
