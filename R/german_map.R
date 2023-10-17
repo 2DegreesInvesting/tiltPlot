@@ -5,7 +5,7 @@
 #' It can be one of "all", "unit" or "tilt_sec", "unit_tilt_sec", "isic_sec"
 #' or "unit_isic_sec". If nothing is chosen, "all" is the default mode.
 #'
-#' @param finance_weight The mode of financial data to plot.
+#' @param finance_weight The mode of financial data to plot (#TODO : fix financial columns).
 #' It can be one of "equal_weight", "worst_case" or "best_case". If nothing is
 #' chosen, "equal_weight" is the default mode.
 #'
@@ -82,7 +82,7 @@ german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt
   # interpolate the colors based on proportions : 1 is highest intensity
   final_color <- high_color * high + medium_color * medium + low_color * low
 
-  # find a way to translate for a scale
+  # TODO : find a way to translate that into a scale / Interactive map
   final_color <- do.call(rgb, as.list(final_color))
 
   return(final_color)
