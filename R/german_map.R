@@ -80,18 +80,3 @@ german_map <- function(data,
     geom_sf(data = shp_1, fill = NA) +
     coord_sf()
 }
-
-custom_gradient_color <- function(high, medium, low) {
-  # define RGB values for "high," "medium," and "low"
-  high_color <- c(1, 0, 0) # Red
-  medium_color <- c(1, 0.5, 0) # Orange
-  low_color <- c(0, 1, 0) # Green
-
-  # interpolate the colors based on proportions : 1 is highest intensity
-  final_color <- high_color * high + medium_color * medium + low_color * low
-
-  # TODO : find a way to translate that into a scale / Interactive map
-  final_color <- do.call(rgb, as.list(final_color))
-
-  return(final_color)
-}
