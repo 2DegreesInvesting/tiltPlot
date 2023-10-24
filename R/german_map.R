@@ -15,7 +15,14 @@
 #' @examples
 #' # Plot a German map with a "unit" benchmark and equal_weight finance
 #' german_map(financial, benchmark = "unit")
-german_map <- function(data, benchmark = c("all", "unit", "tilt_sec", "unit_tilt_sec", "isic_sec", "unit_isic_sec"), finance_weight = c("equal_weight", "worst_case", "best_case")) {
+german_map <- function(data,
+                       benchmark = c("all",
+                                     "unit",
+                                     "tilt_sec",
+                                     "unit_tilt_sec",
+                                     "isic_sec",
+                                     "unit_isic_sec"),
+                       finance_weight = c("equal_weight", "worst_case", "best_case")) {
   benchmark_arg <- arg_match(benchmark)
   # FIXME : Correct the columns of financial values
   finance_weight <- arg_match(finance_weight)
