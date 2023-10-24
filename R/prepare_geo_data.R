@@ -1,6 +1,6 @@
 #' Prepare Geo Data for a Specific Country
 #'
-#' @inheritParams map_country
+#' @inheritParams map_region_risk
 #'
 #' @return A list containing the following components:
 #'   - \code{shp_1}: Spatial data for the specified country.

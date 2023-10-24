@@ -1,4 +1,4 @@
-#' Create a map with the risk color of each region
+#' Create a map with the risk color of each region (NUTS3 granularity)
 #'
 #' @param data A data frame like [financial]
 #' @param country_code Country code (ISO 3166 alpha-2) for which the map will be
@@ -16,8 +16,8 @@
 #'
 #' @examples
 #' # Plot a German with a "unit" benchmark and equal_weight finance
-#' map_country(financial, country_code = "DE", benchmark = "unit")
-map_country <- function(data,
+#' map_region_risk(financial, country_code = "DE", benchmark = "unit")
+map_region_risk <- function(data,
                        #TODO : Plot for other countries
                        country_code = c("DE"),
                        benchmark = c("all",
