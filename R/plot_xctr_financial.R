@@ -19,7 +19,9 @@
 #' # Example 2: Plot portfolio-level financial data
 #' plot_xctr_financial(data = financial, mode = "worst_case")
 #'
-plot_xctr_financial <- function(data, company_name = NULL, mode = c("equal_weight", "worst_case", "best_case")) {
+plot_xctr_financial <- function(data,
+                                company_name = NULL,
+                                mode = c("equal_weight", "worst_case", "best_case")) {
   mode <- arg_match(mode)
 
   # TODO: do we want to drop NA's everywhere silently?
