@@ -1,6 +1,8 @@
-#' Create a German map with the risk color of each region
+#' Create a map with the risk color of each region
 #'
 #' @param data A data frame like [financial]
+#' @param country_code Country code (ISO 3166 alpha-2) for which the map will be
+#' plotted.
 #' @param benchmark The mode of benchmark to plot.
 #' It can be one of "all", "unit" or "tilt_sec", "unit_tilt_sec", "isic_sec"
 #' or "unit_isic_sec". If nothing is chosen, "all" is the default mode.
@@ -9,13 +11,15 @@
 #' It can be one of "equal_weight", "worst_case" or "best_case". If nothing is
 #' chosen, "equal_weight" is the default mode.
 #'
-#' @return A ggplot2 object representing the german data plot.
+#' @return A ggplot2 object representing the country data plot.
 #' @export
 #'
 #' @examples
-#' # Plot a German map with a "unit" benchmark and equal_weight finance
-#' german_map(financial, benchmark = "unit")
-german_map <- function(data,
+#' # Plot a German with a "unit" benchmark and equal_weight finance
+#' map_country(financial, country_code = "DE", benchmark = "unit")
+map_country <- function(data,
+                       #TODO : Plot for other countries
+                       country_code = c("DE"),
                        benchmark = c("all",
                                      "unit",
                                      "tilt_sec",
@@ -23,6 +27,7 @@ german_map <- function(data,
                                      "isic_sec",
                                      "unit_isic_sec"),
                        finance_weight = c("equal_weight", "worst_case", "best_case")) {
+  country_cod = arg_match(country_code)
   benchmark_arg <- arg_match(benchmark)
   # FIXME : Correct the columns of financial values
   finance_weight <- arg_match(finance_weight)
@@ -45,9 +50,9 @@ german_map <- function(data,
     make_valid = TRUE
   )
 
-  # filter for Germany
+  # filter for the country code
   shp_1 <- shp_0 |>
-    filter(.data$CNTR_CODE == "DE") |>
+    filter(.data$CNTR_CODE == country_code) |>
     select(geo = "NUTS_ID", "geometry") |>
     arrange(.data$geo) |>
     st_as_sf()
