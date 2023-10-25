@@ -166,9 +166,10 @@ plot_xctr(no_fin) +
 ### 4. Create a German map with risk categories color gradient
 
 ``` r
-map_country(financial, "DE", benchmark = "unit_isic_sec") +
-  labs(title = "German map of high, medium and low propotion of the companies that are found in one region.
-       © EuroGeographics for the administrative boundaries ")
+map_region_risk(financial, "DE", benchmark = "unit_isic_sec") +
+  labs(title = "German map of high, medium and low propotion of the companies 
+  that are found in one region.
+  © EuroGeographics for the administrative boundaries ")
 #> Object cached at /tmp/Rtmp2M7MqW/eurostat/sf10320163035.RData
 #> Reading cache file /tmp/Rtmp2M7MqW/eurostat/sf10320163035.RData
 #> sf at resolution 1: 10  from year  2016  read from cache file:  /tmp/Rtmp2M7MqW/eurostat/sf10320163035.RData
