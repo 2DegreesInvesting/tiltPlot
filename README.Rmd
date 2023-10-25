@@ -106,8 +106,9 @@ plot_xctr(no_fin) +
 
 ```{r}
 map_region_risk(financial, "DE", benchmark = "unit_isic_sec") +
-  labs(title = "German map of high, medium and low propotion of the companies that are found in one region.
-       © EuroGeographics for the administrative boundaries ")
+  labs(title = "German map of high, medium and low propotion of the companies 
+  that are found in one region.
+  © EuroGeographics for the administrative boundaries ")
 ```
 
 
