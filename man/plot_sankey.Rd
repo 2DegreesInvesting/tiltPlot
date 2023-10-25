@@ -7,7 +7,7 @@
 plot_sankey(
   data,
   with_company = TRUE,
-  mode = c("equal_weight", "worst_case", "best_case", "main_activity")
+  mode = c("equal_weight", "worst_case", "best_case")
 )
 }
 \arguments{
@@ -25,11 +25,6 @@ goes into the highest risk product. If there are two or more products associated
 with the same highest risk, we assume equal weights again.
 \item "best_case" - similar to the worst-case scenario but just with the
 lowest-risk category.
-\item "main_activity" - sometimes banks give one sector classification to one
-company. However, with our data we know that sometimes the products stem from
-different sectors. Knowing that the bank categorizes the product in one
-specific sector, we could assume that the bank only finance the product in
-the sector that it categories the company in.
 }}
 }
 \value{

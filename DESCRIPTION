@@ -13,14 +13,21 @@ Depends:
     R (>= 2.10)
 Imports: 
     dplyr,
+    eurostat,
     ggalluvial,
     ggplot2,
     glue,
+    grDevices,
+    here,
+    purrr,
+    readr,
     rlang,
+    sf,
     stats,
     tibble,
     tidyr,
-    tidyselect
+    tidyselect,
+    vroom
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

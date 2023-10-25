@@ -7,7 +7,7 @@
 plot_xctr_financial(
   data,
   company_name = NULL,
-  mode = c("equal_weight", "worst_case", "best_case", "main_activity")
+  mode = c("equal_weight", "worst_case", "best_case")
 )
 }
 \arguments{
@@ -17,7 +17,7 @@ plot_xctr_financial(
 financial data for. If NULL, the function will plot the financial data for the portfolio.}
 
 \item{mode}{The mode of financial data to plot.
-It can be one of "equal_weight", "worst_case", "best_case", or "main_activity".}
+It can be one of "equal_weight", "worst_case" or "best_case".}
 }
 \value{
 A ggplot2 object representing the financial data plot.

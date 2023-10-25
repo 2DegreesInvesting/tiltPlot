@@ -6,7 +6,7 @@
 #' @param company_name (optional) The name of the specific company to plot the
 #' financial data for. If NULL, the function will plot the financial data for the portfolio.
 #' @param mode The mode of financial data to plot.
-#' It can be one of "equal_weight", "worst_case", "best_case", or "main_activity".
+#' It can be one of "equal_weight", "worst_case" or "best_case".
 #'
 #' @return A ggplot2 object representing the financial data plot.
 #'
@@ -19,15 +19,16 @@
 #' # Example 2: Plot portfolio-level financial data
 #' plot_xctr_financial(data = financial, mode = "worst_case")
 #'
-plot_xctr_financial <- function(data, company_name = NULL, mode = c("equal_weight", "worst_case", "best_case", "main_activity")) {
+plot_xctr_financial <- function(data,
+                                company_name = NULL,
+                                mode = c("equal_weight", "worst_case", "best_case")) {
   mode <- arg_match(mode)
 
   # TODO: do we want to drop NA's everywhere silently?
   data <- data |>
-    drop_na(-c(.data$equal_weight_finance, .data$worst_case_finance, .data$best_case_finance, .data$main_activity))
+    drop_na(-c(.data$equal_weight_finance, .data$worst_case_finance, .data$best_case_finance))
 
   crucial <- c(
-    "main_activity",
     "_risk_category",
     "equal_weight_finance",
     "worst_case_finance",

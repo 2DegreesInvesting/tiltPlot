@@ -102,4 +102,14 @@ plot_xctr(no_fin) +
   labs(title = "Risk distribution of all products on a portfolio level")
 ```
 
+### 4. Create a German map with risk categories color gradient
+
+```{r}
+map_region_risk(financial, "DE", benchmark = "unit_isic_sec") +
+  labs(title = "German map of high, medium and low propotion of the companies
+  that are found in one region.
+  © EuroGeographics for the administrative boundaries ")
+```
+
+
 
