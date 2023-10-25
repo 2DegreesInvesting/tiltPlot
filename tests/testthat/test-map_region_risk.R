@@ -9,15 +9,16 @@ test_that("returns correct risk category values colors", {
     xctr_risk_category = c("high", "medium", "low"),
     benchmark = rep("all", 3)
   )
-  expected_colors <- list(rgb(1, 0, 0), rgb(1, 0.5, 0), rgb(0, 1, 0))
+  expected_colors <- list(high = rgb(1, 0, 0),
+                          medium = rgb(1, 0.5, 0),
+                          low = rgb(0, 1, 0))
 
   plot <- map_region_risk(data)
 
   layers <- ggplot_build(plot)$data
   colors <- layers[[1]]$fill
 
-  expected <- lapply(expected_colors, function(x) sort(unlist(strsplit(x, ""))))
-  actual <- lapply(colors, function(x) sort(unlist(strsplit(x, ""))))
+  names(colors) <- names(expected_colors)
 
-  expect_true(identical(expected, actual))
+  expect_true(identical(expected_colors, colors))
 })
