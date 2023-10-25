@@ -18,21 +18,25 @@
 #' # Plot a German with a "unit" benchmark and equal_weight finance
 #' map_region_risk(financial, country_code = "DE", benchmark = "unit")
 map_region_risk <- function(data,
-                       #TODO : Plot for other countries
-                       country_code = c("DE"),
-                       benchmark = c("all",
-                                     "unit",
-                                     "tilt_sec",
-                                     "unit_tilt_sec",
-                                     "isic_sec",
-                                     "unit_isic_sec"),
-                       finance_weight = c("equal_weight", "worst_case", "best_case")) {
-  prepared_data <- prepare_geo_data(data,
-                                    country_code,
-                                    benchmark,
-                                    finance_weight)
-  shp_1 = prepared_data[[1]]
-  aggregated_data = prepared_data[[2]]
+                            # TODO : Plot for other countries
+                            country_code = c("DE"),
+                            benchmark = c(
+                              "all",
+                              "unit",
+                              "tilt_sec",
+                              "unit_tilt_sec",
+                              "isic_sec",
+                              "unit_isic_sec"
+                            ),
+                            finance_weight = c("equal_weight", "worst_case", "best_case")) {
+  prepared_data <- prepare_geo_data(
+    data,
+    country_code,
+    benchmark,
+    finance_weight
+  )
+  shp_1 <- prepared_data[[1]]
+  aggregated_data <- prepared_data[[2]]
 
   # create map based on financial geo with two layers; financial data and map
   ggplot() +
