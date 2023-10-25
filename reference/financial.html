@@ -61,22 +61,22 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">financial</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 114 × 13</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    kg_id  amount_total company_name  wz    amount_of_distinct_products</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bank_a         <span style="text-decoration: underline;">1</span>000 peter peasant A                               1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bank_a         <span style="text-decoration: underline;">1</span>000 peter peasant A                               1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bank_a         <span style="text-decoration: underline;">1</span>000 peter peasant A                               1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bank_a         <span style="text-decoration: underline;">1</span>000 peter peasant A                               1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bank_a         <span style="text-decoration: underline;">1</span>000 peter peasant A                               1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> bank_a         <span style="text-decoration: underline;">1</span>000 peter peasant A                               1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> bank_a         <span style="text-decoration: underline;">1</span>000 peter         B                               2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bank_a         <span style="text-decoration: underline;">1</span>000 peter         B                               2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bank_a         <span style="text-decoration: underline;">1</span>000 peter         B                               2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bank_a         <span style="text-decoration: underline;">1</span>000 peter         B                               2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    bank_id amount_total company_name postcode wz    xctr_risk_category benchmark</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bank_b           500 peter peasa…    <span style="text-decoration: underline;">53</span>773 A     high               all      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bank_b           500 peter peasa…    <span style="text-decoration: underline;">53</span>773 A     high               unit     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bank_b           500 peter peasa…    <span style="text-decoration: underline;">53</span>773 A     medium             tilt_sec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bank_b           500 peter peasa…    <span style="text-decoration: underline;">53</span>773 A     medium             unit_til…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bank_b           500 peter peasa…    <span style="text-decoration: underline;">53</span>773 A     low                isic_sec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> bank_b           500 peter peasa…    <span style="text-decoration: underline;">53</span>773 A     medium             unit_isi…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> bank_b           500 tilman          <span style="text-decoration: underline;">12</span>043 D     low                all      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bank_b           500 tilman          <span style="text-decoration: underline;">12</span>043 D     low                unit     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bank_b           500 tilman          <span style="text-decoration: underline;">12</span>043 D     medium             tilt_sec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bank_b           500 tilman          <span style="text-decoration: underline;">12</span>043 D     medium             unit_til…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 104 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 8 more variables: xctr_risk_category &lt;chr&gt;, benchmark &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   product_name &lt;chr&gt;, tilt_sector &lt;chr&gt;, equal_weight_finance &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   worst_case_finance &lt;int&gt;, best_case_finance &lt;int&gt;, main_activity &lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6 more variables: product_name &lt;chr&gt;, tilt_sector &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   amount_of_distinct_products &lt;int&gt;, equal_weight_finance &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   worst_case_finance &lt;int&gt;, best_case_finance &lt;int&gt;</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

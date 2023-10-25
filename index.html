@@ -77,22 +77,22 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">financial</span></span>
 <span><span class="co">#&gt; # A tibble: 114 × 13</span></span>
-<span><span class="co">#&gt;    kg_id  amount_total company_name  wz    amount_of_distinct_products</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;                       &lt;int&gt;</span></span>
-<span><span class="co">#&gt;  1 bank_a         1000 peter peasant A                               1</span></span>
-<span><span class="co">#&gt;  2 bank_a         1000 peter peasant A                               1</span></span>
-<span><span class="co">#&gt;  3 bank_a         1000 peter peasant A                               1</span></span>
-<span><span class="co">#&gt;  4 bank_a         1000 peter peasant A                               1</span></span>
-<span><span class="co">#&gt;  5 bank_a         1000 peter peasant A                               1</span></span>
-<span><span class="co">#&gt;  6 bank_a         1000 peter peasant A                               1</span></span>
-<span><span class="co">#&gt;  7 bank_a         1000 peter         B                               2</span></span>
-<span><span class="co">#&gt;  8 bank_a         1000 peter         B                               2</span></span>
-<span><span class="co">#&gt;  9 bank_a         1000 peter         B                               2</span></span>
-<span><span class="co">#&gt; 10 bank_a         1000 peter         B                               2</span></span>
+<span><span class="co">#&gt;    bank_id amount_total company_name postcode wz    xctr_risk_category benchmark</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;           &lt;int&gt; &lt;chr&gt; &lt;chr&gt;              &lt;chr&gt;    </span></span>
+<span><span class="co">#&gt;  1 bank_b           500 peter peasa…    53773 A     high               all      </span></span>
+<span><span class="co">#&gt;  2 bank_b           500 peter peasa…    53773 A     high               unit     </span></span>
+<span><span class="co">#&gt;  3 bank_b           500 peter peasa…    53773 A     medium             tilt_sec </span></span>
+<span><span class="co">#&gt;  4 bank_b           500 peter peasa…    53773 A     medium             unit_til…</span></span>
+<span><span class="co">#&gt;  5 bank_b           500 peter peasa…    53773 A     low                isic_sec </span></span>
+<span><span class="co">#&gt;  6 bank_b           500 peter peasa…    53773 A     medium             unit_isi…</span></span>
+<span><span class="co">#&gt;  7 bank_b           500 tilman          12043 D     low                all      </span></span>
+<span><span class="co">#&gt;  8 bank_b           500 tilman          12043 D     low                unit     </span></span>
+<span><span class="co">#&gt;  9 bank_b           500 tilman          12043 D     medium             tilt_sec </span></span>
+<span><span class="co">#&gt; 10 bank_b           500 tilman          12043 D     medium             unit_til…</span></span>
 <span><span class="co">#&gt; # ℹ 104 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 8 more variables: xctr_risk_category &lt;chr&gt;, benchmark &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   product_name &lt;chr&gt;, tilt_sector &lt;chr&gt;, equal_weight_finance &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   worst_case_finance &lt;int&gt;, best_case_finance &lt;int&gt;, main_activity &lt;int&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; # ℹ 6 more variables: product_name &lt;chr&gt;, tilt_sector &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   amount_of_distinct_products &lt;int&gt;, equal_weight_finance &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   worst_case_finance &lt;int&gt;, best_case_finance &lt;int&gt;</span></span></code></pre></div>
 <p>Here is the default Sankey Plot. By default the function plots with companies and uses an “equal_weight” mode.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fin</span> <span class="op">&lt;-</span> <span class="va">financial</span></span>
@@ -113,22 +113,22 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">financial</span></span>
 <span><span class="co">#&gt; # A tibble: 114 × 13</span></span>
-<span><span class="co">#&gt;    kg_id  amount_total company_name  wz    amount_of_distinct_products</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;                       &lt;int&gt;</span></span>
-<span><span class="co">#&gt;  1 bank_a         1000 peter peasant A                               1</span></span>
-<span><span class="co">#&gt;  2 bank_a         1000 peter peasant A                               1</span></span>
-<span><span class="co">#&gt;  3 bank_a         1000 peter peasant A                               1</span></span>
-<span><span class="co">#&gt;  4 bank_a         1000 peter peasant A                               1</span></span>
-<span><span class="co">#&gt;  5 bank_a         1000 peter peasant A                               1</span></span>
-<span><span class="co">#&gt;  6 bank_a         1000 peter peasant A                               1</span></span>
-<span><span class="co">#&gt;  7 bank_a         1000 peter         B                               2</span></span>
-<span><span class="co">#&gt;  8 bank_a         1000 peter         B                               2</span></span>
-<span><span class="co">#&gt;  9 bank_a         1000 peter         B                               2</span></span>
-<span><span class="co">#&gt; 10 bank_a         1000 peter         B                               2</span></span>
+<span><span class="co">#&gt;    bank_id amount_total company_name postcode wz    xctr_risk_category benchmark</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;           &lt;int&gt; &lt;chr&gt; &lt;chr&gt;              &lt;chr&gt;    </span></span>
+<span><span class="co">#&gt;  1 bank_b           500 peter peasa…    53773 A     high               all      </span></span>
+<span><span class="co">#&gt;  2 bank_b           500 peter peasa…    53773 A     high               unit     </span></span>
+<span><span class="co">#&gt;  3 bank_b           500 peter peasa…    53773 A     medium             tilt_sec </span></span>
+<span><span class="co">#&gt;  4 bank_b           500 peter peasa…    53773 A     medium             unit_til…</span></span>
+<span><span class="co">#&gt;  5 bank_b           500 peter peasa…    53773 A     low                isic_sec </span></span>
+<span><span class="co">#&gt;  6 bank_b           500 peter peasa…    53773 A     medium             unit_isi…</span></span>
+<span><span class="co">#&gt;  7 bank_b           500 tilman          12043 D     low                all      </span></span>
+<span><span class="co">#&gt;  8 bank_b           500 tilman          12043 D     low                unit     </span></span>
+<span><span class="co">#&gt;  9 bank_b           500 tilman          12043 D     medium             tilt_sec </span></span>
+<span><span class="co">#&gt; 10 bank_b           500 tilman          12043 D     medium             unit_til…</span></span>
 <span><span class="co">#&gt; # ℹ 104 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 8 more variables: xctr_risk_category &lt;chr&gt;, benchmark &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   product_name &lt;chr&gt;, tilt_sector &lt;chr&gt;, equal_weight_finance &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   worst_case_finance &lt;int&gt;, best_case_finance &lt;int&gt;, main_activity &lt;int&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; # ℹ 6 more variables: product_name &lt;chr&gt;, tilt_sector &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   amount_of_distinct_products &lt;int&gt;, equal_weight_finance &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   worst_case_finance &lt;int&gt;, best_case_finance &lt;int&gt;</span></span></code></pre></div>
 <p>On a company level:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fin</span> <span class="op">&lt;-</span> <span class="va">financial</span></span>
@@ -165,8 +165,8 @@
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">no_fin</span> <span class="op">&lt;-</span> <span class="va">without_financial</span></span>
 <span></span>
-<span><span class="va">no_fin</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">company_name</span> <span class="op">==</span> <span class="st">"peter"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span><span class="va">no_fin</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">company_name</span> <span class="op">==</span> <span class="st">"peter"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/plot_xctr.html">plot_xctr</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Risk distribution of all products on a company level"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-11-1.png" width="100%"></p>
@@ -175,6 +175,19 @@
 <code class="sourceCode R"><span><span class="fu"><a href="reference/plot_xctr.html">plot_xctr</a></span><span class="op">(</span><span class="va">no_fin</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Risk distribution of all products on a portfolio level"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-12-1.png" width="100%"></p>
+</div>
+<div class="section level3">
+<h3 id="id_4-create-a-german-map-with-risk-categories-color-gradient">4. Create a German map with risk categories color gradient<a class="anchor" aria-label="anchor" href="#id_4-create-a-german-map-with-risk-categories-color-gradient"></a>
+</h3>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/map_region_risk.html">map_region_risk</a></span><span class="op">(</span><span class="va">financial</span>, <span class="st">"DE"</span>, benchmark <span class="op">=</span> <span class="st">"unit_isic_sec"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"German map of high, medium and low propotion of the companies </span></span>
+<span><span class="st">  that are found in one region.</span></span>
+<span><span class="st">  © EuroGeographics for the administrative boundaries "</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Object cached at /tmp/Rtmp2M7MqW/eurostat/sf10320163035.RData</span></span>
+<span><span class="co">#&gt; Reading cache file /tmp/Rtmp2M7MqW/eurostat/sf10320163035.RData</span></span>
+<span><span class="co">#&gt; sf at resolution 1: 10  from year  2016  read from cache file:  /tmp/Rtmp2M7MqW/eurostat/sf10320163035.RData</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-13-1.png" width="100%"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="license">

@@ -48,7 +48,7 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plot_sankey</span><span class="op">(</span></span>
 <span>  <span class="va">data</span>,</span>
 <span>  with_company <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"equal_weight"</span>, <span class="st">"worst_case"</span>, <span class="st">"best_case"</span>, <span class="st">"main_activity"</span><span class="op">)</span></span>
+<span>  mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"equal_weight"</span>, <span class="st">"worst_case"</span>, <span class="st">"best_case"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -71,11 +71,6 @@ goes into the highest risk product. If there are two or more products associated
 with the same highest risk, we assume equal weights again.</p></li>
 <li><p>"best_case" - similar to the worst-case scenario but just with the
 lowest-risk category.</p></li>
-<li><p>"main_activity" - sometimes banks give one sector classification to one
-company. However, with our data we know that sometimes the products stem from
-different sectors. Knowing that the bank categorizes the product in one
-specific sector, we could assume that the bank only finance the product in
-the sector that it categories the company in.</p></li>
 </ul></dd>
 
 </dl></div>
