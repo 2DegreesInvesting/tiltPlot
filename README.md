@@ -16,15 +16,7 @@ The goal of tiltPlot is to provide plots for the TILT project.
 
 ``` r
 library(ggplot2)
-library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
+library(dplyr, warn.conflicts = FALSE)
 library(tiltPlot)
 ```
 
