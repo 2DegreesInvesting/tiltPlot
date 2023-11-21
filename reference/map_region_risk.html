@@ -27,7 +27,13 @@
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
-      <ul class="navbar-nav"></ul></div>
+      <ul class="navbar-nav"><li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/2DegreesInvesting/tiltPlot/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul></div>
 
     
   </div>
@@ -35,7 +41,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Create a map with the risk color of each region (NUTS3 granularity)</h1>
-      
+      <small class="dont-index">Source: <a href="https://github.com/2DegreesInvesting/tiltPlot/blob/HEAD/R/map_region_risk.R" class="external-link"><code>R/map_region_risk.R</code></a></small>
       <div class="d-none name"><code>map_region_risk.Rd</code></div>
     </div>
 
@@ -87,8 +93,8 @@ chosen, "equal_weight" is the default mode.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Plot a German with a "unit" benchmark and equal_weight finance</span></span></span>
 <span class="r-in"><span><span class="fu">map_region_risk</span><span class="op">(</span><span class="va">financial</span>, country_code <span class="op">=</span> <span class="st">"DE"</span>, benchmark <span class="op">=</span> <span class="st">"unit"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Object cached at /tmp/RtmpdtDpsJ/eurostat/sf10320163035.RData</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> sf at resolution 1: 10  cached at:  /tmp/RtmpdtDpsJ/eurostat/sf10320163035.RData</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Object cached at /tmp/RtmpDNCa8u/eurostat/sf10320163035.RData</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> sf at resolution 1: 10  cached at:  /tmp/RtmpDNCa8u/eurostat/sf10320163035.RData</span>
 <span class="r-plt img"><img src="map_region_risk-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
