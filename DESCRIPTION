@@ -29,7 +29,13 @@ Imports:
     tidyselect,
     vroom
 Suggests: 
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    tiltIndicator (>= 0.0.0.9094),
+    tiltToyData (>= 0.0.0.9002)
+Remotes: 
+    2DegreesInvesting/tiltIndicator,
+    2degreesinvesting/tiltToyData
+Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
