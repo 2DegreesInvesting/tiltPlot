@@ -2,3 +2,17 @@ url: https://2degreesinvesting.github.io/tiltPlot/
 template:
   bootstrap: 5
 
+reference:
+
+  - title: Main functions
+    contents:
+      - starts_with("plot_")
+
+  - title: Helpers
+    contents:
+      - starts_with("theme_")
+
+  - title: Datasets
+    contents:
+      - matches("financial")
+      - -starts_with("plot_")
