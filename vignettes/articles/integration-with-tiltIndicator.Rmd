@@ -45,12 +45,12 @@ at_product_level <- at_product_level |>
 Visualize all companies.
 
 ```{r}
-plot_xctr(at_product_level)
+plot_xctr_old(at_product_level)
 ```
 
 Visualize one specific company.
 
 ```{r}
 first_company <- filter(at_product_level, companies_id %in% first(companies_id))
-plot_xctr(first_company)
+plot_xctr_old(first_company)
 ```

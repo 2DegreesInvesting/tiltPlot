@@ -12,6 +12,8 @@ Plots for the 'TILT' project.
 Useful links:
 \itemize{
   \item \url{https://2degreesinvesting.github.io/tiltPlot/}
+  \item \url{https://github.com/2DegreesInvesting/tiltPlot}
+  \item Report bugs at \url{https://github.com/2DegreesInvesting/tiltPlot/issues}
 }
 
 }

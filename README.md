@@ -144,24 +144,28 @@ without_financial
 #> # ℹ 48 more rows
 ```
 
-To plot on a company level:
+Plot on a company level. The user can choose any number of benchmark to
+be plotted. If the benchmarks argument is not given to the function, the
+function will plot all the benchmarks.
 
 ``` r
 no_fin <- without_financial
 
+benchmarks = c("all", "unit", "isic_sec")
+
 no_fin |>
   filter(company_name == "peter") |>
-  plot_xctr() +
-  labs(title = "Risk distribution of all products on a company level")
+  bar_plot_xctr(benchmarks) +
+  labs(title = "Emission profile of all products on a company level")
 ```
 
 <img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
 
-On a portfolio level :
+Plot on a portfolio level.
 
 ``` r
-plot_xctr(no_fin) +
-  labs(title = "Risk distribution of all products on a portfolio level")
+bar_plot_xctr(no_fin, benchmarks) +
+  labs(title = "Emission profile of all products on a portfolio level")
 ```
 
 <img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
@@ -170,12 +174,11 @@ plot_xctr(no_fin) +
 
 ``` r
 map_region_risk(financial, "DE", benchmark = "unit_isic_sec") +
-  labs(title = "German map of high, medium and low propotion of the companies 
+  labs(title = "German map of high, medium and low propotion of the companies
   that are found in one region.
   © EuroGeographics for the administrative boundaries ")
-#> Object cached at /tmp/Rtmp2M7MqW/eurostat/sf10320163035.RData
-#> Reading cache file /tmp/Rtmp2M7MqW/eurostat/sf10320163035.RData
-#> sf at resolution 1: 10  from year  2016  read from cache file:  /tmp/Rtmp2M7MqW/eurostat/sf10320163035.RData
+#> Object cached at /tmp/RtmpFTvqqz/eurostat/sf10320163035.RData
+#> sf at resolution 1: 10  cached at:  /tmp/RtmpFTvqqz/eurostat/sf10320163035.RData
 ```
 
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />

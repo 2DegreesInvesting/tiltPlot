@@ -1,7 +1,7 @@
-#' Create a horizontal stacked bar chart for xctr, without financial data
+#' Create a horizontal stacked bar chart without financial data
 #'
-#' Generate a horizontal stacked bar chart showing the distribution of xctr_risk_category
-#' percentages for three benchmarks.
+#' Generate a horizontal stacked bar chart showing the distribution of
+#' the emission risk profiles risks for one or several benchmarks
 #'
 #' @param data A data frame like [without_financial]
 #'
@@ -12,7 +12,7 @@
 #' @examples
 #' benchmarks <- c("all", "unit", "isic_sec")
 #' bar_plot_xctr(without_financial, benchmarks)
-bar_plot_xctr <- function(without_financial,
+bar_plot_xctr <- function(data,
                           benchmarks = c(
                             "all",
                             "unit",
@@ -22,8 +22,6 @@ bar_plot_xctr <- function(without_financial,
                             "unit_isic_sec"
                           )) {
   benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
-  data <- without_financial
-
   # TODO: do we want to drop NA's everywhere silently?
   data <- data |>
     na.omit()
