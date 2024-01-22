@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#' benchmarks <- c("all", "unit", "tilt_sec")
+#' benchmarks <- c("all", "unit", "isic_sec")
 #' bar_plot_xctr(without_financial, benchmarks)
 bar_plot_xctr <- function(without_financial,
                           benchmarks = c(
@@ -21,13 +21,10 @@ bar_plot_xctr <- function(without_financial,
                             "isic_sec",
                             "unit_isic_sec"
                           )) {
-  benchmarks_arg <- arg_match(benchmarks)
-  # TODO: do we want to drop NA's everywhere silently?
-
-  benchmark <- "unit"
-  benchmarks <- c("all", "unit", "tilt_sec")
+  benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
   data <- without_financial
 
+  # TODO: do we want to drop NA's everywhere silently?
   data <- data |>
     na.omit()
 
@@ -52,10 +49,7 @@ bar_plot_xctr <- function(without_financial,
 
   ggplot(data, aes(x = .data$proportion, y = .data$benchmark, fill = .data$risk_category_var)) +
     geom_col(position = "stack") +
-    #facet_wrap(~ .data$benchmark, scales = "fixed") +
     fill_score_colors() +
     theme_tiltplot() +
-    ggplot2::xlim(0, 1)
-    #ggtitle(paste("Stacked Horizontal Bar Plot for", benchmarks))
-
+    xlim(0, 1)
 }

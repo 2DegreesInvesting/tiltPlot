@@ -42,6 +42,7 @@
 #' @importFrom ggplot2 theme_classic
 #' @importFrom ggplot2 theme_minimal
 #' @importFrom ggplot2 unit
+#' @importFrom ggplot2 xlim
 #' @importFrom ggplot2 ylim
 #' @importFrom glue glue
 #' @importFrom grDevices rgb
