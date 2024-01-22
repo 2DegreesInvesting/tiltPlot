@@ -102,7 +102,7 @@ all the benchmarks.
 ```{r}
 no_fin <- without_financial
 
-benchmarks = c("all", "unit", "isic_sec")
+benchmarks <- c("all", "unit", "isic_sec")
 
 no_fin |>
   filter(company_name == "peter") |>
