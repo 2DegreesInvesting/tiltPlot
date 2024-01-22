@@ -177,8 +177,9 @@ map_region_risk(financial, "DE", benchmark = "unit_isic_sec") +
   labs(title = "German map of high, medium and low propotion of the companies
   that are found in one region.
   © EuroGeographics for the administrative boundaries ")
-#> Object cached at /tmp/RtmpFTvqqz/eurostat/sf10320163035.RData
-#> sf at resolution 1: 10  cached at:  /tmp/RtmpFTvqqz/eurostat/sf10320163035.RData
+#> Object cached at /tmp/Rtmpq9D2bJ/eurostat/sf10320163035.RData
+#> Reading cache file /tmp/Rtmpq9D2bJ/eurostat/sf10320163035.RData
+#> sf at resolution 1: 10  from year  2016  read from cache file:  /tmp/Rtmpq9D2bJ/eurostat/sf10320163035.RData
 ```
 
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />

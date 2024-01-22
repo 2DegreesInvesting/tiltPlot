@@ -10,7 +10,11 @@ bar_plot_xctr(
 )
 }
 \arguments{
-\item{data}{A data frame like \link{without_financial}}
+\item{data}{A data frame like \link{without_financial}.}
+
+\item{benchmarks}{A character vector specifying the benchmarks for which the
+emission profiles will be plotted. The user can choose from one to several
+benchmark(s) to be plotted.}
 }
 \value{
 A \link{ggplot} object.

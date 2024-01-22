@@ -26,7 +26,7 @@ plot_xctr_financial <- function(data,
 
   # TODO: do we want to drop NA's everywhere silently?
   data <- data |>
-    drop_na(-c(.data$equal_weight_finance, .data$worst_case_finance, .data$best_case_finance))
+    drop_na(-c("equal_weight_finance", "worst_case_finance", "best_case_finance"))
 
   crucial <- c(
     "_risk_category",
