@@ -35,6 +35,7 @@
 #' @importFrom ggplot2 ggplot_build
 #' @importFrom ggplot2 ggtitle
 #' @importFrom ggplot2 labs
+#' @importFrom ggplot2 position_stack
 #' @importFrom ggplot2 scale_fill_manual
 #' @importFrom ggplot2 scale_x_discrete
 #' @importFrom ggplot2 sym

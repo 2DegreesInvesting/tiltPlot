@@ -48,7 +48,7 @@ bar_plot_xctr <- function(without_financial,
     mutate(proportion = .data$count / sum(.data$count))
 
   ggplot(data, aes(x = .data$proportion, y = .data$benchmark, fill = .data$risk_category_var)) +
-    geom_col(position = "stack") +
+    geom_col(position = position_stack(reverse = TRUE), width = width_bar()) +
     fill_score_colors() +
     theme_tiltplot() +
     xlim(0, 1)
