@@ -9,8 +9,8 @@
 #' @export
 #'
 #' @examples
-#' plot_xctr(without_financial)
-plot_xctr <- function(data) {
+#' plot_xctr_old(without_financial)
+plot_xctr_old <- function(data) {
   # TODO: do we want to drop NA's everywhere silently?
   data <- data |>
     na.omit()
