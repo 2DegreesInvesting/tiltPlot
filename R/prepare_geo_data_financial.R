@@ -8,8 +8,8 @@
 #' @noRd
 #'
 #' @examples
-#' prepare_geo_data(financial_data)
-prepare_geo_data <- function(data,
+#' prepare_geo_data_financial(financial_data)
+prepare_geo_data_financial <- function(data,
                              country_code = c("DE"),
                              benchmark = c(
                                "all",

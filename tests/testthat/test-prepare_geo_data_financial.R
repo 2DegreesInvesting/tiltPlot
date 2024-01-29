@@ -4,6 +4,6 @@ test_that("returns an object of the expected class", {
     xctr_risk_category = c("high", "medium", "low"),
     benchmark = rep("all", 3)
   )
-  prepared_data <- prepare_geo_data(data)
+  prepared_data <- prepare_geo_data_financial(data)
   expect_type(prepared_data, "list")
 })
