@@ -1,5 +1,5 @@
 test_that("returns an object of the expected class", {
-  plot <- map_region_risk(financial)
+  plot <- map_region_risk_financial(financial)
   expect_s3_class(plot, "ggplot")
 })
 
@@ -15,7 +15,7 @@ test_that("returns correct risk category values colors", {
     low = rgb(0, 1, 0)
   )
 
-  plot <- map_region_risk(data)
+  plot <- map_region_risk_financial(data)
 
   layers <- ggplot_build(plot)$data
   colors <- layers[[1]]$fill
