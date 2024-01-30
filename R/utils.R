@@ -116,11 +116,11 @@ risk_category_levels <- function() c("low", "medium", "high")
 #' categories <- as_risk_category(c("low", "medium", "medium", "high"))
 #' calculate_case_proportions(categories, mode = "worst_case")
 #' @noRd
-calculate_case_proportions <- function(categories, mode, company_count) {
+calculate_case_proportions <- function(categories, mode) {
   if (mode == "worst_case") {
-    extreme_risk <- levels(categories)[which.max(as.integer(categories))]
+    extreme_risk <- levels(categories)[max(as.integer(categories))]
   } else if (mode == "best_case") {
-    extreme_risk <- levels(categories)[which.min(as.integer(categories))]
+    extreme_risk <- levels(categories)[min(as.integer(categories))]
   }
 
   is_extreme <- categories == extreme_risk
