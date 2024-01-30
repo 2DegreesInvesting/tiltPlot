@@ -7,7 +7,7 @@
 #' @param benchmark The mode of benchmark to plot.
 #' It can be one of "all", "unit" or "tilt_sec", "unit_tilt_sec", "isic_sec"
 #' or "unit_isic_sec". If nothing is chosen, "all" is the default mode.
-#' @param case The mode to plot. It can be one of "equal_weight", "worst_case"
+#' @param mode The mode to plot. It can be one of "equal_weight", "worst_case"
 #' or "best_case". If nothing is chosen, "equal_weight" is the default mode.
 #'
 #' @return A ggplot2 object representing the country data plot.

@@ -6,9 +6,20 @@
 #'
 #' @return A data frame with aggregated data, with the colors proportional to
 #' the risks.
-#' @export
+#' @noRd
 #'
 #' @examples
+#' library(tibble)
+#'
+#' # Create a sample geo_data tibble
+#' geo_data <- tibble(
+#'   postcode = c("1", "2", "3"),
+#'   company_name = c("A", "B", "C"),
+#'   risk_category_var = factor(c("low", "medium", "high"),
+#'   levels = c("low", "medium", "high"))
+#' )
+#'
+#' aggregated_data <- aggregate_geo_data(geo_data, mode = "worst_case")
 aggregate_geo_data <- function(geo, mode) {
   if (mode %in% c("worst_case", "best_case")) {
     aggregated_data <- geo |>
