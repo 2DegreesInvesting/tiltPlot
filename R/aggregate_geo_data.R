@@ -16,7 +16,8 @@
 #'   postcode = c("1", "2", "3"),
 #'   company_name = c("A", "B", "C"),
 #'   risk_category_var = factor(c("low", "medium", "high"),
-#'   levels = c("low", "medium", "high"))
+#'     levels = c("low", "medium", "high")
+#'   )
 #' )
 #'
 #' aggregated_data <- aggregate_geo_data(geo_data, mode = "worst_case")

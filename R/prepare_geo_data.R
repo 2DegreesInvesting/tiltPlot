@@ -18,7 +18,7 @@ prepare_geo_data <- function(data,
                                "unit_tilt_sec",
                                "isic_sec",
                                "unit_isic_sec"
-                               ),
+                             ),
                              mode = c("equal_weight", "worst_case", "best_case")) {
   benchmark_arg <- arg_match(benchmark)
   mode <- arg_match(mode)

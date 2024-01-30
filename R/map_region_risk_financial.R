@@ -19,17 +19,17 @@
 #' # Plot a German with a "unit" benchmark and equal_weight finance
 #' map_region_risk_financial(financial, country_code = "DE", benchmark = "unit")
 map_region_risk_financial <- function(data,
-                            # TODO : Plot for other countries
-                            country_code = c("DE"),
-                            benchmark = c(
-                              "all",
-                              "unit",
-                              "tilt_sec",
-                              "unit_tilt_sec",
-                              "isic_sec",
-                              "unit_isic_sec"
-                            ),
-                            finance_weight = c("equal_weight", "worst_case", "best_case")) {
+                                      # TODO : Plot for other countries
+                                      country_code = c("DE"),
+                                      benchmark = c(
+                                        "all",
+                                        "unit",
+                                        "tilt_sec",
+                                        "unit_tilt_sec",
+                                        "isic_sec",
+                                        "unit_isic_sec"
+                                      ),
+                                      finance_weight = c("equal_weight", "worst_case", "best_case")) {
   prepared_data <- prepare_geo_data_financial(
     data,
     country_code,

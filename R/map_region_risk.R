@@ -17,7 +17,7 @@
 #' # Plot a German with a "unit" benchmark and equal_weight finance
 #' map_region_risk(without_financial, country_code = "DE", benchmark = "unit")
 map_region_risk <- function(data,
-                            #TODO: plot for other countries
+                            # TODO: plot for other countries
                             country_code = c("DE"),
                             benchmark = c(
                               "all",
@@ -26,7 +26,7 @@ map_region_risk <- function(data,
                               "unit_tilt_sec",
                               "isic_sec",
                               "unit_isic_sec"
-                              ),
+                            ),
                             mode = c("equal_weight", "worst_case", "best_case")) {
   prepared_data <- prepare_geo_data(
     data,
@@ -42,5 +42,4 @@ map_region_risk <- function(data,
     geom_sf(data = aggregated_data, mapping = aes(fill = .data$color)) +
     geom_sf(data = shp_1, fill = NA) +
     coord_sf()
-
 }
