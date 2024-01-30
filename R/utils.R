@@ -102,29 +102,3 @@ check_levels <- function(x) {
 }
 
 risk_category_levels <- function() c("low", "medium", "high")
-
-
-#' Calculate Proportions for Worst or Best Case Scenarios
-#'
-#' @param categories A factor vector of risk categories.
-#' @param mode A character string specifying the mode.
-#'
-#' @return A numeric vector representing the calculated proportions for each
-#' category.
-#'
-#' @examples
-#' categories <- as_risk_category(c("low", "medium", "medium", "high"))
-#' calculate_case_proportions(categories, mode = "worst_case")
-#' @noRd
-calculate_case_proportions <- function(categories, mode) {
-  if (mode == "worst_case") {
-    extreme_risk <- levels(categories)[max(as.integer(categories))]
-  } else if (mode == "best_case") {
-    extreme_risk <- levels(categories)[min(as.integer(categories))]
-  }
-
-  is_extreme <- categories == extreme_risk
-  proportions <- ifelse(is_extreme, 1 / sum(is_extreme), 0)
-
-  return(proportions)
-}

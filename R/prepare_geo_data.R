@@ -23,11 +23,6 @@ prepare_geo_data <- function(data,
   benchmark_arg <- arg_match(benchmark)
   mode <- arg_match(mode)
 
-  benchmark_arg <- "tilt_sec"
-  mode <- "worst_case"
-  data <- without_financial
-  country_code <- "DE"
-
   crucial <- c(
     "_risk_category",
     "company_name",
@@ -65,29 +60,7 @@ prepare_geo_data <- function(data,
     left_join(shp_1, by = "postcode") |>
     st_as_sf()
 
-  if (mode %in% c("worst_case", "best_case")) {
-    aggregated_data <- geo |>
-      group_by(.data$postcode, .data$company_name) |>
-      mutate(
-        # Choose the worst or best risk category and sets the others to 0.
-        proportion =  calculate_case_proportions(.data$risk_category_var, mode)
-      ) |>
-      group_by(.data$postcode, .data$risk_category_var) |>
-      summarize(proportion = sum(.data$proportion)) |>
-      ungroup()
-  } else if (mode == "equal_weight") {
-    aggregated_data <- geo |>
-      group_by(.data$postcode, .data$risk_category_var) |>
-      summarize(count = n()) |>
-      # Do not group by company here since all of them have equal weights.
-      group_by(.data$postcode) |>
-      mutate(proportion = .data$count / sum(.data$count)) |>
-      ungroup()
-  }
-  # apply custom_gradient_color to each row
-  aggregated_data <- aggregated_data |>
-    pivot_wider(names_from = "risk_category_var", values_from = "proportion", values_fill = 0) |>
-    mutate(color = pmap(list(.data$high, .data$medium, .data$low), custom_gradient_color))
+  aggregated_data <- aggregate_geo_data(geo, mode)
 
   return(list(shp_1, aggregated_data))
 }

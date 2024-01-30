@@ -68,6 +68,7 @@ prepare_geo_data_financial <- function(data,
 
   # apply custom_gradient_color to each row
   aggregated_data <- aggregated_data |>
+    #FIXME: "xctr_risk_category" to be changed into "risk_category_var"
     pivot_wider(names_from = "xctr_risk_category", values_from = "proportion", values_fill = 0) |>
     mutate(color = pmap(list(.data$high, .data$medium, .data$low), custom_gradient_color))
 
