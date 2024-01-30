@@ -1,4 +1,5 @@
-#' Create a map with the risk color of each region (NUTS3 granularity)
+#' Create a map with the risk color of each region (NUTS3 granularity), with
+#' financial data
 #'
 #' @param data A data frame like [financial]
 #' @param country_code Country code (ISO 3166 alpha-2) for which the map will be
@@ -29,7 +30,7 @@ map_region_risk_financial <- function(data,
                               "unit_isic_sec"
                             ),
                             finance_weight = c("equal_weight", "worst_case", "best_case")) {
-  prepared_data <- prepare_geo_data(
+  prepared_data <- prepare_geo_data_financial(
     data,
     country_code,
     benchmark,
