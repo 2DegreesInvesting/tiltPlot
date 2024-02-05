@@ -1,7 +1,7 @@
 #' Create a horizontal stacked bar chart without financial data
 #'
 #' Generate a horizontal stacked bar chart showing the distribution of
-#' the emission risk profiles risks for one or several benchmarks
+#' the emission risk profiles risks for one or several benchmarks.
 #'
 #' @param data A data frame like [without_financial].
 #' @param benchmarks A character vector specifying the benchmarks for which the
