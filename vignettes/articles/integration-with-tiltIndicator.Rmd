@@ -25,7 +25,7 @@ Data.
 
 ```{r}
 companies <- read_csv(toy_emissions_profile_any_companies())
-products <- read_csv(toy_emissions_profile_products())
+products <- read_csv(toy_emissions_profile_products_ecoinvent())
 ```
 
 Apply tilt methodology.
