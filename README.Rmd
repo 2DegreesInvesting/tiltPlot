@@ -106,14 +106,14 @@ benchmarks <- c("all", "unit", "isic_sec")
 
 no_fin |>
   filter(company_name == "peter") |>
-  bar_plot_xctr(benchmarks) +
+  bar_plot_emission_profile(benchmarks) +
   labs(title = "Emission profile of all products on a company level")
 ```
 
 Plot on a portfolio level. 
 
 ```{r}
-bar_plot_xctr(no_fin, benchmarks) +
+bar_plot_emission_profile(no_fin, benchmarks) +
   labs(title = "Emission profile of all products on a portfolio level")
 ```
 

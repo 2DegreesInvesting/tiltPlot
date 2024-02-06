@@ -14,8 +14,8 @@
 #'
 #' @examples
 #' benchmarks <- c("all", "unit", "isic_sec")
-#' bar_plot_xctr(without_financial, benchmarks)
-bar_plot_xctr <- function(data,
+#' bar_plot_emission_profile(without_financial, benchmarks)
+bar_plot_emission_profile <- function(data,
                           benchmarks = c(
                             "all",
                             "unit",
