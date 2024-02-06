@@ -151,12 +151,14 @@ function will plot all the benchmarks.
 ``` r
 no_fin <- without_financial
 
-benchmarks = c("all", "unit", "isic_sec")
+benchmarks <- c("all", "unit", "isic_sec")
 
 no_fin |>
   filter(company_name == "peter") |>
-  bar_plot_xctr(benchmarks) +
+  bar_plot_emission_profile(benchmarks) +
   labs(title = "Emission profile of all products on a company level")
+#> Warning in bar_plot_emission_profile(filter(no_fin, company_name == "peter"), :
+#> Rows with missing values in the data were dropped.
 ```
 
 <img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
@@ -164,8 +166,10 @@ no_fin |>
 Plot on a portfolio level.
 
 ``` r
-bar_plot_xctr(no_fin, benchmarks) +
+bar_plot_emission_profile(no_fin, benchmarks) +
   labs(title = "Emission profile of all products on a portfolio level")
+#> Warning in bar_plot_emission_profile(no_fin, benchmarks): Rows with missing
+#> values in the data were dropped.
 ```
 
 <img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
@@ -177,9 +181,9 @@ map_region_risk(financial, "DE", benchmark = "unit_isic_sec") +
   labs(title = "German map of high, medium and low propotion of the companies
   that are found in one region.
   © EuroGeographics for the administrative boundaries ")
-#> Object cached at /tmp/Rtmpq9D2bJ/eurostat/sf10320163035.RData
-#> Reading cache file /tmp/Rtmpq9D2bJ/eurostat/sf10320163035.RData
-#> sf at resolution 1: 10  from year  2016  read from cache file:  /tmp/Rtmpq9D2bJ/eurostat/sf10320163035.RData
+#> Object cached at /tmp/RtmpEXNSUi/eurostat/sf10320163035.RData
+#> Reading cache file /tmp/RtmpEXNSUi/eurostat/sf10320163035.RData
+#> sf at resolution 1: 10  from year  2016  read from cache file:  /tmp/RtmpEXNSUi/eurostat/sf10320163035.RData
 ```
 
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
