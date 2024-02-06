@@ -7,6 +7,7 @@ reference:
   - title: Main functions
     contents:
       - starts_with("plot_")
+      - starts_with("map_")
 
   - title: Helpers
     contents:
