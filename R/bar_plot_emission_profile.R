@@ -40,6 +40,27 @@ bar_plot_emission_profile <- function(data,
   data <- data |>
     mutate(risk_category_var = as_risk_category(data[[risk_var]]))
 
+  data <- calc_benchmark_emission_profile(data, risk_var, benchmarks_arg)
+
+  ggplot(data, aes(x = .data$proportion, y = .data$benchmark, fill = .data$risk_category_var)) +
+    geom_col(position = position_stack(reverse = TRUE), width = width_bar()) +
+    fill_score_colors() +
+    theme_tiltplot() +
+    xlim(0, 1)
+}
+
+#' Calculate emission profile proportions for specific benchmarks
+#'
+#' @param data A data frame containing the emission profile data.
+#' @param risk_var The name of the variable containing risk categories.
+#' @param benchmarks A character vector specifying the benchmark(s) to consider.
+#'
+#' @return A data frame with calculated proportions of emission profile categories.
+#'
+#' @examples
+#' calc_benchmark_emission_profile(without_financial, "_risk_category", c("all", "unit"))
+#' @noRd
+calc_benchmark_emission_profile <- function(data, risk_var, benchmarks) {
   data <- data |>
     mutate(risk_category_var = as_risk_category(data[[risk_var]])) |>
     filter(.data$benchmark %in% benchmarks) |>
@@ -47,10 +68,5 @@ bar_plot_emission_profile <- function(data,
     summarize(count = n()) |>
     group_by(.data$benchmark) |>
     mutate(proportion = .data$count / sum(.data$count))
-
-  ggplot(data, aes(x = .data$proportion, y = .data$benchmark, fill = .data$risk_category_var)) +
-    geom_col(position = position_stack(reverse = TRUE), width = width_bar()) +
-    fill_score_colors() +
-    theme_tiltplot() +
-    xlim(0, 1)
+  return(data)
 }

@@ -21,7 +21,7 @@ A \link{ggplot} object.
 }
 \description{
 Generate a horizontal stacked bar chart showing the distribution of
-the emission risk profiles risks for one or several benchmarks
+the emission risk profiles risks for one or several benchmarks.
 }
 \examples{
 benchmarks <- c("all", "unit", "isic_sec")
