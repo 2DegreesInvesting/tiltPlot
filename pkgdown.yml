@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   integration-with-tiltIndicator: integration-with-tiltIndicator.html
-last_built: 2024-02-13T15:32Z
+last_built: 2024-02-13T16:12Z
 urls:
   reference: https://2degreesinvesting.github.io/tiltPlot/reference
   article: https://2degreesinvesting.github.io/tiltPlot/articles
