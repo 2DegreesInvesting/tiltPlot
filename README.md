@@ -157,8 +157,6 @@ no_fin |>
   filter(company_name == "peter") |>
   bar_plot_emission_profile(benchmarks) +
   labs(title = "Emission profile of all products on a company level")
-#> Warning in bar_plot_emission_profile(filter(no_fin, company_name == "peter"), :
-#> Rows with missing values in the data were dropped.
 ```
 
 <img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
@@ -168,8 +166,6 @@ Plot on a portfolio level.
 ``` r
 bar_plot_emission_profile(no_fin, benchmarks) +
   labs(title = "Emission profile of all products on a portfolio level")
-#> Warning in bar_plot_emission_profile(no_fin, benchmarks): Rows with missing
-#> values in the data were dropped.
 ```
 
 <img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
@@ -181,8 +177,9 @@ map_region_risk(financial, "DE", benchmark = "unit_isic_sec") +
   labs(title = "German map of high, medium and low propotion of the companies
   that are found in one region.
   © EuroGeographics for the administrative boundaries ")
-#> Object cached at /tmp/RtmpfGPP8E/eurostat/sf10320163035.RData
-#> sf at resolution 1: 10  cached at:  /tmp/RtmpfGPP8E/eurostat/sf10320163035.RData
+#> 'make_valid' argument has been deprecated
+#> Loading required namespace: giscoR
+#> Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues
 ```
 
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
