@@ -59,9 +59,9 @@ prepare_geo_data <- function(data,
     left_join(shp_1, by = "postcode") |>
     st_as_sf()
 
-  aggregated_data <- aggregate_geo_data(geo, mode)
+  aggregated_data <- aggregate_geo(geo, mode)
 
-  return(list(shp_1, aggregated_data))
+  list(shp_1, aggregated_data)
 }
 
 
@@ -79,7 +79,7 @@ prepare_geo_data <- function(data,
 #' library(tibble)
 #'
 #' # Create a sample geo_data tibble
-#' geo_data <- tibble(
+#' geo <- tibble(
 #'   postcode = c("1", "2", "3"),
 #'   company_name = c("A", "B", "C"),
 #'   risk_category_var = factor(c("low", "medium", "high"),
@@ -87,8 +87,8 @@ prepare_geo_data <- function(data,
 #'   )
 #' )
 #'
-#' aggregated_data <- aggregate_geo_data(geo_data, mode = "worst_case")
-aggregate_geo_data <- function(geo, mode) {
+#' aggregate_geo(geo, mode = "worst_case")
+aggregate_geo <- function(geo, mode) {
   if (mode %in% c("worst_case", "best_case")) {
     aggregated_data <- geo |>
       group_by(.data$postcode, .data$company_name) |>
@@ -114,7 +114,7 @@ aggregate_geo_data <- function(geo, mode) {
     pivot_wider(names_from = "risk_category_var", values_from = "proportion", values_fill = 0) |>
     mutate(color = pmap(list(.data$high, .data$medium, .data$low), custom_gradient_color))
 
-  return(aggregated_data)
+  aggregated_data
 }
 
 #' Calculate Proportions for Worst or Best Case Scenarios
@@ -139,5 +139,5 @@ calculate_case_proportions <- function(categories, mode) {
   is_extreme <- categories == extreme_risk
   proportions <- ifelse(is_extreme, 1 / sum(is_extreme), 0)
 
-  return(proportions)
+  proportions
 }
