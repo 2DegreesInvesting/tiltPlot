@@ -25,9 +25,6 @@ bar_plot_emission_profile <- function(data,
                             "unit_isic_sec"
                           )) {
   benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
-  data <- data |>
-    na.omit()
-  warning("Rows with missing values in the data were dropped.")
 
   crucial <- c(
     "benchmark",
