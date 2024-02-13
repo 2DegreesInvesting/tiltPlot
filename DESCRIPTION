@@ -16,6 +16,7 @@ Imports:
     eurostat,
     ggalluvial,
     ggplot2,
+    giscoR,
     glue,
     grDevices,
     here,
@@ -29,7 +30,6 @@ Imports:
     tidyselect,
     vroom
 Suggests: 
-    giscoR,
     testthat (>= 3.0.0),
     tiltIndicator (>= 0.0.0.9094),
     tiltToyData (>= 0.0.0.9002)
