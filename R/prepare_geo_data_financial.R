@@ -31,6 +31,8 @@ prepare_geo_data_financial <- function(data,
   )
   data |> check_crucial_names(names_matching(data, crucial))
   risk_var <- names_matching(data, "_risk_category")
+  data <- data |>
+    mutate(risk_category_var = as_risk_category(data[[risk_var]]))
 
   # get shapefile of European countries
   shp_0 <- get_eurostat_geospatial(
@@ -60,7 +62,7 @@ prepare_geo_data_financial <- function(data,
 
   # Add the code for data aggregation and color mapping
   aggregated_data <- financial_geo |>
-    group_by(.data$postcode, .data$xctr_risk_category) |>
+    group_by(.data$postcode, .data$risk_category_var) |>
     summarize(count = n()) |>
     group_by(.data$postcode) |>
     mutate(proportion = .data$count / sum(.data$count)) |>
@@ -68,8 +70,7 @@ prepare_geo_data_financial <- function(data,
 
   # apply custom_gradient_color to each row
   aggregated_data <- aggregated_data |>
-    # FIXME: "xctr_risk_category" to be changed into "risk_category_var"
-    pivot_wider(names_from = "xctr_risk_category", values_from = "proportion", values_fill = 0) |>
+    pivot_wider(names_from = "risk_category_var", values_from = "proportion", values_fill = 0) |>
     mutate(color = pmap(list(.data$high, .data$medium, .data$low), custom_gradient_color))
 
   return(list(shp_1, aggregated_data))
