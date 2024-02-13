@@ -16,14 +16,14 @@
 #' benchmarks <- c("all", "unit", "isic_sec")
 #' bar_plot_emission_profile(without_financial, benchmarks)
 bar_plot_emission_profile <- function(data,
-                          benchmarks = c(
-                            "all",
-                            "unit",
-                            "tilt_sec",
-                            "unit_tilt_sec",
-                            "isic_sec",
-                            "unit_isic_sec"
-                          )) {
+                                      benchmarks = c(
+                                        "all",
+                                        "unit",
+                                        "tilt_sec",
+                                        "unit_tilt_sec",
+                                        "isic_sec",
+                                        "unit_isic_sec"
+                                      )) {
   benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
 
   crucial <- c(
