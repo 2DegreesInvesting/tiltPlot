@@ -159,7 +159,7 @@
 <p><img src="reference/figures/README-unnamed-chunk-9-1.png" width="100%"></p>
 </div>
 <div class="section level3">
-<h3 id="id_3-xctr-plots-without-financial-data">3. XCTR plots without financial data<a class="anchor" aria-label="anchor" href="#id_3-xctr-plots-without-financial-data"></a>
+<h3 id="id_3-emission-profile-plots-without-financial-data">3. Emission profile plots without financial data<a class="anchor" aria-label="anchor" href="#id_3-emission-profile-plots-without-financial-data"></a>
 </h3>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">without_financial</span></span>
@@ -177,19 +177,21 @@
 <span><span class="co">#&gt;  9 peter         medium             tilt_sec      banana       A          </span></span>
 <span><span class="co">#&gt; 10 peter         medium             unit_tilt_sec banana       A          </span></span>
 <span><span class="co">#&gt; # ℹ 48 more rows</span></span></code></pre></div>
-<p>To plot on a company level:</p>
+<p>Plot on a company level. The user can choose any number of benchmark to be plotted. If the benchmarks argument is not given to the function, the function will plot all the benchmarks.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">no_fin</span> <span class="op">&lt;-</span> <span class="va">without_financial</span></span>
 <span></span>
+<span><span class="va">benchmarks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"all"</span>, <span class="st">"unit"</span>, <span class="st">"isic_sec"</span><span class="op">)</span></span>
+<span></span>
 <span><span class="va">no_fin</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">company_name</span> <span class="op">==</span> <span class="st">"peter"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="reference/plot_xctr.html">plot_xctr</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Risk distribution of all products on a company level"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="reference/bar_plot_emission_profile.html">bar_plot_emission_profile</a></span><span class="op">(</span><span class="va">benchmarks</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Emission profile of all products on a company level"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-11-1.png" width="100%"></p>
-<p>On a portfolio level :</p>
+<p>Plot on a portfolio level.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_xctr.html">plot_xctr</a></span><span class="op">(</span><span class="va">no_fin</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Risk distribution of all products on a portfolio level"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/bar_plot_emission_profile.html">bar_plot_emission_profile</a></span><span class="op">(</span><span class="va">no_fin</span>, <span class="va">benchmarks</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Emission profile of all products on a portfolio level"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-12-1.png" width="100%"></p>
 </div>
 <div class="section level3">
@@ -197,12 +199,12 @@
 </h3>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/map_region_risk.html">map_region_risk</a></span><span class="op">(</span><span class="va">financial</span>, <span class="st">"DE"</span>, benchmark <span class="op">=</span> <span class="st">"unit_isic_sec"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"German map of high, medium and low propotion of the companies </span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"German map of high, medium and low propotion of the companies</span></span>
 <span><span class="st">  that are found in one region.</span></span>
 <span><span class="st">  © EuroGeographics for the administrative boundaries "</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Object cached at /tmp/Rtmp2M7MqW/eurostat/sf10320163035.RData</span></span>
-<span><span class="co">#&gt; Reading cache file /tmp/Rtmp2M7MqW/eurostat/sf10320163035.RData</span></span>
-<span><span class="co">#&gt; sf at resolution 1: 10  from year  2016  read from cache file:  /tmp/Rtmp2M7MqW/eurostat/sf10320163035.RData</span></span></code></pre></div>
+<span><span class="co">#&gt; 'make_valid' argument has been deprecated</span></span>
+<span><span class="co">#&gt; Loading required namespace: giscoR</span></span>
+<span><span class="co">#&gt; Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-13-1.png" width="100%"></p>
 </div>
 </div>

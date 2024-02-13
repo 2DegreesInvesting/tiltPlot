@@ -103,12 +103,12 @@
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span>xctr_risk_category <span class="op">=</span> <span class="va">risk_category</span>, benchmark <span class="op">=</span> <span class="va">grouped_by</span><span class="op">)</span></span></code></pre></div>
 <p>Visualize all companies.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_xctr.html">plot_xctr</a></span><span class="op">(</span><span class="va">at_product_level</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/bar_plot_emission_profile.html">bar_plot_emission_profile</a></span><span class="op">(</span><span class="va">at_product_level</span><span class="op">)</span></span></code></pre></div>
 <p><img src="integration-with-tiltIndicator_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 <p>Visualize one specific company.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">first_company</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">at_product_level</span>, <span class="va">companies_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html" class="external-link">first</a></span><span class="op">(</span><span class="va">companies_id</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/plot_xctr.html">plot_xctr</a></span><span class="op">(</span><span class="va">first_company</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/bar_plot_emission_profile.html">bar_plot_emission_profile</a></span><span class="op">(</span><span class="va">first_company</span><span class="op">)</span></span></code></pre></div>
 <p><img src="integration-with-tiltIndicator_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
   </main>
 </div>
