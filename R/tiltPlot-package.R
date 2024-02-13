@@ -45,6 +45,7 @@
 #' @importFrom ggplot2 unit
 #' @importFrom ggplot2 xlim
 #' @importFrom ggplot2 ylim
+#' @importFrom giscoR gisco_get_nuts
 #' @importFrom glue glue
 #' @importFrom grDevices rgb
 #' @importFrom here here
