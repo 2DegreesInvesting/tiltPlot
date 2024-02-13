@@ -186,16 +186,3 @@ map_region_risk(no_fin, "DE", benchmark = "tilt_sec", mode = "worst_case") +
 ```
 
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
-
-### 5. Create a German map with risk categories color gradient, with financial
-
-``` r
-map_region_risk_financial(financial, "DE", benchmark = "unit_isic_sec") +
-  labs(title = "German map of high, medium and low propotion of the companies
-  that are found in one region.
-  © EuroGeographics for the administrative boundaries ")
-#> 'make_valid' argument has been deprecated
-#> Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues
-```
-
-<img src="man/figures/README-unnamed-chunk-14-1.png" width="100%" />
