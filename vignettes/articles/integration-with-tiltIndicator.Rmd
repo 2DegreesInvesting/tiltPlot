@@ -25,7 +25,7 @@ Data.
 
 ```{r}
 companies <- read_csv(toy_emissions_profile_any_companies())
-products <- read_csv(toy_emissions_profile_products())
+products <- read_csv(toy_emissions_profile_products_ecoinvent())
 ```
 
 Apply tilt methodology.
@@ -45,12 +45,12 @@ at_product_level <- at_product_level |>
 Visualize all companies.
 
 ```{r}
-plot_xctr(at_product_level)
+bar_plot_emission_profile(at_product_level)
 ```
 
 Visualize one specific company.
 
 ```{r}
 first_company <- filter(at_product_level, companies_id %in% first(companies_id))
-plot_xctr(first_company)
+bar_plot_emission_profile(first_company)
 ```

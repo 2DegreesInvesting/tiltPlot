@@ -124,7 +124,7 @@ plot_xctr_financial(fin, mode = "worst_case") +
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
 
-### 3. XCTR plots without financial data
+### 3. Emission profile plots without financial data
 
 ``` r
 without_financial
@@ -144,24 +144,28 @@ without_financial
 #> # ℹ 104 more rows
 ```
 
-To plot on a company level:
+Plot on a company level. The user can choose any number of benchmark to
+be plotted. If the benchmarks argument is not given to the function, the
+function will plot all the benchmarks.
 
 ``` r
 no_fin <- without_financial
 
+benchmarks <- c("all", "unit", "isic_sec")
+
 no_fin |>
   filter(company_name == "peter") |>
-  plot_xctr() +
-  labs(title = "Risk distribution of all products on a company level")
+  bar_plot_emission_profile(benchmarks) +
+  labs(title = "Emission profile of all products on a company level")
 ```
 
 <img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
 
-On a portfolio level :
+Plot on a portfolio level.
 
 ``` r
-plot_xctr(no_fin) +
-  labs(title = "Risk distribution of all products on a portfolio level")
+bar_plot_emission_profile(no_fin, benchmarks) +
+  labs(title = "Emission profile of all products on a portfolio level")
 ```
 
 <img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
@@ -172,6 +176,7 @@ Different modes can be chosen: “equal_weight”, “worst_case” and
 “best_case”. If nothing is chosen, equal_weight the default mode.
 
 ``` r
+<<<<<<< HEAD
 no_fin <- without_financial
 
 map_region_risk(no_fin, "DE", benchmark = "tilt_sec", mode = "worst_case") +
@@ -181,6 +186,15 @@ map_region_risk(no_fin, "DE", benchmark = "tilt_sec", mode = "worst_case") +
 #> Object cached at /tmp/RtmpW0E5N0/eurostat/sf10320163035.RData
 #> Reading cache file /tmp/RtmpW0E5N0/eurostat/sf10320163035.RData
 #> sf at resolution 1: 10  from year  2016  read from cache file:  /tmp/RtmpW0E5N0/eurostat/sf10320163035.RData
+=======
+map_region_risk(financial, "DE", benchmark = "unit_isic_sec") +
+  labs(title = "German map of high, medium and low propotion of the companies
+  that are found in one region.
+  © EuroGeographics for the administrative boundaries ")
+#> 'make_valid' argument has been deprecated
+#> Loading required namespace: giscoR
+#> Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues
+>>>>>>> main
 ```
 
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />

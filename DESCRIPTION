@@ -7,7 +7,7 @@ Authors@R: c(
     person("2 Degrees Investing Initiative", , , "contact@2degrees-investing.org", role = c("cph", "fnd"))
   )
 Description: Plots for the 'TILT' project.
-License: MIT + file LICENSE
+License: GPL (>= 3)
 URL: https://2degreesinvesting.github.io/tiltPlot/, https://github.com/2DegreesInvesting/tiltPlot
 Depends: 
     R (>= 2.10)
@@ -29,6 +29,7 @@ Imports:
     tidyselect,
     vroom
 Suggests: 
+    giscoR,
     testthat (>= 3.0.0),
     tiltIndicator (>= 0.0.0.9094),
     tiltToyData (>= 0.0.0.9002)
@@ -40,5 +41,5 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 BugReports: https://github.com/2DegreesInvesting/tiltPlot/issues

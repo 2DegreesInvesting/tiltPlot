@@ -27,3 +27,5 @@ theme_tiltplot <- function() {
 score_colors <- function(...) c("low" = "#007F00", "medium" = "#FFC300", "high" = "#FF5733")
 
 fill_score_colors <- function() scale_fill_manual(values = score_colors())
+
+width_bar <- function() 0.5
