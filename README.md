@@ -176,25 +176,13 @@ Different modes can be chosen: “equal_weight”, “worst_case” and
 “best_case”. If nothing is chosen, equal_weight the default mode.
 
 ``` r
-<<<<<<< HEAD
 no_fin <- without_financial
 
 map_region_risk(no_fin, "DE", benchmark = "tilt_sec", mode = "worst_case") +
   labs(title = "German map of high, medium and low proportions of the companies
   that are found in one region.
   © EuroGeographics for the administrative boundaries ")
-#> Object cached at /tmp/RtmpW0E5N0/eurostat/sf10320163035.RData
-#> Reading cache file /tmp/RtmpW0E5N0/eurostat/sf10320163035.RData
-#> sf at resolution 1: 10  from year  2016  read from cache file:  /tmp/RtmpW0E5N0/eurostat/sf10320163035.RData
-=======
-map_region_risk(financial, "DE", benchmark = "unit_isic_sec") +
-  labs(title = "German map of high, medium and low propotion of the companies
-  that are found in one region.
-  © EuroGeographics for the administrative boundaries ")
-#> 'make_valid' argument has been deprecated
-#> Loading required namespace: giscoR
 #> Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues
->>>>>>> main
 ```
 
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
@@ -206,9 +194,8 @@ map_region_risk_financial(financial, "DE", benchmark = "unit_isic_sec") +
   labs(title = "German map of high, medium and low propotion of the companies
   that are found in one region.
   © EuroGeographics for the administrative boundaries ")
-#> Object cached at /tmp/RtmpW0E5N0/eurostat/sf10320163035.RData
-#> Reading cache file /tmp/RtmpW0E5N0/eurostat/sf10320163035.RData
-#> sf at resolution 1: 10  from year  2016  read from cache file:  /tmp/RtmpW0E5N0/eurostat/sf10320163035.RData
+#> 'make_valid' argument has been deprecated
+#> Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues
 ```
 
 <img src="man/figures/README-unnamed-chunk-14-1.png" width="100%" />
