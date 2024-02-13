@@ -6,6 +6,7 @@ reference:
 
   - title: Main functions
     contents:
+      - starts_with("bar_")
       - starts_with("plot_")
       - starts_with("map_")
 
