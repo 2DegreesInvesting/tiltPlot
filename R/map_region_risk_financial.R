@@ -13,7 +13,7 @@
 #' chosen, "equal_weight" is the default mode.
 #'
 #' @return A ggplot2 object representing the country data plot.
-#' @export
+#' @noRd
 #'
 #' @examples
 #' # Plot a German with a "unit" benchmark and equal_weight finance

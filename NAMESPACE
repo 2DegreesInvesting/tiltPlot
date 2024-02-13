@@ -2,7 +2,6 @@
 
 export(bar_plot_emission_profile)
 export(map_region_risk)
-export(map_region_risk_financial)
 export(plot_sankey)
 export(plot_xctr_financial)
 export(theme_tiltplot)

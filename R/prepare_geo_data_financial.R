@@ -39,8 +39,7 @@ prepare_geo_data_financial <- function(data,
     resolution = 10,
     nuts_level = 3,
     year = 2016,
-    crs = 3035,
-    make_valid = TRUE
+    crs = 3035
   )
 
   # filter for the specified country
