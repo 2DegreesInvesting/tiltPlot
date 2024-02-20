@@ -6,7 +6,8 @@
 \usage{
 bar_plot_emission_profile(
   data,
-  benchmarks = c("all", "unit", "tilt_sec", "unit_tilt_sec", "isic_sec", "unit_isic_sec")
+  benchmarks = c("all", "unit", "tilt_sector", "unit_tilt_sec", "isic_sec",
+    "unit_isic_sec")
 )
 }
 \arguments{

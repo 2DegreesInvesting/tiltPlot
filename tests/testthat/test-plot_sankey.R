@@ -12,7 +12,7 @@ test_that("returns expected data name values", {
 
 test_that("returns correct risk categories values", {
   p <- plot_sankey(financial)
-  risk_names <- unique(p$data$xctr_risk_category)
+  risk_names <- unique(p$data$emission_profile)
   possible_names <- c("low", "medium", "high", "other")
   expect_true(all(risk_names %in% possible_names))
 })

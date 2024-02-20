@@ -39,7 +39,7 @@ Adapt the ouput of tiltIindicator to the input of tiltPlot.
 
 ```{r}
 at_product_level <- at_product_level |>
-  rename(xctr_risk_category = risk_category, benchmark = grouped_by)
+  rename(emission_profile = risk_category, benchmark = grouped_by)
 ```
 
 Visualize all companies.

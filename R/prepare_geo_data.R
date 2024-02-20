@@ -24,13 +24,13 @@ prepare_geo_data <- function(data,
   mode <- arg_match(mode)
 
   crucial <- c(
-    "_risk_category",
+    "emission_profile",
     "company_name",
     "postcode",
     "benchmark"
   )
   data |> check_crucial_names(names_matching(data, crucial))
-  risk_var <- names_matching(data, "_risk_category")
+  risk_var <- names_matching(data, "emission_profile")
   data <- data |>
     mutate(risk_category_var = as_risk_category(data[[risk_var]]))
 
