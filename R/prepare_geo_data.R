@@ -113,8 +113,6 @@ aggregate_geo <- function(geo, mode) {
   aggregated_data <- aggregated_data |>
     pivot_wider(names_from = "risk_category_var", values_from = "proportion", values_fill = 0) |>
     mutate(color = pmap(list(.data$high, .data$medium, .data$low), custom_gradient_color))
-
-  aggregated_data
 }
 
 #' Calculate Proportions for Worst or Best Case Scenarios
@@ -138,6 +136,5 @@ calculate_case_proportions <- function(categories, mode) {
 
   is_extreme <- categories == extreme_risk
   proportions <- ifelse(is_extreme, 1 / sum(is_extreme), 0)
-
   proportions
 }
