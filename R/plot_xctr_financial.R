@@ -24,10 +24,6 @@ plot_xctr_financial <- function(data,
                                 mode = c("equal_weight", "worst_case", "best_case")) {
   mode <- arg_match(mode)
 
-  # TODO: do we want to drop NA's everywhere silently?
-  data <- data |>
-    drop_na(-c("equal_weight_finance", "worst_case_finance", "best_case_finance"))
-
   crucial <- c(
     "emission_profile",
     "equal_weight_finance",

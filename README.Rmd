@@ -65,7 +65,7 @@ Finally, the user can choose different modes to plot the Sankey plot with financ
 plot_sankey(fin, with_company = FALSE, mode = "best_case")
 ```
 
-### 2. XCTR plots with financial data
+### 2. Emission risk plots with financial data
 
 ```{r}
 financial
@@ -102,7 +102,7 @@ all the benchmarks.
 ```{r}
 no_fin <- without_financial
 
-benchmarks <- c("all", "unit", "isic_sec")
+benchmarks <- c("all", "isic_4digit", "unit")
 
 no_fin |>
   filter(company_name == "peter") |>
@@ -126,7 +126,7 @@ If nothing is chosen, equal_weight the default mode.
 ```{r}
 no_fin <- without_financial
 
-map_region_risk(no_fin, "DE", benchmark = "tilt_sec", mode = "worst_case") +
+map_region_risk(no_fin, "DE", benchmark = "tilt_sector", mode = "worst_case") +
   labs(title = "German map of high, medium and low proportions of the companies
   that are found in one region.
   © EuroGeographics for the administrative boundaries ")

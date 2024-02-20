@@ -13,16 +13,16 @@
 #' @export
 #'
 #' @examples
-#' benchmarks <- c("all", "unit", "isic_sec")
+#' benchmarks <- c("all", "unit", "isic_4digit")
 #' bar_plot_emission_profile(without_financial, benchmarks)
 bar_plot_emission_profile <- function(data,
                                       benchmarks = c(
                                         "all",
-                                        "unit",
+                                        "isic_4digit",
                                         "tilt_sector",
-                                        "unit_tilt_sec",
-                                        "isic_sec",
-                                        "unit_isic_sec"
+                                        "unit",
+                                        "unit_isic_4digit",
+                                        "unit_tilt_sector"
                                       )) {
   benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
 

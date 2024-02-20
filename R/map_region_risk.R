@@ -5,8 +5,9 @@
 #' @param country_code Country code (ISO 3166 alpha-2) for which the map will be
 #' plotted.
 #' @param benchmark The mode of benchmark to plot.
-#' It can be one of "all", "unit" or "tilt_sec", "unit_tilt_sec", "isic_sec"
-#' or "unit_isic_sec". If nothing is chosen, "all" is the default mode.
+#' It can be one of "all", "unit" or "tilt_sector", "unit_tilt_sector",
+#' "isic_4digit" or "unit_isic_4digit". If nothing is chosen, "all" is the
+#' default mode.
 #' @param mode The mode to plot. It can be one of "equal_weight", "worst_case"
 #' or "best_case". If nothing is chosen, "equal_weight" is the default mode.
 #'
@@ -21,11 +22,11 @@ map_region_risk <- function(data,
                             country_code = c("DE"),
                             benchmark = c(
                               "all",
+                              "isic_4digit",
+                              "tilt_sector",
                               "unit",
-                              "tilt_sec",
-                              "unit_tilt_sec",
-                              "isic_sec",
-                              "unit_isic_sec"
+                              "unit_isic_4digit",
+                              "unit_tilt_sector"
                             ),
                             mode = c("equal_weight", "worst_case", "best_case")) {
   prepared_data <- prepare_geo_data(

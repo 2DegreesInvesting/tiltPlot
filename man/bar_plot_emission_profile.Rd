@@ -6,8 +6,8 @@
 \usage{
 bar_plot_emission_profile(
   data,
-  benchmarks = c("all", "unit", "tilt_sector", "unit_tilt_sec", "isic_sec",
-    "unit_isic_sec")
+  benchmarks = c("all", "isic_4digit", "tilt_sector", "unit", "unit_isic_4digit",
+    "unit_tilt_sector")
 )
 }
 \arguments{
@@ -25,6 +25,6 @@ Generate a horizontal stacked bar chart showing the distribution of
 the emission risk profiles risks for one or several benchmarks.
 }
 \examples{
-benchmarks <- c("all", "unit", "isic_sec")
+benchmarks <- c("all", "unit", "isic_4digit")
 bar_plot_emission_profile(without_financial, benchmarks)
 }
