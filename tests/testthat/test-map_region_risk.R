@@ -1,5 +1,5 @@
 test_that("returns an object of the expected class", {
-  plot <- map_region_risk(financial)
+  plot <- map_region_risk(without_financial)
   expect_s3_class(plot, "ggplot")
 })
 

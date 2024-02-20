@@ -56,6 +56,7 @@
 #' @importFrom rlang arg_match
 #' @importFrom sf st_as_sf
 #' @importFrom stats na.omit
+#' @importFrom tibble is_tibble
 #' @importFrom tibble tibble
 #' @importFrom tibble tribble
 #' @importFrom tidyr drop_na

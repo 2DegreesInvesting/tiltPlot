@@ -128,20 +128,20 @@ plot_xctr_financial(fin, mode = "worst_case") +
 
 ``` r
 without_financial
-#> # A tibble: 58 × 5
-#>    company_name  xctr_risk_category benchmark     product_name tilt_sector
-#>    <chr>         <chr>              <chr>         <chr>        <chr>      
-#>  1 peter peasant high               all           car          D          
-#>  2 peter peasant high               unit          car          D          
-#>  3 peter peasant medium             tilt_sec      car          D          
-#>  4 peter peasant medium             unit_tilt_sec car          D          
-#>  5 peter peasant low                isic_sec      car          D          
-#>  6 peter peasant low                unit_isic_sec car          D          
-#>  7 peter         high               all           banana       A          
-#>  8 peter         high               unit          banana       A          
-#>  9 peter         medium             tilt_sec      banana       A          
-#> 10 peter         medium             unit_tilt_sec banana       A          
-#> # ℹ 48 more rows
+#> # A tibble: 114 × 6
+#>    company_name postcode xctr_risk_category benchmark   product_name tilt_sector
+#>    <chr>           <int> <chr>              <chr>       <chr>        <chr>      
+#>  1 bruno           27568 high               all         car          D          
+#>  2 bruno           27568 high               all         steel        C          
+#>  3 bruno           27568 medium             unit        banana       B          
+#>  4 bruno           27568 medium             tilt_sec    banana       B          
+#>  5 bruno           27568 high               unit_tilt_… banana       B          
+#>  6 bruno           27568 medium             isic_sec    banana       B          
+#>  7 bruno           27568 high               unit_isic_… banana       B          
+#>  8 bruno           27568 medium             unit        car          D          
+#>  9 bruno           27568 high               tilt_sec    car          D          
+#> 10 bruno           27568 medium             unit_tilt_… car          D          
+#> # ℹ 104 more rows
 ```
 
 Plot on a company level. The user can choose any number of benchmark to
@@ -170,15 +170,18 @@ bar_plot_emission_profile(no_fin, benchmarks) +
 
 <img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
 
-### 4. Create a German map with risk categories color gradient
+### 4. Create a German map with risk categories color gradient, without financial
+
+Different modes can be chosen: “equal_weight”, “worst_case” and
+“best_case”. If nothing is chosen, equal_weight the default mode.
 
 ``` r
-map_region_risk(financial, "DE", benchmark = "unit_isic_sec") +
-  labs(title = "German map of high, medium and low propotion of the companies
+no_fin <- without_financial
+
+map_region_risk(no_fin, "DE", benchmark = "tilt_sec", mode = "worst_case") +
+  labs(title = "German map of high, medium and low proportions of the companies
   that are found in one region.
   © EuroGeographics for the administrative boundaries ")
-#> 'make_valid' argument has been deprecated
-#> Loading required namespace: giscoR
 #> Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues
 ```
 
