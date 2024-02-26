@@ -8,7 +8,8 @@ financial data.}
 map_region_risk(
   data,
   country_code = c("DE"),
-  benchmark = c("all", "unit", "tilt_sec", "unit_tilt_sec", "isic_sec", "unit_isic_sec"),
+  benchmark = c("all", "isic_4digit", "tilt_sector", "unit", "unit_isic_4digit",
+    "unit_tilt_sector"),
   mode = c("equal_weight", "worst_case", "best_case")
 )
 }
@@ -19,8 +20,9 @@ map_region_risk(
 plotted.}
 
 \item{benchmark}{The mode of benchmark to plot.
-It can be one of "all", "unit" or "tilt_sec", "unit_tilt_sec", "isic_sec"
-or "unit_isic_sec". If nothing is chosen, "all" is the default mode.}
+It can be one of "all", "unit" or "tilt_sector", "unit_tilt_sector",
+"isic_4digit" or "unit_isic_4digit". If nothing is chosen, "all" is the
+default mode.}
 
 \item{mode}{The mode to plot. It can be one of "equal_weight", "worst_case"
 or "best_case". If nothing is chosen, "equal_weight" is the default mode.}

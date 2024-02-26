@@ -13,24 +13,24 @@ prepare_geo_data <- function(data,
                              country_code = c("DE"),
                              benchmark = c(
                                "all",
+                               "isic_4digit",
+                               "tilt_sector",
                                "unit",
-                               "tilt_sec",
-                               "unit_tilt_sec",
-                               "isic_sec",
-                               "unit_isic_sec"
+                               "unit_isic_4digit",
+                               "unit_tilt_sector"
                              ),
                              mode = c("equal_weight", "worst_case", "best_case")) {
   benchmark_arg <- arg_match(benchmark)
   mode <- arg_match(mode)
 
   crucial <- c(
-    "_risk_category",
+    "emission_profile",
     "company_name",
     "postcode",
     "benchmark"
   )
   data |> check_crucial_names(names_matching(data, crucial))
-  risk_var <- names_matching(data, "_risk_category")
+  risk_var <- names_matching(data, "emission_profile")
   data <- data |>
     mutate(risk_category_var = as_risk_category(data[[risk_var]]))
 

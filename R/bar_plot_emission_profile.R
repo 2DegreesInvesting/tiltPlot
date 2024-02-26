@@ -13,26 +13,26 @@
 #' @export
 #'
 #' @examples
-#' benchmarks <- c("all", "unit", "isic_sec")
+#' benchmarks <- c("all", "unit", "isic_4digit")
 #' bar_plot_emission_profile(without_financial, benchmarks)
 bar_plot_emission_profile <- function(data,
                                       benchmarks = c(
                                         "all",
+                                        "isic_4digit",
+                                        "tilt_sector",
                                         "unit",
-                                        "tilt_sec",
-                                        "unit_tilt_sec",
-                                        "isic_sec",
-                                        "unit_isic_sec"
+                                        "unit_isic_4digit",
+                                        "unit_tilt_sector"
                                       )) {
   benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
 
   crucial <- c(
     "benchmark",
-    "_risk_category"
+    "emission_profile"
   )
   data |> check_crucial_names(names_matching(data, crucial))
 
-  risk_var <- names_matching(data, "_risk_category")
+  risk_var <- names_matching(data, "emission_profile")
 
   data <- data |>
     mutate(risk_category_var = as_risk_category(data[[risk_var]]))
@@ -55,7 +55,7 @@ bar_plot_emission_profile <- function(data,
 #' @return A data frame with calculated proportions of emission profile categories.
 #'
 #' @examples
-#' calc_benchmark_emission_profile(without_financial, "_risk_category", c("all", "unit"))
+#' calc_benchmark_emission_profile(without_financial, "emission_profile", c("all", "unit"))
 #' @noRd
 calc_benchmark_emission_profile <- function(data, risk_var, benchmarks) {
   data <- data |>
