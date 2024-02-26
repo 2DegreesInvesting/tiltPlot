@@ -92,21 +92,22 @@
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">financial</span></span>
-<span><span class="co">#&gt; # A tibble: 114 × 13</span></span>
-<span><span class="co">#&gt;    bank_id amount_total company_name postcode wz    xctr_risk_category benchmark</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;           &lt;int&gt; &lt;chr&gt; &lt;chr&gt;              &lt;chr&gt;    </span></span>
-<span><span class="co">#&gt;  1 bank_b           500 peter peasa…    53773 A     high               all      </span></span>
-<span><span class="co">#&gt;  2 bank_b           500 peter peasa…    53773 A     high               unit     </span></span>
-<span><span class="co">#&gt;  3 bank_b           500 peter peasa…    53773 A     medium             tilt_sec </span></span>
-<span><span class="co">#&gt;  4 bank_b           500 peter peasa…    53773 A     medium             unit_til…</span></span>
-<span><span class="co">#&gt;  5 bank_b           500 peter peasa…    53773 A     low                isic_sec </span></span>
-<span><span class="co">#&gt;  6 bank_b           500 peter peasa…    53773 A     medium             unit_isi…</span></span>
-<span><span class="co">#&gt;  7 bank_b           500 tilman          12043 D     low                all      </span></span>
-<span><span class="co">#&gt;  8 bank_b           500 tilman          12043 D     low                unit     </span></span>
-<span><span class="co">#&gt;  9 bank_b           500 tilman          12043 D     medium             tilt_sec </span></span>
-<span><span class="co">#&gt; 10 bank_b           500 tilman          12043 D     medium             unit_til…</span></span>
+<span><span class="co">#&gt; # A tibble: 114 × 15</span></span>
+<span><span class="co">#&gt;    bank_id amount_total company_name postcode emission_profile benchmark</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;            &lt;chr&gt;    </span></span>
+<span><span class="co">#&gt;  1 bank_a          1000 tilman          12043 high             all      </span></span>
+<span><span class="co">#&gt;  2 bank_a          1000 tilman          12043 high             all      </span></span>
+<span><span class="co">#&gt;  3 bank_a          1000 tilman          12043 medium           all      </span></span>
+<span><span class="co">#&gt;  4 bank_b           500 tilman          12043 high             all      </span></span>
+<span><span class="co">#&gt;  5 bank_b           500 tilman          12043 high             all      </span></span>
+<span><span class="co">#&gt;  6 bank_b           500 tilman          12043 medium           all      </span></span>
+<span><span class="co">#&gt;  7 bank_a          1000 bruno           27568 low              all      </span></span>
+<span><span class="co">#&gt;  8 bank_a          1000 bruno           27568 high             all      </span></span>
+<span><span class="co">#&gt;  9 bank_a          1000 bruno           27568 medium           all      </span></span>
+<span><span class="co">#&gt; 10 bank_a          1000 mirja           34117 low              all      </span></span>
 <span><span class="co">#&gt; # ℹ 104 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 6 more variables: product_name &lt;chr&gt;, tilt_sector &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; # ℹ 9 more variables: ep_product &lt;chr&gt;, tilt_sector &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   tilt_subsector &lt;chr&gt;, isic_4digit &lt;chr&gt;, isic_4digit_name &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   amount_of_distinct_products &lt;int&gt;, equal_weight_finance &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   worst_case_finance &lt;int&gt;, best_case_finance &lt;int&gt;</span></span></code></pre></div>
 <p>Here is the default Sankey Plot. By default the function plots with companies and uses an “equal_weight” mode.</p>
@@ -128,21 +129,22 @@
 </h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">financial</span></span>
-<span><span class="co">#&gt; # A tibble: 114 × 13</span></span>
-<span><span class="co">#&gt;    bank_id amount_total company_name postcode wz    xctr_risk_category benchmark</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;           &lt;int&gt; &lt;chr&gt; &lt;chr&gt;              &lt;chr&gt;    </span></span>
-<span><span class="co">#&gt;  1 bank_b           500 peter peasa…    53773 A     high               all      </span></span>
-<span><span class="co">#&gt;  2 bank_b           500 peter peasa…    53773 A     high               unit     </span></span>
-<span><span class="co">#&gt;  3 bank_b           500 peter peasa…    53773 A     medium             tilt_sec </span></span>
-<span><span class="co">#&gt;  4 bank_b           500 peter peasa…    53773 A     medium             unit_til…</span></span>
-<span><span class="co">#&gt;  5 bank_b           500 peter peasa…    53773 A     low                isic_sec </span></span>
-<span><span class="co">#&gt;  6 bank_b           500 peter peasa…    53773 A     medium             unit_isi…</span></span>
-<span><span class="co">#&gt;  7 bank_b           500 tilman          12043 D     low                all      </span></span>
-<span><span class="co">#&gt;  8 bank_b           500 tilman          12043 D     low                unit     </span></span>
-<span><span class="co">#&gt;  9 bank_b           500 tilman          12043 D     medium             tilt_sec </span></span>
-<span><span class="co">#&gt; 10 bank_b           500 tilman          12043 D     medium             unit_til…</span></span>
+<span><span class="co">#&gt; # A tibble: 114 × 15</span></span>
+<span><span class="co">#&gt;    bank_id amount_total company_name postcode emission_profile benchmark</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;            &lt;chr&gt;    </span></span>
+<span><span class="co">#&gt;  1 bank_a          1000 tilman          12043 high             all      </span></span>
+<span><span class="co">#&gt;  2 bank_a          1000 tilman          12043 high             all      </span></span>
+<span><span class="co">#&gt;  3 bank_a          1000 tilman          12043 medium           all      </span></span>
+<span><span class="co">#&gt;  4 bank_b           500 tilman          12043 high             all      </span></span>
+<span><span class="co">#&gt;  5 bank_b           500 tilman          12043 high             all      </span></span>
+<span><span class="co">#&gt;  6 bank_b           500 tilman          12043 medium           all      </span></span>
+<span><span class="co">#&gt;  7 bank_a          1000 bruno           27568 low              all      </span></span>
+<span><span class="co">#&gt;  8 bank_a          1000 bruno           27568 high             all      </span></span>
+<span><span class="co">#&gt;  9 bank_a          1000 bruno           27568 medium           all      </span></span>
+<span><span class="co">#&gt; 10 bank_a          1000 mirja           34117 low              all      </span></span>
 <span><span class="co">#&gt; # ℹ 104 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 6 more variables: product_name &lt;chr&gt;, tilt_sector &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; # ℹ 9 more variables: ep_product &lt;chr&gt;, tilt_sector &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   tilt_subsector &lt;chr&gt;, isic_4digit &lt;chr&gt;, isic_4digit_name &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   amount_of_distinct_products &lt;int&gt;, equal_weight_finance &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   worst_case_finance &lt;int&gt;, best_case_finance &lt;int&gt;</span></span></code></pre></div>
 <p>On a company level:</p>
@@ -163,25 +165,28 @@
 </h3>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">without_financial</span></span>
-<span><span class="co">#&gt; # A tibble: 114 × 6</span></span>
-<span><span class="co">#&gt;    company_name postcode xctr_risk_category benchmark   product_name tilt_sector</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;              &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;      </span></span>
-<span><span class="co">#&gt;  1 bruno           27568 high               all         car          D          </span></span>
-<span><span class="co">#&gt;  2 bruno           27568 high               all         steel        C          </span></span>
-<span><span class="co">#&gt;  3 bruno           27568 medium             unit        banana       B          </span></span>
-<span><span class="co">#&gt;  4 bruno           27568 medium             tilt_sec    banana       B          </span></span>
-<span><span class="co">#&gt;  5 bruno           27568 high               unit_tilt_… banana       B          </span></span>
-<span><span class="co">#&gt;  6 bruno           27568 medium             isic_sec    banana       B          </span></span>
-<span><span class="co">#&gt;  7 bruno           27568 high               unit_isic_… banana       B          </span></span>
-<span><span class="co">#&gt;  8 bruno           27568 medium             unit        car          D          </span></span>
-<span><span class="co">#&gt;  9 bruno           27568 high               tilt_sec    car          D          </span></span>
-<span><span class="co">#&gt; 10 bruno           27568 medium             unit_tilt_… car          D          </span></span>
-<span><span class="co">#&gt; # ℹ 104 more rows</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 114 × 12</span></span>
+<span><span class="co">#&gt;    company_name postcode emission_profile benchmark ep_product tilt_sector</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;            &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;      </span></span>
+<span><span class="co">#&gt;  1 bruno           27568 high             all       car        D          </span></span>
+<span><span class="co">#&gt;  2 bruno           27568 high             all       steel      C          </span></span>
+<span><span class="co">#&gt;  3 bruno           27568 medium           all       wheat      B          </span></span>
+<span><span class="co">#&gt;  4 mauro           39221 high             all       steel      C          </span></span>
+<span><span class="co">#&gt;  5 mauro           39221 high             all       machine    C          </span></span>
+<span><span class="co">#&gt;  6 mirja           34117 high             all       tractor    D          </span></span>
+<span><span class="co">#&gt;  7 mirja           34117 high             all       cattle     A          </span></span>
+<span><span class="co">#&gt;  8 pasant          80337 high             all       tractor    D          </span></span>
+<span><span class="co">#&gt;  9 pasant          80337 low              all       apple      A          </span></span>
+<span><span class="co">#&gt; 10 peter           88131 high             all       banana     A          </span></span>
+<span><span class="co">#&gt; # ℹ 104 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 6 more variables: tilt_subsector &lt;chr&gt;, isic_4digit &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   isic_4digit_name &lt;chr&gt;, equal_weight &lt;dbl&gt;, worst_case &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   best_case &lt;dbl&gt;</span></span></code></pre></div>
 <p>Plot on a company level. The user can choose any number of benchmark to be plotted. If the benchmarks argument is not given to the function, the function will plot all the benchmarks.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">no_fin</span> <span class="op">&lt;-</span> <span class="va">without_financial</span></span>
 <span></span>
-<span><span class="va">benchmarks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"all"</span>, <span class="st">"unit"</span>, <span class="st">"isic_sec"</span><span class="op">)</span></span>
+<span><span class="va">benchmarks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"all"</span>, <span class="st">"isic_4digit"</span>, <span class="st">"unit"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">no_fin</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">company_name</span> <span class="op">==</span> <span class="st">"peter"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -201,11 +206,12 @@
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">no_fin</span> <span class="op">&lt;-</span> <span class="va">without_financial</span></span>
 <span></span>
-<span><span class="fu"><a href="reference/map_region_risk.html">map_region_risk</a></span><span class="op">(</span><span class="va">no_fin</span>, <span class="st">"DE"</span>, benchmark <span class="op">=</span> <span class="st">"tilt_sec"</span>, mode <span class="op">=</span> <span class="st">"worst_case"</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu"><a href="reference/map_region_risk.html">map_region_risk</a></span><span class="op">(</span><span class="va">no_fin</span>, <span class="st">"DE"</span>, benchmark <span class="op">=</span> <span class="st">"tilt_sector"</span>, mode <span class="op">=</span> <span class="st">"worst_case"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"German map of high, medium and low proportions of the companies</span></span>
 <span><span class="st">  that are found in one region.</span></span>
 <span><span class="st">  © EuroGeographics for the administrative boundaries "</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues</span></span></code></pre></div>
+<span><span class="co">#&gt; Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues</span></span>
+<span><span class="co">#&gt; Cache management as per giscoR. see 'giscoR::gisco_get_nuts()'</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-13-1.png" width="100%"></p>
 </div>
 </div>

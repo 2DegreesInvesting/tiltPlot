@@ -66,7 +66,8 @@ financial data.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">map_region_risk</span><span class="op">(</span></span>
 <span>  <span class="va">data</span>,</span>
 <span>  country_code <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"DE"</span><span class="op">)</span>,</span>
-<span>  benchmark <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"all"</span>, <span class="st">"unit"</span>, <span class="st">"tilt_sec"</span>, <span class="st">"unit_tilt_sec"</span>, <span class="st">"isic_sec"</span>, <span class="st">"unit_isic_sec"</span><span class="op">)</span>,</span>
+<span>  benchmark <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"all"</span>, <span class="st">"isic_4digit"</span>, <span class="st">"tilt_sector"</span>, <span class="st">"unit"</span>, <span class="st">"unit_isic_4digit"</span>,</span>
+<span>    <span class="st">"unit_tilt_sector"</span><span class="op">)</span>,</span>
 <span>  mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"equal_weight"</span>, <span class="st">"worst_case"</span>, <span class="st">"best_case"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -84,8 +85,9 @@ plotted.</p></dd>
 
 <dt>benchmark</dt>
 <dd><p>The mode of benchmark to plot.
-It can be one of "all", "unit" or "tilt_sec", "unit_tilt_sec", "isic_sec"
-or "unit_isic_sec". If nothing is chosen, "all" is the default mode.</p></dd>
+It can be one of "all", "unit" or "tilt_sector", "unit_tilt_sector",
+"isic_4digit" or "unit_isic_4digit". If nothing is chosen, "all" is the
+default mode.</p></dd>
 
 
 <dt>mode</dt>
