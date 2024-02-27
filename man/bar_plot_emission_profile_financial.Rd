@@ -31,5 +31,5 @@ the emission risk profiles risks for one or several benchmarks.
 }
 \examples{
 benchmarks <- c("all", "unit", "isic_4digit")
-bar_plot_emission_profile(financial, benchmarks, "equal_weight")
+bar_plot_emission_profile_financial(financial, benchmarks, "equal_weight")
 }

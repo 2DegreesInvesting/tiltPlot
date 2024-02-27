@@ -16,7 +16,7 @@
 #'
 #' @examples
 #' benchmarks <- c("all", "unit", "isic_4digit")
-#' bar_plot_emission_profile(financial, benchmarks, "equal_weight")
+#' bar_plot_emission_profile_financial(financial, benchmarks, "equal_weight")
 bar_plot_emission_profile_financial <- function(data,
                                       benchmarks = c(
                                         "all",
@@ -33,7 +33,11 @@ bar_plot_emission_profile_financial <- function(data,
   mode <- arg_match(mode)
 
   crucial <- c(
+    "amount_total",
+    "bank_id",
+    "company_name",
     "emission_profile",
+    "benchmark",
     "equal_weight_finance",
     "worst_case_finance",
     "best_case_finance"
@@ -49,7 +53,7 @@ bar_plot_emission_profile_financial <- function(data,
 
   data <- data |>
     calc_benchmark_emission_profile_financial(risk_var,
-                                              benchmarks,
+                                              benchmarks_arg,
                                               mode_col)
 
   ggplot(data, aes(x = .data$percentage_total, y = .data$benchmark, fill = .data$risk_category_var)) +
@@ -80,17 +84,17 @@ calc_benchmark_emission_profile_financial <- function(data,
                                                       benchmarks,
                                                       mode_col) {
   total_amount_portfolio <- data |>
-    filter(benchmark %in% benchmarks) |>
-    distinct(bank_id, company_name, .keep_all = TRUE) |>
-    summarise(total_amount = sum(amount_total)) |>
+    filter(.data$benchmark %in% benchmarks) |>
+    distinct(.data$bank_id, .data$company_name, .keep_all = TRUE) |>
+    summarise(total_amount_portfolio = sum(.data$amount_total)) |>
     pull()
 
   data <- data |>
-    filter(benchmark %in% benchmarks) |>
+    filter(.data$benchmark %in% benchmarks) |>
     mutate(proportion = .data[[mode_col]] / total_amount_portfolio) |>
-    group_by(risk_category_var, company_name, benchmark) |>
-    summarise(percentage = sum(proportion), .groups = "keep") |>
-    summarise(percentage_total = sum(percentage))
+    group_by(.data$risk_category_var, .data$company_name, .data$benchmark) |>
+    summarise(percentage = sum(.data$proportion), .groups = "keep") |>
+    summarise(percentage_total = sum(.data$percentage))
 
   data
 }

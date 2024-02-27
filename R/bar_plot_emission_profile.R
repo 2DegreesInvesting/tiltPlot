@@ -34,6 +34,9 @@ bar_plot_emission_profile <- function(data,
 
   risk_var <- names_matching(data, "emission_profile")
 
+  data <- data |>
+    mutate(risk_category_var = as_risk_category(data[[risk_var]]))
+
   data <- calc_benchmark_emission_profile(data, risk_var, benchmarks_arg)
 
   ggplot(data, aes(x = .data$proportion, y = .data$benchmark, fill = .data$risk_category_var)) +
@@ -56,7 +59,6 @@ bar_plot_emission_profile <- function(data,
 #' @noRd
 calc_benchmark_emission_profile <- function(data, risk_var, benchmarks) {
   data <- data |>
-    mutate(risk_category_var = as_risk_category(data[[risk_var]])) |>
     filter(.data$benchmark %in% benchmarks) |>
     group_by(.data$risk_category_var, .data$benchmark) |>
     summarise(count = n()) |>
