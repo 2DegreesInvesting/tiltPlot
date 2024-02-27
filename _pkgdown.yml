@@ -17,4 +17,3 @@ reference:
   - title: Datasets
     contents:
       - matches("financial")
-      - -starts_with("plot_")
