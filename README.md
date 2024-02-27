@@ -82,7 +82,7 @@ plot_sankey(fin, with_company = FALSE, mode = "best_case")
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
-### 2. Emission risk plots with financial data
+### 2. Emission profile plots with financial data
 
 ``` r
 financial
@@ -113,10 +113,10 @@ fin <- financial
 
 benchmarks <- c("all", "unit")
 
-fin |> 
-  filter(company_name == "tilman") |> 
+fin |>
+  filter(company_name == "tilman") |>
   bar_plot_emission_profile_financial(benchmarks, mode = "equal_weight") +
-  labs(title = "Risk distribution of all products on a company level, on a equal 
+  labs(title = "Emission profile of all products on a company level, on an equal
        weight financial mode")
 ```
 
@@ -126,7 +126,7 @@ On a portfolio level:
 
 ``` r
 bar_plot_emission_profile_financial(fin, benchmarks, mode = "equal_weight") +
-  labs(title = "Risk distribution of all products on a portfolio level, on a equal 
+  labs(title = "Emission profile of all products on a portfolio level, on an equal
        weight financial mode")
 ```
 
