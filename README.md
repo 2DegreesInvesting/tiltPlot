@@ -82,7 +82,7 @@ plot_sankey(fin, with_company = FALSE, mode = "best_case")
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
-### 2. XCTR plots with financial data
+### 2. Emission risk plots with financial data
 
 ``` r
 financial
@@ -111,8 +111,13 @@ On a company level:
 ``` r
 fin <- financial
 
-plot_xctr_financial(fin, "peter", mode = "worst_case") +
-  labs(title = "Risk distribution of all products on a company level, on a financial weight")
+benchmarks <- c("all", "unit")
+
+fin |> 
+  filter(company_name == "tilman") |> 
+  bar_plot_emission_profile_financial(benchmarks, mode = "equal_weight") +
+  labs(title = "Risk distribution of all products on a company level, on a equal 
+       weight financial mode")
 ```
 
 <img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
@@ -120,8 +125,9 @@ plot_xctr_financial(fin, "peter", mode = "worst_case") +
 On a portfolio level:
 
 ``` r
-plot_xctr_financial(fin, mode = "worst_case") +
-  labs(title = "Risk distribution of all products on a portfolio level, on a financial weight")
+bar_plot_emission_profile_financial(fin, benchmarks, mode = "equal_weight") +
+  labs(title = "Risk distribution of all products on a portfolio level, on a equal 
+       weight financial mode")
 ```
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
@@ -188,7 +194,6 @@ map_region_risk(no_fin, "DE", benchmark = "tilt_sector", mode = "worst_case") +
   that are found in one region.
   © EuroGeographics for the administrative boundaries ")
 #> Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues
-#> Cache management as per giscoR. see 'giscoR::gisco_get_nuts()'
 ```
 
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
