@@ -1,0 +1,51 @@
+#' Create a map with the risk color of each region (NUTS3 granularity), without
+#' financial data.
+#'
+#' @param data A data frame like [without_financial]
+#' @param country_code Country code (ISO 3166 alpha-2) for which the map will be
+#' plotted.
+#' @param benchmark The mode of benchmark to plot.
+#' It can be one of "all", "unit" or "tilt_sector", "unit_tilt_sector",
+#' "isic_4digit" or "unit_isic_4digit". If nothing is chosen, "all" is the
+#' default mode.
+#' @param mode The mode to plot. It can be one of "equal_weight", "worst_case"
+#' or "best_case". If nothing is chosen, "equal_weight" is the default mode.
+#'
+#' @return A ggplot2 object representing the country data plot.
+#' @export
+#'
+#' @examples
+#' # Plot a German with a "unit" benchmark and equal_weight finance
+#' map_region_risk(without_financial, country_code = "DE", benchmark = "unit")
+map_region_risk_financial <- function(data,
+                            # TODO: plot for other countries
+                            country_code = c("DE"),
+                            benchmark = c(
+                              "all",
+                              "isic_4digit",
+                              "tilt_sector",
+                              "unit",
+                              "unit_isic_4digit",
+                              "unit_tilt_sector"
+                            ),
+                            mode = c("equal_weight", "worst_case", "best_case")) {
+  data <- financial
+  country_code <- "DE"
+  benchmark <- "all"
+  mode = "equal_weight"
+  prepared_data <- prepare_geo_data(
+    data,
+    country_code,
+    benchmark,
+    mode
+  )
+  shp_1 <- prepared_data[[1]]
+
+  geo <- prepared_data[[2]]
+
+  # create map based on financial geo with two layers; financial data and map
+  ggplot() +
+    geom_sf(data = aggregated_data, mapping = aes(fill = .data$color)) +
+    geom_sf(data = shp_1, fill = NA) +
+    coord_sf()
+}
