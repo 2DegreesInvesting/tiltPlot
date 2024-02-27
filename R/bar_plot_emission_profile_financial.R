@@ -18,17 +18,19 @@
 #' benchmarks <- c("all", "unit", "isic_4digit")
 #' bar_plot_emission_profile_financial(financial, benchmarks, "equal_weight")
 bar_plot_emission_profile_financial <- function(data,
-                                      benchmarks = c(
-                                        "all",
-                                        "isic_4digit",
-                                        "tilt_sector",
-                                        "unit",
-                                        "unit_isic_4digit",
-                                        "unit_tilt_sector"
-                                      ),
-                                      mode = c("equal_weight",
-                                               "worst_case",
-                                               "best_case")) {
+                                                benchmarks = c(
+                                                  "all",
+                                                  "isic_4digit",
+                                                  "tilt_sector",
+                                                  "unit",
+                                                  "unit_isic_4digit",
+                                                  "unit_tilt_sector"
+                                                ),
+                                                mode = c(
+                                                  "equal_weight",
+                                                  "worst_case",
+                                                  "best_case"
+                                                )) {
   benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
   mode <- arg_match(mode)
 
@@ -52,9 +54,11 @@ bar_plot_emission_profile_financial <- function(data,
   mode_col <- switch_mode(mode)
 
   data <- data |>
-    calc_benchmark_emission_profile_financial(risk_var,
-                                              benchmarks_arg,
-                                              mode_col)
+    calc_benchmark_emission_profile_financial(
+      risk_var,
+      benchmarks_arg,
+      mode_col
+    )
 
   ggplot(data, aes(x = .data$percentage_total, y = .data$benchmark, fill = .data$risk_category_var)) +
     geom_col(position = position_stack(reverse = TRUE), width = width_bar()) +
@@ -74,10 +78,12 @@ bar_plot_emission_profile_financial <- function(data,
 #' @return A data frame with calculated proportions of emission profile categories.
 #'
 #' @examples
-#' calc_benchmark_emission_profile_financial(financial,
-#'                                           "emission_profile",
-#'                                           c("all", "unit"),
-#'                                           "equal_weight")
+#' calc_benchmark_emission_profile_financial(
+#'   financial,
+#'   "emission_profile",
+#'   c("all", "unit"),
+#'   "equal_weight"
+#' )
 #' @noRd
 calc_benchmark_emission_profile_financial <- function(data,
                                                       risk_var,
