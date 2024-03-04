@@ -51,13 +51,13 @@ bar_plot_emission_profile_financial <- function(data,
   data <- data |>
     mutate(risk_category_var = as_risk_category(data[[risk_var]]))
 
-  mode_col <- switch_mode(mode)
+  mode_var <- switch_mode(mode)
 
   data <- data |>
     calc_benchmark_emission_profile_financial(
       risk_var,
       benchmarks_arg,
-      mode_col
+      mode_var
     )
 
   ggplot(data, aes(x = .data$percentage_total, y = .data$benchmark, fill = .data$risk_category_var)) +
@@ -73,7 +73,7 @@ bar_plot_emission_profile_financial <- function(data,
 #' @param data A data frame containing the emission profile data.
 #' @param risk_var The name of the variable containing risk categories.
 #' @param benchmarks A character vector specifying the benchmark(s) to consider.
-#' @param mode A character vector specifying the financial case to consider.
+#' @param mode_var A character vector specifying the financial case to consider.
 #'
 #' @return A data frame with calculated proportions of emission profile categories.
 #'
@@ -88,7 +88,7 @@ bar_plot_emission_profile_financial <- function(data,
 calc_benchmark_emission_profile_financial <- function(data,
                                                       risk_var,
                                                       benchmarks,
-                                                      mode_col) {
+                                                      mode_var) {
   total_amount_portfolio <- data |>
     filter(.data$benchmark %in% benchmarks) |>
     distinct(.data$bank_id, .data$company_name, .keep_all = TRUE) |>
@@ -97,7 +97,7 @@ calc_benchmark_emission_profile_financial <- function(data,
 
   data <- data |>
     filter(.data$benchmark %in% benchmarks) |>
-    mutate(proportion = .data[[mode_col]] / total_amount_portfolio) |>
+    mutate(proportion = .data[[mode_var]] / total_amount_portfolio) |>
     group_by(.data$risk_category_var, .data$company_name, .data$benchmark) |>
     summarise(percentage = sum(.data$proportion), .groups = "keep") |>
     summarise(percentage_total = sum(.data$percentage))
