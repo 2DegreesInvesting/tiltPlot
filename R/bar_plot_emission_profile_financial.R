@@ -70,20 +70,13 @@ bar_plot_emission_profile_financial <- function(data,
 #' Calculate emission profile proportions for specific benchmarks, with financial
 #' data
 #'
-#' @param data A data frame containing the emission profile data.
-#' @param risk_var The name of the variable containing risk categories.
-#' @param benchmarks A character vector specifying the benchmark(s) to consider.
-#' @param mode_var A character vector specifying the financial case to consider.
+#' @param data A data frame.
+#' @param risk_var A character vector.
+#' @param benchmarks A character vector.
+#' @param mode_var A character vector.
 #'
-#' @return A data frame with calculated proportions of emission profile categories.
+#' @return A data frame.
 #'
-#' @examples
-#' calc_benchmark_emission_profile_financial(
-#'   financial,
-#'   "emission_profile",
-#'   c("all", "unit"),
-#'   "equal_weight"
-#' )
 #' @noRd
 calc_benchmark_emission_profile_financial <- function(data,
                                                       risk_var,
