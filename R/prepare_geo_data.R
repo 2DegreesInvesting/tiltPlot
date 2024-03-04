@@ -2,13 +2,11 @@
 #'
 #' @inheritParams map_region_risk
 #'
-#' @return A list containing the following components:
+#' @return A list:
 #'   - \code{shp_1}: Spatial data for the specified country.
 #'   - \code{aggregated_data}: Aggregated data, without financial data.
 #' @noRd
 #'
-#' @examples
-#' prepare_geo_data(without_financial)
 prepare_geo_data <- function(data,
                              country_code = c("DE"),
                              benchmark = c(

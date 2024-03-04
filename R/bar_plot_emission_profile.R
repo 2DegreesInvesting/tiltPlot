@@ -48,21 +48,18 @@ bar_plot_emission_profile <- function(data,
 
 #' Calculate emission profile proportions for specific benchmarks
 #'
-#' @param data A data frame containing the emission profile data.
-#' @param risk_var The name of the variable containing risk categories.
-#' @param benchmarks A character vector specifying the benchmark(s) to consider.
+#' @param data A data frame.
+#' @param risk_var A character vector.
+#' @param benchmarks A character vector.
 #'
-#' @return A data frame with calculated proportions of emission profile categories.
+#' @return A data frame.
 #'
-#' @examples
-#' calc_benchmark_emission_profile(without_financial, "emission_profile", c("all", "unit"))
 #' @noRd
 calc_benchmark_emission_profile <- function(data, risk_var, benchmarks) {
   data <- data |>
-    mutate(risk_category_var = as_risk_category(data[[risk_var]])) |>
     filter(.data$benchmark %in% benchmarks) |>
     group_by(.data$risk_category_var, .data$benchmark) |>
-    summarize(count = n()) |>
+    summarise(count = n()) |>
     group_by(.data$benchmark) |>
     mutate(proportion = .data$count / sum(.data$count))
   return(data)

@@ -65,7 +65,7 @@ Finally, the user can choose different modes to plot the Sankey plot with financ
 plot_sankey(fin, with_company = FALSE, mode = "best_case")
 ```
 
-### 2. Emission risk plots with financial data
+### 2. Emission profile plots with financial data
 
 ```{r}
 financial
@@ -76,15 +76,21 @@ On a company level:
 ```{r}
 fin <- financial
 
-plot_xctr_financial(fin, "peter", mode = "worst_case") +
-  labs(title = "Risk distribution of all products on a company level, on a financial weight")
+benchmarks <- c("all", "unit")
+
+fin |>
+  filter(company_name == "tilman") |>
+  bar_plot_emission_profile_financial(benchmarks, mode = "equal_weight") +
+  labs(title = "Emission profile of all products on a company level, on an equal
+       weight financial mode")
 ```
 
 On a portfolio level:
 
 ```{r}
-plot_xctr_financial(fin, mode = "worst_case") +
-  labs(title = "Risk distribution of all products on a portfolio level, on a financial weight")
+bar_plot_emission_profile_financial(fin, benchmarks, mode = "equal_weight") +
+  labs(title = "Emission profile of all products on a portfolio level, on an equal
+       weight financial mode")
 ```
 
 
