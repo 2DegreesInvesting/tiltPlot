@@ -40,7 +40,7 @@ scatter_plot_financial <- function(data,
   benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
   mode_arg <- arg_match(mode)
   scenario_arg <- arg_match(scenario)
-  year_arg <- arg_match(year)
+  year_arg <- year
 
   crucial <- c(
     "amount_total",
@@ -67,51 +67,48 @@ scatter_plot_financial <- function(data,
 
   mode_var <- switch_mode(mode_arg)
 
-  data <- financial
-  benchmarks_arg <- ("all")
-  scenario_arg <- "IPR"
-  year_arg <- 2030
-
-  data_test <- data |>
+  data <- data |>
     filter(.data$benchmark %in% benchmarks_arg) |>
     filter(.data$scenario == scenario_arg) |>
-    filter(.data$year == year_arg) |>
-    head(3)
+    filter(.data$year == year_arg)
 
-  # Function to calculate the y value based on user choice
-  finance_type <- "worst_case_finance"
+  data <- data |>
+    mutate(percent = mean(.data$reduction_targets), .by = .data$tilt_sector) |>
+    mutate(
+      percent = round(percent, 4),
+      title = glue::glue("{unique(tilt_sector)}: {unique(percent*100)}% SERT"),
+           .by = .data$tilt_sector)
 
-  y_value <- calculate_y(data_test, finance_type, "profile_ranking")
-  y_value2 <- calculate_y(data_test, finance_type, "transition_risk_score")
+  emission_rank <- calculate_rank(data, mode_var, "profile_ranking")
+  tr_score <- calculate_rank(data, mode_var, "transition_risk_score")
 
-  #CUSTOMIZED FACET WRAP ?
-  mean_reduction_targets <- aggregate(reduction_targets ~ tilt_sector, data_test, mean)
-
-  data_test <- merge(data_test, mean_reduction_targets, by = "tilt_sector", all.x = TRUE)
-
-  data_test$tilt_sector <- as.factor(data_test$tilt_sector)
-
-  tilt_sector_labels <- paste(data_test$tilt_sector, ": ", data_test$reduction_targets, "% SERT")
-
-  data_test$tilt_sector.labs = tilt_sector_labels
-
-  # Create scatter plot
-  ggplot(data_test, aes(x = amount_total, color = bank_id, shape = bank_id)) +
-    geom_point(aes(y = y_value)) +
-    geom_point(aes(y = y_value2)) +
-    facet_wrap(~ tilt_sector, scales = "fixed", labeller = labeller(data_test$tilt_sector.labs)) +
+  ggplot(data, aes(x = .data$amount_total, color = .data$bank_id)) +
+    geom_point(aes(y = emission_rank, shape = "Emission Rank")) +
+    geom_point(aes(y = tr_score, shape = "TR Score")) +
+    scale_shape_manual(name = "Legend", values = c("Emission Rank" = 17, "TR Score" = 18)) +
+    facet_grid(.data$benchmark ~ .data$title, scales = "fixed") +
     ylim(0, NA) +
-    xlim(0, NA)
+    xlim(0, NA) +
+    ylab("Rank") +
+    theme_tiltplot()
 }
 
 
-calculate_y <- function(df, mode, col) {
+#' Calculate Rank
+#'
+#' @param data A data frame.
+#' @param mode A character vector.
+#' @param col A character vector.
+#'
+#' @return A numerical value.
+#' @noRd
+calculate_rank <- function(data, mode, col) {
   if (mode == "equal_weight_finance") {
-    y <- mean(df[[col]])
+    rank <- mean(data[[col]])
   } else if (mode %in% c("worst_case_finance", "best_case_finance")) {
-    df <- df[df[[mode]] != 0, ]
-    y <- mean(df[[col]])
+    df <- data[data[[mode]] != 0, ]
+    rank <- mean(data[[col]])
   }
-  return(y)
+  rank
 }
 

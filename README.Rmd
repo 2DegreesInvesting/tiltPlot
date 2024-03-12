@@ -124,7 +124,22 @@ bar_plot_emission_profile(no_fin, benchmarks) +
 ```
 
 
-### 4. Create a German map with risk categories color gradient, without financial
+### 4. Scatter plot of the emission profiles and transition risk scores, with financial data
+
+```{r}
+fin <- financial
+benchmark <- c("all", "tilt_sector")
+mode <- "worst_case"
+scenario <- "WEO"
+year <- 2030
+
+scatter_plot_financial(financial, benchmark, mode, scenario, year) +
+  labs(title = paste("Scatter plot for financial data. Scenario", scenario, 
+                     "and year", year))
+```
+
+
+### 5. Create a German map with risk categories color gradient, without financial
 
 Different modes can be chosen: "equal_weight", "worst_case" and "best_case".
 If nothing is chosen, equal_weight the default mode.
