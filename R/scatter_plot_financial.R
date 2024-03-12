@@ -78,28 +78,13 @@ scatter_plot_financial <- function(data,
     filter(.data$year == year_arg) |>
     head(3)
 
-
   # Function to calculate the y value based on user choice
-  calculate_y <- function(df, mode, col) {
-    if (mode == "equal_weight_finance") {
-      y <- mean(df[[col]])
-    } else if (mode %in% c("worst_case_finance", "best_case_finance")) {
-      df <- df[df[[mode]] != 0, ]
-      y <- mean(df[[col]])
-    }
-    return(y)
-  }
+  finance_type <- "worst_case_finance"
 
-  calculate_mean_percentage <- function(df) {
-    mean_percentage <- aggregate(reduction_targets ~ tilt_sector, df, function(x) {
-      mean_value <- mean(x)
-      return(paste0(mean_value * 100, "%"))
-    })
-    return(mean_percentage)
-  }
+  y_value <- calculate_y(data_test, finance_type, "profile_ranking")
+  y_value2 <- calculate_y(data_test, finance_type, "transition_risk_score")
 
-  mean_percentage <- calculate_mean_percentage(data_test)
-
+  #CUSTOMIZED FACET WRAP ?
   mean_reduction_targets <- aggregate(reduction_targets ~ tilt_sector, data_test, mean)
 
   data_test <- merge(data_test, mean_reduction_targets, by = "tilt_sector", all.x = TRUE)
@@ -110,13 +95,6 @@ scatter_plot_financial <- function(data,
 
   data_test$tilt_sector.labs = tilt_sector_labels
 
-  # User-selected finance type
-  finance_type <- "worst_case_finance"
-
-  # Calculate y value based on user choice
-  y_value <- calculate_y(data_test, finance_type, "profile_ranking")
-  y_value2 <- calculate_y(data_test, finance_type, "transition_risk_score")
-
   # Create scatter plot
   ggplot(data_test, aes(x = amount_total, color = bank_id, shape = bank_id)) +
     geom_point(aes(y = y_value)) +
@@ -125,3 +103,15 @@ scatter_plot_financial <- function(data,
     ylim(0, NA) +
     xlim(0, NA)
 }
+
+
+calculate_y <- function(df, mode, col) {
+  if (mode == "equal_weight_finance") {
+    y <- mean(df[[col]])
+  } else if (mode %in% c("worst_case_finance", "best_case_finance")) {
+    df <- df[df[[mode]] != 0, ]
+    y <- mean(df[[col]])
+  }
+  return(y)
+}
+
