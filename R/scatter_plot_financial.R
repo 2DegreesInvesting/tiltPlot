@@ -36,7 +36,7 @@ scatter_plot_financial <- function(data,
                                    ),
                                    scenario = c("IPR","WEO"),
                                    year = c(2030, 2050)
-                                   ) {
+) {
 
   benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
   mode_arg <- arg_match(mode)
@@ -68,17 +68,7 @@ scatter_plot_financial <- function(data,
 
   mode_var <- switch_mode(mode_arg)
 
-  data <- data |>
-    filter(.data$benchmark %in% benchmarks_arg) |>
-    filter(.data$scenario == scenario_arg) |>
-    filter(.data$year == year_arg)
-
-  data <- data |>
-    mutate(percent = mean(.data$reduction_targets), .by = .data$tilt_sector) |>
-    mutate(
-      percent = round(.data$percent, 4),
-      title = glue::glue("{unique(.data$tilt_sector)}: {unique(.data$percent*100)}% SERT"),
-           .by = .data$tilt_sector)
+  data <- process_data(data, benchmarks_arg, scenario_arg, year_arg)
 
   emission_rank <- calculate_rank(data, mode_var, "profile_ranking")
   tr_score <- calculate_rank(data, mode_var, "transition_risk_score")
@@ -93,7 +83,6 @@ scatter_plot_financial <- function(data,
     ylab("Rank") +
     theme_tiltplot()
 }
-
 
 #' Calculate Rank
 #'
@@ -111,5 +100,32 @@ calculate_rank <- function(data, mode, col) {
     rank <- mean(data[[col]])
   }
   rank
+}
+
+#' Process data
+#'
+#' @param data A data frame.
+#' @param benchmarks_arg A character vector.
+#' @param scenario_arg A character vector.
+#' @param year_arg A numerical value.
+#'
+#' @return A data frame.
+#' @noRd
+process_data <- function(data, benchmarks_arg, scenario_arg, year_arg) {
+  data <- data |>
+    filter(.data$benchmark %in% benchmarks_arg,
+           .data$scenario == scenario_arg,
+           .data$year == year_arg)
+
+  data <- data |>
+    group_by(.data$tilt_sector) |>
+    mutate(percent = mean(.data$reduction_targets)) |>
+    mutate(
+      percent = round(.data$percent * 100, 4),
+      title = glue::glue("{unique(.data$tilt_sector)}: {unique(.data$percent)}% SERT")
+    ) |>
+    ungroup()
+
+  data
 }
 
