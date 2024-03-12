@@ -34,10 +34,8 @@ scatter_plot_financial <- function(data,
                                      "worst_case",
                                      "best_case"
                                    ),
-                                   scenario = c("IPR","WEO"),
-                                   year = c(2030, 2050)
-) {
-
+                                   scenario = c("IPR", "WEO"),
+                                   year = c(2030, 2050)) {
   benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
   mode_arg <- arg_match(mode)
   scenario_arg <- arg_match(scenario)
@@ -113,9 +111,11 @@ calculate_rank <- function(data, mode, col) {
 #' @noRd
 process_data <- function(data, benchmarks_arg, scenario_arg, year_arg) {
   data <- data |>
-    filter(.data$benchmark %in% benchmarks_arg,
-           .data$scenario == scenario_arg,
-           .data$year == year_arg)
+    filter(
+      .data$benchmark %in% benchmarks_arg,
+      .data$scenario == scenario_arg,
+      .data$year == year_arg
+    )
 
   data <- data |>
     group_by(.data$tilt_sector) |>
@@ -128,4 +128,3 @@ process_data <- function(data, benchmarks_arg, scenario_arg, year_arg) {
 
   data
 }
-

@@ -134,8 +134,10 @@ scenario <- "WEO"
 year <- 2030
 
 scatter_plot_financial(financial, benchmark, mode, scenario, year) +
-  labs(title = paste("Scatter plot for financial data. Scenario", scenario, 
-                     "and year", year))
+  labs(title = paste(
+    "Scatter plot for financial data. Scenario", scenario,
+    "and year", year
+  ))
 ```
 
 

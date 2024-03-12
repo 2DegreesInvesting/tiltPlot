@@ -32,7 +32,7 @@ bar_plot_emission_profile_financial <- function(data,
                                                   "best_case"
                                                 )) {
   benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
-  #TODO: replace by mode_arg
+  # TODO: replace by mode_arg
   mode <- arg_match(mode)
 
   crucial <- c(
