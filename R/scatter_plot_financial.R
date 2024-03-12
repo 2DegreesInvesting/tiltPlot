@@ -76,8 +76,8 @@ scatter_plot_financial <- function(data,
   data <- data |>
     mutate(percent = mean(.data$reduction_targets), .by = .data$tilt_sector) |>
     mutate(
-      percent = round(percent, 4),
-      title = glue::glue("{unique(tilt_sector)}: {unique(percent*100)}% SERT"),
+      percent = round(.data$percent, 4),
+      title = glue::glue("{unique(.data$tilt_sector)}: {unique(.data$percent*100)}% SERT"),
            .by = .data$tilt_sector)
 
   emission_rank <- calculate_rank(data, mode_var, "profile_ranking")

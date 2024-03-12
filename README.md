@@ -35,7 +35,7 @@ library(tiltPlot)
 
 ``` r
 financial
-#> # A tibble: 123 × 23
+#> # A tibble: 264 × 23
 #>    bank_id amount_total company_name postcode benchmark ep_product
 #>    <chr>          <int> <chr>           <int> <chr>     <chr>     
 #>  1 bank_a          1000 tilman          12043 all       car       
@@ -48,9 +48,9 @@ financial
 #>  8 bank_a          1000 tilman          12043 all       tractor   
 #>  9 bank_a          1000 tilman          12043 all       steel     
 #> 10 bank_a          1000 tilman          12043 all       car       
-#> # ℹ 113 more rows
+#> # ℹ 254 more rows
 #> # ℹ 17 more variables: co2_footprint_product <dbl>, tilt_sector <chr>,
-#> #   tilt_subsector <chr>, isic_4digit <chr>, isic_4digit_name <chr>,
+#> #   tilt_subsector <chr>, isic_4digit <int>, isic_4digit_name <chr>,
 #> #   amount_of_distinct_products <int>, equal_weight_finance <dbl>,
 #> #   worst_case_finance <int>, best_case_finance <int>, emission_profile <chr>,
 #> #   profile_ranking <dbl>, sector_profile <chr>, scenario <chr>, year <int>,
@@ -88,7 +88,7 @@ plot_sankey(fin, with_company = FALSE, mode = "best_case")
 
 ``` r
 financial
-#> # A tibble: 123 × 23
+#> # A tibble: 264 × 23
 #>    bank_id amount_total company_name postcode benchmark ep_product
 #>    <chr>          <int> <chr>           <int> <chr>     <chr>     
 #>  1 bank_a          1000 tilman          12043 all       car       
@@ -101,9 +101,9 @@ financial
 #>  8 bank_a          1000 tilman          12043 all       tractor   
 #>  9 bank_a          1000 tilman          12043 all       steel     
 #> 10 bank_a          1000 tilman          12043 all       car       
-#> # ℹ 113 more rows
+#> # ℹ 254 more rows
 #> # ℹ 17 more variables: co2_footprint_product <dbl>, tilt_sector <chr>,
-#> #   tilt_subsector <chr>, isic_4digit <chr>, isic_4digit_name <chr>,
+#> #   tilt_subsector <chr>, isic_4digit <int>, isic_4digit_name <chr>,
 #> #   amount_of_distinct_products <int>, equal_weight_finance <dbl>,
 #> #   worst_case_finance <int>, best_case_finance <int>, emission_profile <chr>,
 #> #   profile_ranking <dbl>, sector_profile <chr>, scenario <chr>, year <int>,
@@ -122,7 +122,7 @@ fin |>
   bar_plot_emission_profile_financial(benchmarks, mode = "equal_weight") +
   labs(title = "Emission profile of all products on a company level, on an equal
        weight financial mode")
-#> Warning: Removed 1 rows containing missing values (`position_stack()`).
+#> Warning: Removed 4 rows containing missing values (`position_stack()`).
 ```
 
 <img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
@@ -133,7 +133,8 @@ On a portfolio level:
 bar_plot_emission_profile_financial(fin, benchmarks, mode = "equal_weight") +
   labs(title = "Emission profile of all products on a portfolio level, on an equal
        weight financial mode")
-#> Warning: Removed 1 rows containing missing values (`geom_col()`).
+#> Warning: Removed 2 rows containing missing values (`position_stack()`).
+#> Warning: Removed 8 rows containing missing values (`geom_col()`).
 ```
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
