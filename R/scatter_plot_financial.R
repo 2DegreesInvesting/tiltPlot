@@ -19,6 +19,7 @@
 #' @export
 #'
 #' @examples
+#' scatter_plot_financial(financial, "all", "equal_weight", "IPR", 2030)
 scatter_plot_financial <- function(data,
                                    benchmarks = c(
                                      "all",
@@ -33,7 +34,7 @@ scatter_plot_financial <- function(data,
                                      "worst_case",
                                      "best_case"
                                    ),
-                                   scenario = c("WEO","IPR"),
+                                   scenario = c("IPR","WEO"),
                                    year = c(2030, 2050)
                                    ) {
 

@@ -5,7 +5,7 @@
 \alias{financial}
 \title{Financial toy data}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 123 rows and 23 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 264 rows and 23 columns.
 }
 \source{
 \verb{@lindadelacombaz}
