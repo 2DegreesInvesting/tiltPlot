@@ -118,7 +118,7 @@ scatter_plot_financial <- function(data,
   y_value2 <- calculate_y(data_test, finance_type, "transition_risk_score")
 
   # Create scatter plot
-  p <- ggplot(data_test, aes(x = amount_total, color = bank_id, shape = bank_id)) +
+  ggplot(data_test, aes(x = amount_total, color = bank_id, shape = bank_id)) +
     geom_point(aes(y = y_value)) +
     geom_point(aes(y = y_value2)) +
     facet_wrap(~ tilt_sector, scales = "fixed", labeller = labeller(data_test$tilt_sector.labs)) +
