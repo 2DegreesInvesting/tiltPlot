@@ -6,9 +6,8 @@
 \usage{
 scatter_plot_financial(
   data,
-  benchmarks = c("all", "isic_4digit", "tilt_sector", "unit", "unit_isic_4digit",
-    "unit_tilt_sector"),
-  mode = c("equal_weight", "worst_case", "best_case"),
+  benchmarks = benchmarks(),
+  mode = mode(),
   scenario = c("IPR", "WEO"),
   year = c(2030, 2050)
 )
@@ -20,9 +19,9 @@ scatter_plot_financial(
 emission profiles will be plotted. The user can choose from one to several
 benchmark(s) to be plotted.}
 
-\item{mode}{A character vector specifying the mode of financial data to plot.
-It can be one of "equal_weight", "worst_case" or "best_case". If nothing is
-chosen, "equal_weight" is the default case.}
+\item{mode}{The mode of financial data to plot.
+It can be one of "equal_weight", "worst_case" or "best_case".
+If nothing is chosen, "equal_weight" is the default case.}
 
 \item{scenario}{A character vector specifying the scenario to be plot. It can
 either be "IPR" or "WEO".}

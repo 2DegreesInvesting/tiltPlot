@@ -15,19 +15,8 @@
 #' @examples
 #' scatter_plot_financial(financial, "all", "equal_weight", "IPR", 2030)
 scatter_plot_financial <- function(data,
-                                   benchmarks = c(
-                                     "all",
-                                     "isic_4digit",
-                                     "tilt_sector",
-                                     "unit",
-                                     "unit_isic_4digit",
-                                     "unit_tilt_sector"
-                                   ),
-                                   mode = c(
-                                     "equal_weight",
-                                     "worst_case",
-                                     "best_case"
-                                   ),
+                                   benchmarks = benchmarks(),
+                                   mode = mode(),
                                    scenario = c("IPR", "WEO"),
                                    year = c(2030, 2050)) {
   benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)

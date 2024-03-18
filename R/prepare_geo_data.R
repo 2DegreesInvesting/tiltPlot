@@ -9,15 +9,8 @@
 #'
 prepare_geo_data <- function(data,
                              country_code = c("DE"),
-                             benchmark = c(
-                               "all",
-                               "isic_4digit",
-                               "tilt_sector",
-                               "unit",
-                               "unit_isic_4digit",
-                               "unit_tilt_sector"
-                             ),
-                             mode = c("equal_weight", "worst_case", "best_case")) {
+                             benchmark = benchmarks(),
+                             mode = mode()) {
   benchmark_arg <- arg_match(benchmark)
   mode <- arg_match(mode)
 

@@ -16,14 +16,7 @@
 #' benchmarks <- c("all", "unit", "isic_4digit")
 #' bar_plot_emission_profile(without_financial, benchmarks)
 bar_plot_emission_profile <- function(data,
-                                      benchmarks = c(
-                                        "all",
-                                        "isic_4digit",
-                                        "tilt_sector",
-                                        "unit",
-                                        "unit_isic_4digit",
-                                        "unit_tilt_sector"
-                                      )) {
+                                      benchmarks = benchmarks()) {
   benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
 
   crucial <- c(

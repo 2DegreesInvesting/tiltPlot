@@ -6,9 +6,8 @@
 \usage{
 bar_plot_emission_profile_financial(
   data,
-  benchmarks = c("all", "isic_4digit", "tilt_sector", "unit", "unit_isic_4digit",
-    "unit_tilt_sector"),
-  mode = c("equal_weight", "worst_case", "best_case")
+  benchmarks = benchmarks(),
+  mode = mode()
 )
 }
 \arguments{

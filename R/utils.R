@@ -104,11 +104,9 @@ risk_category_levels <- function() c("low", "medium", "high")
 
 #' Benchmarks used in the functions' arguments.
 #'
-#' @keywords internal
-#' @noRd
-#'
 #' @examples
 #' benchmarks()
+#' @noRd
 benchmarks <- function() {
   c(
     "all",
@@ -122,11 +120,9 @@ benchmarks <- function() {
 
 #' Mode used in the functions' arguments.
 #'
-#' @keywords internal
-#' @noRd
-#'
 #' @examples
 #' mode()
+#' @noRd
 mode <- function() {
   c(
     "equal_weight",
