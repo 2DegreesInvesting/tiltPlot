@@ -3,13 +3,7 @@
 #' Generate a scatter plot comparing the emission profile and transition risks
 #' for each bank in the portfolio.
 #'
-#' @param data A data frame like [financial].
-#' @param benchmarks A character vector specifying the benchmarks for which the
-#' emission profiles will be plotted. The user can choose from one to several
-#' benchmark(s) to be plotted.
-#' @param mode A character vector specifying the mode of financial data to plot.
-#' It can be one of "equal_weight", "worst_case" or "best_case". If nothing is
-#' chosen, "equal_weight" is the default case.
+#' @inheritParams bar_plot_emission_profile_financial
 #' @param scenario A character vector specifying the scenario to be plot. It can
 #' either be "IPR" or "WEO".
 #' @param year A numerical specifying the year of the scenario to be plot. It
