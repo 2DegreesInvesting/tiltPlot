@@ -7,25 +7,23 @@
 plot_sankey(
   data,
   with_company = TRUE,
+  benchmark = benchmarks(),
   mode = c("equal_weight", "worst_case", "best_case")
 )
 }
 \arguments{
-\item{data}{A data frame like \link{financial}.}
+\item{data}{A data frame like \link{without_financial}}
 
 \item{with_company}{Logical. If TRUE, will plot a node with the company name.
 If FALSE, will plot without the company name node.}
 
-\item{mode}{String. Several modes can be chosen by the user :
-\itemize{
-\item "equal_weight" means to divide the amount of the loan by the number of
-products of the company.
-\item "worst_case" means to weigh the loan as such that we assume that all money
-goes into the highest risk product. If there are two or more products associated
-with the same highest risk, we assume equal weights again.
-\item "best_case" - similar to the worst-case scenario but just with the
-lowest-risk category.
-}}
+\item{benchmark}{The mode of benchmark to plot.
+It can be one of "all", "unit" or "tilt_sector", "unit_tilt_sector",
+"isic_4digit" or "unit_isic_4digit". If nothing is chosen, "all" is the
+default mode.}
+
+\item{mode}{The mode to plot. It can be one of "equal_weight", "worst_case"
+or "best_case". If nothing is chosen, "equal_weight" is the default mode.}
 }
 \value{
 A sankey plot of class \link{ggalluvial}.
@@ -37,6 +35,6 @@ Create a sankey plot with financial data
 # Plot with equal weight and with company name
 plot_sankey(financial)
 
-# Plot with best_case weight
-plot_sankey(financial, mode = "best_case")
+# Plot with best_case weight and benchmark "all".
+plot_sankey(financial, benchmark = "all", mode = "best_case")
 }

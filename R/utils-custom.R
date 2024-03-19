@@ -37,3 +37,11 @@ value_shape_pentagon <- function() 18
 label_emission_rank <- function() "Emission Rank"
 
 label_transition_risk <- function() "TR Score"
+
+label_bank <- function() "Bank"
+
+label_company <- function() "Company"
+
+label_tilt_sector <- function() "Tilt Sector"
+
+label_risk_categories <- function() "Risk Categories"
