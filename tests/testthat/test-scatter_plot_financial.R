@@ -1,17 +1,17 @@
 test_that("returns an object of the expected class", {
-  p <- scatter_plot_financial(financial, "all")
+  p <- scatter_plot_financial(financial, benchmarks())
   expect_s3_class(p, "ggplot")
 })
 
 test_that("returns correct risk categories values", {
-  p <- scatter_plot_financial(financial, "all")
+  p <- scatter_plot_financial(financial, benchmarks())
   risk_names <- unique(p$data$emission_profile)
   possible_names <- c("low", "medium", "high", "other")
   expect_true(all(risk_names %in% possible_names))
 })
 
 test_that("returns correct benchmarks values", {
-  plot <- scatter_plot_financial(financial, "all")
+  plot <- scatter_plot_financial(financial, benchmarks())
   benchmarks <- unique(plot$data$benchmark)
   expected_benchmarks <- financial |>
     pull(benchmark) |>
@@ -35,7 +35,6 @@ test_that("calculate_rank handles NAs for any mode", {
 })
 
 test_that("prepare_scatter_plot_financial removes NAs", {
-
   test_fin <- financial
   test_fin[3, "reduction_targets"] <- NA
   result <- prepare_scatter_plot_financial(test_fin, "all", "IPR", 2030)

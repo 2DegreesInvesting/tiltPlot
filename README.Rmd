@@ -127,11 +127,12 @@ fin <- financial
 scenario <- "WEO"
 year <- 2030
 
-scatter_plot_financial(fin, 
-                       benchmarks = c("all", "tilt_sector"), 
-                       mode = "worst_case", 
-                       scenario = scenario, 
-                       year = year) +
+scatter_plot_financial(fin,
+  benchmarks = c("all", "tilt_sector"),
+  mode = "worst_case",
+  scenario = scenario,
+  year = year
+) +
   labs(title = paste(
     "Scatter plot for financial data. Scenario", scenario,
     "and year", year

@@ -13,10 +13,12 @@
 #' @export
 #'
 #' @examples
-#' scatter_plot_financial(financial, benchmarks = c("all", "tilt_sector"),
-#' mode = "equal_weight",
-#' scenario = "IPR",
-#' year = 2030)
+#' scatter_plot_financial(financial,
+#'   benchmarks = c("all", "tilt_sector"),
+#'   mode = "equal_weight",
+#'   scenario = "IPR",
+#'   year = 2030
+#' )
 scatter_plot_financial <- function(data,
                                    benchmarks = benchmarks(),
                                    mode = c(
@@ -40,18 +42,19 @@ scatter_plot_financial <- function(data,
   emission_rank <- calculate_rank(data, mode, "profile_ranking")
   tr_score <- calculate_rank(data, mode, "transition_risk_score")
 
-  label_emission_rank = label_emission_rank()
-  label_transition_risk = label_transition_risk()
+  label_emission_rank <- label_emission_rank()
+  label_transition_risk <- label_transition_risk()
 
   ggplot(data, aes(x = .data$amount_total, color = .data$bank_id)) +
     geom_point(aes(y = emission_rank, shape = label_emission_rank)) +
     geom_point(aes(y = tr_score, shape = label_transition_risk)) +
-    scale_shape_manual(name = "Legend",
-                       values = c(
-                         label_emission_rank = value_shape_triangle(),
-                         label_transition_risk = value_shape_pentagon()
-                         )
-                       ) +
+    scale_shape_manual(
+      name = "Legend",
+      values = c(
+        label_emission_rank = value_shape_triangle(),
+        label_transition_risk = value_shape_pentagon()
+      )
+    ) +
     facet_grid(.data$benchmark ~ .data$title, scales = "fixed") +
     ylim(0, NA) +
     xlim(0, NA) +
@@ -131,12 +134,12 @@ prepare_scatter_plot_financial <- function(data, benchmarks, scenario, year) {
 #' @noRd
 calculate_rank <- function(data, mode, col) {
   rank <- switch(mode,
-                 "equal_weight_finance" = mean(data[[col]], na.rm = TRUE),
-                 "worst_case_finance" = ,
-                 "best_case_finance" = {
-                   data <- data[data[[mode]] != 0, ]
-                   mean(data[[col]], na.rm = TRUE)
-                 }
+    "equal_weight_finance" = mean(data[[col]], na.rm = TRUE),
+    "worst_case_finance" = ,
+    "best_case_finance" = {
+      data <- data[data[[mode]] != 0, ]
+      mean(data[[col]], na.rm = TRUE)
+    }
   )
   rank
 }

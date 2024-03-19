@@ -37,8 +37,10 @@ Generate a scatter plot comparing the emission profile and transition risks
 for each bank in the portfolio.
 }
 \examples{
-scatter_plot_financial(financial, benchmarks = c("all", "tilt_sector"),
-mode = "equal_weight",
-scenario = "IPR",
-year = 2030)
+scatter_plot_financial(financial,
+  benchmarks = c("all", "tilt_sector"),
+  mode = "equal_weight",
+  scenario = "IPR",
+  year = 2030
+)
 }
