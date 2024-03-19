@@ -29,3 +29,11 @@ score_colors <- function(...) c("low" = "#007F00", "medium" = "#FFC300", "high" 
 fill_score_colors <- function() scale_fill_manual(values = score_colors())
 
 width_bar <- function() 0.5
+
+value_shape_triangle <- function() 17
+
+value_shape_pentagon <- function() 18
+
+label_emission_rank <- function() "Emission Rank"
+
+label_transition_risk <- function() "TR Score"

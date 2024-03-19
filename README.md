@@ -35,32 +35,31 @@ library(tiltPlot)
 
 ``` r
 financial
-#> # A tibble: 114 × 15
-#>    bank_id amount_total company_name postcode emission_profile benchmark
-#>    <chr>          <int> <chr>           <int> <chr>            <chr>    
-#>  1 bank_a          1000 tilman          12043 high             all      
-#>  2 bank_a          1000 tilman          12043 high             all      
-#>  3 bank_a          1000 tilman          12043 medium           all      
-#>  4 bank_b           500 tilman          12043 high             all      
-#>  5 bank_b           500 tilman          12043 high             all      
-#>  6 bank_b           500 tilman          12043 medium           all      
-#>  7 bank_a          1000 bruno           27568 low              all      
-#>  8 bank_a          1000 bruno           27568 high             all      
-#>  9 bank_a          1000 bruno           27568 medium           all      
-#> 10 bank_a          1000 mirja           34117 low              all      
-#> # ℹ 104 more rows
-#> # ℹ 9 more variables: ep_product <chr>, tilt_sector <chr>,
-#> #   tilt_subsector <chr>, isic_4digit <chr>, isic_4digit_name <chr>,
+#> # A tibble: 264 × 23
+#>    bank_id amount_total company_name postcode benchmark ep_product
+#>    <chr>          <int> <chr>           <int> <chr>     <chr>     
+#>  1 bank_a          1000 tilman          12043 all       car       
+#>  2 bank_a          1000 tilman          12043 all       tractor   
+#>  3 bank_a          1000 tilman          12043 all       steel     
+#>  4 bank_a          1000 tilman          12043 all       car       
+#>  5 bank_a          1000 tilman          12043 all       tractor   
+#>  6 bank_a          1000 tilman          12043 all       steel     
+#>  7 bank_a          1000 tilman          12043 all       car       
+#>  8 bank_a          1000 tilman          12043 all       tractor   
+#>  9 bank_a          1000 tilman          12043 all       steel     
+#> 10 bank_a          1000 tilman          12043 all       car       
+#> # ℹ 254 more rows
+#> # ℹ 17 more variables: co2_footprint_product <dbl>, tilt_sector <chr>,
+#> #   tilt_subsector <chr>, isic_4digit <int>, isic_4digit_name <chr>,
 #> #   amount_of_distinct_products <int>, equal_weight_finance <dbl>,
-#> #   worst_case_finance <int>, best_case_finance <int>
+#> #   worst_case_finance <int>, best_case_finance <int>, emission_profile <chr>,
+#> #   profile_ranking <dbl>, sector_profile <chr>, scenario <chr>, year <int>,
+#> #   reduction_targets <dbl>, transition_risk_score <dbl>, …
 ```
-
-Here is the default Sankey Plot. By default the function plots with
-companies and uses an “equal_weight” mode.
 
 ``` r
 fin <- financial
-plot_sankey(fin)
+plot_sankey(fin, with_company = TRUE, mode = "equal_weight")
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
@@ -68,7 +67,7 @@ plot_sankey(fin)
 You can also choose to have the plot without the company node.
 
 ``` r
-plot_sankey(fin, with_company = FALSE)
+plot_sankey(fin, with_company = FALSE, mode = "equal_weight")
 ```
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
@@ -86,24 +85,26 @@ plot_sankey(fin, with_company = FALSE, mode = "best_case")
 
 ``` r
 financial
-#> # A tibble: 114 × 15
-#>    bank_id amount_total company_name postcode emission_profile benchmark
-#>    <chr>          <int> <chr>           <int> <chr>            <chr>    
-#>  1 bank_a          1000 tilman          12043 high             all      
-#>  2 bank_a          1000 tilman          12043 high             all      
-#>  3 bank_a          1000 tilman          12043 medium           all      
-#>  4 bank_b           500 tilman          12043 high             all      
-#>  5 bank_b           500 tilman          12043 high             all      
-#>  6 bank_b           500 tilman          12043 medium           all      
-#>  7 bank_a          1000 bruno           27568 low              all      
-#>  8 bank_a          1000 bruno           27568 high             all      
-#>  9 bank_a          1000 bruno           27568 medium           all      
-#> 10 bank_a          1000 mirja           34117 low              all      
-#> # ℹ 104 more rows
-#> # ℹ 9 more variables: ep_product <chr>, tilt_sector <chr>,
-#> #   tilt_subsector <chr>, isic_4digit <chr>, isic_4digit_name <chr>,
+#> # A tibble: 264 × 23
+#>    bank_id amount_total company_name postcode benchmark ep_product
+#>    <chr>          <int> <chr>           <int> <chr>     <chr>     
+#>  1 bank_a          1000 tilman          12043 all       car       
+#>  2 bank_a          1000 tilman          12043 all       tractor   
+#>  3 bank_a          1000 tilman          12043 all       steel     
+#>  4 bank_a          1000 tilman          12043 all       car       
+#>  5 bank_a          1000 tilman          12043 all       tractor   
+#>  6 bank_a          1000 tilman          12043 all       steel     
+#>  7 bank_a          1000 tilman          12043 all       car       
+#>  8 bank_a          1000 tilman          12043 all       tractor   
+#>  9 bank_a          1000 tilman          12043 all       steel     
+#> 10 bank_a          1000 tilman          12043 all       car       
+#> # ℹ 254 more rows
+#> # ℹ 17 more variables: co2_footprint_product <dbl>, tilt_sector <chr>,
+#> #   tilt_subsector <chr>, isic_4digit <int>, isic_4digit_name <chr>,
 #> #   amount_of_distinct_products <int>, equal_weight_finance <dbl>,
-#> #   worst_case_finance <int>, best_case_finance <int>
+#> #   worst_case_finance <int>, best_case_finance <int>, emission_profile <chr>,
+#> #   profile_ranking <dbl>, sector_profile <chr>, scenario <chr>, year <int>,
+#> #   reduction_targets <dbl>, transition_risk_score <dbl>, …
 ```
 
 On a company level:
@@ -156,8 +157,7 @@ without_financial
 ```
 
 Plot on a company level. The user can choose any number of benchmark to
-be plotted. If the benchmarks argument is not given to the function, the
-function will plot all the benchmarks.
+be plotted.
 
 ``` r
 no_fin <- without_financial
@@ -181,7 +181,30 @@ bar_plot_emission_profile(no_fin, benchmarks) +
 
 <img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
 
-### 4. Create a German map with risk categories color gradient, without financial
+### 4. Scatter plot of the emission profiles and transition risk scores, with financial data
+
+``` r
+fin <- financial
+scenario <- "WEO"
+year <- 2030
+
+scatter_plot_financial(fin,
+  benchmarks = c("all", "tilt_sector"),
+  mode = "worst_case",
+  scenario = scenario,
+  year = year
+) +
+  labs(title = paste(
+    "Scatter plot for financial data. Scenario", scenario,
+    "and year", year
+  ))
+#> Warning: Removed 88 rows containing missing values (`geom_point()`).
+#> Removed 88 rows containing missing values (`geom_point()`).
+```
+
+<img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
+
+### 5. Create a German map with risk categories color gradient, without financial
 
 Different modes can be chosen: “equal_weight”, “worst_case” and
 “best_case”. If nothing is chosen, equal_weight the default mode.
@@ -196,4 +219,4 @@ map_region_risk(no_fin, "DE", benchmark = "tilt_sector", mode = "worst_case") +
 #> Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues
 ```
 
-<img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-14-1.png" width="100%" />

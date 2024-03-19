@@ -81,7 +81,6 @@ names_matching <- function(data, pattern) {
   names(select(data, matches(pattern)))
 }
 
-
 #' Convert vector to risk category
 #'
 #' @param x
@@ -102,3 +101,20 @@ check_levels <- function(x) {
 }
 
 risk_category_levels <- function() c("low", "medium", "high")
+
+#' Benchmarks used in the functions' arguments.
+#'
+#' @examples
+#' benchmarks()
+#' @keywords internal
+#' @export
+benchmarks <- function() {
+  c(
+    "all",
+    "isic_4digit",
+    "tilt_sector",
+    "unit",
+    "unit_isic_4digit",
+    "unit_tilt_sector"
+  )
+}

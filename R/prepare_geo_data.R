@@ -9,16 +9,13 @@
 #'
 prepare_geo_data <- function(data,
                              country_code = c("DE"),
-                             benchmark = c(
-                               "all",
-                               "isic_4digit",
-                               "tilt_sector",
-                               "unit",
-                               "unit_isic_4digit",
-                               "unit_tilt_sector"
-                             ),
-                             mode = c("equal_weight", "worst_case", "best_case")) {
-  benchmark_arg <- arg_match(benchmark)
+                             benchmark = benchmarks(),
+                             mode = c(
+                               "equal_weight",
+                               "worst_case",
+                               "best_case"
+                             )) {
+  benchmark <- arg_match(benchmark)
   mode <- arg_match(mode)
 
   crucial <- c(
@@ -53,7 +50,7 @@ prepare_geo_data <- function(data,
 
   # merge shapefile with financial data
   geo <- data |>
-    filter(benchmark == benchmark_arg) |>
+    filter(benchmark == benchmark) |>
     left_join(shp_1, by = "postcode") |>
     st_as_sf()
 

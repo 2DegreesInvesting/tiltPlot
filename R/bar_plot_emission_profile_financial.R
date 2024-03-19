@@ -18,20 +18,13 @@
 #' benchmarks <- c("all", "unit", "isic_4digit")
 #' bar_plot_emission_profile_financial(financial, benchmarks, "equal_weight")
 bar_plot_emission_profile_financial <- function(data,
-                                                benchmarks = c(
-                                                  "all",
-                                                  "isic_4digit",
-                                                  "tilt_sector",
-                                                  "unit",
-                                                  "unit_isic_4digit",
-                                                  "unit_tilt_sector"
-                                                ),
+                                                benchmarks = benchmarks(),
                                                 mode = c(
                                                   "equal_weight",
                                                   "worst_case",
                                                   "best_case"
                                                 )) {
-  benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
+  benchmarks <- arg_match(benchmarks, multiple = TRUE)
   mode <- arg_match(mode)
 
   crucial <- c(
@@ -56,7 +49,7 @@ bar_plot_emission_profile_financial <- function(data,
   data <- data |>
     calc_benchmark_emission_profile_financial(
       risk_var,
-      benchmarks_arg,
+      benchmarks,
       mode_var
     )
 
@@ -85,15 +78,16 @@ calc_benchmark_emission_profile_financial <- function(data,
   total_amount_portfolio <- data |>
     filter(.data$benchmark %in% benchmarks) |>
     distinct(.data$bank_id, .data$company_name, .keep_all = TRUE) |>
-    summarise(total_amount_portfolio = sum(.data$amount_total)) |>
+    summarise(total_amount_portfolio = sum(.data$amount_total, na.rm = TRUE)) |>
     pull()
 
   data <- data |>
     filter(.data$benchmark %in% benchmarks) |>
+    distinct(.data$bank_id, .data$company_name, .data$ep_product, .data$benchmark, .keep_all = TRUE) |>
     mutate(proportion = .data[[mode_var]] / total_amount_portfolio) |>
     group_by(.data$risk_category_var, .data$company_name, .data$benchmark) |>
-    summarise(percentage = sum(.data$proportion), .groups = "keep") |>
-    summarise(percentage_total = sum(.data$percentage))
+    summarise(percentage = sum(.data$proportion, na.rm = TRUE), .groups = "keep") |>
+    summarise(percentage_total = sum(.data$percentage, na.rm = TRUE))
 
   data
 }

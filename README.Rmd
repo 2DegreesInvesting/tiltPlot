@@ -46,17 +46,15 @@ library(tiltPlot)
 financial
 ```
 
-Here is the default Sankey Plot. By default the function plots with companies and uses an "equal_weight" mode.
-
 ```{r}
 fin <- financial
-plot_sankey(fin)
+plot_sankey(fin, with_company = TRUE, mode = "equal_weight")
 ```
 
 You can also choose to have the plot without the company node.
 
 ```{r}
-plot_sankey(fin, with_company = FALSE)
+plot_sankey(fin, with_company = FALSE, mode = "equal_weight")
 ```
 
 Finally, the user can choose different modes to plot the Sankey plot with financial data available.
@@ -102,8 +100,6 @@ without_financial
 
 Plot on a company level.
 The user can choose any number of benchmark to be plotted. 
-If the benchmarks argument is not given to the function, the function will plot 
-all the benchmarks.
 
 ```{r}
 no_fin <- without_financial
@@ -124,7 +120,27 @@ bar_plot_emission_profile(no_fin, benchmarks) +
 ```
 
 
-### 4. Create a German map with risk categories color gradient, without financial
+### 4. Scatter plot of the emission profiles and transition risk scores, with financial data
+
+```{r}
+fin <- financial
+scenario <- "WEO"
+year <- 2030
+
+scatter_plot_financial(fin,
+  benchmarks = c("all", "tilt_sector"),
+  mode = "worst_case",
+  scenario = scenario,
+  year = year
+) +
+  labs(title = paste(
+    "Scatter plot for financial data. Scenario", scenario,
+    "and year", year
+  ))
+```
+
+
+### 5. Create a German map with risk categories color gradient, without financial
 
 Different modes can be chosen: "equal_weight", "worst_case" and "best_case".
 If nothing is chosen, equal_weight the default mode.
