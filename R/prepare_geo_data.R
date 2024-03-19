@@ -11,7 +11,7 @@ prepare_geo_data <- function(data,
                              country_code = c("DE"),
                              benchmark = benchmarks(),
                              mode = mode()) {
-  benchmark_arg <- arg_match(benchmark)
+  benchmark <- arg_match(benchmark)
   mode <- arg_match(mode)
 
   crucial <- c(
@@ -46,7 +46,7 @@ prepare_geo_data <- function(data,
 
   # merge shapefile with financial data
   geo <- data |>
-    filter(benchmark == benchmark_arg) |>
+    filter(benchmark == benchmark) |>
     left_join(shp_1, by = "postcode") |>
     st_as_sf()
 

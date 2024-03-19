@@ -19,11 +19,38 @@ scatter_plot_financial <- function(data,
                                    mode = mode(),
                                    scenario = c("IPR", "WEO"),
                                    year = c(2030, 2050)) {
-  benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
-  mode_arg <- arg_match(mode)
-  scenario_arg <- arg_match(scenario)
-  year_arg <- year
+  benchmarks <- arg_match(benchmarks, multiple = TRUE)
+  scenario <- arg_match(scenario)
+  year <- year
+  mode <- mode |>
+    arg_match() |>
+    switch_mode()
 
+  data <- data |>
+    check_scatter_plot_financial() |>
+    prepare_scatter_plot_financial(benchmarks, scenario, year)
+
+  emission_rank <- calculate_rank(data, mode, "profile_ranking")
+  tr_score <- calculate_rank(data, mode, "transition_risk_score")
+
+  ggplot(data, aes(x = .data$amount_total, color = .data$bank_id)) +
+    geom_point(aes(y = emission_rank, shape = "Emission Rank")) +
+    geom_point(aes(y = tr_score, shape = "TR Score")) +
+    scale_shape_manual(name = "Legend", values = c("Emission Rank" = 17, "TR Score" = 18)) +
+    facet_grid(.data$benchmark ~ .data$title, scales = "fixed") +
+    ylim(0, NA) +
+    xlim(0, NA) +
+    ylab("Rank") +
+    theme_tiltplot()
+}
+
+#' Check scatter plot with financial data
+#'
+#' @param data A data frame.
+#'
+#' @return A data frame
+#' @noRd
+check_scatter_plot_financial <- function(data) {
   crucial <- c(
     "amount_total",
     "bank_id",
@@ -47,22 +74,36 @@ scatter_plot_financial <- function(data,
   data <- data |>
     mutate(risk_category_var = as_risk_category(data[[risk_var]]))
 
-  mode_var <- switch_mode(mode_arg)
+  data
+}
 
-  data <- process_data(data, benchmarks_arg, scenario_arg, year_arg)
+#' Process data
+#'
+#' @param data A data frame.
+#' @param benchmarks A character vector.
+#' @param scenario A character vector.
+#' @param year A numerical value.
+#'
+#' @return A data frame.
+#' @noRd
+prepare_scatter_plot_financial <- function(data, benchmarks, scenario, year) {
+  data <- data |>
+    filter(
+      .data$benchmark %in% benchmarks,
+      .data$scenario == scenario,
+      .data$year == year
+    )
 
-  emission_rank <- calculate_rank(data, mode_var, "profile_ranking")
-  tr_score <- calculate_rank(data, mode_var, "transition_risk_score")
+  data <- data |>
+    group_by(.data$tilt_sector) |>
+    mutate(percent = mean(.data$reduction_targets)) |>
+    mutate(
+      percent = round(.data$percent * 100, 4),
+      title = glue::glue("{unique(.data$tilt_sector)}: {unique(.data$percent)}% SERT")
+    ) |>
+    ungroup()
 
-  ggplot(data, aes(x = .data$amount_total, color = .data$bank_id)) +
-    geom_point(aes(y = emission_rank, shape = "Emission Rank")) +
-    geom_point(aes(y = tr_score, shape = "TR Score")) +
-    scale_shape_manual(name = "Legend", values = c("Emission Rank" = 17, "TR Score" = 18)) +
-    facet_grid(.data$benchmark ~ .data$title, scales = "fixed") +
-    ylim(0, NA) +
-    xlim(0, NA) +
-    ylab("Rank") +
-    theme_tiltplot()
+  data
 }
 
 #' Calculate Rank
@@ -81,33 +122,4 @@ calculate_rank <- function(data, mode, col) {
     rank <- mean(data[[col]])
   }
   rank
-}
-
-#' Process data
-#'
-#' @param data A data frame.
-#' @param benchmarks_arg A character vector.
-#' @param scenario_arg A character vector.
-#' @param year_arg A numerical value.
-#'
-#' @return A data frame.
-#' @noRd
-process_data <- function(data, benchmarks_arg, scenario_arg, year_arg) {
-  data <- data |>
-    filter(
-      .data$benchmark %in% benchmarks_arg,
-      .data$scenario == scenario_arg,
-      .data$year == year_arg
-    )
-
-  data <- data |>
-    group_by(.data$tilt_sector) |>
-    mutate(percent = mean(.data$reduction_targets)) |>
-    mutate(
-      percent = round(.data$percent * 100, 4),
-      title = glue::glue("{unique(.data$tilt_sector)}: {unique(.data$percent)}% SERT")
-    ) |>
-    ungroup()
-
-  data
 }

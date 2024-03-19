@@ -128,12 +128,12 @@ bar_plot_emission_profile(no_fin, benchmarks) +
 
 ```{r}
 fin <- financial
-benchmark <- c("all", "tilt_sector")
+benchmarks <- c("all", "tilt_sector")
 mode <- "worst_case"
 scenario <- "WEO"
 year <- 2030
 
-scatter_plot_financial(financial, benchmark, mode, scenario, year) +
+scatter_plot_financial(financial, benchmarks, mode, scenario, year) +
   labs(title = paste(
     "Scatter plot for financial data. Scenario", scenario,
     "and year", year

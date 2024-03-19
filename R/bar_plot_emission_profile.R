@@ -17,7 +17,7 @@
 #' bar_plot_emission_profile(without_financial, benchmarks)
 bar_plot_emission_profile <- function(data,
                                       benchmarks = benchmarks()) {
-  benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
+  benchmarks <- arg_match(benchmarks, multiple = TRUE)
 
   crucial <- c(
     "benchmark",
@@ -30,7 +30,7 @@ bar_plot_emission_profile <- function(data,
   data <- data |>
     mutate(risk_category_var = as_risk_category(data[[risk_var]]))
 
-  data <- calc_benchmark_emission_profile(data, risk_var, benchmarks_arg)
+  data <- calc_benchmark_emission_profile(data, risk_var, benchmarks)
 
   ggplot(data, aes(x = .data$proportion, y = .data$benchmark, fill = .data$risk_category_var)) +
     geom_col(position = position_stack(reverse = TRUE), width = width_bar()) +

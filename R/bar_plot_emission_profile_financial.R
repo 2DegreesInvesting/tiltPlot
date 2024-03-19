@@ -20,8 +20,7 @@
 bar_plot_emission_profile_financial <- function(data,
                                                 benchmarks = benchmarks(),
                                                 mode = mode()) {
-  benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
-  # TODO: replace by mode_arg
+  benchmarks <- arg_match(benchmarks, multiple = TRUE)
   mode <- arg_match(mode)
 
   crucial <- c(
@@ -46,7 +45,7 @@ bar_plot_emission_profile_financial <- function(data,
   data <- data |>
     calc_benchmark_emission_profile_financial(
       risk_var,
-      benchmarks_arg,
+      benchmarks,
       mode_var
     )
 
