@@ -18,14 +18,7 @@
 #' benchmarks <- c("all", "unit", "isic_4digit")
 #' bar_plot_emission_profile_financial(financial, benchmarks, "equal_weight")
 bar_plot_emission_profile_financial <- function(data,
-                                                benchmarks =   c(
-                                                  "all",
-                                                  "isic_4digit",
-                                                  "tilt_sector",
-                                                  "unit",
-                                                  "unit_isic_4digit",
-                                                  "unit_tilt_sector"
-                                                ),
+                                                benchmarks = benchmarks(),
                                                 mode = c(
                                                   "equal_weight",
                                                   "worst_case",
