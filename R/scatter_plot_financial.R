@@ -28,33 +28,32 @@ scatter_plot_financial <- function(data,
                                    ),
                                    scenario = c("IPR", "WEO"),
                                    year = c(2030, 2050)) {
-  benchmarks <- arg_match(benchmarks, multiple = TRUE)
-  scenario <- arg_match(scenario)
-  year <- year
-  mode <- mode |>
+  # FIXME: If I do not put _arg, it does not filter the data correctly.
+  benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
+  scenario_arg <- arg_match(scenario)
+  year_arg <- year
+  mode_arg <- mode |>
     arg_match() |>
     switch_mode()
 
   data <- data |>
     check_scatter_plot_financial() |>
-    prepare_scatter_plot_financial(benchmarks, scenario, year)
+    prepare_scatter_plot_financial(benchmarks_arg, scenario_arg, year_arg)
 
-  emission_rank <- calculate_rank(data, mode, "profile_ranking")
-  tr_score <- calculate_rank(data, mode, "transition_risk_score")
+  emission_rank <- calculate_rank(data, mode_arg, "profile_ranking")
+  tr_score <- calculate_rank(data, mode_arg, "transition_risk_score")
 
-  label_emission_rank <- label_emission_rank()
-  label_transition_risk <- label_transition_risk()
+  emission_rank_legend <- label_emission_rank()
+  transition_risk_legend <- label_transition_risk()
 
   ggplot(data, aes(x = .data$amount_total, color = .data$bank_id)) +
-    geom_point(aes(y = emission_rank, shape = label_emission_rank)) +
-    geom_point(aes(y = tr_score, shape = label_transition_risk)) +
-    scale_shape_manual(
-      name = "Legend",
-      values = c(
-        label_emission_rank = value_shape_triangle(),
-        label_transition_risk = value_shape_pentagon()
-      )
-    ) +
+    geom_point(aes(y = emission_rank, shape = emission_rank_legend)) +
+    geom_point(aes(y = tr_score, shape = transition_risk_legend)) +
+    scale_shape_manual(name = "Legend", values = c(
+      # FIXME: Changing "Emission Rank" into its function causes a warning
+      "Emission Rank" = value_shape_triangle(),
+      "TR Score" = value_shape_pentagon()
+    )) +
     facet_grid(.data$benchmark ~ .data$title, scales = "fixed") +
     ylim(0, NA) +
     xlim(0, NA) +
@@ -104,12 +103,12 @@ check_scatter_plot_financial <- function(data) {
 #'
 #' @return A data frame.
 #' @noRd
-prepare_scatter_plot_financial <- function(data, benchmarks, scenario, year) {
+prepare_scatter_plot_financial <- function(data, benchmarks_arg, scenario_arg, year_arg) {
   data <- data |>
     filter(
-      .data$benchmark %in% benchmarks,
-      .data$scenario == scenario,
-      .data$year == year
+      .data$benchmark %in% benchmarks_arg,
+      .data$scenario == scenario_arg,
+      .data$year == year_arg
     )
 
   data <- data |>
@@ -132,12 +131,12 @@ prepare_scatter_plot_financial <- function(data, benchmarks, scenario, year) {
 #'
 #' @return A numerical value.
 #' @noRd
-calculate_rank <- function(data, mode, col) {
-  rank <- switch(mode,
+calculate_rank <- function(data, mode_arg, col) {
+  rank <- switch(mode_arg,
     "equal_weight_finance" = mean(data[[col]], na.rm = TRUE),
     "worst_case_finance" = ,
     "best_case_finance" = {
-      data <- data[data[[mode]] != 0, ]
+      data <- data[data[[mode_arg]] != 0, ]
       mean(data[[col]], na.rm = TRUE)
     }
   )
