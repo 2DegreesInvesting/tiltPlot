@@ -100,8 +100,6 @@ without_financial
 
 Plot on a company level.
 The user can choose any number of benchmark to be plotted. 
-If the benchmarks argument is not given to the function, the function will plot 
-all the benchmarks.
 
 ```{r}
 no_fin <- without_financial

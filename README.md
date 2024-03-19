@@ -29,11 +29,6 @@ pak::pak("2DegreesInvesting/tiltPlot")
 library(ggplot2)
 library(dplyr, warn.conflicts = FALSE)
 library(tiltPlot)
-#> 
-#> Attaching package: 'tiltPlot'
-#> The following object is masked from 'package:base':
-#> 
-#>     mode
 ```
 
 ### 1. Sankey Plot with financial data
@@ -165,8 +160,7 @@ without_financial
 ```
 
 Plot on a company level. The user can choose any number of benchmark to
-be plotted. If the benchmarks argument is not given to the function, the
-function will plot all the benchmarks.
+be plotted.
 
 ``` r
 no_fin <- without_financial
