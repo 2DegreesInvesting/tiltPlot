@@ -119,7 +119,6 @@ fin |>
   bar_plot_emission_profile_financial(benchmarks, mode = "equal_weight") +
   labs(title = "Emission profile of all products on a company level, on an equal
        weight financial mode")
-#> Warning: Removed 4 rows containing missing values (`position_stack()`).
 ```
 
 <img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
@@ -130,8 +129,6 @@ On a portfolio level:
 bar_plot_emission_profile_financial(fin, benchmarks, mode = "equal_weight") +
   labs(title = "Emission profile of all products on a portfolio level, on an equal
        weight financial mode")
-#> Warning: Removed 2 rows containing missing values (`position_stack()`).
-#> Warning: Removed 8 rows containing missing values (`geom_col()`).
 ```
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
@@ -191,11 +188,12 @@ fin <- financial
 scenario <- "WEO"
 year <- 2030
 
-scatter_plot_financial(fin, 
-                       benchmarks = c("all", "tilt_sector"), 
-                       mode = "worst_case", 
-                       scenario = scenario, 
-                       year = year) +
+scatter_plot_financial(fin,
+  benchmarks = c("all", "tilt_sector"),
+  mode = "worst_case",
+  scenario = scenario,
+  year = year
+) +
   labs(title = paste(
     "Scatter plot for financial data. Scenario", scenario,
     "and year", year
