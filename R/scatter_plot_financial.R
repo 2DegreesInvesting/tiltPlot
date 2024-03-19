@@ -36,10 +36,18 @@ scatter_plot_financial <- function(data,
   emission_rank <- calculate_rank(data, mode, "profile_ranking")
   tr_score <- calculate_rank(data, mode, "transition_risk_score")
 
+  label_emission_rank = label_emission_rank()
+  label_transition_risk = label_transition_risk()
+
   ggplot(data, aes(x = .data$amount_total, color = .data$bank_id)) +
-    geom_point(aes(y = emission_rank, shape = "Emission Rank")) +
-    geom_point(aes(y = tr_score, shape = "TR Score")) +
-    scale_shape_manual(name = "Legend", values = c("Emission Rank" = 17, "TR Score" = 18)) +
+    geom_point(aes(y = emission_rank, shape = label_emission_rank)) +
+    geom_point(aes(y = tr_score, shape = label_transition_risk)) +
+    scale_shape_manual(name = "Legend",
+                       values = c(
+                         label_emission_rank = value_shape_triangle(),
+                         label_transition_risk = value_shape_pentagon()
+                         )
+                       ) +
     facet_grid(.data$benchmark ~ .data$title, scales = "fixed") +
     ylim(0, NA) +
     xlim(0, NA) +
