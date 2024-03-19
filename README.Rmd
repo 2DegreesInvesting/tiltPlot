@@ -49,11 +49,11 @@ financial
 ```{r}
 fin <- financial
 mode <- "equal_weight"
-plot_sankey(fin, with_company = TRUE, mode = mode) + 
-    ggtitle(
-      "Sankey Plot",
-      paste("Stratified by the amount of loan by the bank and", mode, "mode")
-    )
+plot_sankey(fin, with_company = TRUE, mode = mode) +
+  ggtitle(
+    "Sankey Plot",
+    paste("Stratified by the amount of loan by the bank and", mode, "mode")
+  )
 ```
 
 You can also choose to have the plot without the company node.
