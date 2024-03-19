@@ -104,7 +104,7 @@ check_scatter_plot_financial <- function(data) {
 #' @noRd
 prepare_scatter_plot_financial <- function(data, benchmarks_arg, scenario_arg, year_arg) {
   data <- data |>
-    dplyr::filter(
+    filter(
       .data$benchmark %in% benchmarks_arg,
       .data$scenario == scenario_arg,
       .data$year == year_arg
