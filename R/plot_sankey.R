@@ -1,6 +1,6 @@
 #' Create a sankey plot with financial data
 #'
-#' @inheritParams bar_plot_emission_profile_financial
+#' @inheritParams map_region_risk
 #' @param with_company Logical. If TRUE, will plot a node with the company name.
 #' If FALSE, will plot without the company name node.
 #'
