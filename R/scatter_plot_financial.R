@@ -116,10 +116,10 @@ prepare_scatter_plot_financial <- function(data, benchmarks, scenario, year) {
 #' @noRd
 calculate_rank <- function(data, mode, col) {
   if (mode == "equal_weight_finance") {
-    rank <- mean(data[[col]])
+    rank <- mean(data[[col]], na.rm = TRUE)
   } else if (mode %in% c("worst_case_finance", "best_case_finance")) {
-    df <- data[data[[mode]] != 0, ]
-    rank <- mean(data[[col]])
+    data <- data[data[[mode]] != 0, ]
+    rank <- mean(data[[col]], na.rm = TRUE)
   }
   rank
 }
