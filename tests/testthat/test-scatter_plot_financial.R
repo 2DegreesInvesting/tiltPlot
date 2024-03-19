@@ -18,3 +18,18 @@ test_that("returns correct benchmarks values", {
     unique()
   expect_true(all(benchmarks %in% expected_benchmarks))
 })
+
+test_that("calculate_rank handles NAs for any mode", {
+  data <- tibble(
+    profile_ranking = c(1, NA),
+    equal_weight_finance = c(1, 1),
+    best_case_finance = c(1, 1),
+    worst_case_finance = c(1, 1)
+  )
+  results <- c(
+    calculate_rank(data, "equal_weight_finance", "profile_ranking"),
+    calculate_rank(data, "best_case_finance", "profile_ranking"),
+    calculate_rank(data, "worst_case_finance", "profile_ranking")
+  )
+  expect_true(all(results == 1))
+})

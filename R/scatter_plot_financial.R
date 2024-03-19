@@ -107,7 +107,7 @@ prepare_scatter_plot_financial <- function(data, benchmarks, scenario, year) {
 
   data <- data |>
     group_by(.data$tilt_sector) |>
-    mutate(percent = mean(.data$reduction_targets)) |>
+    mutate(percent = mean(.data$reduction_targets, na.rm = TRUE)) |>
     mutate(
       percent = round(.data$percent * 100, 4),
       title = glue("{unique(.data$tilt_sector)}: {unique(.data$percent)}% SERT")
@@ -134,6 +134,5 @@ calculate_rank <- function(data, mode, col) {
                    mean(data[[col]], na.rm = TRUE)
                  }
   )
-
   rank
 }
