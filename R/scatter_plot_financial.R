@@ -28,7 +28,7 @@ scatter_plot_financial <- function(data,
                                    ),
                                    scenario = c("IPR", "WEO"),
                                    year = c(2030, 2050)) {
-  #FIXME: If I do not put _arg, it does not filter the data correctly.
+  # FIXME: If I do not put _arg, it does not filter the data correctly.
   benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
   scenario_arg <- arg_match(scenario)
   year_arg <- year
@@ -50,9 +50,10 @@ scatter_plot_financial <- function(data,
     geom_point(aes(y = emission_rank, shape = emission_rank_legend)) +
     geom_point(aes(y = tr_score, shape = transition_risk_legend)) +
     scale_shape_manual(name = "Legend", values = c(
-      #FIXME: Changing "Emission Rank" into its function causes a warning
+      # FIXME: Changing "Emission Rank" into its function causes a warning
       "Emission Rank" = value_shape_triangle(),
-      "TR Score" = value_shape_pentagon())) +
+      "TR Score" = value_shape_pentagon()
+    )) +
     facet_grid(.data$benchmark ~ .data$title, scales = "fixed") +
     ylim(0, NA) +
     xlim(0, NA) +
