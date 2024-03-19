@@ -31,6 +31,9 @@
     <loc>https://2degreesinvesting.github.io/tiltPlot/reference/bar_plot_emission_profile_financial.html</loc>
   </url>
   <url>
+    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/benchmarks.html</loc>
+  </url>
+  <url>
     <loc>https://2degreesinvesting.github.io/tiltPlot/reference/financial.html</loc>
   </url>
   <url>
@@ -44,6 +47,9 @@
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltPlot/reference/plot_sankey.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/scatter_plot_financial.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltPlot/reference/theme_tiltplot.html</loc>

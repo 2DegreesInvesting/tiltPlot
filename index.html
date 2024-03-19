@@ -92,32 +92,33 @@
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">financial</span></span>
-<span><span class="co">#&gt; # A tibble: 114 × 15</span></span>
-<span><span class="co">#&gt;    bank_id amount_total company_name postcode emission_profile benchmark</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;            &lt;chr&gt;    </span></span>
-<span><span class="co">#&gt;  1 bank_a          1000 tilman          12043 high             all      </span></span>
-<span><span class="co">#&gt;  2 bank_a          1000 tilman          12043 high             all      </span></span>
-<span><span class="co">#&gt;  3 bank_a          1000 tilman          12043 medium           all      </span></span>
-<span><span class="co">#&gt;  4 bank_b           500 tilman          12043 high             all      </span></span>
-<span><span class="co">#&gt;  5 bank_b           500 tilman          12043 high             all      </span></span>
-<span><span class="co">#&gt;  6 bank_b           500 tilman          12043 medium           all      </span></span>
-<span><span class="co">#&gt;  7 bank_a          1000 bruno           27568 low              all      </span></span>
-<span><span class="co">#&gt;  8 bank_a          1000 bruno           27568 high             all      </span></span>
-<span><span class="co">#&gt;  9 bank_a          1000 bruno           27568 medium           all      </span></span>
-<span><span class="co">#&gt; 10 bank_a          1000 mirja           34117 low              all      </span></span>
-<span><span class="co">#&gt; # ℹ 104 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 9 more variables: ep_product &lt;chr&gt;, tilt_sector &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   tilt_subsector &lt;chr&gt;, isic_4digit &lt;chr&gt;, isic_4digit_name &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; # A tibble: 264 × 23</span></span>
+<span><span class="co">#&gt;    bank_id amount_total company_name postcode benchmark ep_product</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;     </span></span>
+<span><span class="co">#&gt;  1 bank_a          1000 tilman          12043 all       car       </span></span>
+<span><span class="co">#&gt;  2 bank_a          1000 tilman          12043 all       tractor   </span></span>
+<span><span class="co">#&gt;  3 bank_a          1000 tilman          12043 all       steel     </span></span>
+<span><span class="co">#&gt;  4 bank_a          1000 tilman          12043 all       car       </span></span>
+<span><span class="co">#&gt;  5 bank_a          1000 tilman          12043 all       tractor   </span></span>
+<span><span class="co">#&gt;  6 bank_a          1000 tilman          12043 all       steel     </span></span>
+<span><span class="co">#&gt;  7 bank_a          1000 tilman          12043 all       car       </span></span>
+<span><span class="co">#&gt;  8 bank_a          1000 tilman          12043 all       tractor   </span></span>
+<span><span class="co">#&gt;  9 bank_a          1000 tilman          12043 all       steel     </span></span>
+<span><span class="co">#&gt; 10 bank_a          1000 tilman          12043 all       car       </span></span>
+<span><span class="co">#&gt; # ℹ 254 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 17 more variables: co2_footprint_product &lt;dbl&gt;, tilt_sector &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   tilt_subsector &lt;chr&gt;, isic_4digit &lt;int&gt;, isic_4digit_name &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   amount_of_distinct_products &lt;int&gt;, equal_weight_finance &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   worst_case_finance &lt;int&gt;, best_case_finance &lt;int&gt;</span></span></code></pre></div>
-<p>Here is the default Sankey Plot. By default the function plots with companies and uses an “equal_weight” mode.</p>
+<span><span class="co">#&gt; #   worst_case_finance &lt;int&gt;, best_case_finance &lt;int&gt;, emission_profile &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   profile_ranking &lt;dbl&gt;, sector_profile &lt;chr&gt;, scenario &lt;chr&gt;, year &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   reduction_targets &lt;dbl&gt;, transition_risk_score &lt;dbl&gt;, …</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fin</span> <span class="op">&lt;-</span> <span class="va">financial</span></span>
-<span><span class="fu"><a href="reference/plot_sankey.html">plot_sankey</a></span><span class="op">(</span><span class="va">fin</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="reference/plot_sankey.html">plot_sankey</a></span><span class="op">(</span><span class="va">fin</span>, with_company <span class="op">=</span> <span class="cn">TRUE</span>, mode <span class="op">=</span> <span class="st">"equal_weight"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="100%"></p>
 <p>You can also choose to have the plot without the company node.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_sankey.html">plot_sankey</a></span><span class="op">(</span><span class="va">fin</span>, with_company <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_sankey.html">plot_sankey</a></span><span class="op">(</span><span class="va">fin</span>, with_company <span class="op">=</span> <span class="cn">FALSE</span>, mode <span class="op">=</span> <span class="st">"equal_weight"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="100%"></p>
 <p>Finally, the user can choose different modes to plot the Sankey plot with financial data available.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -129,24 +130,26 @@
 </h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">financial</span></span>
-<span><span class="co">#&gt; # A tibble: 114 × 15</span></span>
-<span><span class="co">#&gt;    bank_id amount_total company_name postcode emission_profile benchmark</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;            &lt;chr&gt;    </span></span>
-<span><span class="co">#&gt;  1 bank_a          1000 tilman          12043 high             all      </span></span>
-<span><span class="co">#&gt;  2 bank_a          1000 tilman          12043 high             all      </span></span>
-<span><span class="co">#&gt;  3 bank_a          1000 tilman          12043 medium           all      </span></span>
-<span><span class="co">#&gt;  4 bank_b           500 tilman          12043 high             all      </span></span>
-<span><span class="co">#&gt;  5 bank_b           500 tilman          12043 high             all      </span></span>
-<span><span class="co">#&gt;  6 bank_b           500 tilman          12043 medium           all      </span></span>
-<span><span class="co">#&gt;  7 bank_a          1000 bruno           27568 low              all      </span></span>
-<span><span class="co">#&gt;  8 bank_a          1000 bruno           27568 high             all      </span></span>
-<span><span class="co">#&gt;  9 bank_a          1000 bruno           27568 medium           all      </span></span>
-<span><span class="co">#&gt; 10 bank_a          1000 mirja           34117 low              all      </span></span>
-<span><span class="co">#&gt; # ℹ 104 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 9 more variables: ep_product &lt;chr&gt;, tilt_sector &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   tilt_subsector &lt;chr&gt;, isic_4digit &lt;chr&gt;, isic_4digit_name &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; # A tibble: 264 × 23</span></span>
+<span><span class="co">#&gt;    bank_id amount_total company_name postcode benchmark ep_product</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;     </span></span>
+<span><span class="co">#&gt;  1 bank_a          1000 tilman          12043 all       car       </span></span>
+<span><span class="co">#&gt;  2 bank_a          1000 tilman          12043 all       tractor   </span></span>
+<span><span class="co">#&gt;  3 bank_a          1000 tilman          12043 all       steel     </span></span>
+<span><span class="co">#&gt;  4 bank_a          1000 tilman          12043 all       car       </span></span>
+<span><span class="co">#&gt;  5 bank_a          1000 tilman          12043 all       tractor   </span></span>
+<span><span class="co">#&gt;  6 bank_a          1000 tilman          12043 all       steel     </span></span>
+<span><span class="co">#&gt;  7 bank_a          1000 tilman          12043 all       car       </span></span>
+<span><span class="co">#&gt;  8 bank_a          1000 tilman          12043 all       tractor   </span></span>
+<span><span class="co">#&gt;  9 bank_a          1000 tilman          12043 all       steel     </span></span>
+<span><span class="co">#&gt; 10 bank_a          1000 tilman          12043 all       car       </span></span>
+<span><span class="co">#&gt; # ℹ 254 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 17 more variables: co2_footprint_product &lt;dbl&gt;, tilt_sector &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   tilt_subsector &lt;chr&gt;, isic_4digit &lt;int&gt;, isic_4digit_name &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   amount_of_distinct_products &lt;int&gt;, equal_weight_finance &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   worst_case_finance &lt;int&gt;, best_case_finance &lt;int&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; #   worst_case_finance &lt;int&gt;, best_case_finance &lt;int&gt;, emission_profile &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   profile_ranking &lt;dbl&gt;, sector_profile &lt;chr&gt;, scenario &lt;chr&gt;, year &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   reduction_targets &lt;dbl&gt;, transition_risk_score &lt;dbl&gt;, …</span></span></code></pre></div>
 <p>On a company level:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fin</span> <span class="op">&lt;-</span> <span class="va">financial</span></span>
@@ -188,7 +191,7 @@
 <span><span class="co">#&gt; # ℹ 6 more variables: tilt_subsector &lt;chr&gt;, isic_4digit &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   isic_4digit_name &lt;chr&gt;, equal_weight &lt;dbl&gt;, worst_case &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   best_case &lt;dbl&gt;</span></span></code></pre></div>
-<p>Plot on a company level. The user can choose any number of benchmark to be plotted. If the benchmarks argument is not given to the function, the function will plot all the benchmarks.</p>
+<p>Plot on a company level. The user can choose any number of benchmark to be plotted.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">no_fin</span> <span class="op">&lt;-</span> <span class="va">without_financial</span></span>
 <span></span>
@@ -206,10 +209,32 @@
 <p><img src="reference/figures/README-unnamed-chunk-12-1.png" width="100%"></p>
 </div>
 <div class="section level3">
-<h3 id="id_4-create-a-german-map-with-risk-categories-color-gradient-without-financial">4. Create a German map with risk categories color gradient, without financial<a class="anchor" aria-label="anchor" href="#id_4-create-a-german-map-with-risk-categories-color-gradient-without-financial"></a>
+<h3 id="id_4-scatter-plot-of-the-emission-profiles-and-transition-risk-scores-with-financial-data">4. Scatter plot of the emission profiles and transition risk scores, with financial data<a class="anchor" aria-label="anchor" href="#id_4-scatter-plot-of-the-emission-profiles-and-transition-risk-scores-with-financial-data"></a>
+</h3>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">fin</span> <span class="op">&lt;-</span> <span class="va">financial</span></span>
+<span><span class="va">scenario</span> <span class="op">&lt;-</span> <span class="st">"WEO"</span></span>
+<span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fl">2030</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/scatter_plot_financial.html">scatter_plot_financial</a></span><span class="op">(</span><span class="va">fin</span>,</span>
+<span>  benchmarks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"all"</span>, <span class="st">"tilt_sector"</span><span class="op">)</span>,</span>
+<span>  mode <span class="op">=</span> <span class="st">"worst_case"</span>,</span>
+<span>  scenario <span class="op">=</span> <span class="va">scenario</span>,</span>
+<span>  year <span class="op">=</span> <span class="va">year</span></span>
+<span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span></span>
+<span>    <span class="st">"Scatter plot for financial data. Scenario"</span>, <span class="va">scenario</span>,</span>
+<span>    <span class="st">"and year"</span>, <span class="va">year</span></span>
+<span>  <span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Removed 88 rows containing missing values (`geom_point()`).</span></span>
+<span><span class="co">#&gt; Removed 88 rows containing missing values (`geom_point()`).</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-13-1.png" width="100%"></p>
+</div>
+<div class="section level3">
+<h3 id="id_5-create-a-german-map-with-risk-categories-color-gradient-without-financial">5. Create a German map with risk categories color gradient, without financial<a class="anchor" aria-label="anchor" href="#id_5-create-a-german-map-with-risk-categories-color-gradient-without-financial"></a>
 </h3>
 <p>Different modes can be chosen: “equal_weight”, “worst_case” and “best_case”. If nothing is chosen, equal_weight the default mode.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">no_fin</span> <span class="op">&lt;-</span> <span class="va">without_financial</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/map_region_risk.html">map_region_risk</a></span><span class="op">(</span><span class="va">no_fin</span>, <span class="st">"DE"</span>, benchmark <span class="op">=</span> <span class="st">"tilt_sector"</span>, mode <span class="op">=</span> <span class="st">"worst_case"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -217,7 +242,7 @@
 <span><span class="st">  that are found in one region.</span></span>
 <span><span class="st">  © EuroGeographics for the administrative boundaries "</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-13-1.png" width="100%"></p>
+<p><img src="reference/figures/README-unnamed-chunk-14-1.png" width="100%"></p>
 </div>
 </div>
 </div>
