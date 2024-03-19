@@ -13,7 +13,10 @@
 #' @export
 #'
 #' @examples
-#' scatter_plot_financial(financial, "all", "equal_weight", "IPR", 2030)
+#' scatter_plot_financial(financial, benchmarks = c("all", "tilt_sector"),
+#' mode = "equal_weight",
+#' scenario = "IPR",
+#' year = 2030)
 scatter_plot_financial <- function(data,
                                    benchmarks = benchmarks(),
                                    mode = mode(),
@@ -99,7 +102,7 @@ prepare_scatter_plot_financial <- function(data, benchmarks, scenario, year) {
     mutate(percent = mean(.data$reduction_targets)) |>
     mutate(
       percent = round(.data$percent * 100, 4),
-      title = glue::glue("{unique(.data$tilt_sector)}: {unique(.data$percent)}% SERT")
+      title = glue("{unique(.data$tilt_sector)}: {unique(.data$percent)}% SERT")
     ) |>
     ungroup()
 
@@ -115,11 +118,14 @@ prepare_scatter_plot_financial <- function(data, benchmarks, scenario, year) {
 #' @return A numerical value.
 #' @noRd
 calculate_rank <- function(data, mode, col) {
-  if (mode == "equal_weight_finance") {
-    rank <- mean(data[[col]], na.rm = TRUE)
-  } else if (mode %in% c("worst_case_finance", "best_case_finance")) {
-    data <- data[data[[mode]] != 0, ]
-    rank <- mean(data[[col]], na.rm = TRUE)
-  }
+  rank <- switch(mode,
+                 "equal_weight_finance" = mean(data[[col]], na.rm = TRUE),
+                 "worst_case_finance" = ,
+                 "best_case_finance" = {
+                   data <- data[data[[mode]] != 0, ]
+                   mean(data[[col]], na.rm = TRUE)
+                 }
+  )
+
   rank
 }

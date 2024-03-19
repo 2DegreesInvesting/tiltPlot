@@ -29,6 +29,11 @@ pak::pak("2DegreesInvesting/tiltPlot")
 library(ggplot2)
 library(dplyr, warn.conflicts = FALSE)
 library(tiltPlot)
+#> 
+#> Attaching package: 'tiltPlot'
+#> The following object is masked from 'package:base':
+#> 
+#>     mode
 ```
 
 ### 1. Sankey Plot with financial data
@@ -57,12 +62,9 @@ financial
 #> #   reduction_targets <dbl>, transition_risk_score <dbl>, …
 ```
 
-Here is the default Sankey Plot. By default the function plots with
-companies and uses an “equal_weight” mode.
-
 ``` r
 fin <- financial
-plot_sankey(fin)
+plot_sankey(fin, with_company = TRUE, mode = "equal_weight")
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
@@ -70,7 +72,7 @@ plot_sankey(fin)
 You can also choose to have the plot without the company node.
 
 ``` r
-plot_sankey(fin, with_company = FALSE)
+plot_sankey(fin, with_company = FALSE, mode = "equal_weight")
 ```
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
@@ -192,14 +194,18 @@ bar_plot_emission_profile(no_fin, benchmarks) +
 
 ``` r
 fin <- financial
-benchmark <- c("all", "tilt_sector")
-mode <- "worst_case"
 scenario <- "WEO"
 year <- 2030
 
-scatter_plot_financial(financial, benchmark, mode, scenario, year) +
-  labs(title = paste("Scatter plot for financial data. Scenario", scenario, 
-                     "and year", year))
+scatter_plot_financial(fin, 
+                       benchmarks = c("all", "tilt_sector"), 
+                       mode = "worst_case", 
+                       scenario = scenario, 
+                       year = year) +
+  labs(title = paste(
+    "Scatter plot for financial data. Scenario", scenario,
+    "and year", year
+  ))
 ```
 
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
@@ -217,7 +223,6 @@ map_region_risk(no_fin, "DE", benchmark = "tilt_sector", mode = "worst_case") +
   that are found in one region.
   © EuroGeographics for the administrative boundaries ")
 #> Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues
-#> Cache management as per giscoR. see 'giscoR::gisco_get_nuts()'
 ```
 
 <img src="man/figures/README-unnamed-chunk-14-1.png" width="100%" />

@@ -106,7 +106,8 @@ risk_category_levels <- function() c("low", "medium", "high")
 #'
 #' @examples
 #' benchmarks()
-#' @noRd
+#' @keywords internal
+#' @export
 benchmarks <- function() {
   c(
     "all",
@@ -122,7 +123,8 @@ benchmarks <- function() {
 #'
 #' @examples
 #' mode()
-#' @noRd
+#' @keywords internal
+#' @export
 mode <- function() {
   c(
     "equal_weight",
