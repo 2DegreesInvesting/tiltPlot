@@ -4,7 +4,11 @@
 \alias{plot_sankey}
 \title{Create a sankey plot with financial data}
 \usage{
-plot_sankey(data, with_company = TRUE, mode = mode())
+plot_sankey(
+  data,
+  with_company = TRUE,
+  mode = c("equal_weight", "worst_case", "best_case")
+)
 }
 \arguments{
 \item{data}{A data frame like \link{financial}.}

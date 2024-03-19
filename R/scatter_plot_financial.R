@@ -19,7 +19,11 @@
 #' year = 2030)
 scatter_plot_financial <- function(data,
                                    benchmarks = benchmarks(),
-                                   mode = mode(),
+                                   mode = c(
+                                     "equal_weight",
+                                     "worst_case",
+                                     "best_case"
+                                   ),
                                    scenario = c("IPR", "WEO"),
                                    year = c(2030, 2050)) {
   benchmarks <- arg_match(benchmarks, multiple = TRUE)

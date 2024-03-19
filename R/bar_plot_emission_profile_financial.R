@@ -19,7 +19,11 @@
 #' bar_plot_emission_profile_financial(financial, benchmarks, "equal_weight")
 bar_plot_emission_profile_financial <- function(data,
                                                 benchmarks = benchmarks(),
-                                                mode = mode()) {
+                                                mode = c(
+                                                  "equal_weight",
+                                                  "worst_case",
+                                                  "best_case"
+                                                )) {
   benchmarks <- arg_match(benchmarks, multiple = TRUE)
   mode <- arg_match(mode)
 

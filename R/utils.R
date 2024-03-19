@@ -118,18 +118,3 @@ benchmarks <- function() {
     "unit_tilt_sector"
   )
 }
-
-#' Mode used in the functions' arguments.
-#'
-#' @examples
-#' mode()
-#' @keywords internal
-#' @export
-mode <- function() {
-  c(
-    "equal_weight",
-    "worst_case",
-    "best_case"
-  )
-}
-

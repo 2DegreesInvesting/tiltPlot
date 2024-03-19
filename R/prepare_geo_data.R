@@ -10,7 +10,11 @@
 prepare_geo_data <- function(data,
                              country_code = c("DE"),
                              benchmark = benchmarks(),
-                             mode = mode()) {
+                             mode =   c(
+                               "equal_weight",
+                               "worst_case",
+                               "best_case"
+                             )) {
   benchmark <- arg_match(benchmark)
   mode <- arg_match(mode)
 

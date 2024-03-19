@@ -7,7 +7,7 @@
 bar_plot_emission_profile_financial(
   data,
   benchmarks = benchmarks(),
-  mode = mode()
+  mode = c("equal_weight", "worst_case", "best_case")
 )
 }
 \arguments{

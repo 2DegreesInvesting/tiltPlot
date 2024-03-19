@@ -206,6 +206,8 @@ scatter_plot_financial(fin,
     "Scatter plot for financial data. Scenario", scenario,
     "and year", year
   ))
+#> Warning: Removed 88 rows containing missing values (`geom_point()`).
+#> Removed 88 rows containing missing values (`geom_point()`).
 ```
 
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
