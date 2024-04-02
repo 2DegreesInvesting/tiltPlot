@@ -53,7 +53,7 @@ mode <- "equal_weight"
 plot_sankey(fin, with_company = TRUE, benchmark = "tilt_sector", mode = "equal_weight") +
   ggtitle(
     "Sankey Plot",
-    paste("Stratified by the amount of loan by the bank", mode, "mode", "and benchmark", benchmark)
+    paste("Stratified by the amount of loan by the bank, with the", mode, "mode", "and benchmark", benchmark)
   )
 ```
 
