@@ -18,8 +18,7 @@ plot_sankey <- function(data,
                         benchmark = benchmarks(),
                         mode = c("equal_weight", "worst_case", "best_case")) {
   mode <- arg_match(mode)
-  # FIXME : Does not filter data properly if I do not add the _arg suffix
-  benchmark_arg <- arg_match(benchmark)
+  benchmark <- arg_match(benchmark)
 
   crucial <- c(
     "emission_profile",
@@ -31,14 +30,18 @@ plot_sankey <- function(data,
   risk_var <- names_matching(data, "emission_profile")
 
   data <- data |>
-    filter(.data$benchmark == benchmark_arg) |>
+    filter(.data$benchmark == .env$benchmark) |>
     distinct(.data$bank_id,
       .data$company_name,
       .data$ep_product,
       .keep_all = TRUE
     )
 
-  limits <- c(label_bank(), if (with_company) label_company(), NULL, label_tilt_sector(), risk_var)
+  limits <- c(label_bank() |> format_label(),
+              if (with_company) label_company() |> format_label(),
+              NULL,
+              label_tilt_sector() |> format_label(),
+              label_emission_profile() |> format_label())
 
   p <- ggplot(
     data = data,
@@ -59,7 +62,7 @@ plot_sankey <- function(data,
     geom_text(stat = StatStratum, aes(label = after_stat(.data$stratum))) +
     fill_score_colors() +
     theme_minimal() +
-    labs(fill = label_risk_categories())
+    labs(fill = label_risk_categories() |> format_label())
 
   if (with_company) {
     p <- p + aes(axis2 = .data$company_name)

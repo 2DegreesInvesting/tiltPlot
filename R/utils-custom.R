@@ -34,14 +34,12 @@ value_shape_triangle <- function() 17
 
 value_shape_pentagon <- function() 18
 
-label_emission_rank <- function() "Emission Rank"
+label_bank <- function() "bank"
+label_company <- function() "company"
+label_emission_profile <- function() "emission profile"
+label_emission_rank <- function() "emission rank"
+label_risk_categories <- function() "risk categories"
+label_tilt_sector <- function() "tilt sector"
+label_transition_risk <- function() "transition risk score"
 
-label_transition_risk <- function() "TR Score"
-
-label_bank <- function() "Bank"
-
-label_company <- function() "Company"
-
-label_tilt_sector <- function() "Tilt Sector"
-
-label_risk_categories <- function() "Risk Categories"
+format_label <- toTitleCase
