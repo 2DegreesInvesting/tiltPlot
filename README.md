@@ -59,7 +59,12 @@ financial
 
 ``` r
 fin <- financial
-plot_sankey(fin, with_company = TRUE, mode = "equal_weight")
+mode <- "equal_weight"
+plot_sankey(fin, with_company = TRUE, mode = mode) +
+  ggtitle(
+    "Sankey Plot",
+    paste("Stratified by the amount of loan by the bank and", mode, "mode")
+  )
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />

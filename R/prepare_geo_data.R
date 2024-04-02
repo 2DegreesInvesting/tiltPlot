@@ -17,6 +17,7 @@ prepare_geo_data <- function(data,
                              )) {
   benchmark <- arg_match(benchmark)
   mode <- arg_match(mode)
+  country_code <- arg_match(country_code)
 
   crucial <- c(
     "emission_profile",
@@ -29,7 +30,6 @@ prepare_geo_data <- function(data,
   data <- data |>
     mutate(risk_category_var = as_risk_category(data[[risk_var]]))
 
-  # get shapefile of European countries
   shp_0 <- get_eurostat_geospatial(
     resolution = 10,
     nuts_level = 3,
@@ -50,7 +50,7 @@ prepare_geo_data <- function(data,
 
   # merge shapefile with financial data
   geo <- data |>
-    filter(benchmark == benchmark) |>
+    filter(benchmark == .env$benchmark) |>
     left_join(shp_1, by = "postcode") |>
     st_as_sf()
 

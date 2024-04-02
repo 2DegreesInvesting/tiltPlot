@@ -1,16 +1,8 @@
 #' Create a sankey plot with financial data
 #'
-#' @param data A data frame like [financial].
+#' @inheritParams map_region_risk
 #' @param with_company Logical. If TRUE, will plot a node with the company name.
 #' If FALSE, will plot without the company name node.
-#' @param mode String. Several modes can be chosen by the user :
-#' * "equal_weight" means to divide the amount of the loan by the number of
-#' products of the company.
-#' * "worst_case" means to weigh the loan as such that we assume that all money
-#' goes into the highest risk product. If there are two or more products associated
-#' with the same highest risk, we assume equal weights again.
-#' * "best_case" - similar to the worst-case scenario but just with the
-#' lowest-risk category.
 #'
 #' @return A sankey plot of class [ggalluvial].
 #' @export
@@ -19,12 +11,14 @@
 #' # Plot with equal weight and with company name
 #' plot_sankey(financial)
 #'
-#' # Plot with best_case weight
-#' plot_sankey(financial, mode = "best_case")
+#' # Plot with best_case weight and benchmark "all".
+#' plot_sankey(financial, benchmark = "all", mode = "best_case")
 plot_sankey <- function(data,
                         with_company = TRUE,
+                        benchmark = benchmarks(),
                         mode = c("equal_weight", "worst_case", "best_case")) {
   mode <- arg_match(mode)
+  benchmark <- arg_match(benchmark)
 
   crucial <- c(
     "emission_profile",
@@ -35,7 +29,21 @@ plot_sankey <- function(data,
   data |> check_crucial_names(names_matching(data, crucial))
   risk_var <- names_matching(data, "emission_profile")
 
-  limits <- c("Bank", if (with_company) "Company", NULL, "Tilt Sector", risk_var)
+  data <- data |>
+    filter(.data$benchmark == .env$benchmark) |>
+    distinct(.data$bank_id,
+      .data$company_name,
+      .data$ep_product,
+      .keep_all = TRUE
+    )
+
+  limits <- c(
+    label_bank() |> format_label(),
+    if (with_company) label_company() |> format_label(),
+    NULL,
+    label_tilt_sector() |> format_label(),
+    label_emission_profile() |> format_label()
+  )
 
   p <- ggplot(
     data = data,
@@ -56,15 +64,11 @@ plot_sankey <- function(data,
     geom_text(stat = StatStratum, aes(label = after_stat(.data$stratum))) +
     fill_score_colors() +
     theme_minimal() +
-    labs(fill = "Risk Categories") +
-    ggtitle(
-      "Sankey Plot",
-      paste("Stratified by the amount of loan by the bank and", mode, "mode")
-    )
+    labs(fill = label_risk_categories() |> format_label())
 
   if (with_company) {
     p <- p + aes(axis2 = .data$company_name)
   }
 
-  return(p)
+  p
 }

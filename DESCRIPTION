@@ -28,6 +28,7 @@ Imports:
     tibble,
     tidyr,
     tidyselect,
+    tools,
     vroom
 Suggests: 
     testthat (>= 3.0.0),
