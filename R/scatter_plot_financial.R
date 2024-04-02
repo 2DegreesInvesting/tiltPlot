@@ -43,17 +43,12 @@ scatter_plot_financial <- function(data,
   emission_rank <- calculate_rank(data, mode_arg, "profile_ranking")
   tr_score <- calculate_rank(data, mode_arg, "transition_risk_score")
 
-  emission_rank_legend <- label_emission_rank()
-  transition_risk_legend <- label_transition_risk()
+  emission_rank_legend <- label_emission_rank() |> format_label()
+  transition_risk_legend <- label_transition_risk() |> format_label()
 
   ggplot(data, aes(x = .data$amount_total, color = .data$bank_id)) +
     geom_point(aes(y = emission_rank, shape = emission_rank_legend)) +
     geom_point(aes(y = tr_score, shape = transition_risk_legend)) +
-    scale_shape_manual(name = "Legend", values = c(
-      # FIXME: Changing "Emission Rank" into its function causes a warning
-      "Emission Rank" = value_shape_triangle(),
-      "TR Score" = value_shape_pentagon()
-    )) +
     facet_grid(.data$benchmark ~ .data$title, scales = "fixed") +
     ylim(0, NA) +
     xlim(0, NA) +
@@ -134,7 +129,10 @@ prepare_scatter_plot_financial <- function(data, benchmarks_arg, scenario_arg, y
 calculate_rank <- function(data, mode_arg, col) {
   rank <- switch(mode_arg,
     "equal_weight_finance" = mean(data[[col]], na.rm = TRUE),
-    "worst_case_finance" = ,
+    "worst_case_finance" = {
+      data <- data[data[[mode_arg]] != 0, ]
+    mean(data[[col]], na.rm = TRUE)
+    },
     "best_case_finance" = {
       data <- data[data[[mode_arg]] != 0, ]
       mean(data[[col]], na.rm = TRUE)
