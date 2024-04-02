@@ -131,7 +131,7 @@ calculate_rank <- function(data, mode_arg, col) {
     "equal_weight_finance" = mean(data[[col]], na.rm = TRUE),
     "worst_case_finance" = {
       data <- data[data[[mode_arg]] != 0, ]
-    mean(data[[col]], na.rm = TRUE)
+      mean(data[[col]], na.rm = TRUE)
     },
     "best_case_finance" = {
       data <- data[data[[mode_arg]] != 0, ]
