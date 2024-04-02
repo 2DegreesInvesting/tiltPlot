@@ -30,7 +30,6 @@ prepare_geo_data <- function(data,
   data <- data |>
     mutate(risk_category_var = as_risk_category(data[[risk_var]]))
 
-  # get shapefile of European countries
   shp_0 <- get_eurostat_geospatial(
     resolution = 10,
     nuts_level = 3,

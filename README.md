@@ -60,11 +60,11 @@ financial
 ``` r
 fin <- financial
 mode <- "equal_weight"
-plot_sankey(fin, with_company = TRUE, mode = mode) + 
-    ggtitle(
-      "Sankey Plot",
-      paste("Stratified by the amount of loan by the bank and", mode, "mode")
-    )
+plot_sankey(fin, with_company = TRUE, mode = mode) +
+  ggtitle(
+    "Sankey Plot",
+    paste("Stratified by the amount of loan by the bank and", mode, "mode")
+  )
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
@@ -203,6 +203,16 @@ scatter_plot_financial(fin,
     "Scatter plot for financial data. Scenario", scenario,
     "and year", year
   ))
+#> Warning: No shared levels found between `names(values)` of the manual scale and the
+#> data's shape values.
+#> No shared levels found between `names(values)` of the manual scale and the
+#> data's shape values.
+#> No shared levels found between `names(values)` of the manual scale and the
+#> data's shape values.
+#> Warning: Removed 22 rows containing missing values or values outside the scale range
+#> (`geom_point()`).
+#> Removed 22 rows containing missing values or values outside the scale range
+#> (`geom_point()`).
 ```
 
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
