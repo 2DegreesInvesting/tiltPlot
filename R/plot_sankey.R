@@ -37,11 +37,13 @@ plot_sankey <- function(data,
       .keep_all = TRUE
     )
 
-  limits <- c(label_bank() |> format_label(),
-              if (with_company) label_company() |> format_label(),
-              NULL,
-              label_tilt_sector() |> format_label(),
-              label_emission_profile() |> format_label())
+  limits <- c(
+    label_bank() |> format_label(),
+    if (with_company) label_company() |> format_label(),
+    NULL,
+    label_tilt_sector() |> format_label(),
+    label_emission_profile() |> format_label()
+  )
 
   p <- ggplot(
     data = data,
