@@ -59,11 +59,12 @@ financial
 
 ``` r
 fin <- financial
+benchmark <- "tilt_sector"
 mode <- "equal_weight"
-plot_sankey(fin, with_company = TRUE, mode = mode) +
+plot_sankey(fin, with_company = TRUE, benchmark = "tilt_sector", mode = "equal_weight") +
   ggtitle(
     "Sankey Plot",
-    paste("Stratified by the amount of loan by the bank and", mode, "mode")
+    paste("Stratified by the amount of loan by the bank", mode, "mode", "and benchmark", benchmark)
   )
 ```
 
@@ -72,7 +73,7 @@ plot_sankey(fin, with_company = TRUE, mode = mode) +
 You can also choose to have the plot without the company node.
 
 ``` r
-plot_sankey(fin, with_company = FALSE, mode = "equal_weight")
+plot_sankey(fin, with_company = FALSE, benchmark = "tilt_sector", mode = "equal_weight")
 ```
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
@@ -81,7 +82,7 @@ Finally, the user can choose different modes to plot the Sankey plot
 with financial data available.
 
 ``` r
-plot_sankey(fin, with_company = FALSE, mode = "best_case")
+plot_sankey(fin, with_company = FALSE, benchmark = "tilt_sector", mode = "best_case")
 ```
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
