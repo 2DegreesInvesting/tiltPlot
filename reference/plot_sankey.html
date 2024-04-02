@@ -60,6 +60,7 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plot_sankey</span><span class="op">(</span></span>
 <span>  <span class="va">data</span>,</span>
 <span>  with_company <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  benchmark <span class="op">=</span> <span class="fu"><a href="benchmarks.html">benchmarks</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"equal_weight"</span>, <span class="st">"worst_case"</span>, <span class="st">"best_case"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -67,7 +68,7 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
-<dd><p>A data frame like <a href="financial.html">financial</a>.</p></dd>
+<dd><p>A data frame like <a href="without_financial.html">without_financial</a></p></dd>
 
 
 <dt>with_company</dt>
@@ -75,15 +76,16 @@
 If FALSE, will plot without the company name node.</p></dd>
 
 
+<dt>benchmark</dt>
+<dd><p>The mode of benchmark to plot.
+It can be one of "all", "unit" or "tilt_sector", "unit_tilt_sector",
+"isic_4digit" or "unit_isic_4digit". If nothing is chosen, "all" is the
+default mode.</p></dd>
+
+
 <dt>mode</dt>
-<dd><p>String. Several modes can be chosen by the user :</p><ul><li><p>"equal_weight" means to divide the amount of the loan by the number of
-products of the company.</p></li>
-<li><p>"worst_case" means to weigh the loan as such that we assume that all money
-goes into the highest risk product. If there are two or more products associated
-with the same highest risk, we assume equal weights again.</p></li>
-<li><p>"best_case" - similar to the worst-case scenario but just with the
-lowest-risk category.</p></li>
-</ul></dd>
+<dd><p>The mode to plot. It can be one of "equal_weight", "worst_case"
+or "best_case". If nothing is chosen, "equal_weight" is the default mode.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -99,8 +101,8 @@ lowest-risk category.</p></li>
 <span class="r-in"><span><span class="fu">plot_sankey</span><span class="op">(</span><span class="va">financial</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot_sankey-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Plot with best_case weight</span></span></span>
-<span class="r-in"><span><span class="fu">plot_sankey</span><span class="op">(</span><span class="va">financial</span>, mode <span class="op">=</span> <span class="st">"best_case"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Plot with best_case weight and benchmark "all".</span></span></span>
+<span class="r-in"><span><span class="fu">plot_sankey</span><span class="op">(</span><span class="va">financial</span>, benchmark <span class="op">=</span> <span class="st">"all"</span>, mode <span class="op">=</span> <span class="st">"best_case"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot_sankey-2.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>

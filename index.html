@@ -114,7 +114,12 @@
 <span><span class="co">#&gt; #   reduction_targets &lt;dbl&gt;, transition_risk_score &lt;dbl&gt;, …</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fin</span> <span class="op">&lt;-</span> <span class="va">financial</span></span>
-<span><span class="fu"><a href="reference/plot_sankey.html">plot_sankey</a></span><span class="op">(</span><span class="va">fin</span>, with_company <span class="op">=</span> <span class="cn">TRUE</span>, mode <span class="op">=</span> <span class="st">"equal_weight"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">mode</span> <span class="op">&lt;-</span> <span class="st">"equal_weight"</span></span>
+<span><span class="fu"><a href="reference/plot_sankey.html">plot_sankey</a></span><span class="op">(</span><span class="va">fin</span>, with_company <span class="op">=</span> <span class="cn">TRUE</span>, mode <span class="op">=</span> <span class="va">mode</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span></span>
+<span>    <span class="st">"Sankey Plot"</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Stratified by the amount of loan by the bank and"</span>, <span class="va">mode</span>, <span class="st">"mode"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="100%"></p>
 <p>You can also choose to have the plot without the company node.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
