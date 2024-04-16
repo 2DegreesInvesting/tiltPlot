@@ -28,7 +28,7 @@ scatter_plot_financial <- function(data,
                                    ),
                                    scenario = c("IPR", "WEO"),
                                    year = c(2030, 2050)) {
-  #FIXME: .env$ instead of _arg seems to cause a bug only for benchmarks.
+  # FIXME: .env$ instead of _arg seems to cause a bug only for benchmarks.
   benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
   scenario <- arg_match(scenario)
   year <- year
@@ -108,16 +108,18 @@ calculate_rank <- function(data, mode, col) {
   rank <- switch(mode,
     "equal_weight_finance" = {
       rank <- ave(data[[col]], data[["bank_id"]],
-                  FUN = function(x) mean(x, na.rm = TRUE))
+        FUN = function(x) mean(x, na.rm = TRUE)
+      )
     },
     "worst_case_finance" = ,
     "best_case_finance" = {
       data <- data[data[[mode]] != 0, ]
       rank <- ave(data[[col]], data[["bank_id"]],
-                  FUN = function(x) mean(x, na.rm = TRUE))
+        FUN = function(x) mean(x, na.rm = TRUE)
+      )
     }
   )
-  list(rank,data)
+  list(rank, data)
 }
 
 #' Implement Rank
@@ -165,5 +167,3 @@ plot_scatter_financial <- function(data) {
   plot <- ggarrange(emission_rank_plot, transition_score_plot)
   plot
 }
-
-

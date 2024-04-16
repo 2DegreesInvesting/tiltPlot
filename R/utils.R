@@ -126,8 +126,8 @@ benchmarks <- function() {
 #' @noRd
 dictionary <- function() {
   tribble(
-    ~aka,     ~column,
-    "emission_profile",   "emission_profile",
+    ~aka, ~column,
+    "emission_profile", "emission_profile",
     "profile_ranking", "profile_ranking",
     "transition_risk_score", "transition_risk_score"
   )
