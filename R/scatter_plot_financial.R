@@ -68,7 +68,7 @@ check_scatter_plot_financial <- function(data) {
   )
   data |> check_crucial_names(names_matching(data, crucial))
 
-  risk_var <- names_matching(data, "emission_profile")
+  risk_var <- names_matching(data, aka("emission_profile"))
 
   data <- data |>
     mutate(risk_category_var = as_risk_category(data[[risk_var]]))
@@ -128,10 +128,10 @@ calculate_rank <- function(data, mode, col) {
 #' @return A data frame.
 #' @noRd
 calculate_scatter_plot_financial <- function(data, mode) {
-  data <- calculate_rank(data, mode, "profile_ranking")[[2]]
+  data <- calculate_rank(data, mode, aka("profile_ranking"))[[2]]
 
-  data$emission_profile_average <- calculate_rank(data, mode, "profile_ranking")[[1]]
-  data$transition_risk_average <- calculate_rank(data, mode, "transition_risk_score")[[1]]
+  data$emission_profile_average <- calculate_rank(data, mode, aka("profile_ranking"))[[1]]
+  data$transition_risk_average <- calculate_rank(data, mode, aka("transition_risk_score"))[[1]]
 
   data
 }
