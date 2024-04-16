@@ -28,9 +28,9 @@ test_that("calculate_rank handles NAs for any mode", {
     worst_case_finance = c(1, 1)
   )
   results <- list(
-    calculate_rank(data, "equal_weight_finance", "profile_ranking"),
-    calculate_rank(data, "best_case_finance", "profile_ranking"),
-    calculate_rank(data, "worst_case_finance", "profile_ranking")
+    calculate_rank(data, "equal_weight_finance", aka("profile_ranking")),
+    calculate_rank(data, "best_case_finance", aka("profile_ranking")),
+    calculate_rank(data, "worst_case_finance", aka("profile_ranking"))
   )
   expect_true(all(sapply(results, function(x) all(x$rank == 1))))
 })
