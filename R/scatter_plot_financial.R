@@ -28,20 +28,19 @@ scatter_plot_financial <- function(data,
                                    ),
                                    scenario = c("IPR", "WEO"),
                                    year = c(2030, 2050)) {
-  #FIXME: .env$ instead of _arg seems to cause a bug too ?
+  #FIXME: .env$ instead of _arg seems to cause a bug only for benchmarks.
   benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
-  scenario_arg <- arg_match(scenario)
-  year_arg <- year
+  scenario <- arg_match(scenario)
+  year <- year
   mode <- mode |>
     arg_match() |>
     switch_mode()
 
   data |>
     check_scatter_plot_financial() |>
-    prepare_scatter_plot_financial(benchmarks_arg, scenario_arg, year_arg) |>
+    prepare_scatter_plot_financial(benchmarks_arg, scenario, year) |>
     calculate_scatter_plot_financial(mode) |>
-    plot_scatter_financial_implementation()
-
+    plot_scatter_financial()
 }
 
 #' Check scatter plot with financial data
@@ -77,7 +76,7 @@ check_scatter_plot_financial <- function(data) {
   data
 }
 
-#' Process data
+#' Prepare data
 #'
 #' @param data A data frame.
 #' @param benchmarks A character vector.
@@ -86,12 +85,12 @@ check_scatter_plot_financial <- function(data) {
 #'
 #' @return A data frame.
 #' @noRd
-prepare_scatter_plot_financial <- function(data, benchmarks_arg, scenario_arg, year_arg) {
+prepare_scatter_plot_financial <- function(data, benchmarks, scenario, year) {
   data <- data |>
     filter(
-      .data$benchmark %in% benchmarks_arg,
-      .data$scenario == scenario_arg,
-      .data$year == year_arg
+      .data$benchmark %in% .env$benchmarks,
+      .data$scenario == .env$scenario,
+      .data$year == .env$year
     )
 
   data
@@ -119,8 +118,14 @@ calculate_rank <- function(data, mode, col) {
   list(rank,data)
 }
 
+#' Implement Rank
+#'
+#' @param data A data frame.
+#' @param mode A string.
+#'
+#' @return A data frame.
+#' @noRd
 calculate_scatter_plot_financial <- function(data, mode) {
-
   data <- calculate_rank(data, mode, "profile_ranking")[[2]]
 
   data$emission_profile_average <- calculate_rank(data, mode, "profile_ranking")[[1]]
@@ -129,8 +134,13 @@ calculate_scatter_plot_financial <- function(data, mode) {
   data
 }
 
-plot_scatter_financial_implementation <- function(data) {
-
+#' Plot the scatter financial plot
+#'
+#' @param data A data frame.
+#'
+#' @return A [ggplot] object.
+#' @noRd
+plot_scatter_financial <- function(data) {
   emission_rank_legend <- label_emission_rank() |> format_label()
   transition_risk_legend <- label_transition_risk() |> format_label()
 
@@ -150,9 +160,8 @@ plot_scatter_financial_implementation <- function(data) {
     ylab(transition_risk_legend) +
     theme_tiltplot()
 
-  plot <- ggarrange(emission_rank_plot, transition_score_plot, ncol = 2, nrow = 1)
+  plot <- ggarrange(emission_rank_plot, transition_score_plot)
   plot
-
 }
 
 

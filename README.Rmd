@@ -132,7 +132,7 @@ fin <- financial
 scenario <- "WEO"
 year <- 2030
 benchmarks = c("all", "unit")
-mode = "equal_weight"
+mode = "best_case"
 
 scatter_plot_financial(fin,
   benchmarks = benchmarks,

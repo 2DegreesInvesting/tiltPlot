@@ -192,17 +192,14 @@ bar_plot_emission_profile(no_fin, benchmarks) +
 fin <- financial
 scenario <- "WEO"
 year <- 2030
+benchmarks = c("all", "unit")
+mode = "best_case"
 
 scatter_plot_financial(fin,
-  benchmarks = c("all", "unit"),
-  mode = "worst_case",
+  benchmarks = benchmarks,
+  mode = mode,
   scenario = scenario,
-  year = year
-) +
-  labs(title = paste(
-    "Scatter plot for financial data. Scenario", scenario,
-    "and year", year
-  ))
+  year = year)
 ```
 
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
@@ -220,6 +217,7 @@ map_region_risk(no_fin, "DE", benchmark = "tilt_sector", mode = "worst_case") +
   that are found in one region.
   © EuroGeographics for the administrative boundaries ")
 #> Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues
+#> Cache management as per giscoR. see 'giscoR::gisco_get_nuts()'
 ```
 
 <img src="man/figures/README-unnamed-chunk-14-1.png" width="100%" />

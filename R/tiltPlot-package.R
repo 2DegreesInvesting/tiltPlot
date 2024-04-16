@@ -50,6 +50,7 @@
 #' @importFrom ggplot2 xlim
 #' @importFrom ggplot2 ylab
 #' @importFrom ggplot2 ylim
+#' @importFrom ggpubr ggarrange
 #' @importFrom giscoR gisco_get_nuts
 #' @importFrom glue glue
 #' @importFrom grDevices rgb
