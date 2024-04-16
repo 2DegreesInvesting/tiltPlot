@@ -87,7 +87,6 @@ check_scatter_plot_financial <- function(data) {
 #' @noRd
 prepare_scatter_plot_financial <- function(data, benchmarks, scenario, year) {
   data <- data |>
-
     filter(
       .data$benchmark %in% .env$benchmarks,
       .data$scenario == .env$scenario,
@@ -108,12 +107,12 @@ prepare_scatter_plot_financial <- function(data, benchmarks, scenario, year) {
 calculate_rank <- function(data, mode, col) {
   rank <- switch(mode,
     "equal_weight_finance" = {
-      rank <- ave(data[[col]], data[["bank_id"]])
+      rank <- ave(data[[col]], data[["bank_id"]], FUN = mean(x, na.rm = TRUE))
     },
     "worst_case_finance" = ,
     "best_case_finance" = {
       data <- data[data[[mode]] != 0, ]
-      rank <- ave(data[[col]], data[["bank_id"]])
+      rank <- ave(data[[col]], data[["bank_id"]], FUN = mean(x, na.rm = TRUE))
     }
   )
   list(rank,data)
