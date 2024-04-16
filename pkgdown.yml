@@ -1,9 +1,9 @@
 pandoc: 3.1.11
-pkgdown: 2.0.7
+pkgdown: 2.0.8
 pkgdown_sha: ~
 articles:
   integration-with-tiltIndicator: integration-with-tiltIndicator.html
-last_built: 2024-04-02T15:14Z
+last_built: 2024-04-16T12:32Z
 urls:
   reference: https://2degreesinvesting.github.io/tiltPlot/reference
   article: https://2degreesinvesting.github.io/tiltPlot/articles
