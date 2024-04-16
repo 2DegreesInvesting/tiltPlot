@@ -78,6 +78,7 @@ switch_mode <- function(mode) {
 #' names_matching(data, "ab")
 #' @noRd
 names_matching <- function(data, pattern) {
+  #names(select(data, matches(paste0("\\b", pattern, "\\b"))))
   names(select(data, matches(pattern)))
 }
 

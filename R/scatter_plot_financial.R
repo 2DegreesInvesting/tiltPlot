@@ -28,32 +28,20 @@ scatter_plot_financial <- function(data,
                                    ),
                                    scenario = c("IPR", "WEO"),
                                    year = c(2030, 2050)) {
-  # FIXME: If I do not put _arg, it does not filter the data correctly.
+  #FIXME: .env$ instead of _arg seems to cause a bug too ?
   benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
   scenario_arg <- arg_match(scenario)
   year_arg <- year
-  mode_arg <- mode |>
+  mode <- mode |>
     arg_match() |>
     switch_mode()
 
-  data <- data |>
+  data |>
     check_scatter_plot_financial() |>
-    prepare_scatter_plot_financial(benchmarks_arg, scenario_arg, year_arg)
+    prepare_scatter_plot_financial(benchmarks_arg, scenario_arg, year_arg) |>
+    calculate_scatter_plot_financial(mode) |>
+    plot_scatter_financial_implementation()
 
-  emission_rank <- calculate_rank(data, mode_arg, "profile_ranking")
-  tr_score <- calculate_rank(data, mode_arg, "transition_risk_score")
-
-  emission_rank_legend <- label_emission_rank() |> format_label()
-  transition_risk_legend <- label_transition_risk() |> format_label()
-
-  ggplot(data, aes(x = .data$amount_total, color = .data$bank_id)) +
-    geom_point(aes(y = emission_rank, shape = emission_rank_legend)) +
-    geom_point(aes(y = tr_score, shape = transition_risk_legend)) +
-    facet_grid(.data$benchmark ~ .data$title, scales = "fixed") +
-    ylim(0, NA) +
-    xlim(0, NA) +
-    ylab("Rank") +
-    theme_tiltplot()
 }
 
 #' Check scatter plot with financial data
@@ -106,15 +94,6 @@ prepare_scatter_plot_financial <- function(data, benchmarks_arg, scenario_arg, y
       .data$year == year_arg
     )
 
-  data <- data |>
-    group_by(.data$tilt_sector) |>
-    mutate(percent = mean(.data$reduction_targets, na.rm = TRUE)) |>
-    mutate(
-      percent = round(.data$percent * 100, 4),
-      title = glue("{unique(.data$tilt_sector)}: {unique(.data$percent)}% SERT")
-    ) |>
-    ungroup()
-
   data
 }
 
@@ -124,19 +103,56 @@ prepare_scatter_plot_financial <- function(data, benchmarks_arg, scenario_arg, y
 #' @param mode A character vector.
 #' @param col A character vector.
 #'
-#' @return A numerical value.
+#' @return A vector.
 #' @noRd
-calculate_rank <- function(data, mode_arg, col) {
-  rank <- switch(mode_arg,
-    "equal_weight_finance" = mean(data[[col]], na.rm = TRUE),
-    "worst_case_finance" = {
-      data <- data[data[[mode_arg]] != 0, ]
-      mean(data[[col]], na.rm = TRUE)
+calculate_rank <- function(data, mode, col) {
+  rank <- switch(mode,
+    "equal_weight_finance" = {
+      rank <- ave(data[[col]], data[["bank_id"]])
     },
+    "worst_case_finance" = ,
     "best_case_finance" = {
-      data <- data[data[[mode_arg]] != 0, ]
-      mean(data[[col]], na.rm = TRUE)
+      data <- data[data[[mode]] != 0, ]
+      rank <- ave(data[[col]], data[["bank_id"]])
     }
   )
-  rank
+  list(rank,data)
 }
+
+calculate_scatter_plot_financial <- function(data, mode) {
+
+  data <- calculate_rank(data, mode, "profile_ranking")[[2]]
+
+  data$emission_profile_average <- calculate_rank(data, mode, "profile_ranking")[[1]]
+  data$transition_risk_average <- calculate_rank(data, mode, "transition_risk_score")[[1]]
+
+  data
+}
+
+plot_scatter_financial_implementation <- function(data) {
+
+  emission_rank_legend <- label_emission_rank() |> format_label()
+  transition_risk_legend <- label_transition_risk() |> format_label()
+
+  emission_rank_plot <- ggplot(data, aes(x = .data$amount_total, color = .data$bank_id)) +
+    geom_point(aes(y = .data$emission_profile_average)) +
+    facet_wrap(~ .data$benchmark, scales = "fixed") +
+    ylim(0, NA) +
+    xlim(0, NA) +
+    ylab(emission_rank_legend) +
+    theme_tiltplot()
+
+  transition_score_plot <- ggplot(data, aes(x = .data$amount_total, color = .data$bank_id)) +
+    geom_point(aes(y = .data$transition_risk_average)) +
+    facet_wrap(~ .data$benchmark, scales = "fixed") +
+    ylim(0, NA) +
+    xlim(0, NA) +
+    ylab(transition_risk_legend) +
+    theme_tiltplot()
+
+  plot <- ggarrange(emission_rank_plot, transition_score_plot, ncol = 2, nrow = 1)
+  plot
+
+}
+
+
