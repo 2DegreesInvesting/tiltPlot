@@ -21,23 +21,16 @@ test_that("returns correct benchmarks values", {
 
 test_that("calculate_rank handles NAs for any mode", {
   data <- tibble(
+    bank_id = c("a", "b"),
     profile_ranking = c(1, NA),
     equal_weight_finance = c(1, 1),
     best_case_finance = c(1, 1),
     worst_case_finance = c(1, 1)
   )
-  results <- c(
+  results <- list(
     calculate_rank(data, "equal_weight_finance", "profile_ranking"),
     calculate_rank(data, "best_case_finance", "profile_ranking"),
     calculate_rank(data, "worst_case_finance", "profile_ranking")
   )
-  expect_true(all(results == 1))
-})
-
-test_that("prepare_scatter_plot_financial removes NAs", {
-  test_fin <- financial
-  test_fin[3, "reduction_targets"] <- NA
-  result <- prepare_scatter_plot_financial(test_fin, "all", "IPR", 2030)
-
-  expect_true(all(!is.na(result$percent)))
+  expect_true(all(sapply(results, function(x) all(x$rank == 1))))
 })

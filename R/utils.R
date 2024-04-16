@@ -136,5 +136,5 @@ dictionary <- function() {
 aka <- function(x) {
   dictionary() |>
     filter(aka == x) |>
-    pull(column)
+    pull(.data$column)
 }
