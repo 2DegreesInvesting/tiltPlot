@@ -148,8 +148,8 @@ calculate_scatter_plot_financial <- function(data, mode) {
 #' @noRd
 plot_scatter_financial <- function(data) {
   plot <- ggarrange(
-    plot_scatter_financial_impl(data, type = "emission_profile"),
-    plot_scatter_financial_impl(data, type = "transition_risk")
+    plot_scatter_financial_impl(data, type = aka("emission_profile")),
+    plot_scatter_financial_impl(data, type = aka("transition_risk"))
   )
   plot
 }
@@ -162,7 +162,9 @@ plot_scatter_financial <- function(data) {
 #'
 #' @return A A [ggplot] object.
 #' @noRd
-plot_scatter_financial_impl <- function(data, type = c("emission_profile", "transition_risk")) {
+plot_scatter_financial_impl <- function(data,
+                                        type = c(aka("emission_profile"),
+                                                 aka("transition_risk"))) {
   col <- paste0(type, "_average")
   plot_legend <- get(paste0(type, "_legend"))
 
