@@ -105,18 +105,21 @@ prepare_scatter_plot_financial <- function(data, benchmarks, scenario, year) {
 #' @return A vector.
 #' @noRd
 calculate_rank <- function(data, mode, col) {
+
   rank <- switch(mode,
     "equal_weight_finance" = {
-      rank <- ave(data[[col]], data[["bank_id"]],
-        FUN = function(x) mean(x, na.rm = TRUE)
-      )
+      rank <- data |>
+        group_by(bank_id) |>
+        mutate(avg = mean(!!sym(col), na.rm = TRUE)) |>
+        pull(avg)
     },
     "worst_case_finance" = ,
     "best_case_finance" = {
       data <- data[data[[mode]] != 0, ]
-      rank <- ave(data[[col]], data[["bank_id"]],
-        FUN = function(x) mean(x, na.rm = TRUE)
-      )
+      rank <- data |>
+        group_by(bank_id) |>
+        mutate(avg = mean(!!sym(col), na.rm = TRUE)) |>
+        pull(avg)
     }
   )
   list(rank, data)
