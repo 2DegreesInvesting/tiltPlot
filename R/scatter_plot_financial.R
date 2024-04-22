@@ -163,8 +163,10 @@ plot_scatter_financial <- function(data) {
 #' @return A A [ggplot] object.
 #' @noRd
 plot_scatter_financial_impl <- function(data,
-                                        type = c(aka("emission_profile"),
-                                                 aka("transition_risk"))) {
+                                        type = c(
+                                          aka("emission_profile"),
+                                          aka("transition_risk")
+                                        )) {
   col <- paste0(type, "_average")
   plot_legend <- get(paste0(type, "_legend"))
 
