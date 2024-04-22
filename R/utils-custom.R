@@ -34,12 +34,13 @@ value_shape_triangle <- function() 17
 
 value_shape_pentagon <- function() 18
 
+#TODO: change from "label" to "legend"
 label_bank <- function() "bank"
 label_company <- function() "company"
 label_emission_profile <- function() "emission profile"
-label_emission_rank <- function() "emission rank"
 label_risk_categories <- function() "risk categories"
 label_tilt_sector <- function() "tilt sector"
-label_transition_risk <- function() "transition risk score"
+transition_risk_legend <- function() "transition risk score"
+emission_profile_legend <- function() "emission rank"
 
 format_label <- toTitleCase

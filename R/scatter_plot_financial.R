@@ -148,25 +148,32 @@ calculate_scatter_plot_financial <- function(data, mode) {
 #' @return A [ggplot] object.
 #' @noRd
 plot_scatter_financial <- function(data) {
-  emission_rank_legend <- label_emission_rank() |> format_label()
-  transition_risk_legend <- label_transition_risk() |> format_label()
-
-  emission_rank_plot <- ggplot(data, aes(x = .data$amount_total, color = .data$bank_id)) +
-    geom_point(aes(y = .data$emission_profile_average)) +
-    facet_wrap(~ .data$benchmark, scales = "fixed") +
-    ylim(0, NA) +
-    xlim(0, NA) +
-    ylab(emission_rank_legend) +
-    theme_tiltplot()
-
-  transition_score_plot <- ggplot(data, aes(x = .data$amount_total, color = .data$bank_id)) +
-    geom_point(aes(y = .data$transition_risk_average)) +
-    facet_wrap(~ .data$benchmark, scales = "fixed") +
-    ylim(0, NA) +
-    xlim(0, NA) +
-    ylab(transition_risk_legend) +
-    theme_tiltplot()
-
-  plot <- ggarrange(emission_rank_plot, transition_score_plot)
+  plot <- ggarrange(
+    plot_scatter_financial_impl(data, type = "emission_profile"),
+    plot_scatter_financial_impl(data, type = "transition_risk")
+  )
   plot
+}
+
+
+#' Implementation of the scatter plot
+#'
+#' @param data A data frame.
+#' @param type A string.
+#'
+#' @return A A [ggplot] object.
+#' @noRd
+plot_scatter_financial_impl <- function(data, type = c("emission_profile", "transition_risk")){
+  col <- paste0(type, "_average")
+  plot_legend <- get(paste0(type, "_legend"))
+
+  scatter_plot <- ggplot(data, aes(x = .data$amount_total, color = .data$bank_id)) +
+    geom_point(aes(y = .data[[col]])) +
+    facet_grid(.data$tilt_sector ~ .data$benchmark, scales = "fixed") +
+    ylim(0, 1) +
+    xlim(0, NA) +
+    ylab(plot_legend() |> format_label()) +
+    theme_tiltplot()
+
+  scatter_plot
 }
