@@ -118,3 +118,26 @@ benchmarks <- function() {
     "unit_tilt_sector"
   )
 }
+
+
+#' Create a dictionary for brittle columns names
+#'
+#' @return A data frame.
+#' @noRd
+dictionary <- function() {
+  #styler: off
+  tibble::tribble(
+                      ~aka,                 ~column,
+        "emission_profile",      "emission_profile",
+         "profile_ranking",       "profile_ranking",
+   "transition_risk_score", "transition_risk_score",
+         "transition_risk",       "transition_risk"
+   )
+  # styler: on
+}
+
+aka <- function(x) {
+  dictionary() |>
+    filter(aka == x) |>
+    pull(.data$column)
+}

@@ -16,6 +16,7 @@ Imports:
     eurostat,
     ggalluvial,
     ggplot2,
+    ggpubr,
     giscoR,
     glue,
     grDevices,

@@ -9,6 +9,7 @@ reference:
       - starts_with("bar_")
       - starts_with("plot_")
       - starts_with("map_")
+      - starts_with("scatter_")
 
   - title: Helpers
     contents:

@@ -193,17 +193,15 @@ bar_plot_emission_profile(no_fin, benchmarks) +
 fin <- financial
 scenario <- "WEO"
 year <- 2030
+benchmarks <- c("all", "unit")
+mode <- "best_case"
 
 scatter_plot_financial(fin,
-  benchmarks = c("all", "unit"),
-  mode = "worst_case",
+  benchmarks = benchmarks,
+  mode = mode,
   scenario = scenario,
   year = year
-) +
-  labs(title = paste(
-    "Scatter plot for financial data. Scenario", scenario,
-    "and year", year
-  ))
+)
 ```
 
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
