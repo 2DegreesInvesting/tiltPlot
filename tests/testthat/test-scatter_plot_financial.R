@@ -32,5 +32,5 @@ test_that("calculate_rank handles NAs for any mode", {
     calculate_rank(data, "best_case_finance", aka("profile_ranking")),
     calculate_rank(data, "worst_case_finance", aka("profile_ranking"))
   )
-  expect_true(all(sapply(results, function(x) all(x$rank == 1))))
+  expect_true(all(unlist(lapply(results, function(x) all(x$rank == 1)))))
 })
