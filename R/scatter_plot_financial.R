@@ -105,7 +105,6 @@ prepare_scatter_plot_financial <- function(data, benchmarks, scenario, year) {
 #' @return A vector.
 #' @noRd
 calculate_rank <- function(data, mode, col) {
-
   rank <- switch(mode,
     "equal_weight_finance" = {
       rank <- data |>
@@ -163,7 +162,7 @@ plot_scatter_financial <- function(data) {
 #'
 #' @return A A [ggplot] object.
 #' @noRd
-plot_scatter_financial_impl <- function(data, type = c("emission_profile", "transition_risk")){
+plot_scatter_financial_impl <- function(data, type = c("emission_profile", "transition_risk")) {
   col <- paste0(type, "_average")
   plot_legend <- get(paste0(type, "_legend"))
 

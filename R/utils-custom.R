@@ -34,7 +34,7 @@ value_shape_triangle <- function() 17
 
 value_shape_pentagon <- function() 18
 
-#TODO: change from "label" to "legend"
+# TODO: change from "label" to "legend"
 label_bank <- function() "bank"
 label_company <- function() "company"
 label_emission_profile <- function() "emission profile"
