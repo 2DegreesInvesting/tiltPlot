@@ -40,13 +40,13 @@ test_that("each bank_id has the correct amount for all the modes", {
     distinct(bank_id, company_name, ep_product, .keep_all = TRUE)
   amount_bank_id <- lapply(modes(), calculate_amount_bank_id, data = data)
 
-  plots <- lapply(modes, function(mode) plot_sankey(data, mode = mode))
+  plots <- lapply(modes(), function(mode) plot_sankey(data, mode = mode))
   data_plots <- lapply(plots, `[[`, "data")
   amount_bank_id_plot <- lapply(seq_along(data_plots), function(i) {
-    calculate_amount_bank_id(data_plots[[i]], mode = modes[i])
+    calculate_amount_bank_id(data_plots[[i]], mode = modes()[i])
   })
 
-  all_results_equal <- lapply(seq_along(modes), function(i) {
+  all_results_equal <- lapply(seq_along(modes()), function(i) {
     all.equal(amount_bank_id_plot[[i]], amount_bank_id[[i]])
   })
 
@@ -71,10 +71,10 @@ test_that("each risk category have the correct amount for all the modes", {
   plots <- lapply(modes(), function(mode) plot_sankey(data, mode = mode))
   data_plots <- lapply(plots, `[[`, "data")
   amount_risk_plot <- lapply(seq_along(data_plots), function(i) {
-    calculate_amount_risk(data_plots[[i]], mode = modes[i])
+    calculate_amount_risk(data_plots[[i]], mode = modes()[i])
   })
 
-  all_results_equal <- lapply(seq_along(modes), function(i) {
+  all_results_equal <- lapply(seq_along(modes()), function(i) {
     all.equal(amount_risk[[i]], amount_risk_plot[[i]])
   })
 
