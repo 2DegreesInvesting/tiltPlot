@@ -31,7 +31,7 @@ test_that("calculated proportions are less or equal to 1 for every mode", {
   })
 })
 
-test_that("risk categories are the correct ones displayed on a company level", {
+test_that("risk categories are the correct ones displayed, on a company level", {
   data <- financial
   comp_name <- data[1, "company_name"]
   expected_risk_cat <- data |>
