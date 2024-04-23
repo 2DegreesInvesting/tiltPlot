@@ -20,27 +20,25 @@ test_that("returns correct risk categories values", {
 test_that("y-axis amount is equal to loanbook amount for all the modes", {
   data <- financial |>
     distinct(bank_id, company_name, ep_product, .keep_all = TRUE)
-  modes <- c("worst_case", "best_case", "equal_weight")
 
   test_mode <- function(mode) {
     p <- plot_sankey(data, mode = mode)
-    expect_equal(sum(data[[paste0(mode, "_finance")]]), sum(p$data[[paste0(mode, "_finance")]]))
+    expect_equal(sum(data[[switch_mode(mode)]]), sum(p$data[[switch_mode(mode)]]))
   }
-  lapply(modes, test_mode)
+  lapply(modes(), test_mode)
 })
 
 test_that("each bank_id has the correct amount for all the modes", {
-  modes <- c("equal_weight", "best_case", "worst_case")
   calculate_amount_bank_id <- function(data, mode) {
     data |>
       group_by(bank_id) |>
-      mutate(sum = sum(data[[paste0(mode, "_finance")]])) |>
+      mutate(sum = sum(data[[switch_mode(mode)]])) |>
       distinct(bank_id, sum)
   }
 
   data <- financial |>
     distinct(bank_id, company_name, ep_product, .keep_all = TRUE)
-  amount_bank_id <- lapply(modes, calculate_amount_bank_id, data = data)
+  amount_bank_id <- lapply(modes(), calculate_amount_bank_id, data = data)
 
   plots <- lapply(modes, function(mode) plot_sankey(data, mode = mode))
   data_plots <- lapply(plots, `[[`, "data")
@@ -62,15 +60,15 @@ test_that("each risk category have the correct amount for all the modes", {
   calculate_amount_risk <- function(data, mode) {
     data |>
       group_by(aka("emission_profile")) |>
-      mutate(sum = sum(data[[paste0(mode, "_finance")]])) |>
+      mutate(sum = sum(data[[switch_mode(mode)]])) |>
       distinct(aka("emission_profile"), sum)
   }
 
   data <- financial |>
     distinct(bank_id, company_name, ep_product, .keep_all = TRUE)
-  amount_risk <- lapply(modes, calculate_amount_risk, data = data)
+  amount_risk <- lapply(modes(), calculate_amount_risk, data = data)
 
-  plots <- lapply(modes, function(mode) plot_sankey(data, mode = mode))
+  plots <- lapply(modes(), function(mode) plot_sankey(data, mode = mode))
   data_plots <- lapply(plots, `[[`, "data")
   amount_risk_plot <- lapply(seq_along(data_plots), function(i) {
     calculate_amount_risk(data_plots[[i]], mode = modes[i])

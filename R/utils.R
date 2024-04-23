@@ -119,6 +119,17 @@ benchmarks <- function() {
   )
 }
 
+#' Modes
+#'
+#' @keywords internal
+#' @export
+modes <- function() {
+  c(
+    "equal_weight",
+    "best_case",
+    "worst_case"
+  )
+}
 
 #' Create a dictionary for brittle columns names
 #'
