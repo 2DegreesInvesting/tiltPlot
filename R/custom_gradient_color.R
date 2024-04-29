@@ -26,5 +26,5 @@ custom_gradient_color <- function(high, medium, low) {
 
   final_color <- do.call(rgb, as.list(final_color))
 
-  return(final_color)
+  final_color
 }

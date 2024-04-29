@@ -34,3 +34,19 @@ test_that("calculate_rank handles NAs for any mode", {
   )
   expect_true(all(unlist(lapply(results, function(x) all(x$rank == 1)))))
 })
+
+test_that("calculated rank are always equal to or below 1 for each scores", {
+  test_rank <- function(data, mode, column) {
+    result <- calculate_rank(data, mode, column)
+    rank <- unlist(result[[1]])
+    expect_true(all(rank <= 1))
+  }
+
+  lapply(modes(), function(mode) {
+    test_rank(financial, mode, aka("profile_ranking"))
+  })
+
+  lapply(modes(), function(mode) {
+    test_rank(financial, mode, aka("emission_profile"))
+  })
+})
