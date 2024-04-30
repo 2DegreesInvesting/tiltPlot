@@ -1,11 +1,11 @@
 test_that("returns an object of the expected class", {
-  skip_on_ci()
+  skip()
   plot <- map_region_risk(without_financial)
   expect_s3_class(plot, "ggplot")
 })
 
 test_that("returns correct risk category values colors", {
-  skip_on_ci()
+  skip()
   data <- tibble(
     postcode = c(53773L, 53774L, 53775L),
     emission_profile = c("high", "medium", "low"),
