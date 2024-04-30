@@ -141,3 +141,15 @@ aka <- function(x) {
     filter(aka == x) |>
     pull(.data$column)
 }
+
+#' Modes
+#'
+#' @keywords internal
+#' @export
+modes <- function() {
+  c(
+    "equal_weight",
+    "best_case",
+    "worst_case"
+  )
+}
