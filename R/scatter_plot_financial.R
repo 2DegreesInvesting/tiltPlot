@@ -108,17 +108,17 @@ calculate_rank <- function(data, mode, col) {
   rank <- switch(mode,
     "equal_weight_finance" = {
       rank <- data |>
-        group_by(bank_id) |>
+        group_by(.data$bank_id) |>
         mutate(avg = mean(!!sym(col), na.rm = TRUE)) |>
-        pull(avg)
+        pull(.data$avg)
     },
     "worst_case_finance" = ,
     "best_case_finance" = {
       data <- data[data[[mode]] != 0, ]
       rank <- data |>
-        group_by(bank_id) |>
+        group_by(.data$bank_id) |>
         mutate(avg = mean(!!sym(col), na.rm = TRUE)) |>
-        pull(avg)
+        pull(.data$avg)
     }
   )
   list(rank, data)
