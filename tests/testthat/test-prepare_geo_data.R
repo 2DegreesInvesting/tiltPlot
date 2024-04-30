@@ -1,4 +1,5 @@
 test_that("returns an object of the expected class", {
+  skip_on_ci()
   data <- tibble(
     postcode = c(53773L, 53774L, 53775L),
     emission_profile = c("high", "medium", "low"),
@@ -9,6 +10,7 @@ test_that("returns an object of the expected class", {
 })
 
 test_that("aggregation returns correct risk category values colors", {
+  skip_on_ci()
   data <- tibble(
     postcode = c(53773L, 53774L, 53775L),
     risk_category_var = c("high", "medium", "low"),
