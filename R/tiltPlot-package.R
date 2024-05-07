@@ -71,6 +71,7 @@
 #' @importFrom tidyr drop_na
 #' @importFrom tidyr pivot_wider
 #' @importFrom tidyselect matches
+#' @importFrom tiltIndicator example_data_factory
 #' @importFrom tools toTitleCase
 #' @importFrom vroom col_character
 #' @importFrom vroom col_integer
