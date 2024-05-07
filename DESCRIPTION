@@ -29,11 +29,11 @@ Imports:
     tibble,
     tidyr,
     tidyselect,
+    tiltIndicator,
     tools,
     vroom
 Suggests: 
     testthat (>= 3.0.0),
-    tiltIndicator (>= 0.0.0.9094),
     tiltToyData (>= 0.0.0.9002)
 Remotes: 
     2DegreesInvesting/tiltIndicator,

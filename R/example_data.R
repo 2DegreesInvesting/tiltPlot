@@ -1,15 +1,3 @@
-# https://github.com/2DegreesInvesting/tiltIndicator/blob/main/R/example_dictionary.R#L128
-example_data_factory <- function(data) {
-  force(data)
-
-  function(...) {
-    new <- tibble(...)
-    old <- as.list(data)
-    add <- setdiff(names(old), names(new))
-    as_tibble(append(new, old[add]))
-  }
-}
-
 default_financial <- function(bank_id = "a",
                               amount_total = 10,
                               company_name = "b",
@@ -54,4 +42,4 @@ default_financial <- function(bank_id = "a",
 #' # Pass column names stored in vectors
 #' id <- "bank_id"
 #' example_financial(!!id := "c")
-example_financial <- example_data_factory(default_financial())
+example_financial <- tiltIndicator::example_data_factory(default_financial())
