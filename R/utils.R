@@ -131,7 +131,8 @@ dictionary <- function() {
         "emission_profile",      "emission_profile",
          "profile_ranking",       "profile_ranking",
    "transition_risk_score", "transition_risk_score",
-         "transition_risk",       "transition_risk"
+         "transition_risk",       "transition_risk",
+       "europages_product",            "ep_product",
    )
   # styler: on
 }
