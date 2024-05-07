@@ -11,13 +11,13 @@ example_data_factory <- function(data) {
 }
 
 default_financial <- function(bank_id = "a",
-                            amount_total = 10,
-                            company_name = "b",
-                            emission_profile = "medium",
-                            benchmark = "c",
-                            equal_weight_finance = 10,
-                            worst_case_finance = 10,
-                            best_case_finance = 10) {
+                              amount_total = 10,
+                              company_name = "b",
+                              emission_profile = "medium",
+                              benchmark = "c",
+                              equal_weight_finance = 10,
+                              worst_case_finance = 10,
+                              best_case_finance = 10) {
   tibble(
     bank_id = bank_id,
     amount_total = amount_total,
@@ -55,5 +55,3 @@ default_financial <- function(bank_id = "a",
 #' id <- "bank_id"
 #' example_financial(!!id := "c")
 example_financial <- example_data_factory(default_financial())
-
-
