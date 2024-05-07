@@ -31,9 +31,6 @@ example_financial(
 \arguments{
 \item{...}{Passed to \code{\link[=tibble]{tibble()}}.}
 }
-\arguments{
-\item{...}{Passed to \code{\link[=tibble]{tibble()}}.}
-}
 \value{
 A \code{\link[=tibble]{tibble()}}
 
