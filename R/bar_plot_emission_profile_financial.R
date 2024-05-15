@@ -45,6 +45,8 @@ bar_plot_emission_profile_financial <- function(data,
     mutate(risk_category_var = as_risk_category(data[[risk_var]]))
 
   mode_var <- switch_mode(mode)
+  mode <- "equal_weight"
+  benchmarks = benchmarks()
 
   data <- data |>
     calc_benchmark_emission_profile_financial(

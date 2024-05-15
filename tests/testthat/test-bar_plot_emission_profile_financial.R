@@ -34,3 +34,20 @@ test_that("calculated proportions are less or equal to 1 for every mode", {
     expect_true(all(proportions >= 0 & proportions <= 1))
   })
 })
+
+test_that("risk categories are the correct ones displayed, on a company level", {
+  data <- example_financial(company_name = letters[2:3] , !!aka("europages_product") := "e")
+  comp_name <- data[1, "company_name"]
+  expected_risk_cat <- data |>
+    filter(company_name == comp_name$company_name) |>
+    pull(aka("emission_profile")) |>
+    unique() |>
+    as_risk_category()
+
+  plot <- data |>
+    filter(company_name == comp_name$company_name) |>
+    bar_plot_emission_profile_financial(benchmarks(), mode = "equal_weight")
+  risk_cat <- unique(plot$data$risk_category_var)
+
+  expect_true(identical(sort(risk_cat), sort(expected_risk_cat)))
+})
