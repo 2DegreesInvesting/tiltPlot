@@ -1,5 +1,5 @@
 test_that("returns an object of the expected class", {
-  data <- example_financial(!!aka("europages_product") := "e")
+  data <- example_financial(!!aka("tilt_sector") := "t", !!aka("europages_product") := "e")
   p <- plot_sankey(data)
   expect_s3_class(p, "ggplot")
 })
