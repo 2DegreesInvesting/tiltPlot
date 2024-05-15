@@ -1,15 +1,16 @@
 test_that("returns an object of the expected class", {
   skip_on_ci()
-  plot <- map_region_risk(without_financial)
+  data <- example_without_financial(postcode = 53773L,
+                                    !!aka("emission_profile") := c("high", "medium", "low"))
+  plot <- map_region_risk(data)
   expect_s3_class(plot, "ggplot")
 })
 
 test_that("returns correct risk category values colors", {
   skip_on_ci()
-  data <- tibble(
+  data <- example_without_financial(
     postcode = c(53773L, 53774L, 53775L),
-    emission_profile = c("high", "medium", "low"),
-    benchmark = rep("all", 3)
+    !!aka("emission_profile") := c("high", "medium", "low")
   )
   expected_colors <- list(
     high = rgb(1, 0, 0),
