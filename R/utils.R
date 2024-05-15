@@ -130,10 +130,12 @@ dictionary <- function() {
                       ~aka,                 ~column,
         "emission_profile",      "emission_profile",
          "profile_ranking",       "profile_ranking",
+                "scenario",              "scenario",
    "transition_risk_score", "transition_risk_score",
          "transition_risk",       "transition_risk",
              "tilt_sector",           "tilt_sector",
        "europages_product",            "ep_product",
+                    "year",                 "year"
    )
   # styler: on
 }
