@@ -132,6 +132,7 @@ dictionary <- function() {
          "profile_ranking",       "profile_ranking",
    "transition_risk_score", "transition_risk_score",
          "transition_risk",       "transition_risk",
+             "tilt_sector",           "tilt_sector",
        "europages_product",            "ep_product",
    )
   # styler: on

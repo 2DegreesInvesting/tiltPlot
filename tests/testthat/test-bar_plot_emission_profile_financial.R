@@ -1,11 +1,13 @@
 test_that("returns an object of the expected class", {
-  data <- example_financial(!!aka("europages_product") := "e")
+  data <- example_financial(benchmark = c("all", "tilt_sector"),
+                            !!aka("europages_product") := c("e", "f"))
   plot <- bar_plot_emission_profile_financial(data, benchmarks())
   expect_s3_class(plot, "ggplot")
 })
 
 test_that("returns correct risk category values", {
-  data <- example_financial(!!aka("europages_product") := "e")
+  data <- example_financial(benchmark = c("all", "tilt_sector"),
+                            !!aka("europages_product") := c("e", "f"))
   plot <- bar_plot_emission_profile_financial(data, benchmarks())
   risk_categories <- levels(plot$data$risk_category_var)
   expected_risk_categories <- c("low", "medium", "high")
@@ -13,7 +15,8 @@ test_that("returns correct risk category values", {
 })
 
 test_that("returns correct benchmarks values", {
-  data <- example_financial(!!aka("europages_product") := "e")
+  data <- example_financial(benchmark = c("all", "tilt_sector"),
+                            !!aka("europages_product") := c("e", "f"))
   plot <- bar_plot_emission_profile_financial(data, benchmarks())
   benchmarks <- unique(plot$data$benchmark)
   expected_benchmarks <- financial |>
@@ -23,7 +26,8 @@ test_that("returns correct benchmarks values", {
 })
 
 test_that("calculated proportions are less or equal to 1 for every mode", {
-  data <- example_financial(!!aka("europages_product") := "e")
+  data <- example_financial(benchmark = c("all", "tilt_sector"),
+                            !!aka("europages_product") := c("e", "f"))
   bar_plots <- function(mode) {
     bar_plot_emission_profile_financial(data, benchmarks(), mode = mode)
   }
@@ -36,7 +40,8 @@ test_that("calculated proportions are less or equal to 1 for every mode", {
 })
 
 test_that("risk categories are the correct ones displayed, on a company level", {
-  data <- example_financial(company_name = letters[2:3] , !!aka("europages_product") := "e")
+  data <- example_financial(!!aka("europages_product") := "e")
+
   comp_name <- data[1, "company_name"]
   expected_risk_cat <- data |>
     filter(company_name == comp_name$company_name) |>
