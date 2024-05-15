@@ -31,5 +31,9 @@ example_financial(bank_id = NULL)
 id <- "bank_id"
 example_financial(!!id := "c")
 }
+\seealso{
+Other example datasets: 
+\code{\link{example_without_financial}()}
+}
 \concept{example datasets}
 \keyword{internal}
