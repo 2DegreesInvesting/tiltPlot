@@ -1,13 +1,17 @@
 test_that("returns an object of the expected class", {
-  data <- example_financial(!!aka("tilt_sector") := "t",
-                            !!aka("europages_product") := "e")
+  data <- example_financial(
+    !!aka("tilt_sector") := "t",
+    !!aka("europages_product") := "e"
+  )
   p <- plot_sankey(data)
   expect_s3_class(p, "ggplot")
 })
 
 test_that("returns expected data name values", {
-  data <- example_financial(!!aka("tilt_sector") := "t",
-                            !!aka("europages_product") := "e")
+  data <- example_financial(
+    !!aka("tilt_sector") := "t",
+    !!aka("europages_product") := "e"
+  )
   p <- plot_sankey(data)
   plot_names <- p$data |> colnames()
   expected_names <- data |> colnames()
@@ -15,8 +19,10 @@ test_that("returns expected data name values", {
 })
 
 test_that("returns correct risk categories values", {
-  data <- example_financial(!!aka("tilt_sector") := "t",
-                            !!aka("europages_product") := "e")
+  data <- example_financial(
+    !!aka("tilt_sector") := "t",
+    !!aka("europages_product") := "e"
+  )
   p <- plot_sankey(data, mode = "equal_weight")
   risk_names <- unique(p$data$emission_profile)
   possible_names <- c("low", "medium", "high", "other")
@@ -24,8 +30,10 @@ test_that("returns correct risk categories values", {
 })
 
 test_that("y-axis amount is equal to loanbook amount for all the modes", {
-  data <- example_financial(!!aka("tilt_sector") := "t",
-                            !!aka("europages_product") := "e")
+  data <- example_financial(
+    !!aka("tilt_sector") := "t",
+    !!aka("europages_product") := "e"
+  )
   data <- data |>
     distinct(bank_id, company_name, ep_product, .keep_all = TRUE)
 
@@ -43,8 +51,10 @@ test_that("each bank_id has the correct amount for all the modes", {
       mutate(sum = sum(data[[switch_mode(mode)]])) |>
       distinct(bank_id, sum)
   }
-  data <- example_financial(!!aka("tilt_sector") := "t",
-                            !!aka("europages_product") := "e")
+  data <- example_financial(
+    !!aka("tilt_sector") := "t",
+    !!aka("europages_product") := "e"
+  )
 
   data <- data |>
     distinct(bank_id, company_name, ep_product, .keep_all = TRUE)
@@ -64,8 +74,10 @@ test_that("each bank_id has the correct amount for all the modes", {
 })
 
 test_that("each risk category have the correct amount for all the modes", {
-  data <- example_financial(!!aka("tilt_sector") := "t",
-                            !!aka("europages_product") := "e")
+  data <- example_financial(
+    !!aka("tilt_sector") := "t",
+    !!aka("europages_product") := "e"
+  )
 
   data <- data |>
     distinct(bank_id, company_name, ep_product, .keep_all = TRUE)
@@ -99,7 +111,8 @@ test_that("risk categories are in the right order", {
     bank_id = 1:3,
     !!aka("tilt_sector") := "t",
     !!aka("emission_profile") := c("low", "medium", "high"),
-    !!aka("europages_product") := "e")
+    !!aka("europages_product") := "e"
+  )
   p <- plot_sankey(data)
   risk_categories <- unique(p$data$emission_profile)
   expected_order <- c("low", "medium", "high")

@@ -1,26 +1,32 @@
 test_that("returns an object of the expected class", {
-  data <- example_financial(!!aka("scenario") := "IPR",
-                            !!aka("year") := 1,
-                            !!aka("tilt_sector") := "t")
-  p <- scatter_plot_financial(data, benchmarks(), scenario ="IPR", year = 1)
+  data <- example_financial(
+    !!aka("scenario") := "IPR",
+    !!aka("year") := 1,
+    !!aka("tilt_sector") := "t"
+  )
+  p <- scatter_plot_financial(data, benchmarks(), scenario = "IPR", year = 1)
   expect_s3_class(p, "ggplot")
 })
 
 test_that("returns correct risk categories values", {
-  data <- example_financial(!!aka("scenario") := "IPR",
-                            !!aka("year") := 1,
-                            !!aka("tilt_sector") := "t")
-  p <- scatter_plot_financial(data, benchmarks(), scenario ="IPR", year = 1)
+  data <- example_financial(
+    !!aka("scenario") := "IPR",
+    !!aka("year") := 1,
+    !!aka("tilt_sector") := "t"
+  )
+  p <- scatter_plot_financial(data, benchmarks(), scenario = "IPR", year = 1)
   risk_names <- unique(p$data$emission_profile)
   possible_names <- c("low", "medium", "high", "other")
   expect_true(all(risk_names %in% possible_names))
 })
 
 test_that("returns correct benchmarks values", {
-  data <- example_financial(!!aka("scenario") := "IPR",
-                            !!aka("year") := 1,
-                            !!aka("tilt_sector") := "t")
-  p <- scatter_plot_financial(data, benchmarks(), scenario ="IPR", year = 1)
+  data <- example_financial(
+    !!aka("scenario") := "IPR",
+    !!aka("year") := 1,
+    !!aka("tilt_sector") := "t"
+  )
+  p <- scatter_plot_financial(data, benchmarks(), scenario = "IPR", year = 1)
   benchmarks <- unique(p$data$benchmark)
   expected_benchmarks <- data |>
     pull(benchmark) |>
@@ -29,10 +35,12 @@ test_that("returns correct benchmarks values", {
 })
 
 test_that("calculate_rank handles NAs for any mode", {
-  data <- example_financial(!!aka("scenario") := "IPR",
-                            !!aka("year") := 1,
-                            !!aka("tilt_sector") := "t",
-                            !!aka("profile_ranking") := NA)
+  data <- example_financial(
+    !!aka("scenario") := "IPR",
+    !!aka("year") := 1,
+    !!aka("tilt_sector") := "t",
+    !!aka("profile_ranking") := NA
+  )
 
   results <- list(
     calculate_rank(data, "equal_weight_finance", aka("profile_ranking")),
@@ -49,9 +57,11 @@ test_that("calculated ranks are between 0 and 1 for each scores", {
     expect_true(all(rank >= 0 & rank <= 1))
   }
 
-  data <- example_financial(!!aka("scenario") := "IPR",
-                            !!aka("year") := 1,
-                            !!aka("tilt_sector") := "t")
+  data <- example_financial(
+    !!aka("scenario") := "IPR",
+    !!aka("year") := 1,
+    !!aka("tilt_sector") := "t"
+  )
 
   lapply(modes(), function(mode) {
     test_rank(data, mode, aka("profile_ranking"))
@@ -63,9 +73,10 @@ test_that("calculated ranks are between 0 and 1 for each scores", {
 
 test_that("amount_total is correct for each bank_id", {
   data <- example_financial(!!aka("scenario") := "IPR",
-                            !!aka("year") := 1,
-                            !!aka("tilt_sector") := "t",
-                            bank_id = 1:2)
+    !!aka("year") := 1,
+    !!aka("tilt_sector") := "t",
+    bank_id = 1:2
+  )
   expected_amount_totals <- data |>
     group_by(bank_id) |>
     summarise(expected_total = sum(amount_total))
