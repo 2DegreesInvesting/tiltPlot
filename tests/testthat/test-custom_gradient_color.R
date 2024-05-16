@@ -10,9 +10,9 @@ test_that("custom_gradient_color generates correct colors", {
   })
 
   expected_results <- list(
-    high = rgb(1, 0, 0),
-    medium = rgb(1, 0.5, 0),
-    low = rgb(0, 1, 0)
+    high = hex_to_rgb(high_hex()),
+    medium = hex_to_rgb(medium_hex()),
+    low = hex_to_rgb(low_hex())
   )
 
   expect_true(identical(expected_results, results))

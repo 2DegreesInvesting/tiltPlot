@@ -53,6 +53,7 @@
 #' @importFrom ggpubr ggarrange
 #' @importFrom giscoR gisco_get_nuts
 #' @importFrom glue glue
+#' @importFrom grDevices col2rgb
 #' @importFrom grDevices rgb
 #' @importFrom here here
 #' @importFrom purrr pmap
