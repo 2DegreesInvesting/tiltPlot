@@ -12,9 +12,9 @@ test_that("returns correct risk category values colors", {
     benchmark = rep("all", 3)
   )
   expected_colors <- list(
-    high = rgb(1, 0, 0),
-    medium = rgb(1, 0.5, 0),
-    low = rgb(0, 1, 0)
+    high = high_hex(),
+    medium = medium_hex(),
+    low = low_hex()
   )
   try({
     plot <- map_region_risk(data)
