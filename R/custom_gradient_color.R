@@ -17,9 +17,9 @@
 #' custom_gradient_color(1, 0.5, 0.2)
 custom_gradient_color <- function(high, medium, low) {
   # define RGB values for "high," "medium," and "low"
-  high_color <- red <- c(1, 0, 0)
-  medium_color <- orange <- c(1, 0.5, 0)
-  low_color <- green <- c(0, 1, 0)
+  high_color <- red <- hex_to_rgb("#e3693b")
+  medium_color <- orange <- hex_to_rgb("#f6cb4e")
+  low_color <- green <- hex_to_rgb("#b3d15d")
 
   # interpolate the colors based on proportions : 1 is highest intensity
   final_color <- high_color * high + medium_color * medium + low_color * low

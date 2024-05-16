@@ -12,11 +12,12 @@
 theme_tiltplot <- function() {
   theme_classic() +
     theme(
-      plot.title = element_text(hjust = 0.5, size = 16),
-      axis.title = element_text(size = 12),
-      axis.text = element_text(size = 10),
-      legend.title = element_text(size = 12),
-      legend.text = element_text(size = 10),
+      plot.title = element_text(hjust = 0.5, size = 16, family = tilt_headline_font()),
+      strip.text = element_text(family = tilt_text_font()),
+      axis.title = element_text(size = 10, family = tilt_text_font()),
+      axis.text = element_text(size = 10, family = tilt_text_font()),
+      legend.title = element_text(size = 12, family = tilt_text_font()),
+      legend.text = element_text(size = 10, family = tilt_text_font()),
       legend.position = "bottom",
       panel.grid.major.y = element_blank(),
       panel.grid.minor.y = element_blank(),
@@ -24,9 +25,19 @@ theme_tiltplot <- function() {
     )
 }
 
-score_colors <- function(...) c("low" = "#007F00", "medium" = "#FFC300", "high" = "#FF5733")
+tilt_text_font <- function() "Roboto"
+
+tilt_headline_font <- function() "Roboto Condensed"
+
+score_colors <- function(...) c("low" = "#b3d15d", "medium" = "#f6cb4e", "high" = "#e3693b")
 
 fill_score_colors <- function() scale_fill_manual(values = score_colors())
+
+hex_to_rgb <- function(hex) {
+  rgb <- col2rgb(hex)
+  rgb_dec <- rgb / 255
+  rgb_dec
+}
 
 width_bar <- function() 0.5
 

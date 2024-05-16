@@ -42,5 +42,6 @@ map_region_risk <- function(data,
   ggplot() +
     geom_sf(data = aggregated_data, mapping = aes(fill = .data$color)) +
     geom_sf(data = shp_1, fill = NA) +
-    coord_sf()
+    coord_sf() +
+    theme_tiltplot()
 }
