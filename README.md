@@ -202,6 +202,348 @@ scatter_plot_financial(fin,
   scenario = scenario,
   year = year
 )
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
+#> 'Roboto' not found in PostScript font database
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
+
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+#> family 'Roboto' not found in PostScript font database
 ```
 
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
