@@ -170,7 +170,7 @@ plot_scatter_financial_impl <- function(data,
   col <- paste0(type, "_average")
   plot_legend <- get(paste0(type, "_legend"))
 
-  #TODO: What colors do we want for each bank_id ?
+  # TODO: What colors do we want for each bank_id ?
   scatter_plot <- ggplot(data, aes(x = .data$amount_total, color = .data$bank_id)) +
     geom_point(aes(y = .data[[col]])) +
     facet_grid(.data$tilt_sector ~ .data$benchmark, scales = "fixed") +
