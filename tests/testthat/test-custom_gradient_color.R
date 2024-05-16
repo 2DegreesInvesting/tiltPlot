@@ -1,8 +1,8 @@
 test_that("custom_gradient_color generates correct colors", {
   input_vectors <- list(
-    high = c(1, 0, 0),
-    medium = c(0, 1, 0),
-    low = c(0, 0, 1)
+    risk_score_high = c(1, 0, 0),
+    risk_score_medium = c(0, 1, 0),
+    risk_score_low = c(0, 0, 1)
   )
 
   results <- lapply(input_vectors, function(inputs) {

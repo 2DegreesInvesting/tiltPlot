@@ -29,9 +29,9 @@ tilt_text_font <- function() "Roboto"
 
 tilt_headline_font <- function() "Roboto Condensed"
 
-high_hex <- function() "#e3693b"
-medium_hex <- function() "#f6cb4e"
-low_hex <- function() "#b3d15d"
+high_hex <- function() "#E3693B"
+medium_hex <- function() "#F6CB4E"
+low_hex <- function() "#B3D15D"
 
 score_colors <- function(...) c("low" = low_hex(), "medium" = medium_hex(), "high" = high_hex())
 
