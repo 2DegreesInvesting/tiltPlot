@@ -1,3 +1,5 @@
+
+
 ----
 
 TODO
@@ -10,9 +12,7 @@ TODO
 - [ ] Ensure the PR branch is updated.
 - [ ] Ensure the checks pass.
 - [ ] Change the status from draft to ready.
-- [ ] Polish the PR title and description.
+- [ ] Polish the PR description to reflect what it ended up doing.
+- [ ] Polish the PR title as you'd like others to read it from the git log.
 - [ ] Assign a reviewer.
-
-EXCEPTIONS
-
-- [ ] Slide here any item that you intentionally choose to not do.
+- [ ] Document user-facing changes in the changelog.
