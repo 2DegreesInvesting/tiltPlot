@@ -79,4 +79,8 @@ example_financial <- tiltIndicator::example_data_factory(default_financial())
 #'
 #' #' # Add columns
 #' example_without_financial(new = 1)
+#'
+#' #' # Pass column names stored in vectors
+#' company_name <- "company_name"
+#' example_financial(!!company_name := "c")
 example_without_financial <- tiltIndicator::example_data_factory(default_without_financial())
