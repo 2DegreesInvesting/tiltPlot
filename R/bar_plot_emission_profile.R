@@ -13,6 +13,9 @@
 #' @export
 #'
 #' @examples
+#' library(extrafont)
+#' font_import()
+#' loadfonts(device="postscript")
 #' benchmarks <- c("all", "unit", "isic_4digit")
 #' bar_plot_emission_profile(without_financial, benchmarks)
 bar_plot_emission_profile <- function(data,
