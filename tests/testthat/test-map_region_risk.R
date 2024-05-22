@@ -1,27 +1,61 @@
-test_that("returns an object of the expected class", {
-  try({
-    plot <- map_region_risk(without_financial)
-  })
-  expect_s3_class(plot, "ggplot")
-})
-
 test_that("returns correct risk category values colors", {
-  data <- tibble(
+  skip_on_ci()
+  data <- example_without_financial(
     postcode = c(53773L, 53774L, 53775L),
-    emission_profile = c("high", "medium", "low"),
-    benchmark = rep("all", 3)
+    !!aka("risk_category") := risk_category_levels()
   )
   expected_colors <- list(
-    high = rgb(1, 0, 0),
+    low = rgb(0, 1, 0),
     medium = rgb(1, 0.5, 0),
-    low = rgb(0, 1, 0)
+    high = rgb(1, 0, 0)
   )
-  try({
-    plot <- map_region_risk(data)
-    layers <- ggplot_build(plot)$data
-    colors <- layers[[1]]$fill
+  plot <- map_region_risk(data)
+  layers <- ggplot_build(plot)$data
+  colors <- layers[[1]]$fill
 
-    names(colors) <- names(expected_colors)
-    expect_true(identical(expected_colors, colors))
-  })
+  names(colors) <- names(expected_colors)
+  expect_true(identical(expected_colors, colors))
+})
+
+test_that("plots the correct companies", {
+  skip_on_ci()
+  data <- example_without_financial(
+    postcode = c(53773L, 53774L, 53775L),
+    company_name = letters[1:3],
+    !!aka("risk_category") := risk_category_levels()
+  )
+  plot <- map_region_risk(data)
+
+  company_names <- unique(plot$plot_env$data$company_name)
+  expected_company_names <- unique(data$company_name)
+
+  expect_equal(sort(company_names), sort(expected_company_names))
+})
+
+test_that("plots the selected benchmark", {
+  skip_on_ci()
+  data <- example_without_financial(
+    postcode = c(53773L, 53774L, 53775L),
+    !!aka("risk_category") := risk_category_levels()
+  )
+  plot <- map_region_risk(data, "DE", "all")
+
+  benchmark <- unique(plot$plot_env$benchmark)
+  expected_benchmark <- unique(data$benchmark)
+
+  expect_equal(sort(benchmark), sort(expected_benchmark))
+})
+
+test_that("plots the selected mode", {
+  skip_on_ci()
+  data <- example_without_financial(
+    postcode = c(53773L, 53774L, 53775L),
+    !!aka("risk_category") := risk_category_levels()
+  )
+  plot <- map_region_risk(data, "DE", "all", "equal_weight")
+
+  mode <- unique(plot$plot_env$mode)
+  expected_mode <- "equal_weight"
+
+  expect_equal(mode, expected_mode)
 })

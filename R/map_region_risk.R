@@ -16,7 +16,9 @@
 #'
 #' @examples
 #' # Plot a German with a "unit" benchmark and equal_weight finance
-#' map_region_risk(without_financial, country_code = "DE", benchmark = "unit")
+#' try({
+#'   map_region_risk(without_financial, country_code = "DE", benchmark = "unit")
+#' })
 map_region_risk <- function(data,
                             # TODO: plot for other countries
                             country_code = c("DE"),

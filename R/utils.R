@@ -100,6 +100,8 @@ check_levels <- function(x) {
   stopifnot(all(sort(unique(x)) %in% sort(risk_category_levels())))
 }
 
+plot_data <- function(p, name) p$data[[name]]
+
 risk_category_levels <- function() c("low", "medium", "high")
 
 #' Benchmarks used in the functions' arguments.
@@ -128,17 +130,35 @@ dictionary <- function() {
   #styler: off
   tibble::tribble(
                       ~aka,                 ~column,
-        "emission_profile",      "emission_profile",
+       "europages_product",            "ep_product",
          "profile_ranking",       "profile_ranking",
+           "risk_category",      "emission_profile",
+                "scenario",              "scenario",
    "transition_risk_score", "transition_risk_score",
          "transition_risk",       "transition_risk",
-       "europages_product",            "ep_product",
+             "tilt_sector",           "tilt_sector",
+                    "year",                 "year"
    )
   # styler: on
 }
 
 aka <- function(x) {
-  dictionary() |>
+  candidates <- dictionary() |>
     filter(aka == x) |>
     pull(.data$column)
+  candidates
+}
+
+pattern <- function(x) paste0(x, collapse = "|")
+
+#' Modes
+#'
+#' @keywords internal
+#' @export
+modes <- function() {
+  c(
+    "equal_weight",
+    "best_case",
+    "worst_case"
+  )
 }
