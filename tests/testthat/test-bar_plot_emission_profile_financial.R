@@ -29,10 +29,8 @@ test_that("calculated proportions are less or equal to 1 for every mode", {
   }
   plots <- lapply(modes(), bar_plots)
 
-  lapply(seq_along(modes()), function(i) {
-    proportions <- plots[[i]]$data$percentage_total
-    expect_true(all(proportions >= 0 & proportions <= 1))
-  })
+  proportions <- lapply(seq_along(modes()), \(i) plots[[i]]$data$percentage_total)
+  expect_true(all(proportions >= 0 & proportions <= 1))
 })
 
 test_that("risk categories are the correct ones displayed, on a company level", {
