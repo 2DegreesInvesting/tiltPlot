@@ -51,7 +51,7 @@ test_that("calculate_rank handles NAs for any mode", {
   expect_true(all(unlist(lapply(results, function(x) all(x$rank == 1)))))
 })
 
-test_that("calculated ranks are between 0 and 1 for each scores", {
+test_that("calculated ranks are between 0 and 1 for profile ranking", {
   test_rank <- function(data, mode, column) {
     result <- calculate_rank(data, mode, column)
     rank <- result[[1]]
@@ -67,6 +67,22 @@ test_that("calculated ranks are between 0 and 1 for each scores", {
   lapply(modes(), function(mode) {
     test_rank(data, mode, aka("profile_ranking"))
   })
+})
+
+
+test_that("calculated ranks are between 0 and 1 for emission profile", {
+  test_rank <- function(data, mode, column) {
+    result <- calculate_rank(data, mode, column)
+    rank <- result[[1]]
+    expect_true(all(rank >= 0 & rank <= 1))
+  }
+
+  data <- example_financial(
+    !!aka("scenario") := "IPR",
+    !!aka("year") := 1,
+    !!aka("tilt_sector") := "t"
+  )
+
   lapply(modes(), function(mode) {
     test_rank(data, mode, aka("risk_category"))
   })
