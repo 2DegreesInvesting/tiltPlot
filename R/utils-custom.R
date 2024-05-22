@@ -25,9 +25,10 @@ theme_tiltplot <- function() {
     )
 }
 
-tilt_text_font <- function() "Roboto"
 
-tilt_headline_font <- function() "Roboto Condensed"
+tilt_text_font <- function() ifelse(exists("Roboto"), "Open Sans", "Roboto")
+
+tilt_headline_font <- function() ifelse(exists("Roboto Condensed"), "Open Sans", "Roboto Condensed")
 
 high_hex <- function() "#E3693B"
 medium_hex <- function() "#F6CB4E"
