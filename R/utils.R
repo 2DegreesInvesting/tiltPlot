@@ -128,23 +128,26 @@ dictionary <- function() {
   #styler: off
   tibble::tribble(
                       ~aka,                 ~column,
-        "emission_profile",      "emission_profile",
+       "europages_product",            "ep_product",
          "profile_ranking",       "profile_ranking",
+           "risk_category",      "emission_profile",
                 "scenario",              "scenario",
    "transition_risk_score", "transition_risk_score",
          "transition_risk",       "transition_risk",
              "tilt_sector",           "tilt_sector",
-       "europages_product",            "ep_product",
                     "year",                 "year"
    )
   # styler: on
 }
 
 aka <- function(x) {
-  dictionary() |>
+  candidates <- dictionary() |>
     filter(aka == x) |>
     pull(.data$column)
+  candidates
 }
+
+pattern <- function(x) paste0(x, collapse = "|")
 
 #' Modes
 #'

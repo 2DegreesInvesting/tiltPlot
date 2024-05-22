@@ -15,8 +15,9 @@ test_that("returns correct risk categories values", {
     !!aka("tilt_sector") := "t"
   )
   p <- scatter_plot_financial(data, benchmarks(), scenario = "IPR", year = 1)
-  risk_names <- unique(p$data$emission_profile)
-  possible_names <- c("low", "medium", "high", "other")
+  risk_var <- data |> tiltIndicator:::extract_name(pattern(aka("risk_category")))
+  risk_names <- unique(p$data[[risk_var]])
+  possible_names <- c(risk_category_levels(), "other")
   expect_true(all(risk_names %in% possible_names))
 })
 
@@ -67,7 +68,7 @@ test_that("calculated ranks are between 0 and 1 for each scores", {
     test_rank(data, mode, aka("profile_ranking"))
   })
   lapply(modes(), function(mode) {
-    test_rank(data, mode, aka("emission_profile"))
+    test_rank(data, mode, aka("risk_category"))
   })
 })
 
@@ -82,7 +83,7 @@ test_that("amount_total is correct for each bank_id", {
     summarise(expected_total = sum(amount_total))
 
   p_tr <- plot_scatter_financial_impl(data, aka("transition_risk"))
-  p_ep <- plot_scatter_financial_impl(data, aka("emission_profile"))
+  p_ep <- plot_scatter_financial_impl(data, aka("risk_category"))
 
   actual_amount_totals_tr <- p_tr$data |>
     group_by(bank_id) |>

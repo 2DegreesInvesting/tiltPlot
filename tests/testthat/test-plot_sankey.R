@@ -24,8 +24,9 @@ test_that("returns correct risk categories values", {
     !!aka("europages_product") := "e"
   )
   p <- plot_sankey(data, mode = "equal_weight")
-  risk_names <- unique(p$data$emission_profile)
-  possible_names <- c("low", "medium", "high", "other")
+  risk_var <- data |> tiltIndicator:::extract_name(pattern(aka("risk_category")))
+  risk_names <- unique(p$data[[risk_var]])
+  possible_names <- c(risk_category_levels(), "other")
   expect_true(all(risk_names %in% possible_names))
 })
 
@@ -84,9 +85,9 @@ test_that("each risk category have the correct amount for all the modes", {
 
   calculate_amount_risk <- function(data, mode) {
     data |>
-      group_by(aka("emission_profile")) |>
+      group_by(aka("risk_category")) |>
       mutate(sum = sum(data[[switch_mode(mode)]])) |>
-      distinct(aka("emission_profile"), sum)
+      distinct(aka("risk_category"), sum)
   }
 
   data <- data |>
@@ -110,11 +111,12 @@ test_that("risk categories are in the right order", {
   data <- example_financial(
     bank_id = 1:3,
     !!aka("tilt_sector") := "t",
-    !!aka("emission_profile") := c("low", "medium", "high"),
+    !!aka("risk_category") := risk_category_levels(),
     !!aka("europages_product") := "e"
   )
   p <- plot_sankey(data)
-  risk_categories <- unique(p$data$emission_profile)
-  expected_order <- c("low", "medium", "high")
+  risk_cat <- data |> tiltIndicator:::extract_name(pattern(aka("risk_category")))
+  risk_categories <- unique(p$data[[risk_cat]])
+  expected_order <- risk_category_levels()
   expect_identical(risk_categories, expected_order)
 })

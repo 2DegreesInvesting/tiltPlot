@@ -41,7 +41,7 @@ test_that("risk categories are the correct ones displayed, on a company level", 
   comp_name <- data[1, "company_name"]
   expected_risk_cat <- data |>
     filter(company_name == comp_name$company_name) |>
-    pull(aka("emission_profile")) |>
+    pull(aka("risk_category")) |>
     unique() |>
     as_risk_category()
 

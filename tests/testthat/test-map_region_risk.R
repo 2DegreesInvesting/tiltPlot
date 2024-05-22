@@ -2,7 +2,7 @@ test_that("returns an object of the expected class", {
   skip_on_ci()
   data <- example_without_financial(
     postcode = 53773L,
-    !!aka("emission_profile") := c("high", "medium", "low")
+    !!aka("risk_category") := risk_category_levels()
   )
   plot <- map_region_risk(data)
   expect_s3_class(plot, "ggplot")
@@ -12,12 +12,12 @@ test_that("returns correct risk category values colors", {
   skip_on_ci()
   data <- example_without_financial(
     postcode = c(53773L, 53774L, 53775L),
-    !!aka("emission_profile") := c("high", "medium", "low")
+    !!aka("risk_category") := risk_category_levels()
   )
   expected_colors <- list(
-    high = rgb(1, 0, 0),
+    low = rgb(0, 1, 0),
     medium = rgb(1, 0.5, 0),
-    low = rgb(0, 1, 0)
+    high = rgb(1, 0, 0)
   )
   plot <- map_region_risk(data)
   layers <- ggplot_build(plot)$data
@@ -31,7 +31,7 @@ test_that("plots the correct postcodes", {
   skip_on_ci()
   data <- example_without_financial(
     postcode = c(53773L, 53774L, 53775L),
-    !!aka("emission_profile") := c("high", "medium", "low")
+    !!aka("risk_category") := risk_category_levels()
   )
   plot <- map_region_risk(data)
 
@@ -46,7 +46,7 @@ test_that("plots the correct companies", {
   data <- example_without_financial(
     postcode = c(53773L, 53774L, 53775L),
     company_name = letters[1:3],
-    !!aka("emission_profile") := c("high", "medium", "low")
+    !!aka("risk_category") := risk_category_levels()
   )
   plot <- map_region_risk(data)
 
@@ -60,7 +60,7 @@ test_that("plots the selected benchmark", {
   skip_on_ci()
   data <- example_without_financial(
     postcode = c(53773L, 53774L, 53775L),
-    !!aka("emission_profile") := c("high", "medium", "low")
+    !!aka("risk_category") := tiltIndicator:::risk_category_levels()
   )
   plot <- map_region_risk(data, "DE", "all")
 
@@ -74,13 +74,12 @@ test_that("plots the selected mode", {
   skip_on_ci()
   data <- example_without_financial(
     postcode = c(53773L, 53774L, 53775L),
-    !!aka("emission_profile") := c("high", "medium", "low")
+    !!aka("risk_category") := risk_category_levels()
   )
   plot <- map_region_risk(data, "DE", "all", "equal_weight")
 
   mode <- unique(plot$plot_env$mode)
-  plot$plot_env$
-    expected_mode <- "equal_weight"
+  expected_mode <- "equal_weight"
 
   expect_equal(mode, expected_mode)
 })
