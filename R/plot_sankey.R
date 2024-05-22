@@ -21,13 +21,13 @@ plot_sankey <- function(data,
   benchmark <- arg_match(benchmark)
 
   crucial <- c(
-    "emission_profile",
+    aka("risk_category"),
     "equal_weight_finance",
     "worst_case_finance",
     "best_case_finance"
   )
   data |> check_crucial_names(names_matching(data, crucial))
-  risk_var <- names_matching(data, "emission_profile")
+  risk_var <- names_matching(data, aka("risk_category"))
 
   data <- data |>
     filter(.data$benchmark == .env$benchmark) |>

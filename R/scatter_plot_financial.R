@@ -54,7 +54,7 @@ check_scatter_plot_financial <- function(data) {
     "amount_total",
     "bank_id",
     "company_name",
-    "emission_profile",
+    aka("risk_category"),
     "profile_ranking",
     "scenario",
     "year",
@@ -68,7 +68,7 @@ check_scatter_plot_financial <- function(data) {
   )
   data |> check_crucial_names(names_matching(data, crucial))
 
-  risk_var <- names_matching(data, aka("emission_profile"))
+  risk_var <- names_matching(data, aka("risk_category"))
 
   data <- data |>
     mutate(risk_category_var = as_risk_category(data[[risk_var]]))
@@ -148,7 +148,7 @@ calculate_scatter_plot_financial <- function(data, mode) {
 #' @noRd
 plot_scatter_financial <- function(data) {
   plot <- ggarrange(
-    plot_scatter_financial_impl(data, type = aka("emission_profile")),
+    plot_scatter_financial_impl(data, type = aka("risk_category")),
     plot_scatter_financial_impl(data, type = aka("transition_risk"))
   )
   plot
@@ -164,7 +164,7 @@ plot_scatter_financial <- function(data) {
 #' @noRd
 plot_scatter_financial_impl <- function(data,
                                         type = c(
-                                          aka("emission_profile"),
+                                          aka("risk_category"),
                                           aka("transition_risk")
                                         )) {
   col <- paste0(type, "_average")

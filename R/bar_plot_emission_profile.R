@@ -21,11 +21,11 @@ bar_plot_emission_profile <- function(data,
 
   crucial <- c(
     "benchmark",
-    "emission_profile"
+    aka("risk_category")
   )
   data |> check_crucial_names(names_matching(data, crucial))
 
-  risk_var <- names_matching(data, "emission_profile")
+  risk_var <- names_matching(data, aka("risk_category"))
 
   data <- data |>
     mutate(risk_category_var = as_risk_category(data[[risk_var]]))
