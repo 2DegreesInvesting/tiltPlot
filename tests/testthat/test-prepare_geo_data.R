@@ -28,3 +28,17 @@ test_that("aggregation returns correct risk category values colors", {
 
   expect_true(identical(expected_colors, colors))
 })
+
+test_that("returns the correct postcodes", {
+  skip_on_ci()
+  data <- example_without_financial(
+    postcode = c(53773L, 53774L, 53775L),
+    !!aka("risk_category") := risk_category_levels()
+  )
+  aggregated_data <- prepare_geo_data(data)[[2]]
+
+  postcodes <- unique(aggregated_data$postcode)
+  expected_postcodes <- unique(data$postcode)
+
+  expect_equal(sort(postcodes), sort(expected_postcodes))
+})

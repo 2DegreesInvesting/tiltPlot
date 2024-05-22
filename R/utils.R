@@ -100,6 +100,8 @@ check_levels <- function(x) {
   stopifnot(all(sort(unique(x)) %in% sort(risk_category_levels())))
 }
 
+plot_data <- function(p, name) p$data[[name]]
+
 risk_category_levels <- function() c("low", "medium", "high")
 
 #' Benchmarks used in the functions' arguments.
