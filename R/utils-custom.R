@@ -10,6 +10,7 @@
 #'   geom_histogram(aes(mpg), bins = 10) +
 #'   theme_tiltplot()
 theme_tiltplot <- function() {
+  loadfonts()
   theme_classic() +
     theme(
       plot.title = element_text(hjust = 0.5, size = 16, family = tilt_headline_font()),

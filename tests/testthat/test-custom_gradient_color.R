@@ -5,8 +5,10 @@ test_that("custom_gradient_color generates correct colors", {
     low = c(0, 0, 1)
   )
 
-  results <- lapply(input_vectors,
-                    \(inputs) custom_gradient_color(inputs[1], inputs[2], inputs[3]))
+  results <- lapply(
+    input_vectors,
+    \(inputs) custom_gradient_color(inputs[1], inputs[2], inputs[3])
+  )
 
   expected_results <- list(
     high = high_hex(),

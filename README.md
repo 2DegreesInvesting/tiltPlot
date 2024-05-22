@@ -66,6 +66,22 @@ plot_sankey(fin, with_company = TRUE, benchmark = "tilt_sector", mode = "equal_w
     "Sankey Plot",
     paste("Stratified by the amount of loan by the bank, with the", mode, "mode", "and benchmark", benchmark)
   )
+#> Registering font with R using pdfFont(): Roboto
+#> Registering font with R using pdfFont(): Roboto Black
+#> Registering font with R using pdfFont(): Roboto Condensed
+#> Registering font with R using pdfFont(): Roboto Condensed Light
+#> Registering font with R using pdfFont(): Roboto Condensed Medium
+#> Registering font with R using pdfFont(): Roboto Light
+#> Registering font with R using pdfFont(): Roboto Medium
+#> Registering font with R using pdfFont(): Roboto Thin
+#> Registering font with R using postscriptFont(): Roboto
+#> Registering font with R using postscriptFont(): Roboto Black
+#> Registering font with R using postscriptFont(): Roboto Condensed
+#> Registering font with R using postscriptFont(): Roboto Condensed Light
+#> Registering font with R using postscriptFont(): Roboto Condensed Medium
+#> Registering font with R using postscriptFont(): Roboto Light
+#> Registering font with R using postscriptFont(): Roboto Medium
+#> Registering font with R using postscriptFont(): Roboto Thin
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
@@ -74,6 +90,22 @@ You can also choose to have the plot without the company node.
 
 ``` r
 plot_sankey(fin, with_company = FALSE, benchmark = "tilt_sector", mode = "equal_weight")
+#> Roboto already registered with pdfFont().
+#> Roboto Black already registered with pdfFont().
+#> Roboto Condensed already registered with pdfFont().
+#> Roboto Condensed Light already registered with pdfFont().
+#> Roboto Condensed Medium already registered with pdfFont().
+#> Roboto Light already registered with pdfFont().
+#> Roboto Medium already registered with pdfFont().
+#> Roboto Thin already registered with pdfFont().
+#> Roboto already registered with postscriptFont().
+#> Roboto Black already registered with postscriptFont().
+#> Roboto Condensed already registered with postscriptFont().
+#> Roboto Condensed Light already registered with postscriptFont().
+#> Roboto Condensed Medium already registered with postscriptFont().
+#> Roboto Light already registered with postscriptFont().
+#> Roboto Medium already registered with postscriptFont().
+#> Roboto Thin already registered with postscriptFont().
 ```
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
@@ -83,6 +115,22 @@ with financial data available.
 
 ``` r
 plot_sankey(fin, with_company = FALSE, benchmark = "tilt_sector", mode = "best_case")
+#> Roboto already registered with pdfFont().
+#> Roboto Black already registered with pdfFont().
+#> Roboto Condensed already registered with pdfFont().
+#> Roboto Condensed Light already registered with pdfFont().
+#> Roboto Condensed Medium already registered with pdfFont().
+#> Roboto Light already registered with pdfFont().
+#> Roboto Medium already registered with pdfFont().
+#> Roboto Thin already registered with pdfFont().
+#> Roboto already registered with postscriptFont().
+#> Roboto Black already registered with postscriptFont().
+#> Roboto Condensed already registered with postscriptFont().
+#> Roboto Condensed Light already registered with postscriptFont().
+#> Roboto Condensed Medium already registered with postscriptFont().
+#> Roboto Light already registered with postscriptFont().
+#> Roboto Medium already registered with postscriptFont().
+#> Roboto Thin already registered with postscriptFont().
 ```
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
@@ -125,6 +173,22 @@ fin |>
   bar_plot_emission_profile_financial(benchmarks, mode = "equal_weight") +
   labs(title = "Emission profile of all products on a company level, on an equal
        weight financial mode")
+#> Roboto already registered with pdfFont().
+#> Roboto Black already registered with pdfFont().
+#> Roboto Condensed already registered with pdfFont().
+#> Roboto Condensed Light already registered with pdfFont().
+#> Roboto Condensed Medium already registered with pdfFont().
+#> Roboto Light already registered with pdfFont().
+#> Roboto Medium already registered with pdfFont().
+#> Roboto Thin already registered with pdfFont().
+#> Roboto already registered with postscriptFont().
+#> Roboto Black already registered with postscriptFont().
+#> Roboto Condensed already registered with postscriptFont().
+#> Roboto Condensed Light already registered with postscriptFont().
+#> Roboto Condensed Medium already registered with postscriptFont().
+#> Roboto Light already registered with postscriptFont().
+#> Roboto Medium already registered with postscriptFont().
+#> Roboto Thin already registered with postscriptFont().
 ```
 
 <img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
@@ -135,6 +199,22 @@ On a portfolio level:
 bar_plot_emission_profile_financial(fin, benchmarks, mode = "equal_weight") +
   labs(title = "Emission profile of all products on a portfolio level, on an equal
        weight financial mode")
+#> Roboto already registered with pdfFont().
+#> Roboto Black already registered with pdfFont().
+#> Roboto Condensed already registered with pdfFont().
+#> Roboto Condensed Light already registered with pdfFont().
+#> Roboto Condensed Medium already registered with pdfFont().
+#> Roboto Light already registered with pdfFont().
+#> Roboto Medium already registered with pdfFont().
+#> Roboto Thin already registered with pdfFont().
+#> Roboto already registered with postscriptFont().
+#> Roboto Black already registered with postscriptFont().
+#> Roboto Condensed already registered with postscriptFont().
+#> Roboto Condensed Light already registered with postscriptFont().
+#> Roboto Condensed Medium already registered with postscriptFont().
+#> Roboto Light already registered with postscriptFont().
+#> Roboto Medium already registered with postscriptFont().
+#> Roboto Thin already registered with postscriptFont().
 ```
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
@@ -174,6 +254,22 @@ no_fin |>
   filter(company_name == "peter") |>
   bar_plot_emission_profile(benchmarks) +
   labs(title = "Emission profile of all products on a company level")
+#> Roboto already registered with pdfFont().
+#> Roboto Black already registered with pdfFont().
+#> Roboto Condensed already registered with pdfFont().
+#> Roboto Condensed Light already registered with pdfFont().
+#> Roboto Condensed Medium already registered with pdfFont().
+#> Roboto Light already registered with pdfFont().
+#> Roboto Medium already registered with pdfFont().
+#> Roboto Thin already registered with pdfFont().
+#> Roboto already registered with postscriptFont().
+#> Roboto Black already registered with postscriptFont().
+#> Roboto Condensed already registered with postscriptFont().
+#> Roboto Condensed Light already registered with postscriptFont().
+#> Roboto Condensed Medium already registered with postscriptFont().
+#> Roboto Light already registered with postscriptFont().
+#> Roboto Medium already registered with postscriptFont().
+#> Roboto Thin already registered with postscriptFont().
 ```
 
 <img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
@@ -183,6 +279,22 @@ Plot on a portfolio level.
 ``` r
 bar_plot_emission_profile(no_fin, benchmarks) +
   labs(title = "Emission profile of all products on a portfolio level")
+#> Roboto already registered with pdfFont().
+#> Roboto Black already registered with pdfFont().
+#> Roboto Condensed already registered with pdfFont().
+#> Roboto Condensed Light already registered with pdfFont().
+#> Roboto Condensed Medium already registered with pdfFont().
+#> Roboto Light already registered with pdfFont().
+#> Roboto Medium already registered with pdfFont().
+#> Roboto Thin already registered with pdfFont().
+#> Roboto already registered with postscriptFont().
+#> Roboto Black already registered with postscriptFont().
+#> Roboto Condensed already registered with postscriptFont().
+#> Roboto Condensed Light already registered with postscriptFont().
+#> Roboto Condensed Medium already registered with postscriptFont().
+#> Roboto Light already registered with postscriptFont().
+#> Roboto Medium already registered with postscriptFont().
+#> Roboto Thin already registered with postscriptFont().
 ```
 
 <img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
@@ -202,348 +314,38 @@ scatter_plot_financial(fin,
   scenario = scenario,
   year = year
 )
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family
-#> 'Roboto' not found in PostScript font database
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
-
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
-#> family 'Roboto' not found in PostScript font database
+#> Roboto already registered with pdfFont().
+#> Roboto Black already registered with pdfFont().
+#> Roboto Condensed already registered with pdfFont().
+#> Roboto Condensed Light already registered with pdfFont().
+#> Roboto Condensed Medium already registered with pdfFont().
+#> Roboto Light already registered with pdfFont().
+#> Roboto Medium already registered with pdfFont().
+#> Roboto Thin already registered with pdfFont().
+#> Roboto already registered with postscriptFont().
+#> Roboto Black already registered with postscriptFont().
+#> Roboto Condensed already registered with postscriptFont().
+#> Roboto Condensed Light already registered with postscriptFont().
+#> Roboto Condensed Medium already registered with postscriptFont().
+#> Roboto Light already registered with postscriptFont().
+#> Roboto Medium already registered with postscriptFont().
+#> Roboto Thin already registered with postscriptFont().
+#> Roboto already registered with pdfFont().
+#> Roboto Black already registered with pdfFont().
+#> Roboto Condensed already registered with pdfFont().
+#> Roboto Condensed Light already registered with pdfFont().
+#> Roboto Condensed Medium already registered with pdfFont().
+#> Roboto Light already registered with pdfFont().
+#> Roboto Medium already registered with pdfFont().
+#> Roboto Thin already registered with pdfFont().
+#> Roboto already registered with postscriptFont().
+#> Roboto Black already registered with postscriptFont().
+#> Roboto Condensed already registered with postscriptFont().
+#> Roboto Condensed Light already registered with postscriptFont().
+#> Roboto Condensed Medium already registered with postscriptFont().
+#> Roboto Light already registered with postscriptFont().
+#> Roboto Medium already registered with postscriptFont().
+#> Roboto Thin already registered with postscriptFont().
 ```
 
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
@@ -561,6 +363,22 @@ map_region_risk(no_fin, "DE", benchmark = "tilt_sector", mode = "best_case") +
   that are found in one region.
   © EuroGeographics for the administrative boundaries ")
 #> Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues
+#> Roboto already registered with pdfFont().
+#> Roboto Black already registered with pdfFont().
+#> Roboto Condensed already registered with pdfFont().
+#> Roboto Condensed Light already registered with pdfFont().
+#> Roboto Condensed Medium already registered with pdfFont().
+#> Roboto Light already registered with pdfFont().
+#> Roboto Medium already registered with pdfFont().
+#> Roboto Thin already registered with pdfFont().
+#> Roboto already registered with postscriptFont().
+#> Roboto Black already registered with postscriptFont().
+#> Roboto Condensed already registered with postscriptFont().
+#> Roboto Condensed Light already registered with postscriptFont().
+#> Roboto Condensed Medium already registered with postscriptFont().
+#> Roboto Light already registered with postscriptFont().
+#> Roboto Medium already registered with postscriptFont().
+#> Roboto Thin already registered with postscriptFont().
 ```
 
 <img src="man/figures/README-unnamed-chunk-14-1.png" width="100%" />
