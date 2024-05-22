@@ -25,7 +25,7 @@ test_that("returns correct risk categories values", {
   )
   p <- plot_sankey(data, mode = "equal_weight")
   risk_var <- data |> tiltIndicator:::extract_name(pattern(aka("risk_category")))
-  risk_names <- unique(p$data[[risk_var]])
+  risk_names <- unique(p |> plot_data(risk_var))
   possible_names <- c(risk_category_levels(), "other")
   expect_true(all(risk_names %in% possible_names))
 })
@@ -61,15 +61,15 @@ test_that("each bank_id has the correct amount for all the modes", {
     distinct(bank_id, company_name, ep_product, .keep_all = TRUE)
   amount_bank_id <- lapply(modes(), calculate_amount_bank_id, data = data)
 
-  plots <- lapply(modes(), function(mode) plot_sankey(data, mode = mode))
+  plots <- lapply(modes(), \(mode) plot_sankey(data, mode = mode))
   data_plots <- lapply(plots, `[[`, "data")
-  amount_bank_id_plot <- lapply(seq_along(data_plots), function(i) {
-    calculate_amount_bank_id(data_plots[[i]], mode = modes()[i])
-  })
+  amount_bank_id_plot <- lapply(seq_along(data_plots),
+                                \(i) calculate_amount_bank_id(data_plots[[i]], mode = modes()[i])
+  )
 
-  all_results_equal <- lapply(seq_along(modes()), function(i) {
-    all.equal(amount_bank_id_plot[[i]], amount_bank_id[[i]])
-  })
+  all_results_equal <- lapply(seq_along(modes()), \(i)
+                              all.equal(amount_bank_id_plot[[i]], amount_bank_id[[i]])
+                              )
 
   expect_true(all(unlist(lapply(all_results_equal, isTRUE))))
 })
@@ -116,7 +116,7 @@ test_that("risk categories are in the right order", {
   )
   p <- plot_sankey(data)
   risk_cat <- data |> tiltIndicator:::extract_name(pattern(aka("risk_category")))
-  risk_categories <- unique(p$data[[risk_cat]])
+  risk_categories <- unique(p |> plot_data(risk_cat))
   expected_order <- risk_category_levels()
   expect_identical(risk_categories, expected_order)
 })

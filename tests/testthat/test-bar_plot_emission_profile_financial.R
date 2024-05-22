@@ -7,7 +7,7 @@ test_that("returns an object of the expected class", {
 test_that("returns correct risk category values", {
   data <- example_financial(!!aka("europages_product") := "e")
   plot <- bar_plot_emission_profile_financial(data, benchmarks())
-  risk_categories <- levels(plot$data$risk_category_var)
+  risk_categories <- levels(plot |> plot_data("risk_category_var"))
   expected_risk_categories <- c("low", "medium", "high")
   expect_equal(risk_categories, expected_risk_categories)
 })
@@ -15,7 +15,7 @@ test_that("returns correct risk category values", {
 test_that("returns correct benchmarks values", {
   data <- example_financial(!!aka("europages_product") := "e")
   plot <- bar_plot_emission_profile_financial(data, benchmarks())
-  benchmarks <- unique(plot$data$benchmark)
+  benchmarks <- unique(plot |> plot_data("benchmark"))
   expected_benchmarks <- financial |>
     pull(benchmark) |>
     unique()

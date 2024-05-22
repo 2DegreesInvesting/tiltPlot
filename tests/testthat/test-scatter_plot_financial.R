@@ -16,7 +16,7 @@ test_that("returns correct risk categories values", {
   )
   p <- scatter_plot_financial(data, benchmarks(), scenario = "IPR", year = 1)
   risk_var <- data |> tiltIndicator:::extract_name(pattern(aka("risk_category")))
-  risk_names <- unique(p$data[[risk_var]])
+  risk_names <- unique(p |> plot_data(risk_var))
   possible_names <- c(risk_category_levels(), "other")
   expect_true(all(risk_names %in% possible_names))
 })
@@ -28,7 +28,7 @@ test_that("returns correct benchmarks values", {
     !!aka("tilt_sector") := "t"
   )
   p <- scatter_plot_financial(data, benchmarks(), scenario = "IPR", year = 1)
-  benchmarks <- unique(p$data$benchmark)
+  benchmarks <- unique(p |> plot_data("benchmark"))
   expected_benchmarks <- data |>
     pull(benchmark) |>
     unique()

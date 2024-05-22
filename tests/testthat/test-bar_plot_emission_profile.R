@@ -7,7 +7,7 @@ test_that("returns an object of the expected class", {
 test_that("returns correct risk category values", {
   data <- example_without_financial(!!aka("risk_category") := risk_category_levels())
   plot <- bar_plot_emission_profile(data, benchmarks())
-  risk_categories <- levels(plot$data$risk_category_var)
+  risk_categories <- levels(plot |> plot_data("risk_category_var"))
   expected_risk_categories <- risk_category_levels()
   expect_true(setequal(risk_categories, expected_risk_categories))
 })
@@ -15,7 +15,7 @@ test_that("returns correct risk category values", {
 test_that("returns correct benchmarks values", {
   data <- example_without_financial()
   plot <- bar_plot_emission_profile(data, benchmarks())
-  benchmarks <- unique(plot$data$benchmark)
+  benchmarks <- unique(plot |> plot_data("benchmark"))
   expected_benchmarks <- data |>
     pull(benchmark) |>
     unique()
@@ -25,6 +25,6 @@ test_that("returns correct benchmarks values", {
 test_that("calculated proportions are less or equal to 1", {
   data <- example_without_financial()
   plot <- bar_plot_emission_profile(data, benchmarks())
-  proportions <- plot$data$proportion
+  proportions <- plot |> plot_data("proportion")
   expect_true(proportions >= 0 & proportions <= 1)
 })
