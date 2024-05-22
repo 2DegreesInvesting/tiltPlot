@@ -18,6 +18,7 @@
 #' @importFrom dplyr summarize
 #' @importFrom dplyr ungroup
 #' @importFrom eurostat get_eurostat_geospatial
+#' @importFrom extrafont font_import
 #' @importFrom extrafont loadfonts
 #' @importFrom ggalluvial geom_alluvium
 #' @importFrom ggalluvial geom_stratum
