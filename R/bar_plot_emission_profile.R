@@ -7,6 +7,7 @@
 #' @param benchmarks A character vector specifying the benchmarks for which the
 #' emission profiles will be plotted. The user can choose from one to several
 #' benchmark(s) to be plotted.
+#' @param mode A character vector.
 #'
 #' @return A [ggplot] object.
 #'
@@ -49,29 +50,33 @@ check_bar_plot_emission_profile <- function(data) {
 #' Prepare emission profile proportions for specific benchmarks
 #'
 #' @param data A data frame.
-#' @param risk_var A character vector.
 #' @param benchmarks A character vector.
+#' @param mode A character vector.
 #'
 #' @return A data frame.
 #'
 #' @noRd
 prepare_bar_plot_emission_profile <- function(data, benchmarks, mode) {
   risk_var <- names_matching(data, aka("risk_category"))
+
   data <- data |>
-    mutate(risk_category_var = as_risk_category(data[[risk_var]]))
+    mutate(risk_category_var = as_risk_category(.data[[risk_var]]))
 
   data <- data |>
     filter(.data$benchmark %in% benchmarks) |>
     group_by(.data$risk_category_var, .data$benchmark) |>
-    mutate(proportion = .data[[mode]])
-  return(data)
+    summarise(total_mode = sum(.data[[mode]])) |>
+    group_by(.data$benchmark) |>
+    mutate(proportion = total_mode / sum(total_mode))
+
+  data
 }
 
 #' Implementation of the emission profile bar plot
 #'
 #' @param data A data frame.
 #'
-#' @return A A [ggplot] object.
+#' @return A [ggplot] object.
 #' @noRd
 plot_bar_plot_emission_profile_impl <- function(data) {
   ggplot(data, aes(x = .data$proportion, y = .data$benchmark, fill = .data$risk_category_var)) +

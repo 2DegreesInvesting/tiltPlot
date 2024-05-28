@@ -12,6 +12,8 @@ bar_plot_emission_profile(data, benchmarks = benchmarks(), mode = modes())
 \item{benchmarks}{A character vector specifying the benchmarks for which the
 emission profiles will be plotted. The user can choose from one to several
 benchmark(s) to be plotted.}
+
+\item{mode}{A character vector.}
 }
 \value{
 A \link{ggplot} object.

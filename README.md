@@ -183,8 +183,6 @@ Plot on a portfolio level.
 ``` r
 bar_plot_emission_profile(no_fin, benchmarks, mode = "equal_weight") +
   labs(title = "Emission profile of all products on a portfolio level")
-#> Warning: Removed 48 rows containing missing values or values outside the scale range
-#> (`geom_col()`).
 ```
 
 <img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
