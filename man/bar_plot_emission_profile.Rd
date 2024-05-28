@@ -21,8 +21,6 @@ Generate a horizontal stacked bar chart showing the distribution of
 the emission risk profiles risks for one or several benchmarks.
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 benchmarks <- c("all", "unit", "isic_4digit")
 bar_plot_emission_profile(without_financial, benchmarks)
-\dontshow{\}) # examplesIf}
 }

@@ -12,7 +12,7 @@
 #'
 #' @export
 #'
-#' @examplesIf FALSE
+#' @examples
 #' benchmarks <- c("all", "unit", "isic_4digit")
 #' bar_plot_emission_profile(without_financial, benchmarks)
 bar_plot_emission_profile <- function(data,

@@ -25,20 +25,11 @@ theme_tiltplot <- function() {
     )
 }
 
+fallback_font <- function() "Open Sans"
 
-.onLoad <- function(libname, pkgname) {
-  # Add Google Fonts if not already registered
-  font_add_google("Roboto", "Roboto")
-  font_add_google("Roboto Condensed", "Roboto Condensed")
-  font_add_google("Open Sans", "Open Sans")
+tilt_text_font <- function() ifelse(exists("Roboto"), fallback_font(), "Roboto")
 
-  # Automatically use showtext for new plots
-  showtext_auto()
-}
-
-tilt_text_font <- function() ifelse(exists("Roboto"), "Open Sans", "Roboto")
-
-tilt_headline_font <- function() ifelse(exists("Roboto Condensed"), "Open Sans", "Roboto Condensed")
+tilt_headline_font <- function() ifelse(exists("Roboto Condensed"), fallback_font(), "Roboto Condensed")
 
 high_hex <- function() "#E3693B"
 medium_hex <- function() "#F6CB4E"
