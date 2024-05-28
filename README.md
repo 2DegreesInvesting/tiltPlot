@@ -214,7 +214,7 @@ Different modes can be chosen: “equal_weight”, “worst_case” and
 ``` r
 no_fin <- without_financial
 
-map_region_risk(no_fin, "DE", benchmark = "tilt_sector", mode = "worst_case") +
+map_region_risk(no_fin, "DE", benchmark = "tilt_sector", mode = "best_case") +
   labs(title = "German map of high, medium and low proportions of the companies
   that are found in one region.
   © EuroGeographics for the administrative boundaries ")

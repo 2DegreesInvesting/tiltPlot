@@ -5,9 +5,9 @@ test_that("returns correct risk category values colors", {
     !!aka("risk_category") := risk_category_levels()
   )
   expected_colors <- list(
-    low = rgb(0, 1, 0),
-    medium = rgb(1, 0.5, 0),
-    high = rgb(1, 0, 0)
+    low = low_hex(),
+    medium = medium_hex(),
+    high = high_hex()
   )
   plot <- map_region_risk(data)
   layers <- ggplot_build(plot)$data
