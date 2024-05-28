@@ -63,7 +63,7 @@ plot_sankey <- function(data,
     geom_stratum() +
     geom_text(stat = StatStratum, aes(label = after_stat(.data$stratum))) +
     fill_score_colors() +
-    theme_minimal() +
+    theme_tiltplot() +
     labs(fill = label_risk_categories() |> format_label())
 
   if (with_company) {

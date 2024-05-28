@@ -63,13 +63,13 @@ test_that("each bank_id has the correct amount for all the modes", {
 
   plots <- lapply(modes(), \(mode) plot_sankey(data, mode = mode))
   data_plots <- lapply(plots, `[[`, "data")
-  amount_bank_id_plot <- lapply(seq_along(data_plots),
-                                \(i) calculate_amount_bank_id(data_plots[[i]], mode = modes()[i])
+  amount_bank_id_plot <- lapply(
+    seq_along(data_plots),
+    \(i) calculate_amount_bank_id(data_plots[[i]], mode = modes()[i])
   )
 
   all_results_equal <- lapply(seq_along(modes()), \(i)
-                              all.equal(amount_bank_id_plot[[i]], amount_bank_id[[i]])
-                              )
+  all.equal(amount_bank_id_plot[[i]], amount_bank_id[[i]]))
 
   expect_true(all(unlist(lapply(all_results_equal, isTRUE))))
 })
