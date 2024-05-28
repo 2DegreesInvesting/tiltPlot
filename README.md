@@ -172,7 +172,7 @@ benchmarks <- c("all", "isic_4digit", "unit")
 
 no_fin |>
   filter(company_name == "peter") |>
-  bar_plot_emission_profile(benchmarks) +
+  bar_plot_emission_profile(benchmarks, mode = "equal_weight") +
   labs(title = "Emission profile of all products on a company level")
 ```
 
@@ -181,8 +181,10 @@ no_fin |>
 Plot on a portfolio level.
 
 ``` r
-bar_plot_emission_profile(no_fin, benchmarks) +
+bar_plot_emission_profile(no_fin, benchmarks, mode = "equal_weight") +
   labs(title = "Emission profile of all products on a portfolio level")
+#> Warning: Removed 48 rows containing missing values or values outside the scale range
+#> (`geom_col()`).
 ```
 
 <img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />

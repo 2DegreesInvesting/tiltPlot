@@ -4,7 +4,7 @@
 \alias{bar_plot_emission_profile}
 \title{Create a horizontal stacked bar chart without financial data}
 \usage{
-bar_plot_emission_profile(data, benchmarks = benchmarks())
+bar_plot_emission_profile(data, benchmarks = benchmarks(), mode = modes())
 }
 \arguments{
 \item{data}{A data frame like \link{without_financial}.}
