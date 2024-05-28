@@ -12,12 +12,12 @@
 theme_tiltplot <- function() {
   theme_classic() +
     theme(
-      plot.title = element_text(hjust = 0.5, size = 16, family = tilt_headline_font()),
+      plot.title = element_text(hjust = 0.5, size = tilt_title_size(), family = tilt_headline_font()),
       strip.text = element_text(family = tilt_text_font()),
-      axis.title = element_text(size = 10, family = tilt_text_font()),
-      axis.text = element_text(size = 10, family = tilt_text_font()),
-      legend.title = element_text(size = 12, family = tilt_text_font()),
-      legend.text = element_text(size = 10, family = tilt_text_font()),
+      axis.title = element_text(size = tilt_axis_size(), family = tilt_text_font()),
+      axis.text = element_text(size = tilt_axis_size(), family = tilt_text_font()),
+      legend.title = element_text(size = tilt_legend_size(), family = tilt_text_font()),
+      legend.text = element_text(size = tilt_legend_size(), family = tilt_text_font()),
       legend.position = "bottom",
       panel.grid.major.y = element_blank(),
       panel.grid.minor.y = element_blank(),
@@ -25,19 +25,14 @@ theme_tiltplot <- function() {
     )
 }
 
-fallback_font <- function() "Open Sans"
+tilt_text_font <- function() "Helvetica"
+tilt_headline_font <- function() "Helvetica Bold"
 
-tilt_text_font <- function() ifelse(exists("Roboto"), fallback_font(), "Roboto")
+tilt_axis_size <- function() 12
 
-tilt_headline_font <- function() ifelse(exists("Roboto Condensed"), fallback_font(), "Roboto Condensed")
+tilt_title_size <- function() 16
 
-load_custom_font <- function() {
-  font_add_google(tilt_text_font(), tilt_text_font())
-  font_add_google(tilt_headline_font(), tilt_headline_font())
-  font_add_google(fallback_font(), fallback_font())
-
-  showtext_auto()
-}
+tilt_legend_size <- function() 11
 
 high_hex <- function() "#E3693B"
 medium_hex <- function() "#F6CB4E"
