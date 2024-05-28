@@ -38,7 +38,6 @@ bar_plot_emission_profile <- function(data,
 check_bar_plot_emission_profile <- function(data) {
   crucial <- c(
     "benchmark",
-    "company_name",
     "equal_weight",
     "best_case",
     "worst_case",
