@@ -27,9 +27,6 @@ theme_tiltplot <- function() {
 
 
 .onLoad <- function(libname, pkgname) {
-  # Load required libraries
-  library(showtext)
-
   # Add Google Fonts if not already registered
   font_add_google("Roboto", "Roboto")
   font_add_google("Roboto Condensed", "Roboto Condensed")
