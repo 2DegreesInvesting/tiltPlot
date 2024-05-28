@@ -31,6 +31,14 @@ tilt_text_font <- function() ifelse(exists("Roboto"), fallback_font(), "Roboto")
 
 tilt_headline_font <- function() ifelse(exists("Roboto Condensed"), fallback_font(), "Roboto Condensed")
 
+load_custom_font <- function() {
+  font_add_google(tilt_text_font(), tilt_text_font())
+  font_add_google(tilt_headline_font(), tilt_headline_font())
+  font_add_google(fallback_font(), fallback_font())
+
+  showtext_auto()
+}
+
 high_hex <- function() "#E3693B"
 medium_hex <- function() "#F6CB4E"
 low_hex <- function() "#B3D15D"
