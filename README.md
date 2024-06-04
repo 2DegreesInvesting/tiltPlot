@@ -219,6 +219,7 @@ map_region_risk(no_fin, "DE", benchmark = "tilt_sector", mode = "best_case") +
   that are found in one region.
   © EuroGeographics for the administrative boundaries ")
 #> Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues
+#> Cache management as per giscoR. see 'giscoR::gisco_get_nuts()'
 ```
 
 <img src="man/figures/README-unnamed-chunk-14-1.png" width="100%" />
