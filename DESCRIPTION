@@ -32,15 +32,16 @@ Imports:
     tidyr,
     tidyselect,
     tiltIndicator,
-    tiltIndicatorAfter,
+    tiltIndicatorAfter (>= 0.0.0.9042),
     tools,
     vroom
 Suggests: 
     testthat (>= 3.0.0),
     tiltToyData (>= 0.0.0.9002)
-Remotes: 
+Remotes:  
     2DegreesInvesting/tiltIndicator,
-    2degreesinvesting/tiltToyData
+    2degreesinvesting/tiltToyData,
+    2DegreesInvesting/tiltIndicatorAfter
 Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
 Encoding: UTF-8
