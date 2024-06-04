@@ -15,16 +15,12 @@ Setup.
 library(tiltToyData)
 library(tiltIndicatorAfter)
 library(tiltPlot)
-devtools::load_all(".")
 library(dplyr, warn.conflicts = FALSE)
 library(readr, warn.conflicts = FALSE)
 
 options(readr.show_col_types = FALSE)
 ```
 
-```{r}
-packageVersion("tiltIndicatorAfter")
-```
 
 Data.
 
