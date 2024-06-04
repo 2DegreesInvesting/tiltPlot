@@ -36,15 +36,6 @@ europages_companies <- read_csv(toy_europages_companies())
 ecoinvent_activities <- read_csv(toy_ecoinvent_activities())
 ecoinvent_europages <- read_csv(toy_ecoinvent_europages())
 isic_name <- read_csv(toy_isic_name())
-
-result <- profile_emissions(
-  companies,
-  products,
-  europages_companies = europages_companies,
-  ecoinvent_activities = ecoinvent_activities,
-  ecoinvent_europages = ecoinvent_europages,
-  isic = isic_name
-)
 ```
 
 Apply tilt methodology.
@@ -57,32 +48,19 @@ result <- profile_emissions(
   ecoinvent_activities = ecoinvent_activities,
   ecoinvent_europages = ecoinvent_europages,
   isic = isic_name
-)
-```
-
-
-```{r}
-#emissions_profile <- profile_emissions(companies, products)
-#at_product_level <- unnest_product(emissions_profile)
-```
-
-Adapt the ouput of tiltIindicator to the input of tiltPlot.
-
-```{r}
-at_product_level <- at_product_level |>
-  rename(emission_profile = risk_category, benchmark = grouped_by)
+  ) |> 
+  unnest_product()
 ```
 
 Visualize all companies.
 
 ```{r}
-#FIXME: add columns best_case, equal_weight and worst_case to the at_product_level data
-#bar_plot_emission_profile(at_product_level, benchmarks = c("all", "unit"), mode = "equal_weight")
+bar_plot_emission_profile(result, benchmarks = c("all", "unit"), mode = "equal_weight")
 ```
 
 Visualize one specific company.
 
 ```{r}
-#first_company <- filter(at_product_level, companies_id %in% first(companies_id))
-#bar_plot_emission_profile(first_company, benchmarks = c("all", "unit"), mode = "equal_weight")
+first_company <- filter(result, companies_id %in% first(companies_id))
+bar_plot_emission_profile(first_company, benchmarks = c("all", "unit"), mode = "equal_weight")
 ```
