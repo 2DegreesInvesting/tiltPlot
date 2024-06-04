@@ -32,6 +32,7 @@ Imports:
     tidyr,
     tidyselect,
     tiltIndicator,
+    tiltIndicatorAfter,
     tools,
     vroom
 Suggests: 
