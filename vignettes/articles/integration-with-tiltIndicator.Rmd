@@ -13,12 +13,17 @@ Setup.
 
 ```{r setup}
 library(tiltToyData)
-library(tiltIndicator)
+library(tiltIndicatorAfter)
 library(tiltPlot)
+devtools::load_all(".")
 library(dplyr, warn.conflicts = FALSE)
 library(readr, warn.conflicts = FALSE)
 
 options(readr.show_col_types = FALSE)
+```
+
+```{r}
+packageVersion("tiltIndicatorAfter")
 ```
 
 Data.
@@ -26,13 +31,39 @@ Data.
 ```{r}
 companies <- read_csv(toy_emissions_profile_any_companies())
 products <- read_csv(toy_emissions_profile_products_ecoinvent())
+co2 <- read_csv(toy_emissions_profile_products_ecoinvent())
+europages_companies <- read_csv(toy_europages_companies())
+ecoinvent_activities <- read_csv(toy_ecoinvent_activities())
+ecoinvent_europages <- read_csv(toy_ecoinvent_europages())
+isic_name <- read_csv(toy_isic_name())
+
+result <- profile_emissions(
+  companies,
+  products,
+  europages_companies = europages_companies,
+  ecoinvent_activities = ecoinvent_activities,
+  ecoinvent_europages = ecoinvent_europages,
+  isic = isic_name
+)
 ```
 
 Apply tilt methodology.
 
 ```{r}
-emissions_profile <- emissions_profile(companies, products)
-at_product_level <- unnest_product(emissions_profile)
+result <- profile_emissions(
+  companies,
+  products,
+  europages_companies = europages_companies,
+  ecoinvent_activities = ecoinvent_activities,
+  ecoinvent_europages = ecoinvent_europages,
+  isic = isic_name
+)
+```
+
+
+```{r}
+#emissions_profile <- profile_emissions(companies, products)
+#at_product_level <- unnest_product(emissions_profile)
 ```
 
 Adapt the ouput of tiltIindicator to the input of tiltPlot.
