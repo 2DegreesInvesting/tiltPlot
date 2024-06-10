@@ -32,11 +32,11 @@ Imports:
     tidyr,
     tidyselect,
     tiltIndicator,
-    tiltIndicatorAfter (>= 0.0.0.9042),
     tools,
     vroom
 Suggests: 
     testthat (>= 3.0.0),
+    tiltIndicatorAfter (>= 0.0.0.9042),
     tiltToyData (>= 0.0.0.9002)
 Remotes:  
     2DegreesInvesting/tiltIndicator,
