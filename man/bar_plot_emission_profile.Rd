@@ -4,7 +4,7 @@
 \alias{bar_plot_emission_profile}
 \title{Create a horizontal stacked bar chart without financial data}
 \usage{
-bar_plot_emission_profile(data, benchmarks = benchmarks())
+bar_plot_emission_profile(data, benchmarks = benchmarks(), mode = modes())
 }
 \arguments{
 \item{data}{A data frame like \link{without_financial}.}
@@ -12,6 +12,8 @@ bar_plot_emission_profile(data, benchmarks = benchmarks())
 \item{benchmarks}{A character vector specifying the benchmarks for which the
 emission profiles will be plotted. The user can choose from one to several
 benchmark(s) to be plotted.}
+
+\item{mode}{A character vector: equal_weight, best_case, worst_case.}
 }
 \value{
 A \link{ggplot} object.

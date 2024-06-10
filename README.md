@@ -172,7 +172,7 @@ benchmarks <- c("all", "isic_4digit", "unit")
 
 no_fin |>
   filter(company_name == "peter") |>
-  bar_plot_emission_profile(benchmarks) +
+  bar_plot_emission_profile(benchmarks, mode = "equal_weight") +
   labs(title = "Emission profile of all products on a company level")
 ```
 
@@ -181,7 +181,7 @@ no_fin |>
 Plot on a portfolio level.
 
 ``` r
-bar_plot_emission_profile(no_fin, benchmarks) +
+bar_plot_emission_profile(no_fin, benchmarks, mode = "equal_weight") +
   labs(title = "Emission profile of all products on a portfolio level")
 ```
 
@@ -219,6 +219,7 @@ map_region_risk(no_fin, "DE", benchmark = "tilt_sector", mode = "best_case") +
   that are found in one region.
   © EuroGeographics for the administrative boundaries ")
 #> Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues
+#> Cache management as per giscoR. see 'giscoR::gisco_get_nuts()'
 ```
 
 <img src="man/figures/README-unnamed-chunk-14-1.png" width="100%" />

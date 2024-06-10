@@ -114,14 +114,14 @@ benchmarks <- c("all", "isic_4digit", "unit")
 
 no_fin |>
   filter(company_name == "peter") |>
-  bar_plot_emission_profile(benchmarks) +
+  bar_plot_emission_profile(benchmarks, mode = "equal_weight") +
   labs(title = "Emission profile of all products on a company level")
 ```
 
 Plot on a portfolio level. 
 
 ```{r}
-bar_plot_emission_profile(no_fin, benchmarks) +
+bar_plot_emission_profile(no_fin, benchmarks, mode = "equal_weight") +
   labs(title = "Emission profile of all products on a portfolio level")
 ```
 
