@@ -21,7 +21,8 @@ bar_plot_emission_profile <- function(data,
                                       mode = modes()) {
   benchmarks <- arg_match(benchmarks, multiple = TRUE)
   mode <- mode |>
-    arg_match()
+    arg_match() |>
+    switch_mode_emission_profile()
 
   data |>
     check_bar_plot_emission_profile() |>

@@ -16,7 +16,9 @@ prepare_geo_data <- function(data,
                                "best_case"
                              )) {
   benchmark <- arg_match(benchmark)
-  mode <- arg_match(mode)
+  mode <- mode |>
+    arg_match() |>
+    switch_mode_emission_profile()
   country_code <- arg_match(country_code)
 
   crucial <- c(

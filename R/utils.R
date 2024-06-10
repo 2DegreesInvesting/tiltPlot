@@ -61,6 +61,27 @@ switch_mode <- function(mode) {
   )
 }
 
+#' Switch mode function for emission profile plots
+#'
+#' @param mode A character string.
+#'
+#' @return A character string.
+#'
+#' @examples
+#' switch_mode("equal_weight")
+#' # Returns: "equal_weight_emission_profile"
+#'
+#' switch_mode("worst_case")
+#' # Returns: "worst_case_emission_profile"
+#' @noRd
+switch_mode_emission_profile <- function(mode) {
+  switch(mode,
+         "equal_weight" = "equal_weight_emission_profile",
+         "worst_case" = "worst_case_emission_profile",
+         "best_case" = "best_case_emission_profile"
+  )
+}
+
 #' Get column names matching a specific pattern
 #'
 #' This function takes a data frame and a pattern as input and returns the column names
@@ -130,14 +151,17 @@ dictionary <- function() {
   #styler: off
   tibble::tribble(
                       ~aka,                 ~column,
+               "best_case", "best_case_emission_profile",
        "europages_product",            "ep_product",
+            "equal_weight", "equal_weight_emission_profile",
          "profile_ranking",       "profile_ranking",
            "risk_category",      "emission_profile",
                 "scenario",              "scenario",
    "transition_risk_score", "transition_risk_score",
          "transition_risk",       "transition_risk",
              "tilt_sector",           "tilt_sector",
-                    "year",                 "year"
+                    "year",                  "year",
+              "worst_case", "worst_case_emission_profile"
    )
   # styler: on
 }
@@ -157,8 +181,8 @@ pattern <- function(x) paste0(x, collapse = "|")
 #' @export
 modes <- function() {
   c(
-    "equal_weight",
-    "best_case",
-    "worst_case"
+    aka("equal_weight"),
+    aka("best_case"),
+    aka("worst_case")
   )
 }
