@@ -102,6 +102,24 @@ names_matching <- function(data, pattern) {
   names(select(data, matches(pattern)))
 }
 
+#' Get column name
+#'
+#' @param data A data frame.
+#' @param column_name A character vector.
+#'
+#' @return A character vector.
+#'
+#' @examples
+#' data <- data.frame(ab = 1:3, abc = 4:6)
+#'
+#' # Get column name "abc"
+#' get_colname(data, "abc")
+#' @noRd
+get_colname <- function(data, column_name) {
+  match <- column_name %in% names(data)
+  column_name[match]
+}
+
 #' Convert vector to risk category
 #'
 #' @param x
@@ -181,8 +199,8 @@ pattern <- function(x) paste0(x, collapse = "|")
 #' @export
 modes <- function() {
   c(
-    aka("equal_weight"),
-    aka("best_case"),
-    aka("worst_case")
+    "equal_weight",
+    "best_case",
+    "worst_case"
   )
 }

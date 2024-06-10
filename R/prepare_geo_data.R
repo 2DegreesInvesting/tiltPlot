@@ -28,7 +28,7 @@ prepare_geo_data <- function(data,
     "benchmark"
   )
   data |> check_crucial_names(names_matching(data, crucial))
-  risk_var <- names_matching(data, aka("risk_category"))
+  risk_var <- get_colname(data, aka("risk_category"))
   data <- data |>
     mutate(risk_category_var = as_risk_category(data[[risk_var]]))
 

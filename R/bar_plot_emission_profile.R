@@ -19,13 +19,14 @@
 bar_plot_emission_profile <- function(data,
                                       benchmarks = benchmarks(),
                                       mode = modes()) {
+
   benchmarks <- arg_match(benchmarks, multiple = TRUE)
   mode <- mode |>
     arg_match() |>
     switch_mode_emission_profile()
 
   data |>
-    check_bar_plot_emission_profile() |>
+    check_bar_plot_emission_profile(mode) |>
     prepare_bar_plot_emission_profile(benchmarks, mode) |>
     plot_bar_plot_emission_profile_impl()
 }
@@ -36,10 +37,10 @@ bar_plot_emission_profile <- function(data,
 #'
 #' @return A data frame
 #' @noRd
-check_bar_plot_emission_profile <- function(data) {
+check_bar_plot_emission_profile <- function(data, mode) {
   crucial <- c(
     "benchmark",
-    modes(),
+    mode,
     aka("risk_category")
   )
   data |> check_crucial_names(names_matching(data, crucial))
@@ -55,7 +56,7 @@ check_bar_plot_emission_profile <- function(data) {
 #'
 #' @noRd
 prepare_bar_plot_emission_profile <- function(data, benchmarks, mode) {
-  risk_var <- names_matching(data, aka("risk_category"))
+  risk_var <- get_colname(data, aka("risk_category"))
 
   data <- data |>
     mutate(risk_category_var = as_risk_category(.data[[risk_var]]))

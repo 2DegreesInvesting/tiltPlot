@@ -13,7 +13,7 @@ bar_plot_emission_profile(data, benchmarks = benchmarks(), mode = modes())
 emission profiles will be plotted. The user can choose from one to several
 benchmark(s) to be plotted.}
 
-\item{mode}{A character vector: equal_weight_emission_profile, best_case_emission_profile, worst_case_emission_profile.}
+\item{mode}{A character vector: equal_weight, best_case, worst_case.}
 }
 \value{
 A \link{ggplot} object.

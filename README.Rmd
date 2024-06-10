@@ -110,7 +110,7 @@ The user can choose any number of benchmark to be plotted.
 ```{r}
 no_fin <- without_financial
 
-benchmarks <- c("all", "isic_4digit", "unit")
+benchmarks <- c("unit", "unit_tilt_sector")
 
 no_fin |>
   filter(company_name == "peter") |>
