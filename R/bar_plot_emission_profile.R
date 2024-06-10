@@ -7,7 +7,7 @@
 #' @param benchmarks A character vector specifying the benchmarks for which the
 #' emission profiles will be plotted. The user can choose from one to several
 #' benchmark(s) to be plotted.
-#' @param mode A character vector.
+#' @param mode A character vector: `r toString(modes())`.
 #'
 #' @return A [ggplot] object.
 #'
