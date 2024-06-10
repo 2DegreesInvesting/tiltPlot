@@ -205,12 +205,12 @@
 <span></span>
 <span><span class="va">no_fin</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">company_name</span> <span class="op">==</span> <span class="st">"peter"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="reference/bar_plot_emission_profile.html">bar_plot_emission_profile</a></span><span class="op">(</span><span class="va">benchmarks</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="reference/bar_plot_emission_profile.html">bar_plot_emission_profile</a></span><span class="op">(</span><span class="va">benchmarks</span>, mode <span class="op">=</span> <span class="st">"equal_weight"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Emission profile of all products on a company level"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-11-1.png" width="100%"></p>
 <p>Plot on a portfolio level.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/bar_plot_emission_profile.html">bar_plot_emission_profile</a></span><span class="op">(</span><span class="va">no_fin</span>, <span class="va">benchmarks</span><span class="op">)</span> <span class="op">+</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/bar_plot_emission_profile.html">bar_plot_emission_profile</a></span><span class="op">(</span><span class="va">no_fin</span>, <span class="va">benchmarks</span>, mode <span class="op">=</span> <span class="st">"equal_weight"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Emission profile of all products on a portfolio level"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-12-1.png" width="100%"></p>
 </div>
@@ -243,7 +243,8 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"German map of high, medium and low proportions of the companies</span></span>
 <span><span class="st">  that are found in one region.</span></span>
 <span><span class="st">  © EuroGeographics for the administrative boundaries "</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues</span></span></code></pre></div>
+<span><span class="co">#&gt; Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues</span></span>
+<span><span class="co">#&gt; Cache management as per giscoR. see 'giscoR::gisco_get_nuts()'</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-14-1.png" width="100%"></p>
 </div>
 </div>
