@@ -38,9 +38,7 @@ bar_plot_emission_profile <- function(data,
 check_bar_plot_emission_profile <- function(data) {
   crucial <- c(
     "benchmark",
-    "equal_weight",
-    "best_case",
-    "worst_case",
+    modes(),
     aka("risk_category")
   )
   data |> check_crucial_names(names_matching(data, crucial))
