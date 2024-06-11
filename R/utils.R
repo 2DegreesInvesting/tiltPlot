@@ -170,6 +170,7 @@ dictionary <- function() {
   tibble::tribble(
                       ~aka,                 ~column,
                "best_case", "best_case_emission_profile",
+            "companies_id",            "companies_id",
        "europages_product",            "ep_product",
             "equal_weight", "equal_weight_emission_profile",
          "profile_ranking",       "profile_ranking",
@@ -202,5 +203,27 @@ modes <- function() {
     "equal_weight",
     "best_case",
     "worst_case"
+  )
+}
+
+#' Scenarios
+#'
+#' @keywords internal
+#' @export
+scenarios <- function() {
+  c(
+    "1.5C RPS",
+    "NZ 2050"
+  )
+}
+
+#' Years
+#'
+#' @keywords internal
+#' @export
+years <- function() {
+  c(
+    2030,
+    2050
   )
 }

@@ -18,15 +18,19 @@
 #' bar_plot_emission_profile(without_financial, benchmarks)
 bar_plot_emission_profile <- function(data,
                                       benchmarks = benchmarks(),
-                                      mode = modes()) {
+                                      mode = modes(),
+                                      scenario = scenarios(),
+                                      year = years()) {
   benchmarks <- arg_match(benchmarks, multiple = TRUE)
   mode <- mode |>
     arg_match() |>
     switch_mode_emission_profile()
+  scenario <- arg_match(scenario)
+  year <- year
 
   data |>
     check_bar_plot_emission_profile(mode) |>
-    prepare_bar_plot_emission_profile(benchmarks, mode) |>
+    prepare_bar_plot_emission_profile(benchmarks, mode, scenario, year) |>
     plot_bar_plot_emission_profile_impl()
 }
 
@@ -54,18 +58,24 @@ check_bar_plot_emission_profile <- function(data, mode) {
 #' @return A data frame.
 #'
 #' @noRd
-prepare_bar_plot_emission_profile <- function(data, benchmarks, mode) {
+prepare_bar_plot_emission_profile <- function(data, benchmarks, mode, scenario, year) {
   risk_var <- get_colname(data, aka("risk_category"))
+  data <- no_fin |>
+    filter(companies_id == company_name)
 
   data <- data |>
     mutate(risk_category_var = as_risk_category(.data[[risk_var]]))
 
+  mode <- "equal_weight_emission_profile"
+
   data <- data |>
-    filter(.data$benchmark %in% benchmarks) |>
-    group_by(.data$risk_category_var, .data$benchmark) |>
+    filter(.data$benchmark %in% .env$benchmarks &
+             .data$scenario == .env$scenario &
+             .data$year == .env$year) |>
+    group_by(.data$risk_category_var, .data$benchmark, .data$companies_id) |>
     summarise(total_mode = sum(.data[[mode]])) |>
-    group_by(.data$benchmark) |>
-    mutate(proportion = total_mode / sum(total_mode))
+    group_by(.data$benchmark, .data$risk_category_var) |>
+    summarise(proportion = mean(.data$total_mode))
 
   data
 }

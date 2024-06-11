@@ -10,22 +10,24 @@
 prepare_geo_data <- function(data,
                              country_code = c("DE"),
                              benchmark = benchmarks(),
-                             mode = c(
-                               "equal_weight",
-                               "worst_case",
-                               "best_case"
-                             )) {
+                             mode = modes(),
+                             scenario = scenarios(),
+                             year = years()) {
   benchmark <- arg_match(benchmark)
   mode <- mode |>
     arg_match() |>
     switch_mode_emission_profile()
   country_code <- arg_match(country_code)
+  scenario <- arg_match(scenario)
+  year <- year
 
   crucial <- c(
     aka("risk_category"),
-    "company_name",
+    aka("companies_id"),
     "postcode",
-    "benchmark"
+    "benchmark",
+    "scenario",
+    aka("year")
   )
   data |> check_crucial_names(names_matching(data, crucial))
   risk_var <- get_colname(data, aka("risk_category"))
@@ -52,7 +54,9 @@ prepare_geo_data <- function(data,
 
   # merge shapefile with financial data
   geo <- data |>
-    filter(benchmark == .env$benchmark) |>
+    filter(.data$benchmark == .env$benchmark &
+             .data$scenario == .env$scenario &
+             .data$year == .env$year) |>
     left_join(shp_1, by = "postcode") |>
     st_as_sf()
 
@@ -86,9 +90,9 @@ prepare_geo_data <- function(data,
 #'
 #' aggregate_geo(geo, mode = "worst_case")
 aggregate_geo <- function(geo, mode) {
-  if (mode %in% c("worst_case", "best_case")) {
+  if (mode %in% c(aka("worst_case"), aka("best_case"))) {
     aggregated_data <- geo |>
-      group_by(.data$postcode, .data$company_name) |>
+      group_by(.data$postcode, .data[[aka("companies_id")]]) |>
       mutate(
         # Choose the worst or best risk category and set the others to 0.
         proportion = calculate_case_proportions(.data$risk_category_var, mode)
@@ -96,7 +100,7 @@ aggregate_geo <- function(geo, mode) {
       group_by(.data$postcode, .data$risk_category_var) |>
       summarize(proportion = sum(.data$proportion)) |>
       ungroup()
-  } else if (mode == "equal_weight") {
+  } else if (mode == aka("equal_weight")) {
     aggregated_data <- geo |>
       group_by(.data$postcode, .data$risk_category_var) |>
       summarize(count = n()) |>
@@ -125,10 +129,10 @@ aggregate_geo <- function(geo, mode) {
 #' calculate_case_proportions(categories, mode = "worst_case")
 #' @noRd
 calculate_case_proportions <- function(categories, mode) {
-  if (mode == "worst_case") {
-    extreme_risk <- levels(categories)[max(as.integer(categories))]
-  } else if (mode == "best_case") {
-    extreme_risk <- levels(categories)[min(as.integer(categories))]
+  if (mode == aka("worst_case")) {
+    extreme_risk <- levels(categories)[max(as.integer(categories), na.rm = TRUE)]
+  } else if (mode == aka("best_case")) {
+    extreme_risk <- levels(categories)[min(as.integer(categories), na.rm = TRUE)]
   }
 
   is_extreme <- categories == extreme_risk

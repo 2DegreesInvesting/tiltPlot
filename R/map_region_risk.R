@@ -22,20 +22,17 @@
 map_region_risk <- function(data,
                             # TODO: plot for other countries
                             country_code = c("DE"),
-                            benchmark = c(
-                              "all",
-                              "isic_4digit",
-                              "tilt_sector",
-                              "unit",
-                              "unit_isic_4digit",
-                              "unit_tilt_sector"
-                            ),
-                            mode = c("equal_weight", "worst_case", "best_case")) {
+                            benchmark = benchmarks(),
+                            mode = modes(),
+                            scenario = scenarios(),
+                            year = years()) {
   prepared_data <- prepare_geo_data(
     data,
     country_code,
     benchmark,
-    mode
+    mode,
+    scenario,
+    year
   )
   shp_1 <- prepared_data[[1]]
   aggregated_data <- prepared_data[[2]]

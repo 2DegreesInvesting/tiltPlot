@@ -21,13 +21,9 @@
 #' )
 scatter_plot_financial <- function(data,
                                    benchmarks = benchmarks(),
-                                   mode = c(
-                                     "equal_weight",
-                                     "worst_case",
-                                     "best_case"
-                                   ),
-                                   scenario = c("IPR", "WEO"),
-                                   year = c(2030, 2050)) {
+                                   mode = modes(),
+                                   scenario = scenarios(),
+                                   year = years()) {
   # FIXME: .env$ instead of _arg seems to cause a bug only for benchmarks.
   benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
   scenario <- arg_match(scenario)
