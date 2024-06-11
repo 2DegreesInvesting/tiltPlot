@@ -8,9 +8,10 @@ financial data.}
 map_region_risk(
   data,
   country_code = c("DE"),
-  benchmark = c("all", "isic_4digit", "tilt_sector", "unit", "unit_isic_4digit",
-    "unit_tilt_sector"),
-  mode = c("equal_weight", "worst_case", "best_case")
+  benchmark = benchmarks(),
+  mode = modes(),
+  scenario = scenarios(),
+  year = years()
 )
 }
 \arguments{
