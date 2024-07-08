@@ -60,22 +60,18 @@ check_bar_plot_emission_profile <- function(data, mode) {
 #' @noRd
 prepare_bar_plot_emission_profile <- function(data, benchmarks, mode, scenario, year) {
   risk_var <- get_colname(data, aka("risk_category"))
-  data <- no_fin |>
-    filter(companies_id == company_name)
 
   data <- data |>
     mutate(risk_category_var = as_risk_category(.data[[risk_var]]))
 
-  mode <- "equal_weight_emission_profile"
-
   data <- data |>
-    filter(.data$benchmark %in% .env$benchmarks &
+    filter((.data$benchmark %in% .env$benchmarks &
              .data$scenario == .env$scenario &
-             .data$year == .env$year) |>
+             .data$year == .env$year)) |>
     group_by(.data$risk_category_var, .data$benchmark, .data$companies_id) |>
     summarise(total_mode = sum(.data[[mode]])) |>
     group_by(.data$benchmark, .data$risk_category_var) |>
-    summarise(proportion = mean(.data$total_mode))
+    summarise(proportion = mean(.data$total_mode, na.rm = TRUE))
 
   data
 }
@@ -91,5 +87,5 @@ plot_bar_plot_emission_profile_impl <- function(data) {
     geom_col(position = position_stack(reverse = TRUE), width = width_bar()) +
     fill_score_colors() +
     theme_tiltplot() +
-    xlim(0, 1)
+    xlim(0,NA)
 }

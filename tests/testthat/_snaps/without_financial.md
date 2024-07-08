@@ -3,21 +3,24 @@
     Code
       without_financial
     Output
-      # A tibble: 114 x 12
-         company_name postcode emission_profile benchmark ep_product tilt_sector
-         <chr>           <int> <chr>            <chr>     <chr>      <chr>      
-       1 bruno           27568 high             all       car        D          
-       2 bruno           27568 high             all       steel      C          
-       3 bruno           27568 medium           all       wheat      B          
-       4 mauro           39221 high             all       steel      C          
-       5 mauro           39221 high             all       machine    C          
-       6 mirja           34117 high             all       tractor    D          
-       7 mirja           34117 high             all       cattle     A          
-       8 pasant          80337 high             all       tractor    D          
-       9 pasant          80337 low              all       apple      A          
-      10 peter           88131 high             all       banana     A          
-      # i 104 more rows
-      # i 6 more variables: tilt_subsector <chr>, isic_4digit <chr>,
-      #   isic_4digit_name <chr>, equal_weight <dbl>, worst_case <dbl>,
-      #   best_case <dbl>
+      # A tibble: 252 x 34
+         companies_id country postcode main_activity ep_product activity_uuid_produc~1
+         <chr>        <chr>      <int> <chr>         <chr>      <chr>                 
+       1 %ef%bb%bfma~ germany    12043 wholesaler    surface c~ a62eb0d6-9120-541c-97~
+       2 %ef%bb%bfma~ germany    12043 wholesaler    surface c~ a62eb0d6-9120-541c-97~
+       3 %ef%bb%bfma~ germany    12043 wholesaler    surface c~ a62eb0d6-9120-541c-97~
+       4 %ef%bb%bfma~ germany    12043 wholesaler    surface c~ a62eb0d6-9120-541c-97~
+       5 %ef%bb%bfma~ germany    12043 wholesaler    surface c~ a62eb0d6-9120-541c-97~
+       6 %ef%bb%bfma~ germany    12043 wholesaler    surface c~ a62eb0d6-9120-541c-97~
+       7 %ef%bb%bfma~ germany    12043 wholesaler    surface c~ a62eb0d6-9120-541c-97~
+       8 %ef%bb%bfma~ germany    12043 wholesaler    surface c~ a62eb0d6-9120-541c-97~
+       9 %ef%bb%bfma~ germany    12043 wholesaler    hand tool~ 7c082396-1f14-5674-86~
+      10 %ef%bb%bfma~ germany    12043 wholesaler    hand tool~ 7c082396-1f14-5674-86~
+      # i 242 more rows
+      # i abbreviated name: 1: activity_uuid_product_uuid
+      # i 28 more variables: matched_activity_name <chr>,
+      #   matched_reference_product <chr>, unit <chr>, co2e_lower <dbl>,
+      #   co2e_upper <dbl>, emission_profile <chr>, benchmark <chr>,
+      #   profile_ranking <dbl>, tilt_sector <chr>, tilt_subsector <chr>,
+      #   sector_profile <chr>, scenario <chr>, year <int>, ...
 
