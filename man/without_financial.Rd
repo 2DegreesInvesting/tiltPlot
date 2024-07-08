@@ -5,7 +5,7 @@
 \alias{without_financial}
 \title{Without financial data set}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 252 rows and 34 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 252 rows and 35 columns.
 }
 \source{
 \verb{@lindadelacombaz}

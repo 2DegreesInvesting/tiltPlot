@@ -66,12 +66,12 @@ prepare_bar_plot_emission_profile <- function(data, benchmarks, mode, scenario, 
 
   data <- data |>
     filter((.data$benchmark %in% .env$benchmarks &
-             .data$scenario == .env$scenario &
-             .data$year == .env$year)) |>
-    group_by(.data$risk_category_var, .data$benchmark, .data$companies_id) |>
+              .data$scenario == .env$scenario &
+              .data$year == .env$year)) |>
+    group_by(.data$risk_category_var, .data$benchmark) |>
     summarise(total_mode = sum(.data[[mode]])) |>
-    group_by(.data$benchmark, .data$risk_category_var) |>
-    summarise(proportion = mean(.data$total_mode, na.rm = TRUE))
+    group_by(.data$benchmark) |>
+    mutate(proportion = total_mode / sum(total_mode))
 
   data
 }
@@ -87,5 +87,5 @@ plot_bar_plot_emission_profile_impl <- function(data) {
     geom_col(position = position_stack(reverse = TRUE), width = width_bar()) +
     fill_score_colors() +
     theme_tiltplot() +
-    xlim(0,NA)
+    xlim(0, NA)
 }
