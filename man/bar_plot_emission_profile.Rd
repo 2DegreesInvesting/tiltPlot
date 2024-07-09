@@ -20,6 +20,10 @@ emission profiles will be plotted. The user can choose from one to several
 benchmark(s) to be plotted.}
 
 \item{mode}{A character vector: equal_weight, best_case, worst_case.}
+
+\item{scenario}{A character vector: 1.5C RPS, NZ 2050.}
+
+\item{year}{A character vector: 2030, 2050.}
 }
 \value{
 A \link{ggplot} object.

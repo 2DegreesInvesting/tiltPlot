@@ -8,7 +8,7 @@
 #' emission profiles will be plotted. The user can choose from one to several
 #' benchmark(s) to be plotted.
 #' @param mode A character vector: `r toString(modes())`.
-#' @param scenario A character vector: `r toString(scenarios)`.
+#' @param scenario A character vector: `r toString(scenarios())`.
 #' @param year A character vector: `r toString(years())`.
 #'
 #' @return A [ggplot] object.

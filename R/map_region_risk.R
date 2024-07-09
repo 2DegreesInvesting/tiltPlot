@@ -10,7 +10,7 @@
 #' default mode.
 #' @param mode The mode to plot. It can be one of "equal_weight", "worst_case"
 #' or "best_case". If nothing is chosen, "equal_weight" is the default mode.
-#' @param scenario A character vector: `r toString(scenarios)`.
+#' @param scenario A character vector: `r toString(scenarios())`.
 #' @param year A character vector: `r toString(years())`.
 #'
 #' @return A ggplot2 object representing the country data plot.
