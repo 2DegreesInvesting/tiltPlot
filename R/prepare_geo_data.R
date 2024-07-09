@@ -96,8 +96,21 @@ aggregate_geo <- function(geo, mode) {
     mutate(proportion = total_mode / sum(total_mode)) |>
     ungroup()
 
-  # apply custom_gradient_color to each row
+  # Pivot
   aggregated_data <- aggregated_data |>
     pivot_wider(names_from = "risk_category_var", values_from = "proportion", values_fill = 0) |>
+    filter(.data$total_mode != 0)
+
+  # Calculate color row by row
+  aggregated_data <- aggregated_data |>
+    group_by(.data$postcode) |>
+    summarise(
+      total_mode = sum(.data$total_mode, na.rm = TRUE),
+      geometry = first(.data$geometry),
+      low = sum(.data$low, na.rm = TRUE),
+      medium = sum(.data$medium, na.rm = TRUE),
+      high = sum(.data$high, na.rm = TRUE)
+    )|>
     mutate(color = pmap(list(.data$high, .data$medium, .data$low), custom_gradient_color))
+  aggregated_data
 }
