@@ -131,7 +131,7 @@ bar_plot_emission_profile(no_fin, benchmarks, mode = "equal_weight", scenario = 
 
 ```{r}
 fin <- financial
-scenario <- "WEO"
+scenario <- "IPR"
 year <- 2030
 benchmarks <- c("all", "unit")
 mode <- "best_case"
@@ -153,7 +153,7 @@ If nothing is chosen, equal_weight the default mode.
 ```{r}
 no_fin <- without_financial
 
-map_region_risk(no_fin, "DE", benchmark = "unit_tilt_sector", mode = "worst_case", scenario = "NZ 2050", year = 2030) +
+map_region_risk(no_fin, "DE", benchmark = "unit_tilt_sector", mode = "best_case", scenario = "NZ 2050", year = 2030) +
   labs(title = "German map of high, medium and low proportions of the companies
   that are found in one region.
   © EuroGeographics for the administrative boundaries ")

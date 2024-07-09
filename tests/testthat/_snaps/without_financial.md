@@ -3,7 +3,7 @@
     Code
       without_financial
     Output
-      # A tibble: 252 x 34
+      # A tibble: 252 x 35
          companies_id country postcode main_activity ep_product activity_uuid_produc~1
          <chr>        <chr>      <int> <chr>         <chr>      <chr>                 
        1 %ef%bb%bfma~ germany    12043 wholesaler    surface c~ a62eb0d6-9120-541c-97~
@@ -18,7 +18,7 @@
       10 %ef%bb%bfma~ germany    12043 wholesaler    hand tool~ 7c082396-1f14-5674-86~
       # i 242 more rows
       # i abbreviated name: 1: activity_uuid_product_uuid
-      # i 28 more variables: matched_activity_name <chr>,
+      # i 29 more variables: matched_activity_name <chr>,
       #   matched_reference_product <chr>, unit <chr>, co2e_lower <dbl>,
       #   co2e_upper <dbl>, emission_profile <chr>, benchmark <chr>,
       #   profile_ranking <dbl>, tilt_sector <chr>, tilt_subsector <chr>,

@@ -8,7 +8,7 @@ scatter_plot_financial(
   data,
   benchmarks = benchmarks(),
   mode = modes(),
-  scenario = scenarios(),
+  scenario = scenarios_financial(),
   year = years()
 )
 }

@@ -22,7 +22,7 @@
 scatter_plot_financial <- function(data,
                                    benchmarks = benchmarks(),
                                    mode = modes(),
-                                   scenario = scenarios(),
+                                   scenario = scenarios_financial(),
                                    year = years()) {
   # FIXME: .env$ instead of _arg seems to cause a bug only for benchmarks.
   benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)

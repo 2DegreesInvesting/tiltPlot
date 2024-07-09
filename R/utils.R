@@ -217,6 +217,17 @@ scenarios <- function() {
   )
 }
 
+#' Scenarios Financial
+#'
+#' @keywords internal
+#' @export
+scenarios_financial <- function() {
+  c(
+    "IPR",
+    "WEO"
+  )
+}
+
 #' Years
 #'
 #' @keywords internal
