@@ -76,9 +76,9 @@ switch_mode <- function(mode) {
 #' @noRd
 switch_mode_emission_profile <- function(mode) {
   switch(mode,
-         "equal_weight" = "equal_weight_emission_profile",
-         "worst_case" = "worst_case_emission_profile",
-         "best_case" = "best_case_emission_profile"
+    "equal_weight" = "equal_weight_emission_profile",
+    "worst_case" = "worst_case_emission_profile",
+    "best_case" = "best_case_emission_profile"
   )
 }
 

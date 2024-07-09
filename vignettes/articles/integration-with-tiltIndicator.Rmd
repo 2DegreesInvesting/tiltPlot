@@ -44,19 +44,19 @@ result <- profile_emissions(
   ecoinvent_activities = ecoinvent_activities,
   ecoinvent_europages = ecoinvent_europages,
   isic = isic_name
-  ) |> 
+) |>
   unnest_product()
 ```
 
 Visualize all companies.
 
 ```{r}
-#bar_plot_emission_profile(result, benchmarks = c("all", "unit"), mode = "equal_weight")
+# bar_plot_emission_profile(result, benchmarks = c("all", "unit"), mode = "equal_weight")
 ```
 
 Visualize one specific company.
 
 ```{r}
 first_company <- filter(result, companies_id %in% first(companies_id))
-#bar_plot_emission_profile(first_company, benchmarks = c("all", "unit"), mode = "equal_weight")
+# bar_plot_emission_profile(first_company, benchmarks = c("all", "unit"), mode = "equal_weight")
 ```

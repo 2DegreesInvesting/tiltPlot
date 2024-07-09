@@ -68,8 +68,8 @@ prepare_bar_plot_emission_profile <- function(data, benchmarks, mode, scenario, 
 
   data <- data |>
     filter((.data$benchmark %in% .env$benchmarks &
-              .data$scenario == .env$scenario &
-              .data$year == .env$year)) |>
+      .data$scenario == .env$scenario &
+      .data$year == .env$year)) |>
     group_by(.data$risk_category_var, .data$benchmark) |>
     summarise(total_mode = sum(.data[[mode]])) |>
     group_by(.data$benchmark) |>

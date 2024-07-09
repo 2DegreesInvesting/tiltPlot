@@ -4,8 +4,10 @@ test_that("returns an object of the expected class", {
     postcode = c(53773L, 53774L, 53775L),
     !!aka("risk_category") := risk_category_levels()
   )
-  prepared_data <- prepare_geo_data(data, "DE", "all", "equal_weight", scenarios()[1],
-                                    years()[1])
+  prepared_data <- prepare_geo_data(
+    data, "DE", "all", "equal_weight", scenarios()[1],
+    years()[1]
+  )
   expect_type(prepared_data, "list")
 })
 
@@ -20,8 +22,10 @@ test_that("aggregation returns correct risk category values colors", {
     medium = medium_hex(),
     high = high_hex()
   )
-  prepared_data <- prepare_geo_data(data, "DE", "all", "equal_weight", scenarios()[1],
-                                                        years()[1])
+  prepared_data <- prepare_geo_data(
+    data, "DE", "all", "equal_weight", scenarios()[1],
+    years()[1]
+  )
   aggregated_data <- prepared_data[[2]]
 
   colors <- aggregated_data$color
@@ -36,8 +40,10 @@ test_that("returns the correct postcodes", {
     postcode = c(53773L, 53774L, 53775L),
     !!aka("risk_category") := risk_category_levels()
   )
-  prepared_data <- prepare_geo_data(data, "DE", "all", "equal_weight", scenarios()[1],
-                                    years()[1])
+  prepared_data <- prepare_geo_data(
+    data, "DE", "all", "equal_weight", scenarios()[1],
+    years()[1]
+  )
   aggregated_data <- prepared_data[[2]]
 
   postcodes <- unique(aggregated_data$postcode)

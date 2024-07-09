@@ -55,8 +55,8 @@ prepare_geo_data <- function(data,
   # merge shapefile with financial data
   geo <- data |>
     filter(.data$benchmark == .env$benchmark &
-             .data$scenario == .env$scenario &
-             .data$year == .env$year) |>
+      .data$scenario == .env$scenario &
+      .data$year == .env$year) |>
     left_join(shp_1, by = "postcode") |>
     st_as_sf()
 
@@ -110,7 +110,7 @@ aggregate_geo <- function(geo, mode) {
       low = sum(.data$low, na.rm = TRUE),
       medium = sum(.data$medium, na.rm = TRUE),
       high = sum(.data$high, na.rm = TRUE)
-    )|>
+    ) |>
     mutate(color = pmap(list(.data$high, .data$medium, .data$low), custom_gradient_color))
   aggregated_data
 }
