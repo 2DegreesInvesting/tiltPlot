@@ -51,12 +51,12 @@ result <- profile_emissions(
 Visualize all companies.
 
 ```{r}
-# bar_plot_emission_profile(result, benchmarks = c("all", "unit"), mode = "equal_weight")
+bar_plot_emission_profile(result, benchmarks = c("all", "unit"), mode = "equal_weight")
 ```
 
 Visualize one specific company.
 
 ```{r}
 first_company <- filter(result, companies_id %in% first(companies_id))
-# bar_plot_emission_profile(first_company, benchmarks = c("all", "unit"), mode = "equal_weight")
+bar_plot_emission_profile(first_company, benchmarks = c("all", "unit"), mode = "equal_weight")
 ```
