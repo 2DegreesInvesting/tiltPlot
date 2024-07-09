@@ -218,7 +218,7 @@ Different modes can be chosen: “equal_weight”, “worst_case” and
 ``` r
 no_fin <- without_financial
 
-map_region_risk(no_fin, "DE", benchmark = "unit_tilt_sector", mode = "best_case", scenario = "NZ 2050", year = 2030) +
+map_region_risk(no_fin, "DE", benchmark = "unit_tilt_sector", mode = "worst_case", scenario = "NZ 2050", year = 2030) +
   labs(title = "German map of high, medium and low proportions of the companies
   that are found in one region.
   © EuroGeographics for the administrative boundaries ")
