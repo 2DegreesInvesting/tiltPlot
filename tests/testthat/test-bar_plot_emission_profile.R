@@ -66,8 +66,11 @@ test_that("returns correct benchmarks values for best case mode", {
   mode <- "best_case" |>
     switch_mode_emission_profile()
   data <- prepare_bar_plot_emission_profile(
-    data, benchmarks(), mode,
-    scenarios()[1], years()[1]
+    data,
+    benchmarks(),
+    mode,
+    scenarios()[1],
+    years()[1]
   )
   benchmarks <- unique(data$benchmark)
   expected_benchmarks <- example_without_financial() |>
