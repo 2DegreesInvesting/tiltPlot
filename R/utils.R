@@ -170,19 +170,19 @@ benchmarks <- function() {
 dictionary <- function() {
   #styler: off
   tibble::tribble(
-                      ~aka,                 ~column,
-               "best_case", "best_case_emission_profile",
-            "companies_id",            "companies_id",
-       "europages_product",            "ep_product",
+                      ~aka,                         ~column,
+               "best_case",    "best_case_emission_profile",
+            "companies_id",                  "companies_id",
+       "europages_product",                    "ep_product",
             "equal_weight", "equal_weight_emission_profile",
-         "profile_ranking",       "profile_ranking",
-           "risk_category",      "emission_profile",
-                "scenario",              "scenario",
-   "transition_risk_score", "transition_risk_score",
-         "transition_risk",       "transition_risk",
-             "tilt_sector",           "tilt_sector",
-                    "year",                  "year",
-              "worst_case", "worst_case_emission_profile"
+         "profile_ranking",               "profile_ranking",
+           "risk_category",              "emission_profile",
+                "scenario",                      "scenario",
+   "transition_risk_score",         "transition_risk_score",
+         "transition_risk",               "transition_risk",
+             "tilt_sector",                   "tilt_sector",
+                    "year",                          "year",
+              "worst_case",   "worst_case_emission_profile"
    )
   # styler: on
 }
