@@ -141,6 +141,8 @@ check_levels <- function(x) {
 
 plot_data <- function(p, name) p$data[[name]]
 
+add <- function(x) sum(x, na.rm = TRUE)
+
 risk_category_levels <- function() c("low", "medium", "high")
 
 #' Benchmarks used in the functions' arguments.

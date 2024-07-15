@@ -107,11 +107,11 @@ aggregate_geo <- function(geo, mode) {
   aggregated_data <- aggregated_data |>
     group_by(.data$postcode) |>
     summarise(
-      total_mode = sum(.data$total_mode, na.rm = TRUE),
+      total_mode = add(.data$total_mode),
       geometry = first(.data$geometry),
-      low = sum(.data$low, na.rm = TRUE),
-      medium = sum(.data$medium, na.rm = TRUE),
-      high = sum(.data$high, na.rm = TRUE)
+      low = add(.data$low),
+      medium = add(.data$medium),
+      high = add(.data$high)
     ) |>
     mutate(color = pmap(list(.data$high, .data$medium, .data$low), custom_gradient_color))
   aggregated_data
