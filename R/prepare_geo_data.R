@@ -58,7 +58,7 @@ prepare_geo_data <- function(data,
       .data$benchmark == .env$benchmark,
       .data$scenario == .env$scenario,
       .data$year == .env$year
-      ) |>
+    ) |>
     left_join(shp_1, by = "postcode") |>
     st_as_sf()
 
