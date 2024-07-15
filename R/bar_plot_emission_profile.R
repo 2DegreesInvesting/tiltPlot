@@ -8,6 +8,8 @@
 #' emission profiles will be plotted. The user can choose from one to several
 #' benchmark(s) to be plotted.
 #' @param mode A character vector: `r toString(modes())`.
+#' @param scenario A character vector: `r toString(scenarios())`.
+#' @param year A character vector: `r toString(years())`.
 #'
 #' @return A [ggplot] object.
 #'
@@ -18,14 +20,19 @@
 #' bar_plot_emission_profile(without_financial, benchmarks)
 bar_plot_emission_profile <- function(data,
                                       benchmarks = benchmarks(),
-                                      mode = modes()) {
+                                      mode = modes(),
+                                      scenario = scenarios(),
+                                      year = years()) {
   benchmarks <- arg_match(benchmarks, multiple = TRUE)
   mode <- mode |>
-    arg_match()
+    arg_match() |>
+    switch_mode_emission_profile()
+  scenario <- arg_match(scenario)
+  year <- year
 
   data |>
-    check_bar_plot_emission_profile() |>
-    prepare_bar_plot_emission_profile(benchmarks, mode) |>
+    check_bar_plot_emission_profile(mode) |>
+    prepare_bar_plot_emission_profile(benchmarks = benchmarks, mode = mode, scenario = scenario, year = year) |>
     plot_bar_plot_emission_profile_impl()
 }
 
@@ -35,10 +42,10 @@ bar_plot_emission_profile <- function(data,
 #'
 #' @return A data frame
 #' @noRd
-check_bar_plot_emission_profile <- function(data) {
+check_bar_plot_emission_profile <- function(data, mode) {
   crucial <- c(
     "benchmark",
-    modes(),
+    mode,
     aka("risk_category")
   )
   data |> check_crucial_names(names_matching(data, crucial))
@@ -53,14 +60,16 @@ check_bar_plot_emission_profile <- function(data) {
 #' @return A data frame.
 #'
 #' @noRd
-prepare_bar_plot_emission_profile <- function(data, benchmarks, mode) {
-  risk_var <- names_matching(data, aka("risk_category"))
+prepare_bar_plot_emission_profile <- function(data, benchmarks, mode, scenario, year) {
+  risk_var <- get_colname(data, aka("risk_category"))
 
   data <- data |>
     mutate(risk_category_var = as_risk_category(.data[[risk_var]]))
 
   data <- data |>
-    filter(.data$benchmark %in% benchmarks) |>
+    filter((.data$benchmark %in% .env$benchmarks &
+      .data$scenario == .env$scenario &
+      .data$year == .env$year)) |>
     group_by(.data$risk_category_var, .data$benchmark) |>
     summarise(total_mode = sum(.data[[mode]])) |>
     group_by(.data$benchmark) |>
@@ -80,5 +89,5 @@ plot_bar_plot_emission_profile_impl <- function(data) {
     geom_col(position = position_stack(reverse = TRUE), width = width_bar()) +
     fill_score_colors() +
     theme_tiltplot() +
-    xlim(0, 1)
+    xlim(0, NA)
 }

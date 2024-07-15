@@ -1,27 +1,32 @@
 test_that("returns an object of the expected class", {
   skip_on_ci()
-  data <- tibble(
+  data <- example_without_financial(
     postcode = c(53773L, 53774L, 53775L),
-    emission_profile = risk_category_levels(),
-    benchmark = rep("all", 3)
+    !!aka("risk_category") := risk_category_levels()
   )
-  prepared_data <- prepare_geo_data(data)
+  prepared_data <- prepare_geo_data(
+    data, "DE", "all", "equal_weight", scenarios()[1],
+    years()[1]
+  )
   expect_type(prepared_data, "list")
 })
 
 test_that("aggregation returns correct risk category values colors", {
   skip_on_ci()
-  data <- tibble(
+  data <- example_without_financial(
     postcode = c(53773L, 53774L, 53775L),
-    risk_category_var = risk_category_levels(),
-    benchmark = rep("all", 3)
+    !!aka("risk_category") := risk_category_levels()
   )
   expected_colors <- list(
     low = low_hex(),
     medium = medium_hex(),
     high = high_hex()
   )
-  aggregated_data <- aggregate_geo(data, mode = "equal_weight")
+  prepared_data <- prepare_geo_data(
+    data, "DE", "all", "equal_weight", scenarios()[1],
+    years()[1]
+  )
+  aggregated_data <- prepared_data[[2]]
 
   colors <- aggregated_data$color
   names(colors) <- names(expected_colors)
@@ -35,7 +40,11 @@ test_that("returns the correct postcodes", {
     postcode = c(53773L, 53774L, 53775L),
     !!aka("risk_category") := risk_category_levels()
   )
-  aggregated_data <- prepare_geo_data(data)[[2]]
+  prepared_data <- prepare_geo_data(
+    data, "DE", "all", "equal_weight", scenarios()[1],
+    years()[1]
+  )
+  aggregated_data <- prepared_data[[2]]
 
   postcodes <- unique(aggregated_data$postcode)
   expected_postcodes <- unique(data$postcode)

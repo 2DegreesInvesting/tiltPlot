@@ -10,23 +10,27 @@
 prepare_geo_data <- function(data,
                              country_code = c("DE"),
                              benchmark = benchmarks(),
-                             mode = c(
-                               "equal_weight",
-                               "worst_case",
-                               "best_case"
-                             )) {
+                             mode = modes(),
+                             scenario = scenarios(),
+                             year = years()) {
   benchmark <- arg_match(benchmark)
-  mode <- arg_match(mode)
+  mode <- mode |>
+    arg_match() |>
+    switch_mode_emission_profile()
   country_code <- arg_match(country_code)
+  scenario <- arg_match(scenario)
+  year <- year
 
   crucial <- c(
     aka("risk_category"),
-    "company_name",
+    aka("companies_id"),
     "postcode",
-    "benchmark"
+    "benchmark",
+    "scenario",
+    aka("year")
   )
   data |> check_crucial_names(names_matching(data, crucial))
-  risk_var <- names_matching(data, aka("risk_category"))
+  risk_var <- get_colname(data, aka("risk_category"))
   data <- data |>
     mutate(risk_category_var = as_risk_category(data[[risk_var]]))
 
@@ -50,7 +54,11 @@ prepare_geo_data <- function(data,
 
   # merge shapefile with financial data
   geo <- data |>
-    filter(benchmark == .env$benchmark) |>
+    filter(
+      .data$benchmark == .env$benchmark,
+      .data$scenario == .env$scenario,
+      .data$year == .env$year
+    ) |>
     left_join(shp_1, by = "postcode") |>
     st_as_sf()
 
@@ -58,7 +66,6 @@ prepare_geo_data <- function(data,
 
   list(shp_1, aggregated_data)
 }
-
 
 #' Aggregate Geo Data
 #'
@@ -84,52 +91,28 @@ prepare_geo_data <- function(data,
 #'
 #' aggregate_geo(geo, mode = "worst_case")
 aggregate_geo <- function(geo, mode) {
-  if (mode %in% c("worst_case", "best_case")) {
-    aggregated_data <- geo |>
-      group_by(.data$postcode, .data$company_name) |>
-      mutate(
-        # Choose the worst or best risk category and set the others to 0.
-        proportion = calculate_case_proportions(.data$risk_category_var, mode)
-      ) |>
-      group_by(.data$postcode, .data$risk_category_var) |>
-      summarize(proportion = sum(.data$proportion)) |>
-      ungroup()
-  } else if (mode == "equal_weight") {
-    aggregated_data <- geo |>
-      group_by(.data$postcode, .data$risk_category_var) |>
-      summarize(count = n()) |>
-      # Do not group by company here since all of them have equal weights.
-      group_by(.data$postcode) |>
-      mutate(proportion = .data$count / sum(.data$count)) |>
-      ungroup()
-  }
+  aggregated_data <- geo |>
+    group_by(.data$postcode, .data$risk_category_var) |>
+    summarise(total_mode = sum(.data[[mode]])) |>
+    group_by(.data$postcode) |>
+    mutate(proportion = total_mode / sum(total_mode)) |>
+    ungroup()
 
-  # apply custom_gradient_color to each row
+  # Pivot
   aggregated_data <- aggregated_data |>
     pivot_wider(names_from = "risk_category_var", values_from = "proportion", values_fill = 0) |>
+    filter(.data$total_mode != 0)
+
+  # Calculate color row by row
+  aggregated_data <- aggregated_data |>
+    group_by(.data$postcode) |>
+    summarise(
+      total_mode = add(.data$total_mode),
+      geometry = first(.data$geometry),
+      low = add(.data$low),
+      medium = add(.data$medium),
+      high = add(.data$high)
+    ) |>
     mutate(color = pmap(list(.data$high, .data$medium, .data$low), custom_gradient_color))
-}
-
-#' Calculate Proportions for Worst or Best Case Scenarios
-#'
-#' @param categories A factor vector of risk categories.
-#' @param mode A character string specifying the mode.
-#'
-#' @return A numeric vector representing the calculated proportions for each
-#' category.
-#'
-#' @examples
-#' categories <- as_risk_category(c("low", "medium", "medium", "high"))
-#' calculate_case_proportions(categories, mode = "worst_case")
-#' @noRd
-calculate_case_proportions <- function(categories, mode) {
-  if (mode == "worst_case") {
-    extreme_risk <- levels(categories)[max(as.integer(categories))]
-  } else if (mode == "best_case") {
-    extreme_risk <- levels(categories)[min(as.integer(categories))]
-  }
-
-  is_extreme <- categories == extreme_risk
-  proportions <- ifelse(is_extreme, 1 / sum(is_extreme), 0)
-  proportions
+  aggregated_data
 }

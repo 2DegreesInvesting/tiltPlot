@@ -8,9 +8,10 @@ financial data.}
 map_region_risk(
   data,
   country_code = c("DE"),
-  benchmark = c("all", "isic_4digit", "tilt_sector", "unit", "unit_isic_4digit",
-    "unit_tilt_sector"),
-  mode = c("equal_weight", "worst_case", "best_case")
+  benchmark = benchmarks(),
+  mode = modes(),
+  scenario = scenarios(),
+  year = years()
 )
 }
 \arguments{
@@ -26,6 +27,10 @@ default mode.}
 
 \item{mode}{The mode to plot. It can be one of "equal_weight", "worst_case"
 or "best_case". If nothing is chosen, "equal_weight" is the default mode.}
+
+\item{scenario}{A character vector: 1.5C RPS, NZ 2050.}
+
+\item{year}{A character vector: 2030, 2050.}
 }
 \value{
 A ggplot2 object representing the country data plot.

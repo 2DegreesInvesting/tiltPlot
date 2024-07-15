@@ -20,11 +20,13 @@
     Code
       str(example_without_financial())
     Output
-      tibble [1 x 6] (S3: tbl_df/tbl/data.frame)
-       $ company_name    : chr "a"
-       $ emission_profile: chr "medium"
-       $ benchmark       : chr "all"
-       $ equal_weight    : num 0.1
-       $ worst_case      : num 0.1
-       $ best_case       : num 0.1
+      tibble [1 x 8] (S3: tbl_df/tbl/data.frame)
+       $ company_name                 : chr "a"
+       $ emission_profile             : chr "medium"
+       $ benchmark                    : chr "all"
+       $ scenario                     : chr "1.5C RPS"
+       $ year                         : num 2030
+       $ equal_weight_emission_profile: num 0.1
+       $ worst_case_emission_profile  : num 0.1
+       $ best_case_emission_profile   : num 0.1
 

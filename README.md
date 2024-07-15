@@ -143,23 +143,26 @@ bar_plot_emission_profile_financial(fin, benchmarks, mode = "equal_weight") +
 
 ``` r
 without_financial
-#> # A tibble: 114 × 12
-#>    company_name postcode emission_profile benchmark ep_product tilt_sector
-#>    <chr>           <int> <chr>            <chr>     <chr>      <chr>      
-#>  1 bruno           27568 high             all       car        D          
-#>  2 bruno           27568 high             all       steel      C          
-#>  3 bruno           27568 medium           all       wheat      B          
-#>  4 mauro           39221 high             all       steel      C          
-#>  5 mauro           39221 high             all       machine    C          
-#>  6 mirja           34117 high             all       tractor    D          
-#>  7 mirja           34117 high             all       cattle     A          
-#>  8 pasant          80337 high             all       tractor    D          
-#>  9 pasant          80337 low              all       apple      A          
-#> 10 peter           88131 high             all       banana     A          
-#> # ℹ 104 more rows
-#> # ℹ 6 more variables: tilt_subsector <chr>, isic_4digit <chr>,
-#> #   isic_4digit_name <chr>, equal_weight <dbl>, worst_case <dbl>,
-#> #   best_case <dbl>
+#> # A tibble: 252 × 35
+#>    companies_id country postcode main_activity ep_product activity_uuid_produc…¹
+#>    <chr>        <chr>      <int> <chr>         <chr>      <chr>                 
+#>  1 %ef%bb%bfma… germany    12043 wholesaler    surface c… a62eb0d6-9120-541c-97…
+#>  2 %ef%bb%bfma… germany    12043 wholesaler    surface c… a62eb0d6-9120-541c-97…
+#>  3 %ef%bb%bfma… germany    12043 wholesaler    surface c… a62eb0d6-9120-541c-97…
+#>  4 %ef%bb%bfma… germany    12043 wholesaler    surface c… a62eb0d6-9120-541c-97…
+#>  5 %ef%bb%bfma… germany    12043 wholesaler    surface c… a62eb0d6-9120-541c-97…
+#>  6 %ef%bb%bfma… germany    12043 wholesaler    surface c… a62eb0d6-9120-541c-97…
+#>  7 %ef%bb%bfma… germany    12043 wholesaler    surface c… a62eb0d6-9120-541c-97…
+#>  8 %ef%bb%bfma… germany    12043 wholesaler    surface c… a62eb0d6-9120-541c-97…
+#>  9 %ef%bb%bfma… germany    12043 wholesaler    hand tool… 7c082396-1f14-5674-86…
+#> 10 %ef%bb%bfma… germany    12043 wholesaler    hand tool… 7c082396-1f14-5674-86…
+#> # ℹ 242 more rows
+#> # ℹ abbreviated name: ¹​activity_uuid_product_uuid
+#> # ℹ 29 more variables: matched_activity_name <chr>,
+#> #   matched_reference_product <chr>, unit <chr>, co2e_lower <dbl>,
+#> #   co2e_upper <dbl>, emission_profile <chr>, benchmark <chr>,
+#> #   profile_ranking <dbl>, tilt_sector <chr>, tilt_subsector <chr>,
+#> #   sector_profile <chr>, scenario <chr>, year <int>, …
 ```
 
 Plot on a company level. The user can choose any number of benchmark to
@@ -168,11 +171,12 @@ be plotted.
 ``` r
 no_fin <- without_financial
 
-benchmarks <- c("all", "isic_4digit", "unit")
+benchmarks <- c("unit", "unit_tilt_sector")
+company_name <- no_fin$companies_id[1]
 
 no_fin |>
-  filter(company_name == "peter") |>
-  bar_plot_emission_profile(benchmarks, mode = "equal_weight") +
+  filter(companies_id == company_name) |>
+  bar_plot_emission_profile(benchmarks, mode = "equal_weight", scenario = "1.5C RPS", year = 2030) +
   labs(title = "Emission profile of all products on a company level")
 ```
 
@@ -181,7 +185,7 @@ no_fin |>
 Plot on a portfolio level.
 
 ``` r
-bar_plot_emission_profile(no_fin, benchmarks, mode = "equal_weight") +
+bar_plot_emission_profile(no_fin, benchmarks, mode = "equal_weight", scenario = "1.5C RPS", year = 2030) +
   labs(title = "Emission profile of all products on a portfolio level")
 ```
 
@@ -191,7 +195,7 @@ bar_plot_emission_profile(no_fin, benchmarks, mode = "equal_weight") +
 
 ``` r
 fin <- financial
-scenario <- "WEO"
+scenario <- "IPR"
 year <- 2030
 benchmarks <- c("all", "unit")
 mode <- "best_case"
@@ -214,12 +218,11 @@ Different modes can be chosen: “equal_weight”, “worst_case” and
 ``` r
 no_fin <- without_financial
 
-map_region_risk(no_fin, "DE", benchmark = "tilt_sector", mode = "best_case") +
+map_region_risk(no_fin, "DE", benchmark = "unit_tilt_sector", mode = "worst_case", scenario = "NZ 2050", year = 2030) +
   labs(title = "German map of high, medium and low proportions of the companies
   that are found in one region.
   © EuroGeographics for the administrative boundaries ")
 #> Extracting data using giscoR package, please report issues on https://github.com/rOpenGov/giscoR/issues
-#> Cache management as per giscoR. see 'giscoR::gisco_get_nuts()'
 ```
 
 <img src="man/figures/README-unnamed-chunk-14-1.png" width="100%" />

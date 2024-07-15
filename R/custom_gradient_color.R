@@ -24,7 +24,6 @@ custom_gradient_color <- function(risk_high = 1, risk_medium = 1, risk_low = 1) 
   # interpolate the colors based on proportions : 1 is highest intensity
   final_color <- high_color * risk_high + medium_color * risk_medium + low_color * risk_low
 
-  final_color <- do.call(rgb, as.list(final_color))
-
-  return(final_color)
+  final_color <- do.call(rgb, c(as.list(final_color)))
+  final_color
 }

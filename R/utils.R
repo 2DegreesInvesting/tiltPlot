@@ -61,6 +61,27 @@ switch_mode <- function(mode) {
   )
 }
 
+#' Switch mode function for emission profile plots
+#'
+#' @param mode A character string.
+#'
+#' @return A character string.
+#'
+#' @examples
+#' switch_mode("equal_weight")
+#' # Returns: "equal_weight_emission_profile"
+#'
+#' switch_mode("worst_case")
+#' # Returns: "worst_case_emission_profile"
+#' @noRd
+switch_mode_emission_profile <- function(mode) {
+  switch(mode,
+    "equal_weight" = "equal_weight_emission_profile",
+    "worst_case" = "worst_case_emission_profile",
+    "best_case" = "best_case_emission_profile"
+  )
+}
+
 #' Get column names matching a specific pattern
 #'
 #' This function takes a data frame and a pattern as input and returns the column names
@@ -79,6 +100,24 @@ switch_mode <- function(mode) {
 #' @noRd
 names_matching <- function(data, pattern) {
   names(select(data, matches(pattern)))
+}
+
+#' Get column name
+#'
+#' @param data A data frame.
+#' @param column_name A character vector.
+#'
+#' @return A character vector.
+#'
+#' @examples
+#' data <- data.frame(ab = 1:3, abc = 4:6)
+#'
+#' # Get column name "abc"
+#' get_colname(data, "abc")
+#' @noRd
+get_colname <- function(data, column_name) {
+  exact_match <- which(names(data) == column_name)
+  names(data)[exact_match]
 }
 
 #' Convert vector to risk category
@@ -101,6 +140,8 @@ check_levels <- function(x) {
 }
 
 plot_data <- function(p, name) p$data[[name]]
+
+add <- function(x) sum(x, na.rm = TRUE)
 
 risk_category_levels <- function() c("low", "medium", "high")
 
@@ -129,15 +170,19 @@ benchmarks <- function() {
 dictionary <- function() {
   #styler: off
   tibble::tribble(
-                      ~aka,                 ~column,
-       "europages_product",            "ep_product",
-         "profile_ranking",       "profile_ranking",
-           "risk_category",      "emission_profile",
-                "scenario",              "scenario",
-   "transition_risk_score", "transition_risk_score",
-         "transition_risk",       "transition_risk",
-             "tilt_sector",           "tilt_sector",
-                    "year",                 "year"
+                      ~aka,                         ~column,
+               "best_case",    "best_case_emission_profile",
+            "companies_id",                  "companies_id",
+       "europages_product",                    "ep_product",
+            "equal_weight", "equal_weight_emission_profile",
+         "profile_ranking",               "profile_ranking",
+           "risk_category",              "emission_profile",
+                "scenario",                      "scenario",
+   "transition_risk_score",         "transition_risk_score",
+         "transition_risk",               "transition_risk",
+             "tilt_sector",                   "tilt_sector",
+                    "year",                          "year",
+              "worst_case",   "worst_case_emission_profile"
    )
   # styler: on
 }
@@ -160,5 +205,38 @@ modes <- function() {
     "equal_weight",
     "best_case",
     "worst_case"
+  )
+}
+
+#' Scenarios
+#'
+#' @keywords internal
+#' @export
+scenarios <- function() {
+  c(
+    "1.5C RPS",
+    "NZ 2050"
+  )
+}
+
+#' Scenarios Financial
+#'
+#' @keywords internal
+#' @export
+scenarios_financial <- function() {
+  c(
+    "IPR",
+    "WEO"
+  )
+}
+
+#' Years
+#'
+#' @keywords internal
+#' @export
+years <- function() {
+  c(
+    2030,
+    2050
   )
 }

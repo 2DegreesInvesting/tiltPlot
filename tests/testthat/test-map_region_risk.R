@@ -9,7 +9,7 @@ test_that("returns correct risk category values colors", {
     medium = medium_hex(),
     high = high_hex()
   )
-  plot <- map_region_risk(data)
+  plot <- map_region_risk(data, "DE", "all", "equal_weight", scenarios()[1], years()[1])
   layers <- ggplot_build(plot)$data
   colors <- layers[[1]]$fill
 
@@ -24,7 +24,7 @@ test_that("plots the correct companies", {
     company_name = letters[1:3],
     !!aka("risk_category") := risk_category_levels()
   )
-  plot <- map_region_risk(data)
+  plot <- map_region_risk(data, "DE", "all", "equal_weight", scenarios()[1], years()[1])
 
   company_names <- unique(plot$plot_env$data$company_name)
   expected_company_names <- unique(data$company_name)
@@ -38,7 +38,7 @@ test_that("plots the selected benchmark", {
     postcode = c(53773L, 53774L, 53775L),
     !!aka("risk_category") := risk_category_levels()
   )
-  plot <- map_region_risk(data, "DE", "all")
+  plot <- map_region_risk(data, "DE", "all", "equal_weight", scenarios()[1], years()[1])
 
   benchmark <- unique(plot$plot_env$benchmark)
   expected_benchmark <- unique(data$benchmark)
@@ -52,7 +52,7 @@ test_that("plots the selected mode", {
     postcode = c(53773L, 53774L, 53775L),
     !!aka("risk_category") := risk_category_levels()
   )
-  plot <- map_region_risk(data, "DE", "all", "equal_weight")
+  plot <- map_region_risk(data, "DE", "all", "equal_weight", scenarios()[1], years()[1])
 
   mode <- unique(plot$plot_env$mode)
   expected_mode <- "equal_weight"

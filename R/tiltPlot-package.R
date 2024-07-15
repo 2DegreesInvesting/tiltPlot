@@ -7,6 +7,7 @@
 #' @importFrom dplyr case_when
 #' @importFrom dplyr distinct
 #' @importFrom dplyr filter
+#' @importFrom dplyr first
 #' @importFrom dplyr group_by
 #' @importFrom dplyr inner_join
 #' @importFrom dplyr left_join

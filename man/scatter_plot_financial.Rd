@@ -7,9 +7,9 @@
 scatter_plot_financial(
   data,
   benchmarks = benchmarks(),
-  mode = c("equal_weight", "worst_case", "best_case"),
-  scenario = c("IPR", "WEO"),
-  year = c(2030, 2050)
+  mode = modes(),
+  scenario = scenarios_financial(),
+  year = years()
 )
 }
 \arguments{

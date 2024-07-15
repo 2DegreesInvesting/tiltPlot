@@ -25,16 +25,20 @@ default_financial <- function(bank_id = "a",
 default_without_financial <- function(company_name = "a",
                                       emission_profile = "medium",
                                       benchmark = "all",
-                                      equal_weight = 0.1,
-                                      worst_case = 0.1,
-                                      best_case = 0.1) {
+                                      scenario = "1.5C RPS",
+                                      year = 2030,
+                                      equal_weight_emission_profile = 0.1,
+                                      worst_case_emission_profile = 0.1,
+                                      best_case_emission_profile = 0.1) {
   tibble(
     company_name = company_name,
     emission_profile = emission_profile,
     benchmark = benchmark,
-    equal_weight = equal_weight,
-    worst_case = worst_case,
-    best_case = best_case
+    scenario = scenario,
+    year = year,
+    equal_weight_emission_profile = equal_weight_emission_profile,
+    worst_case_emission_profile = worst_case_emission_profile,
+    best_case_emission_profile = best_case_emission_profile
   )
 }
 
