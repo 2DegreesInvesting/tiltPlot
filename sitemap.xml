@@ -1,69 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/404.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/articles/integration-with-tiltIndicator.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/index.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/bar_plot_emission_profile.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/bar_plot_emission_profile_financial.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/benchmarks.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/example_financial.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/example_without_financial.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/financial.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/map_region_risk.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/modes.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/nuts_de.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/plot_sankey.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/scatter_plot_financial.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/theme_tiltplot.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/tiltPlot-package.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltPlot/reference/without_financial.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/404.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/LICENSE.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/authors.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/index.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/news/index.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/reference/bar_plot_emission_profile.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/reference/bar_plot_emission_profile_financial.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/reference/benchmarks.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/reference/example_financial.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/reference/example_without_financial.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/reference/financial.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/reference/index.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/reference/map_region_risk.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/reference/modes.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/reference/nuts_de.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/reference/plot_sankey.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/reference/scatter_plot_financial.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/reference/scenarios.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/reference/scenarios_financial.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/reference/theme_tiltplot.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/reference/tiltPlot-package.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/reference/without_financial.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltPlot/reference/years.html</loc></url>
 </urlset>
+
