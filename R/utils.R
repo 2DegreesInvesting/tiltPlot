@@ -116,8 +116,8 @@ names_matching <- function(data, pattern) {
 #' get_colname(data, "abc")
 #' @noRd
 get_colname <- function(data, column_name) {
-  match <- column_name %in% names(data)
-  column_name[match]
+  exact_match <- which(names(data) == column_name)
+  names(data)[exact_match]
 }
 
 #' Convert vector to risk category
