@@ -32,7 +32,7 @@ bar_plot_emission_profile <- function(data,
 
   data |>
     check_bar_plot_emission_profile(mode) |>
-    prepare_bar_plot_emission_profile(benchmarks, mode, scenario, year) |>
+    prepare_bar_plot_emission_profile(benchmarks = benchmarks, mode = mode, scenario = scenario, year = year) |>
     plot_bar_plot_emission_profile_impl()
 }
 
