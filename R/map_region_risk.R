@@ -24,17 +24,19 @@
 map_region_risk <- function(data,
                             # TODO: plot for other countries
                             country_code = c("DE"),
-                            benchmark = benchmarks(),
+                            grouping_emission = grouping_emission(),
                             mode = modes(),
                             scenario = scenarios(),
-                            year = years()) {
+                            year = years(),
+                            risk_category = risk_category()) {
   prepared_data <- prepare_geo_data(
     data,
     country_code,
-    benchmark,
+    grouping_emission,
     mode,
     scenario,
-    year
+    year,
+    risk_category
   )
   shp_1 <- prepared_data[[1]]
   aggregated_data <- prepared_data[[2]]

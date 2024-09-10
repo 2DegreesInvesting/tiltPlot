@@ -30,7 +30,7 @@ plot_sankey <- function(data,
   risk_var <- names_matching(data, aka("risk_category"))
 
   data <- data |>
-    filter(.data$benchmark == .env$benchmark) |>
+    filter(.data$grouping_emission == .env$benchmark) |>
     distinct(.data$bank_id,
       .data$company_name,
       .data$ep_product,

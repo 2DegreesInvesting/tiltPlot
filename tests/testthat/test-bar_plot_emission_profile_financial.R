@@ -1,12 +1,12 @@
 test_that("returns an object of the expected class", {
   data <- example_financial(!!aka("europages_product") := "e")
-  plot <- bar_plot_emission_profile_financial(data, benchmarks())
+  plot <- bar_plot_emission_profile_financial(data, grouping_emission())
   expect_s3_class(plot, "ggplot")
 })
 
 test_that("returns correct risk category values", {
   data <- example_financial(!!aka("europages_product") := "e")
-  plot <- bar_plot_emission_profile_financial(data, benchmarks())
+  plot <- bar_plot_emission_profile_financial(data, grouping_emission())
   risk_categories <- levels(plot |> plot_data("risk_category_var"))
   expected_risk_categories <- c("low", "medium", "high")
   expect_equal(risk_categories, expected_risk_categories)

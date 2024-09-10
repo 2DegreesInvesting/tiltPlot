@@ -1,6 +1,6 @@
 test_that("returns an object of the expected class", {
   data <- example_without_financial()
-  plot <- bar_plot_emission_profile(data, benchmarks(),
+  plot <- bar_plot_emission_profile(data, grouping_emission(),
     mode = modes()[1],
     scenarios()[1], years()[1]
   )
@@ -8,11 +8,11 @@ test_that("returns an object of the expected class", {
 })
 
 test_that("returns correct risk category values for equal weight mode", {
-  data <- example_without_financial(!!aka("risk_category") := risk_category_levels())
+  data <- example_without_financial()
   mode <- "equal_weight" |>
     switch_mode_emission_profile()
   data <- prepare_bar_plot_emission_profile(
-    data, benchmarks(), mode,
+    data, grouping_emission(), mode,
     scenarios()[1], years()[1]
   )
   risk_categories <- levels(data$risk_category_var)
@@ -21,11 +21,11 @@ test_that("returns correct risk category values for equal weight mode", {
 })
 
 test_that("returns correct risk category values for best case mode", {
-  data <- example_without_financial(!!aka("risk_category") := risk_category_levels())
+  data <- example_without_financial()
   mode <- "best_case" |>
     switch_mode_emission_profile()
   data <- prepare_bar_plot_emission_profile(
-    data, benchmarks(), mode,
+    data, grouping_emission(), mode,
     scenarios()[1], years()[1]
   )
   risk_categories <- levels(data$risk_category_var)
@@ -34,11 +34,11 @@ test_that("returns correct risk category values for best case mode", {
 })
 
 test_that("returns correct risk category values for worst_case mode", {
-  data <- example_without_financial(!!aka("risk_category") := risk_category_levels())
+  data <- example_without_financial()
   mode <- "worst_case" |>
     switch_mode_emission_profile()
   data <- prepare_bar_plot_emission_profile(
-    data, benchmarks(), mode,
+    data, grouping_emission(), mode,
     scenarios()[1], years()[1]
   )
   risk_categories <- levels(data$risk_category_var)
@@ -51,12 +51,12 @@ test_that("returns correct benchmarks values for equal weight mode", {
   mode <- "equal_weight" |>
     switch_mode_emission_profile()
   data <- prepare_bar_plot_emission_profile(
-    data, benchmarks(), mode,
+    data, grouping_emission(), mode,
     scenarios()[1], years()[1]
   )
-  benchmarks <- unique(data$benchmark)
+  benchmarks <- unique(data$grouping_emission)
   expected_benchmarks <- example_without_financial() |>
-    pull(benchmark) |>
+    pull(grouping_emission) |>
     unique()
   expect_true(all(benchmarks %in% expected_benchmarks))
 })
@@ -67,14 +67,14 @@ test_that("returns correct benchmarks values for best case mode", {
     switch_mode_emission_profile()
   data <- prepare_bar_plot_emission_profile(
     data,
-    benchmarks(),
+    grouping_emission(),
     mode,
     scenarios()[1],
     years()[1]
   )
-  benchmarks <- unique(data$benchmark)
+  benchmarks <- unique(data$grouping_emission)
   expected_benchmarks <- example_without_financial() |>
-    pull(benchmark) |>
+    pull(grouping_emission) |>
     unique()
   expect_true(all(benchmarks %in% expected_benchmarks))
 })
@@ -84,12 +84,12 @@ test_that("returns correct benchmarks values for worst case mode", {
   mode <- "worst_case" |>
     switch_mode_emission_profile()
   data <- prepare_bar_plot_emission_profile(
-    data, benchmarks(), mode,
+    data, grouping_emission(), mode,
     scenarios()[1], years()[1]
   )
-  benchmarks <- unique(data$benchmark)
+  benchmarks <- unique(data$grouping_emission)
   expected_benchmarks <- example_without_financial() |>
-    pull(benchmark) |>
+    pull(grouping_emission) |>
     unique()
   expect_true(all(benchmarks %in% expected_benchmarks))
 })
@@ -99,7 +99,7 @@ test_that("proportions are less or equal to 1 for equal weight mode", {
   mode <- "equal_weight" |>
     switch_mode_emission_profile()
   data <- prepare_bar_plot_emission_profile(
-    data, benchmarks(), mode,
+    data, grouping_emission(), mode,
     scenarios()[1], years()[1]
   )
   proportions <- data$proportion
@@ -111,7 +111,7 @@ test_that("proportions are less or equal to 1 for best case mode", {
   mode <- "best_case" |>
     switch_mode_emission_profile()
   data <- prepare_bar_plot_emission_profile(
-    data, benchmarks(), mode,
+    data, grouping_emission(), mode,
     scenarios()[1], years()[1]
   )
 
@@ -124,7 +124,7 @@ test_that("proportions are less or equal to 1 for worst case mode", {
   mode <- "worst_case" |>
     switch_mode_emission_profile()
   data <- prepare_bar_plot_emission_profile(
-    data, benchmarks(), mode,
+    data, grouping_emission(), mode,
     scenarios()[1], years()[1]
   )
   proportions <- data$proportion

@@ -67,12 +67,12 @@ prepare_bar_plot_emission_profile <- function(data, benchmarks, mode, scenario, 
     mutate(risk_category_var = as_risk_category(.data[[risk_var]]))
 
   data <- data |>
-    filter((.data$benchmark %in% .env$benchmarks &
+    filter((.data$grouping_emission %in% .env$benchmarks &
       .data$scenario == .env$scenario &
       .data$year == .env$year)) |>
-    group_by(.data$risk_category_var, .data$benchmark) |>
+    group_by(.data$risk_category_var, .data$grouping_emission) |>
     summarise(total_mode = sum(.data[[mode]])) |>
-    group_by(.data$benchmark) |>
+    group_by(.data$grouping_emission) |>
     mutate(proportion = total_mode / sum(total_mode))
 
   data

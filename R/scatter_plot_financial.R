@@ -84,7 +84,7 @@ check_scatter_plot_financial <- function(data) {
 prepare_scatter_plot_financial <- function(data, benchmarks, scenario, year) {
   data <- data |>
     filter(
-      .data$benchmark %in% .env$benchmarks,
+      .data$grouping_emission %in% .env$benchmarks,
       .data$scenario == .env$scenario,
       .data$year == .env$year
     )
@@ -130,7 +130,7 @@ calculate_rank <- function(data, mode, col) {
 calculate_scatter_plot_financial <- function(data, mode) {
   data <- calculate_rank(data, mode, aka("profile_ranking"))[[2]]
 
-  data$emission_profile_average <- calculate_rank(data, mode, aka("profile_ranking"))[[1]]
+  data$emission_category_average <- calculate_rank(data, mode, aka("profile_ranking"))[[1]]
   data$transition_risk_average <- calculate_rank(data, mode, aka("transition_risk_score"))[[1]]
 
   data
@@ -169,7 +169,7 @@ plot_scatter_financial_impl <- function(data,
   # TODO: What colors do we want for each bank_id ?
   scatter_plot <- ggplot(data, aes(x = .data$amount_total, color = .data$bank_id)) +
     geom_point(aes(y = .data[[col]])) +
-    facet_grid(.data$tilt_sector ~ .data$benchmark, scales = "fixed") +
+    facet_grid(.data$tilt_sector ~ .data$grouping_emission, scales = "fixed") +
     ylim(0, 1) +
     xlim(0, NA) +
     ylab(plot_legend() |> format_label()) +
