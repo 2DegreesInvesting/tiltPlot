@@ -9,7 +9,7 @@
 #'
 #' @examples
 #' # Plot with equal weight and with company name
-#' plot_sankey(financial)
+#' plot_sankey(financial, grouping_emission = "all")
 #'
 #' # Plot with best_case weight and grouping_emission "all".
 #' plot_sankey(financial, grouping_emission = "all", mode = "best_case")
