@@ -4,7 +4,7 @@
 #' @param data A data frame like [without_financial]
 #' @param country_code Country code (ISO 3166 alpha-2) for which the map will be
 #' plotted.
-#' @param benchmark The mode of benchmark to plot.
+#' @param grouping_emission The mode of benchmark to plot.
 #' It can be one of "all", "unit" or "tilt_sector", "unit_tilt_sector",
 #' "isic_4digit" or "unit_isic_4digit". If nothing is chosen, "all" is the
 #' default mode.

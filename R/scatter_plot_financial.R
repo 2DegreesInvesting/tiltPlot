@@ -14,18 +14,18 @@
 #'
 #' @examples
 #' scatter_plot_financial(financial,
-#'   benchmarks = c("all", "tilt_sector"),
+#'   grouping_emission = c("all", "tilt_sector"),
 #'   mode = "equal_weight",
 #'   scenario = "IPR",
 #'   year = 2030
 #' )
 scatter_plot_financial <- function(data,
-                                   benchmarks = benchmarks(),
+                                   grouping_emission = grouping_emission(),
                                    mode = modes(),
                                    scenario = scenarios_financial(),
                                    year = years()) {
-  # FIXME: .env$ instead of _arg seems to cause a bug only for benchmarks.
-  benchmarks_arg <- arg_match(benchmarks, multiple = TRUE)
+  # FIXME: .env$ instead of _arg seems to cause a bug only for grouping_emission
+  grouping_emission <- arg_match(grouping_emission, multiple = TRUE)
   scenario <- arg_match(scenario)
   year <- year
   mode <- mode |>
@@ -34,7 +34,7 @@ scatter_plot_financial <- function(data,
 
   data |>
     check_scatter_plot_financial() |>
-    prepare_scatter_plot_financial(benchmarks_arg, scenario, year) |>
+    prepare_scatter_plot_financial(grouping_emission, scenario, year) |>
     calculate_scatter_plot_financial(mode) |>
     plot_scatter_financial()
 }
@@ -57,17 +57,12 @@ check_scatter_plot_financial <- function(data) {
     "reduction_targets",
     "transition_risk_score",
     "benchmark_transition_risk_score",
-    "benchmark",
+    "grouping_emission",
     "equal_weight_finance",
     "worst_case_finance",
     "best_case_finance"
   )
   data |> check_crucial_names(names_matching(data, crucial))
-
-  risk_var <- names_matching(data, aka("risk_category"))
-
-  data <- data |>
-    mutate(risk_category_var = as_risk_category(data[[risk_var]]))
 
   data
 }
@@ -75,16 +70,16 @@ check_scatter_plot_financial <- function(data) {
 #' Prepare data
 #'
 #' @param data A data frame.
-#' @param benchmarks A character vector.
+#' @param grouping_emission A character vector.
 #' @param scenario A character vector.
 #' @param year A numerical value.
 #'
 #' @return A data frame.
 #' @noRd
-prepare_scatter_plot_financial <- function(data, benchmarks, scenario, year) {
+prepare_scatter_plot_financial <- function(data, grouping_emission, scenario, year) {
   data <- data |>
     filter(
-      .data$grouping_emission %in% .env$benchmarks,
+      .data$grouping_emission %in% .env$grouping_emission,
       .data$scenario == .env$scenario,
       .data$year == .env$year
     )

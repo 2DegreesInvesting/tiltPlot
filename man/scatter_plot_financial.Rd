@@ -6,7 +6,7 @@
 \usage{
 scatter_plot_financial(
   data,
-  benchmarks = benchmarks(),
+  grouping_emission = grouping_emission(),
   mode = modes(),
   scenario = scenarios_financial(),
   year = years()
@@ -14,6 +14,10 @@ scatter_plot_financial(
 }
 \arguments{
 \item{data}{A data frame like \link{financial}.}
+
+\item{grouping_emission}{A character vector specifying the benchmarks for which the
+emission profiles will be plotted. The user can choose from one to several
+benchmark(s) to be plotted.}
 
 \item{mode}{The mode of financial data to plot.
 It can be one of "equal_weight", "worst_case" or "best_case".
@@ -34,7 +38,7 @@ for each bank in the portfolio.
 }
 \examples{
 scatter_plot_financial(financial,
-  benchmarks = c("all", "tilt_sector"),
+  grouping_emission = c("all", "tilt_sector"),
   mode = "equal_weight",
   scenario = "IPR",
   year = 2030

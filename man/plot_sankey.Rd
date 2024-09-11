@@ -17,11 +17,6 @@ plot_sankey(
 \item{with_company}{Logical. If TRUE, will plot a node with the company name.
 If FALSE, will plot without the company name node.}
 
-\item{benchmark}{The mode of benchmark to plot.
-It can be one of "all", "unit" or "tilt_sector", "unit_tilt_sector",
-"isic_4digit" or "unit_isic_4digit". If nothing is chosen, "all" is the
-default mode.}
-
 \item{mode}{The mode to plot. It can be one of "equal_weight", "worst_case"
 or "best_case". If nothing is chosen, "equal_weight" is the default mode.}
 }
