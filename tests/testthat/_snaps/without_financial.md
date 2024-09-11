@@ -20,7 +20,7 @@
       # i abbreviated name: 1: activity_uuid_product_uuid
       # i 29 more variables: matched_activity_name <chr>,
       #   matched_reference_product <chr>, unit <chr>, co2e_lower <dbl>,
-      #   co2e_upper <dbl>, emission_profile <chr>, benchmark <chr>,
+      #   co2e_upper <dbl>, emission_category <chr>, grouping_emission <chr>,
       #   profile_ranking <dbl>, tilt_sector <chr>, tilt_subsector <chr>,
       #   sector_profile <chr>, scenario <chr>, year <int>, ...
 

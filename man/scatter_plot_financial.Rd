@@ -15,10 +15,6 @@ scatter_plot_financial(
 \arguments{
 \item{data}{A data frame like \link{financial}.}
 
-\item{benchmarks}{A character vector specifying the benchmarks for which the
-emission profiles will be plotted. The user can choose from one to several
-benchmark(s) to be plotted.}
-
 \item{mode}{The mode of financial data to plot.
 It can be one of "equal_weight", "worst_case" or "best_case".
 If nothing is chosen, "equal_weight" is the default case.}

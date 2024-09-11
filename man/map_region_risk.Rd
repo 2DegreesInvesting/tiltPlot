@@ -28,6 +28,8 @@ or "best_case". If nothing is chosen, "equal_weight" is the default mode.}
 
 \item{year}{A character vector: 2030, 2050.}
 
+\item{risk_category}{A character vector.}
+
 \item{benchmark}{The mode of benchmark to plot.
 It can be one of "all", "unit" or "tilt_sector", "unit_tilt_sector",
 "isic_4digit" or "unit_isic_4digit". If nothing is chosen, "all" is the

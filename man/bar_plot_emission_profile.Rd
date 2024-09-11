@@ -6,16 +6,17 @@
 \usage{
 bar_plot_emission_profile(
   data,
-  benchmarks = benchmarks(),
+  grouping_emission = grouping_emission(),
   mode = modes(),
   scenario = scenarios(),
-  year = years()
+  year = years(),
+  risk_category = risk_category()
 )
 }
 \arguments{
 \item{data}{A data frame like \link{without_financial}.}
 
-\item{benchmarks}{A character vector specifying the benchmarks for which the
+\item{grouping_emission}{A character vector specifying the benchmarks for which the
 emission profiles will be plotted. The user can choose from one to several
 benchmark(s) to be plotted.}
 
@@ -24,6 +25,8 @@ benchmark(s) to be plotted.}
 \item{scenario}{A character vector: 1.5C RPS, NZ 2050.}
 
 \item{year}{A character vector: 2030, 2050.}
+
+\item{risk_category}{A character vector.}
 }
 \value{
 A \link{ggplot} object.
@@ -33,6 +36,6 @@ Generate a horizontal stacked bar chart showing the distribution of
 the emission risk profiles risks for one or several benchmarks.
 }
 \examples{
-benchmarks <- c("all", "unit", "isic_4digit")
-bar_plot_emission_profile(without_financial, benchmarks)
+grouping_emission <- c("unit")
+bar_plot_emission_profile(without_financial, grouping_emission, risk_category = "emission_category")
 }

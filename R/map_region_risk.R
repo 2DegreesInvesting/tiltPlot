@@ -12,6 +12,7 @@
 #' or "best_case". If nothing is chosen, "equal_weight" is the default mode.
 #' @param scenario A character vector: `r toString(scenarios())`.
 #' @param year A character vector: `r toString(years())`.
+#' @param risk_category A character vector.
 #'
 #' @return A ggplot2 object representing the country data plot.
 #' @export
