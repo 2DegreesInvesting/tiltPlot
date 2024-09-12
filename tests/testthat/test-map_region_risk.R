@@ -59,3 +59,29 @@ test_that("plots the selected mode", {
 
   expect_equal(mode, expected_mode)
 })
+
+test_that("plots the risk category `emission_category`", {
+  skip_on_ci()
+  data <- without_financial |>
+    mutate(postcode = as.character(postcode))
+  plot <- map_region_risk(data, "DE", "unit_tilt_sector", "emissions_profile_equal_weight",
+                          scenarios()[1], years()[1], "emission_category")
+
+  risk_category <- unique(plot$plot_env$risk_category)
+  expected_risk_category <- "emission_category"
+
+  expect_equal(risk_category, expected_risk_category)
+})
+
+test_that("plots the risk category `transition_risk_category`", {
+  skip_on_ci()
+  data <- without_financial |>
+    mutate(postcode = as.character(postcode))
+  plot <- map_region_risk(data, "DE", "unit_tilt_sector", "transition_risk_profile_equal_weight",
+                          scenarios()[1], years()[1], "transition_risk_category")
+
+  risk_category <- unique(plot$plot_env$risk_category)
+  expected_risk_category <- "transition_risk_category"
+
+  expect_equal(risk_category, expected_risk_category)
+})
