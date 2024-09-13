@@ -1,8 +1,8 @@
 default_financial <- function(bank_id = "a",
                               amount_total = 10,
                               company_name = "b",
-                              emission_profile = "medium",
-                              benchmark = "all",
+                              emission_category = "medium",
+                              grouping_emission = "all",
                               profile_ranking = 0.1,
                               transition_risk_score = 0.1,
                               equal_weight_finance = 10,
@@ -12,8 +12,8 @@ default_financial <- function(bank_id = "a",
     bank_id = bank_id,
     amount_total = amount_total,
     company_name = company_name,
-    emission_profile = emission_profile,
-    benchmark = benchmark,
+    emission_category = emission_category,
+    grouping_emission = grouping_emission,
     profile_ranking = profile_ranking,
     transition_risk_score = transition_risk_score,
     equal_weight_finance = equal_weight_finance,
@@ -23,22 +23,22 @@ default_financial <- function(bank_id = "a",
 }
 
 default_without_financial <- function(company_name = "a",
-                                      emission_profile = "medium",
-                                      benchmark = "all",
+                                      emission_category = c("low", "medium", "high"),
+                                      grouping_emission = "all",
                                       scenario = "1.5C RPS",
                                       year = 2030,
-                                      equal_weight_emission_profile = 0.1,
-                                      worst_case_emission_profile = 0.1,
-                                      best_case_emission_profile = 0.1) {
+                                      emissions_profile_equal_weight = 0.1,
+                                      emissions_profile_worst_case = 0.1,
+                                      emissions_profile_best_case = 0.1) {
   tibble(
     company_name = company_name,
-    emission_profile = emission_profile,
-    benchmark = benchmark,
+    emission_category = emission_category,
+    grouping_emission = grouping_emission,
     scenario = scenario,
     year = year,
-    equal_weight_emission_profile = equal_weight_emission_profile,
-    worst_case_emission_profile = worst_case_emission_profile,
-    best_case_emission_profile = best_case_emission_profile
+    emissions_profile_equal_weight = emissions_profile_equal_weight,
+    emissions_profile_worst_case = emissions_profile_worst_case,
+    emissions_profile_best_case = emissions_profile_best_case
   )
 }
 

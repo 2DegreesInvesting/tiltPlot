@@ -4,7 +4,7 @@ test_that("returns an object of the expected class", {
     !!aka("year") := 1,
     !!aka("tilt_sector") := "t"
   )
-  p <- scatter_plot_financial(data, benchmarks(), scenario = "IPR", year = 1)
+  p <- scatter_plot_financial(data, grouping_emission(), scenario = "IPR", year = 1)
   expect_s3_class(p, "ggplot")
 })
 
@@ -14,7 +14,7 @@ test_that("returns correct risk categories values", {
     !!aka("year") := 1,
     !!aka("tilt_sector") := "t"
   )
-  p <- scatter_plot_financial(data, benchmarks(), scenario = "IPR", year = 1)
+  p <- scatter_plot_financial(data, grouping_emission(), scenario = "IPR", year = 1)
   risk_var <- data |> tiltIndicator:::extract_name(pattern(aka("risk_category")))
   risk_names <- unique(p |> plot_data(risk_var))
   possible_names <- c(risk_category_levels(), "other")
@@ -27,10 +27,10 @@ test_that("returns correct benchmarks values", {
     !!aka("year") := 1,
     !!aka("tilt_sector") := "t"
   )
-  p <- scatter_plot_financial(data, benchmarks(), scenario = "IPR", year = 1)
-  benchmarks <- unique(p |> plot_data("benchmark"))
+  p <- scatter_plot_financial(data, grouping_emission(), scenario = "IPR", year = 1)
+  benchmarks <- unique(p |> plot_data("grouping_emission"))
   expected_benchmarks <- data |>
-    pull(benchmark) |>
+    pull(grouping_emission) |>
     unique()
   expect_true(all(benchmarks %in% expected_benchmarks))
 })

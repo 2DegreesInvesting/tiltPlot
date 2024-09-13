@@ -61,6 +61,6 @@ label_emission_profile <- function() "emission profile"
 label_risk_categories <- function() "risk categories"
 label_tilt_sector <- function() "tilt sector"
 transition_risk_legend <- function() "transition risk score"
-emission_profile_legend <- function() "emission rank"
+emission_category_legend <- function() "emission rank"
 
 format_label <- toTitleCase

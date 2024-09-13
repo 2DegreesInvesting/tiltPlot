@@ -9,16 +9,16 @@
 #'
 #' @examples
 #' # Plot with equal weight and with company name
-#' plot_sankey(financial)
+#' plot_sankey(financial, grouping_emission = "all")
 #'
-#' # Plot with best_case weight and benchmark "all".
-#' plot_sankey(financial, benchmark = "all", mode = "best_case")
+#' # Plot with best_case weight and grouping_emission "all".
+#' plot_sankey(financial, grouping_emission = "all", mode = "best_case")
 plot_sankey <- function(data,
                         with_company = TRUE,
-                        benchmark = benchmarks(),
+                        grouping_emission = grouping_emission(),
                         mode = c("equal_weight", "worst_case", "best_case")) {
   mode <- arg_match(mode)
-  benchmark <- arg_match(benchmark)
+  grouping_emission <- arg_match(grouping_emission)
 
   crucial <- c(
     aka("risk_category"),
@@ -30,7 +30,7 @@ plot_sankey <- function(data,
   risk_var <- names_matching(data, aka("risk_category"))
 
   data <- data |>
-    filter(.data$benchmark == .env$benchmark) |>
+    filter(.data$grouping_emission == .env$grouping_emission) |>
     distinct(.data$bank_id,
       .data$company_name,
       .data$ep_product,

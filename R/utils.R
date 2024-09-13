@@ -76,9 +76,9 @@ switch_mode <- function(mode) {
 #' @noRd
 switch_mode_emission_profile <- function(mode) {
   switch(mode,
-    "equal_weight" = "equal_weight_emission_profile",
-    "worst_case" = "worst_case_emission_profile",
-    "best_case" = "best_case_emission_profile"
+    "equal_weight" = "emissions_profile_equal_weight",
+    "worst_case" = "emissions_profile_worst_case",
+    "best_case" = "emissions_profile_best_case"
   )
 }
 
@@ -145,7 +145,7 @@ add <- function(x) sum(x, na.rm = TRUE)
 
 risk_category_levels <- function() c("low", "medium", "high")
 
-#' Benchmarks used in the functions' arguments.
+#' benchmarks used in the functions' arguments.
 #'
 #' @examples
 #' benchmarks()
@@ -170,19 +170,19 @@ benchmarks <- function() {
 dictionary <- function() {
   #styler: off
   tibble::tribble(
-                      ~aka,                         ~column,
-               "best_case",    "best_case_emission_profile",
-            "companies_id",                  "companies_id",
-       "europages_product",                    "ep_product",
-            "equal_weight", "equal_weight_emission_profile",
-         "profile_ranking",               "profile_ranking",
-           "risk_category",              "emission_profile",
-                "scenario",                      "scenario",
-   "transition_risk_score",         "transition_risk_score",
-         "transition_risk",               "transition_risk",
-             "tilt_sector",                   "tilt_sector",
-                    "year",                          "year",
-              "worst_case",   "worst_case_emission_profile"
+                      ~aka,                          ~column,
+               "best_case",    "emissions_profile_best_case",
+            "companies_id",                   "companies_id",
+       "europages_product",                     "ep_product",
+            "equal_weight", "emissions_profile_equal_weight",
+         "profile_ranking",                "profile_ranking",
+           "risk_category",              "emission_category",
+                "scenario",                       "scenario",
+   "transition_risk_score",          "transition_risk_score",
+         "transition_risk",                "transition_risk",
+             "tilt_sector",                    "tilt_sector",
+                    "year",                           "year",
+              "worst_case",   "emissions_profile_worst_case"
    )
   # styler: on
 }
@@ -238,5 +238,34 @@ years <- function() {
   c(
     2030,
     2050
+  )
+}
+
+#' Risk categories
+#'
+#' @keywords internal
+#' @export
+risk_category <- function() {
+  c(
+    "emission_category",
+    "sector_category",
+    "transition_risk_category"
+  )
+}
+
+#' grouping_emission used in the functions' arguments.
+#'
+#' @examples
+#' grouping_emission()
+#' @keywords internal
+#' @export
+grouping_emission <- function() {
+  c(
+    "all",
+    "isic_4digit",
+    "tilt_sector",
+    "unit",
+    "unit_isic_4digit",
+    "unit_tilt_sector"
   )
 }

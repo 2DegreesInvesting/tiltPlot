@@ -2,12 +2,12 @@
 % Please edit documentation in R/utils.R
 \name{benchmarks}
 \alias{benchmarks}
-\title{Benchmarks used in the functions' arguments.}
+\title{benchmarks used in the functions' arguments.}
 \usage{
 benchmarks()
 }
 \description{
-Benchmarks used in the functions' arguments.
+benchmarks used in the functions' arguments.
 }
 \examples{
 benchmarks()

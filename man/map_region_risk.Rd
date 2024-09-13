@@ -8,10 +8,11 @@ financial data.}
 map_region_risk(
   data,
   country_code = c("DE"),
-  benchmark = benchmarks(),
+  grouping_emission = grouping_emission(),
   mode = modes(),
   scenario = scenarios(),
-  year = years()
+  year = years(),
+  risk_category = risk_category()
 )
 }
 \arguments{
@@ -20,7 +21,7 @@ map_region_risk(
 \item{country_code}{Country code (ISO 3166 alpha-2) for which the map will be
 plotted.}
 
-\item{benchmark}{The mode of benchmark to plot.
+\item{grouping_emission}{The mode of benchmark to plot.
 It can be one of "all", "unit" or "tilt_sector", "unit_tilt_sector",
 "isic_4digit" or "unit_isic_4digit". If nothing is chosen, "all" is the
 default mode.}
@@ -31,6 +32,8 @@ or "best_case". If nothing is chosen, "equal_weight" is the default mode.}
 \item{scenario}{A character vector: 1.5C RPS, NZ 2050.}
 
 \item{year}{A character vector: 2030, 2050.}
+
+\item{risk_category}{A character vector.}
 }
 \value{
 A ggplot2 object representing the country data plot.

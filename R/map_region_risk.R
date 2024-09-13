@@ -4,7 +4,7 @@
 #' @param data A data frame like [without_financial]
 #' @param country_code Country code (ISO 3166 alpha-2) for which the map will be
 #' plotted.
-#' @param benchmark The mode of benchmark to plot.
+#' @param grouping_emission The mode of benchmark to plot.
 #' It can be one of "all", "unit" or "tilt_sector", "unit_tilt_sector",
 #' "isic_4digit" or "unit_isic_4digit". If nothing is chosen, "all" is the
 #' default mode.
@@ -12,6 +12,7 @@
 #' or "best_case". If nothing is chosen, "equal_weight" is the default mode.
 #' @param scenario A character vector: `r toString(scenarios())`.
 #' @param year A character vector: `r toString(years())`.
+#' @param risk_category A character vector.
 #'
 #' @return A ggplot2 object representing the country data plot.
 #' @export
@@ -24,17 +25,19 @@
 map_region_risk <- function(data,
                             # TODO: plot for other countries
                             country_code = c("DE"),
-                            benchmark = benchmarks(),
+                            grouping_emission = grouping_emission(),
                             mode = modes(),
                             scenario = scenarios(),
-                            year = years()) {
+                            year = years(),
+                            risk_category = risk_category()) {
   prepared_data <- prepare_geo_data(
     data,
     country_code,
-    benchmark,
+    grouping_emission,
     mode,
     scenario,
-    year
+    year,
+    risk_category
   )
   shp_1 <- prepared_data[[1]]
   aggregated_data <- prepared_data[[2]]

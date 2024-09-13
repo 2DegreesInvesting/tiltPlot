@@ -7,7 +7,7 @@
 plot_sankey(
   data,
   with_company = TRUE,
-  benchmark = benchmarks(),
+  grouping_emission = grouping_emission(),
   mode = c("equal_weight", "worst_case", "best_case")
 )
 }
@@ -17,7 +17,7 @@ plot_sankey(
 \item{with_company}{Logical. If TRUE, will plot a node with the company name.
 If FALSE, will plot without the company name node.}
 
-\item{benchmark}{The mode of benchmark to plot.
+\item{grouping_emission}{The mode of benchmark to plot.
 It can be one of "all", "unit" or "tilt_sector", "unit_tilt_sector",
 "isic_4digit" or "unit_isic_4digit". If nothing is chosen, "all" is the
 default mode.}
@@ -33,8 +33,8 @@ Create a sankey plot with financial data
 }
 \examples{
 # Plot with equal weight and with company name
-plot_sankey(financial)
+plot_sankey(financial, grouping_emission = "all")
 
-# Plot with best_case weight and benchmark "all".
-plot_sankey(financial, benchmark = "all", mode = "best_case")
+# Plot with best_case weight and grouping_emission "all".
+plot_sankey(financial, grouping_emission = "all", mode = "best_case")
 }

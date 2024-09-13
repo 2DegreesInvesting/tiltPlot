@@ -9,14 +9,13 @@
 #'
 prepare_geo_data <- function(data,
                              country_code = c("DE"),
-                             benchmark = benchmarks(),
+                             grouping_emission = grouping_emission(),
                              mode = modes(),
                              scenario = scenarios(),
-                             year = years()) {
-  benchmark <- arg_match(benchmark)
-  mode <- mode |>
-    arg_match() |>
-    switch_mode_emission_profile()
+                             year = years(),
+                             risk_category = risk_category()) {
+  grouping_emission <- arg_match(grouping_emission)
+  risk_category <- arg_match(risk_category)
   country_code <- arg_match(country_code)
   scenario <- arg_match(scenario)
   year <- year
@@ -25,14 +24,11 @@ prepare_geo_data <- function(data,
     aka("risk_category"),
     aka("companies_id"),
     "postcode",
-    "benchmark",
+    "grouping_emission",
     "scenario",
     aka("year")
   )
   data |> check_crucial_names(names_matching(data, crucial))
-  risk_var <- get_colname(data, aka("risk_category"))
-  data <- data |>
-    mutate(risk_category_var = as_risk_category(data[[risk_var]]))
 
   shp_0 <- get_eurostat_geospatial(
     resolution = 10,
@@ -50,19 +46,20 @@ prepare_geo_data <- function(data,
 
   # merge to have zip codes with NUTS file
   shp_1 <- shp_1 |>
-    inner_join(nuts_de, by = "geo")
+    inner_join(nuts_de, by = "geo") |>
+    mutate(postcode = as.character(postcode))
 
   # merge shapefile with financial data
   geo <- data |>
     filter(
-      .data$benchmark == .env$benchmark,
+      .data$grouping_emission == .env$grouping_emission,
       .data$scenario == .env$scenario,
       .data$year == .env$year
     ) |>
     left_join(shp_1, by = "postcode") |>
     st_as_sf()
 
-  aggregated_data <- aggregate_geo(geo, mode)
+  aggregated_data <- aggregate_geo(geo, mode, risk_category)
 
   list(shp_1, aggregated_data)
 }
@@ -84,15 +81,15 @@ prepare_geo_data <- function(data,
 #' geo <- tibble(
 #'   postcode = c("1", "2", "3"),
 #'   company_name = c("A", "B", "C"),
-#'   risk_category_var = factor(c("low", "medium", "high"),
+#'   emission_profile = factor(c("low", "medium", "high"),
 #'     levels = c("low", "medium", "high")
 #'   )
 #' )
 #'
-#' aggregate_geo(geo, mode = "worst_case")
-aggregate_geo <- function(geo, mode) {
+#' aggregate_geo(geo, mode = "emissions_profile_worst_case", risk_category = "emission_category")
+aggregate_geo <- function(geo, mode, risk_category) {
   aggregated_data <- geo |>
-    group_by(.data$postcode, .data$risk_category_var) |>
+    group_by(.data$postcode, .data[[risk_category]]) |>
     summarise(total_mode = sum(.data[[mode]])) |>
     group_by(.data$postcode) |>
     mutate(proportion = total_mode / sum(total_mode)) |>
@@ -100,7 +97,7 @@ aggregate_geo <- function(geo, mode) {
 
   # Pivot
   aggregated_data <- aggregated_data |>
-    pivot_wider(names_from = "risk_category_var", values_from = "proportion", values_fill = 0) |>
+    pivot_wider(names_from = all_of(risk_category) , values_from = "proportion", values_fill = 0) |>
     filter(.data$total_mode != 0)
 
   # Calculate color row by row

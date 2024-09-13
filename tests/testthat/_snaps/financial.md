@@ -3,271 +3,271 @@
     Code
       as.data.frame(financial)
     Output
-          bank_id amount_total company_name postcode        benchmark ep_product
-      1    bank_a         1000       tilman    12043              all        car
-      2    bank_a         1000       tilman    12043              all    tractor
-      3    bank_a         1000       tilman    12043              all      steel
-      4    bank_a         1000       tilman    12043              all        car
-      5    bank_a         1000       tilman    12043              all    tractor
-      6    bank_a         1000       tilman    12043              all      steel
-      7    bank_a         1000       tilman    12043              all        car
-      8    bank_a         1000       tilman    12043              all    tractor
-      9    bank_a         1000       tilman    12043              all      steel
-      10   bank_a         1000       tilman    12043              all        car
-      11   bank_a         1000       tilman    12043              all    tractor
-      12   bank_a         1000       tilman    12043              all      steel
-      13   bank_b          500       tilman    12043              all        car
-      14   bank_b          500       tilman    12043              all    tractor
-      15   bank_b          500       tilman    12043              all      steel
-      16   bank_b          500       tilman    12043              all        car
-      17   bank_b          500       tilman    12043              all    tractor
-      18   bank_b          500       tilman    12043              all      steel
-      19   bank_b          500       tilman    12043              all        car
-      20   bank_b          500       tilman    12043              all    tractor
-      21   bank_b          500       tilman    12043              all      steel
-      22   bank_b          500       tilman    12043              all        car
-      23   bank_b          500       tilman    12043              all    tractor
-      24   bank_b          500       tilman    12043              all      steel
-      25   bank_a         1000        bruno    27568              all      truck
-      26   bank_a         1000        bruno    27568              all        car
-      27   bank_a         1000        bruno    27568              all      steel
-      28   bank_a         1000        bruno    27568              all      truck
-      29   bank_a         1000        bruno    27568              all        car
-      30   bank_a         1000        bruno    27568              all      steel
-      31   bank_a         1000        bruno    27568              all      truck
-      32   bank_a         1000        bruno    27568              all        car
-      33   bank_a         1000        bruno    27568              all      steel
-      34   bank_a         1000        bruno    27568              all      truck
-      35   bank_a         1000        bruno    27568              all        car
-      36   bank_a         1000        bruno    27568              all      steel
-      37   bank_a         1000        mirja    34117              all      truck
-      38   bank_a         1000        mirja    34117              all     cattle
-      39   bank_a         1000        mirja    34117              all      truck
-      40   bank_a         1000        mirja    34117              all     cattle
-      41   bank_a         1000        mirja    34117              all      truck
-      42   bank_a         1000        mirja    34117              all     cattle
-      43   bank_a         1000        mirja    34117              all      truck
-      44   bank_a         1000        mirja    34117              all     cattle
-      45   bank_a         1000       tilman    12043      isic_4digit        car
-      46   bank_a         1000       tilman    12043      isic_4digit    tractor
-      47   bank_a         1000       tilman    12043      isic_4digit      steel
-      48   bank_a         1000       tilman    12043      isic_4digit        car
-      49   bank_a         1000       tilman    12043      isic_4digit    tractor
-      50   bank_a         1000       tilman    12043      isic_4digit      steel
-      51   bank_a         1000       tilman    12043      isic_4digit        car
-      52   bank_a         1000       tilman    12043      isic_4digit    tractor
-      53   bank_a         1000       tilman    12043      isic_4digit      steel
-      54   bank_a         1000       tilman    12043      isic_4digit        car
-      55   bank_a         1000       tilman    12043      isic_4digit    tractor
-      56   bank_a         1000       tilman    12043      isic_4digit      steel
-      57   bank_b          500       tilman    12043      isic_4digit        car
-      58   bank_b          500       tilman    12043      isic_4digit    tractor
-      59   bank_b          500       tilman    12043      isic_4digit      steel
-      60   bank_b          500       tilman    12043      isic_4digit        car
-      61   bank_b          500       tilman    12043      isic_4digit    tractor
-      62   bank_b          500       tilman    12043      isic_4digit      steel
-      63   bank_b          500       tilman    12043      isic_4digit        car
-      64   bank_a         1000       tilman    12043      tilt_sector        car
-      65   bank_a         1000       tilman    12043      tilt_sector    tractor
-      66   bank_a         1000       tilman    12043      tilt_sector      steel
-      67   bank_a         1000       tilman    12043      tilt_sector        car
-      68   bank_a         1000       tilman    12043      tilt_sector    tractor
-      69   bank_a         1000       tilman    12043      tilt_sector      steel
-      70   bank_a         1000       tilman    12043      tilt_sector        car
-      71   bank_a         1000       tilman    12043      tilt_sector    tractor
-      72   bank_a         1000       tilman    12043      tilt_sector      steel
-      73   bank_a         1000       tilman    12043      tilt_sector        car
-      74   bank_a         1000       tilman    12043      tilt_sector    tractor
-      75   bank_a         1000       tilman    12043      tilt_sector      steel
-      76   bank_b          500       tilman    12043      tilt_sector        car
-      77   bank_b          500       tilman    12043      tilt_sector    tractor
-      78   bank_b          500       tilman    12043      tilt_sector      steel
-      79   bank_b          500       tilman    12043      tilt_sector        car
-      80   bank_b          500       tilman    12043      tilt_sector    tractor
-      81   bank_b          500       tilman    12043      tilt_sector      steel
-      82   bank_b          500       tilman    12043      tilt_sector        car
-      83   bank_a         1000       tilman    12043             unit        car
-      84   bank_a         1000       tilman    12043             unit    tractor
-      85   bank_a         1000       tilman    12043             unit      steel
-      86   bank_a         1000       tilman    12043             unit        car
-      87   bank_a         1000       tilman    12043             unit    tractor
-      88   bank_a         1000       tilman    12043             unit      steel
-      89   bank_a         1000       tilman    12043             unit        car
-      90   bank_a         1000       tilman    12043             unit    tractor
-      91   bank_a         1000       tilman    12043             unit      steel
-      92   bank_a         1000       tilman    12043             unit        car
-      93   bank_a         1000       tilman    12043             unit    tractor
-      94   bank_a         1000       tilman    12043             unit      steel
-      95   bank_b          500       tilman    12043             unit        car
-      96   bank_b          500       tilman    12043             unit    tractor
-      97   bank_b          500       tilman    12043             unit      steel
-      98   bank_b          500       tilman    12043             unit        car
-      99   bank_b          500       tilman    12043             unit    tractor
-      100  bank_b          500       tilman    12043             unit      steel
-      101  bank_b          500       tilman    12043             unit        car
-      102  bank_a         1000       tilman    12043 unit_isic_4digit        car
-      103  bank_a         1000       tilman    12043 unit_isic_4digit    tractor
-      104  bank_a         1000       tilman    12043 unit_isic_4digit      steel
-      105  bank_a         1000       tilman    12043 unit_isic_4digit        car
-      106  bank_a         1000       tilman    12043 unit_isic_4digit    tractor
-      107  bank_a         1000       tilman    12043 unit_isic_4digit      steel
-      108  bank_a         1000       tilman    12043 unit_isic_4digit        car
-      109  bank_a         1000       tilman    12043 unit_isic_4digit    tractor
-      110  bank_a         1000       tilman    12043 unit_isic_4digit      steel
-      111  bank_a         1000       tilman    12043 unit_isic_4digit        car
-      112  bank_a         1000       tilman    12043 unit_isic_4digit    tractor
-      113  bank_a         1000       tilman    12043 unit_isic_4digit      steel
-      114  bank_b          500       tilman    12043 unit_isic_4digit        car
-      115  bank_b          500       tilman    12043 unit_isic_4digit    tractor
-      116  bank_b          500       tilman    12043 unit_isic_4digit      steel
-      117  bank_b          500       tilman    12043 unit_isic_4digit        car
-      118  bank_b          500       tilman    12043 unit_isic_4digit    tractor
-      119  bank_b          500       tilman    12043 unit_isic_4digit      steel
-      120  bank_b          500       tilman    12043 unit_isic_4digit        car
-      121  bank_a         1000       tilman    12043 unit_tilt_sector        car
-      122  bank_a         1000       tilman    12043 unit_tilt_sector    tractor
-      123  bank_a         1000       tilman    12043 unit_tilt_sector      steel
-      124  bank_a         1000       tilman    12043 unit_tilt_sector        car
-      125  bank_a         1000       tilman    12043 unit_tilt_sector    tractor
-      126  bank_a         1000       tilman    12043 unit_tilt_sector      steel
-      127  bank_a         1000       tilman    12043 unit_tilt_sector        car
-      128  bank_a         1000       tilman    12043 unit_tilt_sector    tractor
-      129  bank_a         1000       tilman    12043 unit_tilt_sector      steel
-      130  bank_a         1000       tilman    12043 unit_tilt_sector        car
-      131  bank_a         1000       tilman    12043 unit_tilt_sector    tractor
-      132  bank_a         1000       tilman    12043 unit_tilt_sector      steel
-      133  bank_b          500       tilman    12043 unit_tilt_sector        car
-      134  bank_b          500       tilman    12043 unit_tilt_sector    tractor
-      135  bank_b          500       tilman    12043 unit_tilt_sector      steel
-      136  bank_b          500       tilman    12043 unit_tilt_sector        car
-      137  bank_b          500       tilman    12043 unit_tilt_sector    tractor
-      138  bank_b          500       tilman    12043 unit_tilt_sector      steel
-      139  bank_b          500       tilman    12043 unit_tilt_sector        car
-      140  bank_b          500       tilman    12043      isic_4digit    tractor
-      141  bank_b          500       tilman    12043      isic_4digit      steel
-      142  bank_b          500       tilman    12043      isic_4digit        car
-      143  bank_b          500       tilman    12043      isic_4digit    tractor
-      144  bank_b          500       tilman    12043      isic_4digit      steel
-      145  bank_a         1000        bruno    27568      isic_4digit      truck
-      146  bank_a         1000        bruno    27568      isic_4digit        car
-      147  bank_a         1000        bruno    27568      isic_4digit      steel
-      148  bank_a         1000        bruno    27568      isic_4digit      truck
-      149  bank_a         1000        bruno    27568      isic_4digit        car
-      150  bank_a         1000        bruno    27568      isic_4digit      steel
-      151  bank_a         1000        bruno    27568      isic_4digit      truck
-      152  bank_a         1000        bruno    27568      isic_4digit        car
-      153  bank_a         1000        bruno    27568      isic_4digit      steel
-      154  bank_a         1000        bruno    27568      isic_4digit      truck
-      155  bank_a         1000        bruno    27568      isic_4digit        car
-      156  bank_a         1000        bruno    27568      isic_4digit      steel
-      157  bank_a         1000        mirja    34117      isic_4digit      truck
-      158  bank_a         1000        mirja    34117      isic_4digit     cattle
-      159  bank_a         1000        mirja    34117      isic_4digit      truck
-      160  bank_a         1000        mirja    34117      isic_4digit     cattle
-      161  bank_a         1000        mirja    34117      isic_4digit      truck
-      162  bank_a         1000        mirja    34117      isic_4digit     cattle
-      163  bank_a         1000        mirja    34117      isic_4digit      truck
-      164  bank_a         1000        mirja    34117      isic_4digit     cattle
-      165  bank_b          500       tilman    12043      tilt_sector    tractor
-      166  bank_b          500       tilman    12043      tilt_sector      steel
-      167  bank_b          500       tilman    12043      tilt_sector        car
-      168  bank_b          500       tilman    12043      tilt_sector    tractor
-      169  bank_b          500       tilman    12043      tilt_sector      steel
-      170  bank_a         1000        bruno    27568      tilt_sector      truck
-      171  bank_a         1000        bruno    27568      tilt_sector        car
-      172  bank_a         1000        bruno    27568      tilt_sector      steel
-      173  bank_a         1000        bruno    27568      tilt_sector      truck
-      174  bank_a         1000        bruno    27568      tilt_sector        car
-      175  bank_a         1000        bruno    27568      tilt_sector      steel
-      176  bank_a         1000        bruno    27568      tilt_sector      truck
-      177  bank_a         1000        bruno    27568      tilt_sector        car
-      178  bank_a         1000        bruno    27568      tilt_sector      steel
-      179  bank_a         1000        bruno    27568      tilt_sector      truck
-      180  bank_a         1000        bruno    27568      tilt_sector        car
-      181  bank_a         1000        bruno    27568      tilt_sector      steel
-      182  bank_a         1000        mirja    34117      tilt_sector      truck
-      183  bank_a         1000        mirja    34117      tilt_sector     cattle
-      184  bank_a         1000        mirja    34117      tilt_sector      truck
-      185  bank_a         1000        mirja    34117      tilt_sector     cattle
-      186  bank_a         1000        mirja    34117      tilt_sector      truck
-      187  bank_a         1000        mirja    34117      tilt_sector     cattle
-      188  bank_a         1000        mirja    34117      tilt_sector      truck
-      189  bank_a         1000        mirja    34117      tilt_sector     cattle
-      190  bank_b          500       tilman    12043             unit    tractor
-      191  bank_b          500       tilman    12043             unit      steel
-      192  bank_b          500       tilman    12043             unit        car
-      193  bank_b          500       tilman    12043             unit    tractor
-      194  bank_b          500       tilman    12043             unit      steel
-      195  bank_a         1000        bruno    27568             unit      truck
-      196  bank_a         1000        bruno    27568             unit        car
-      197  bank_a         1000        bruno    27568             unit      steel
-      198  bank_a         1000        bruno    27568             unit      truck
-      199  bank_a         1000        bruno    27568             unit        car
-      200  bank_a         1000        bruno    27568             unit      steel
-      201  bank_a         1000        bruno    27568             unit      truck
-      202  bank_a         1000        bruno    27568             unit        car
-      203  bank_a         1000        bruno    27568             unit      steel
-      204  bank_a         1000        bruno    27568             unit      truck
-      205  bank_a         1000        bruno    27568             unit        car
-      206  bank_a         1000        bruno    27568             unit      steel
-      207  bank_a         1000        mirja    34117             unit      truck
-      208  bank_a         1000        mirja    34117             unit     cattle
-      209  bank_a         1000        mirja    34117             unit      truck
-      210  bank_a         1000        mirja    34117             unit     cattle
-      211  bank_a         1000        mirja    34117             unit      truck
-      212  bank_a         1000        mirja    34117             unit     cattle
-      213  bank_a         1000        mirja    34117             unit      truck
-      214  bank_a         1000        mirja    34117             unit     cattle
-      215  bank_b          500       tilman    12043 unit_tilt_sector    tractor
-      216  bank_b          500       tilman    12043 unit_tilt_sector      steel
-      217  bank_b          500       tilman    12043 unit_tilt_sector        car
-      218  bank_b          500       tilman    12043 unit_tilt_sector    tractor
-      219  bank_b          500       tilman    12043 unit_tilt_sector      steel
-      220  bank_a         1000        bruno    27568 unit_tilt_sector      truck
-      221  bank_a         1000        bruno    27568 unit_tilt_sector        car
-      222  bank_a         1000        bruno    27568 unit_tilt_sector      steel
-      223  bank_a         1000        bruno    27568 unit_tilt_sector      truck
-      224  bank_a         1000        bruno    27568 unit_tilt_sector        car
-      225  bank_a         1000        bruno    27568 unit_tilt_sector      steel
-      226  bank_a         1000        bruno    27568 unit_tilt_sector      truck
-      227  bank_a         1000        bruno    27568 unit_tilt_sector        car
-      228  bank_a         1000        bruno    27568 unit_tilt_sector      steel
-      229  bank_a         1000        bruno    27568 unit_tilt_sector      truck
-      230  bank_a         1000        bruno    27568 unit_tilt_sector        car
-      231  bank_a         1000        bruno    27568 unit_tilt_sector      steel
-      232  bank_a         1000        mirja    34117 unit_tilt_sector      truck
-      233  bank_a         1000        mirja    34117 unit_tilt_sector     cattle
-      234  bank_a         1000        mirja    34117 unit_tilt_sector      truck
-      235  bank_a         1000        mirja    34117 unit_tilt_sector     cattle
-      236  bank_a         1000        mirja    34117 unit_tilt_sector      truck
-      237  bank_a         1000        mirja    34117 unit_tilt_sector     cattle
-      238  bank_a         1000        mirja    34117 unit_tilt_sector      truck
-      239  bank_a         1000        mirja    34117 unit_tilt_sector     cattle
-      240  bank_b          500       tilman    12043 unit_isic_4digit    tractor
-      241  bank_b          500       tilman    12043 unit_isic_4digit      steel
-      242  bank_b          500       tilman    12043 unit_isic_4digit        car
-      243  bank_b          500       tilman    12043 unit_isic_4digit    tractor
-      244  bank_b          500       tilman    12043 unit_isic_4digit      steel
-      245  bank_a         1000        bruno    27568 unit_isic_4digit      truck
-      246  bank_a         1000        bruno    27568 unit_isic_4digit        car
-      247  bank_a         1000        bruno    27568 unit_isic_4digit      steel
-      248  bank_a         1000        bruno    27568 unit_isic_4digit      truck
-      249  bank_a         1000        bruno    27568 unit_isic_4digit        car
-      250  bank_a         1000        bruno    27568 unit_isic_4digit      steel
-      251  bank_a         1000        bruno    27568 unit_isic_4digit      truck
-      252  bank_a         1000        bruno    27568 unit_isic_4digit        car
-      253  bank_a         1000        bruno    27568 unit_isic_4digit      steel
-      254  bank_a         1000        bruno    27568 unit_isic_4digit      truck
-      255  bank_a         1000        bruno    27568 unit_isic_4digit        car
-      256  bank_a         1000        bruno    27568 unit_isic_4digit      steel
-      257  bank_a         1000        mirja    34117 unit_isic_4digit      truck
-      258  bank_a         1000        mirja    34117 unit_isic_4digit     cattle
-      259  bank_a         1000        mirja    34117 unit_isic_4digit      truck
-      260  bank_a         1000        mirja    34117 unit_isic_4digit     cattle
-      261  bank_a         1000        mirja    34117 unit_isic_4digit      truck
-      262  bank_a         1000        mirja    34117 unit_isic_4digit     cattle
-      263  bank_a         1000        mirja    34117 unit_isic_4digit      truck
-      264  bank_a         1000        mirja    34117 unit_isic_4digit     cattle
+          bank_id amount_total company_name postcode grouping_emission ep_product
+      1    bank_a         1000       tilman    12043               all        car
+      2    bank_a         1000       tilman    12043               all    tractor
+      3    bank_a         1000       tilman    12043               all      steel
+      4    bank_a         1000       tilman    12043               all        car
+      5    bank_a         1000       tilman    12043               all    tractor
+      6    bank_a         1000       tilman    12043               all      steel
+      7    bank_a         1000       tilman    12043               all        car
+      8    bank_a         1000       tilman    12043               all    tractor
+      9    bank_a         1000       tilman    12043               all      steel
+      10   bank_a         1000       tilman    12043               all        car
+      11   bank_a         1000       tilman    12043               all    tractor
+      12   bank_a         1000       tilman    12043               all      steel
+      13   bank_b          500       tilman    12043               all        car
+      14   bank_b          500       tilman    12043               all    tractor
+      15   bank_b          500       tilman    12043               all      steel
+      16   bank_b          500       tilman    12043               all        car
+      17   bank_b          500       tilman    12043               all    tractor
+      18   bank_b          500       tilman    12043               all      steel
+      19   bank_b          500       tilman    12043               all        car
+      20   bank_b          500       tilman    12043               all    tractor
+      21   bank_b          500       tilman    12043               all      steel
+      22   bank_b          500       tilman    12043               all        car
+      23   bank_b          500       tilman    12043               all    tractor
+      24   bank_b          500       tilman    12043               all      steel
+      25   bank_a         1000        bruno    27568               all      truck
+      26   bank_a         1000        bruno    27568               all        car
+      27   bank_a         1000        bruno    27568               all      steel
+      28   bank_a         1000        bruno    27568               all      truck
+      29   bank_a         1000        bruno    27568               all        car
+      30   bank_a         1000        bruno    27568               all      steel
+      31   bank_a         1000        bruno    27568               all      truck
+      32   bank_a         1000        bruno    27568               all        car
+      33   bank_a         1000        bruno    27568               all      steel
+      34   bank_a         1000        bruno    27568               all      truck
+      35   bank_a         1000        bruno    27568               all        car
+      36   bank_a         1000        bruno    27568               all      steel
+      37   bank_a         1000        mirja    34117               all      truck
+      38   bank_a         1000        mirja    34117               all     cattle
+      39   bank_a         1000        mirja    34117               all      truck
+      40   bank_a         1000        mirja    34117               all     cattle
+      41   bank_a         1000        mirja    34117               all      truck
+      42   bank_a         1000        mirja    34117               all     cattle
+      43   bank_a         1000        mirja    34117               all      truck
+      44   bank_a         1000        mirja    34117               all     cattle
+      45   bank_a         1000       tilman    12043       isic_4digit        car
+      46   bank_a         1000       tilman    12043       isic_4digit    tractor
+      47   bank_a         1000       tilman    12043       isic_4digit      steel
+      48   bank_a         1000       tilman    12043       isic_4digit        car
+      49   bank_a         1000       tilman    12043       isic_4digit    tractor
+      50   bank_a         1000       tilman    12043       isic_4digit      steel
+      51   bank_a         1000       tilman    12043       isic_4digit        car
+      52   bank_a         1000       tilman    12043       isic_4digit    tractor
+      53   bank_a         1000       tilman    12043       isic_4digit      steel
+      54   bank_a         1000       tilman    12043       isic_4digit        car
+      55   bank_a         1000       tilman    12043       isic_4digit    tractor
+      56   bank_a         1000       tilman    12043       isic_4digit      steel
+      57   bank_b          500       tilman    12043       isic_4digit        car
+      58   bank_b          500       tilman    12043       isic_4digit    tractor
+      59   bank_b          500       tilman    12043       isic_4digit      steel
+      60   bank_b          500       tilman    12043       isic_4digit        car
+      61   bank_b          500       tilman    12043       isic_4digit    tractor
+      62   bank_b          500       tilman    12043       isic_4digit      steel
+      63   bank_b          500       tilman    12043       isic_4digit        car
+      64   bank_a         1000       tilman    12043       tilt_sector        car
+      65   bank_a         1000       tilman    12043       tilt_sector    tractor
+      66   bank_a         1000       tilman    12043       tilt_sector      steel
+      67   bank_a         1000       tilman    12043       tilt_sector        car
+      68   bank_a         1000       tilman    12043       tilt_sector    tractor
+      69   bank_a         1000       tilman    12043       tilt_sector      steel
+      70   bank_a         1000       tilman    12043       tilt_sector        car
+      71   bank_a         1000       tilman    12043       tilt_sector    tractor
+      72   bank_a         1000       tilman    12043       tilt_sector      steel
+      73   bank_a         1000       tilman    12043       tilt_sector        car
+      74   bank_a         1000       tilman    12043       tilt_sector    tractor
+      75   bank_a         1000       tilman    12043       tilt_sector      steel
+      76   bank_b          500       tilman    12043       tilt_sector        car
+      77   bank_b          500       tilman    12043       tilt_sector    tractor
+      78   bank_b          500       tilman    12043       tilt_sector      steel
+      79   bank_b          500       tilman    12043       tilt_sector        car
+      80   bank_b          500       tilman    12043       tilt_sector    tractor
+      81   bank_b          500       tilman    12043       tilt_sector      steel
+      82   bank_b          500       tilman    12043       tilt_sector        car
+      83   bank_a         1000       tilman    12043              unit        car
+      84   bank_a         1000       tilman    12043              unit    tractor
+      85   bank_a         1000       tilman    12043              unit      steel
+      86   bank_a         1000       tilman    12043              unit        car
+      87   bank_a         1000       tilman    12043              unit    tractor
+      88   bank_a         1000       tilman    12043              unit      steel
+      89   bank_a         1000       tilman    12043              unit        car
+      90   bank_a         1000       tilman    12043              unit    tractor
+      91   bank_a         1000       tilman    12043              unit      steel
+      92   bank_a         1000       tilman    12043              unit        car
+      93   bank_a         1000       tilman    12043              unit    tractor
+      94   bank_a         1000       tilman    12043              unit      steel
+      95   bank_b          500       tilman    12043              unit        car
+      96   bank_b          500       tilman    12043              unit    tractor
+      97   bank_b          500       tilman    12043              unit      steel
+      98   bank_b          500       tilman    12043              unit        car
+      99   bank_b          500       tilman    12043              unit    tractor
+      100  bank_b          500       tilman    12043              unit      steel
+      101  bank_b          500       tilman    12043              unit        car
+      102  bank_a         1000       tilman    12043  unit_isic_4digit        car
+      103  bank_a         1000       tilman    12043  unit_isic_4digit    tractor
+      104  bank_a         1000       tilman    12043  unit_isic_4digit      steel
+      105  bank_a         1000       tilman    12043  unit_isic_4digit        car
+      106  bank_a         1000       tilman    12043  unit_isic_4digit    tractor
+      107  bank_a         1000       tilman    12043  unit_isic_4digit      steel
+      108  bank_a         1000       tilman    12043  unit_isic_4digit        car
+      109  bank_a         1000       tilman    12043  unit_isic_4digit    tractor
+      110  bank_a         1000       tilman    12043  unit_isic_4digit      steel
+      111  bank_a         1000       tilman    12043  unit_isic_4digit        car
+      112  bank_a         1000       tilman    12043  unit_isic_4digit    tractor
+      113  bank_a         1000       tilman    12043  unit_isic_4digit      steel
+      114  bank_b          500       tilman    12043  unit_isic_4digit        car
+      115  bank_b          500       tilman    12043  unit_isic_4digit    tractor
+      116  bank_b          500       tilman    12043  unit_isic_4digit      steel
+      117  bank_b          500       tilman    12043  unit_isic_4digit        car
+      118  bank_b          500       tilman    12043  unit_isic_4digit    tractor
+      119  bank_b          500       tilman    12043  unit_isic_4digit      steel
+      120  bank_b          500       tilman    12043  unit_isic_4digit        car
+      121  bank_a         1000       tilman    12043  unit_tilt_sector        car
+      122  bank_a         1000       tilman    12043  unit_tilt_sector    tractor
+      123  bank_a         1000       tilman    12043  unit_tilt_sector      steel
+      124  bank_a         1000       tilman    12043  unit_tilt_sector        car
+      125  bank_a         1000       tilman    12043  unit_tilt_sector    tractor
+      126  bank_a         1000       tilman    12043  unit_tilt_sector      steel
+      127  bank_a         1000       tilman    12043  unit_tilt_sector        car
+      128  bank_a         1000       tilman    12043  unit_tilt_sector    tractor
+      129  bank_a         1000       tilman    12043  unit_tilt_sector      steel
+      130  bank_a         1000       tilman    12043  unit_tilt_sector        car
+      131  bank_a         1000       tilman    12043  unit_tilt_sector    tractor
+      132  bank_a         1000       tilman    12043  unit_tilt_sector      steel
+      133  bank_b          500       tilman    12043  unit_tilt_sector        car
+      134  bank_b          500       tilman    12043  unit_tilt_sector    tractor
+      135  bank_b          500       tilman    12043  unit_tilt_sector      steel
+      136  bank_b          500       tilman    12043  unit_tilt_sector        car
+      137  bank_b          500       tilman    12043  unit_tilt_sector    tractor
+      138  bank_b          500       tilman    12043  unit_tilt_sector      steel
+      139  bank_b          500       tilman    12043  unit_tilt_sector        car
+      140  bank_b          500       tilman    12043       isic_4digit    tractor
+      141  bank_b          500       tilman    12043       isic_4digit      steel
+      142  bank_b          500       tilman    12043       isic_4digit        car
+      143  bank_b          500       tilman    12043       isic_4digit    tractor
+      144  bank_b          500       tilman    12043       isic_4digit      steel
+      145  bank_a         1000        bruno    27568       isic_4digit      truck
+      146  bank_a         1000        bruno    27568       isic_4digit        car
+      147  bank_a         1000        bruno    27568       isic_4digit      steel
+      148  bank_a         1000        bruno    27568       isic_4digit      truck
+      149  bank_a         1000        bruno    27568       isic_4digit        car
+      150  bank_a         1000        bruno    27568       isic_4digit      steel
+      151  bank_a         1000        bruno    27568       isic_4digit      truck
+      152  bank_a         1000        bruno    27568       isic_4digit        car
+      153  bank_a         1000        bruno    27568       isic_4digit      steel
+      154  bank_a         1000        bruno    27568       isic_4digit      truck
+      155  bank_a         1000        bruno    27568       isic_4digit        car
+      156  bank_a         1000        bruno    27568       isic_4digit      steel
+      157  bank_a         1000        mirja    34117       isic_4digit      truck
+      158  bank_a         1000        mirja    34117       isic_4digit     cattle
+      159  bank_a         1000        mirja    34117       isic_4digit      truck
+      160  bank_a         1000        mirja    34117       isic_4digit     cattle
+      161  bank_a         1000        mirja    34117       isic_4digit      truck
+      162  bank_a         1000        mirja    34117       isic_4digit     cattle
+      163  bank_a         1000        mirja    34117       isic_4digit      truck
+      164  bank_a         1000        mirja    34117       isic_4digit     cattle
+      165  bank_b          500       tilman    12043       tilt_sector    tractor
+      166  bank_b          500       tilman    12043       tilt_sector      steel
+      167  bank_b          500       tilman    12043       tilt_sector        car
+      168  bank_b          500       tilman    12043       tilt_sector    tractor
+      169  bank_b          500       tilman    12043       tilt_sector      steel
+      170  bank_a         1000        bruno    27568       tilt_sector      truck
+      171  bank_a         1000        bruno    27568       tilt_sector        car
+      172  bank_a         1000        bruno    27568       tilt_sector      steel
+      173  bank_a         1000        bruno    27568       tilt_sector      truck
+      174  bank_a         1000        bruno    27568       tilt_sector        car
+      175  bank_a         1000        bruno    27568       tilt_sector      steel
+      176  bank_a         1000        bruno    27568       tilt_sector      truck
+      177  bank_a         1000        bruno    27568       tilt_sector        car
+      178  bank_a         1000        bruno    27568       tilt_sector      steel
+      179  bank_a         1000        bruno    27568       tilt_sector      truck
+      180  bank_a         1000        bruno    27568       tilt_sector        car
+      181  bank_a         1000        bruno    27568       tilt_sector      steel
+      182  bank_a         1000        mirja    34117       tilt_sector      truck
+      183  bank_a         1000        mirja    34117       tilt_sector     cattle
+      184  bank_a         1000        mirja    34117       tilt_sector      truck
+      185  bank_a         1000        mirja    34117       tilt_sector     cattle
+      186  bank_a         1000        mirja    34117       tilt_sector      truck
+      187  bank_a         1000        mirja    34117       tilt_sector     cattle
+      188  bank_a         1000        mirja    34117       tilt_sector      truck
+      189  bank_a         1000        mirja    34117       tilt_sector     cattle
+      190  bank_b          500       tilman    12043              unit    tractor
+      191  bank_b          500       tilman    12043              unit      steel
+      192  bank_b          500       tilman    12043              unit        car
+      193  bank_b          500       tilman    12043              unit    tractor
+      194  bank_b          500       tilman    12043              unit      steel
+      195  bank_a         1000        bruno    27568              unit      truck
+      196  bank_a         1000        bruno    27568              unit        car
+      197  bank_a         1000        bruno    27568              unit      steel
+      198  bank_a         1000        bruno    27568              unit      truck
+      199  bank_a         1000        bruno    27568              unit        car
+      200  bank_a         1000        bruno    27568              unit      steel
+      201  bank_a         1000        bruno    27568              unit      truck
+      202  bank_a         1000        bruno    27568              unit        car
+      203  bank_a         1000        bruno    27568              unit      steel
+      204  bank_a         1000        bruno    27568              unit      truck
+      205  bank_a         1000        bruno    27568              unit        car
+      206  bank_a         1000        bruno    27568              unit      steel
+      207  bank_a         1000        mirja    34117              unit      truck
+      208  bank_a         1000        mirja    34117              unit     cattle
+      209  bank_a         1000        mirja    34117              unit      truck
+      210  bank_a         1000        mirja    34117              unit     cattle
+      211  bank_a         1000        mirja    34117              unit      truck
+      212  bank_a         1000        mirja    34117              unit     cattle
+      213  bank_a         1000        mirja    34117              unit      truck
+      214  bank_a         1000        mirja    34117              unit     cattle
+      215  bank_b          500       tilman    12043  unit_tilt_sector    tractor
+      216  bank_b          500       tilman    12043  unit_tilt_sector      steel
+      217  bank_b          500       tilman    12043  unit_tilt_sector        car
+      218  bank_b          500       tilman    12043  unit_tilt_sector    tractor
+      219  bank_b          500       tilman    12043  unit_tilt_sector      steel
+      220  bank_a         1000        bruno    27568  unit_tilt_sector      truck
+      221  bank_a         1000        bruno    27568  unit_tilt_sector        car
+      222  bank_a         1000        bruno    27568  unit_tilt_sector      steel
+      223  bank_a         1000        bruno    27568  unit_tilt_sector      truck
+      224  bank_a         1000        bruno    27568  unit_tilt_sector        car
+      225  bank_a         1000        bruno    27568  unit_tilt_sector      steel
+      226  bank_a         1000        bruno    27568  unit_tilt_sector      truck
+      227  bank_a         1000        bruno    27568  unit_tilt_sector        car
+      228  bank_a         1000        bruno    27568  unit_tilt_sector      steel
+      229  bank_a         1000        bruno    27568  unit_tilt_sector      truck
+      230  bank_a         1000        bruno    27568  unit_tilt_sector        car
+      231  bank_a         1000        bruno    27568  unit_tilt_sector      steel
+      232  bank_a         1000        mirja    34117  unit_tilt_sector      truck
+      233  bank_a         1000        mirja    34117  unit_tilt_sector     cattle
+      234  bank_a         1000        mirja    34117  unit_tilt_sector      truck
+      235  bank_a         1000        mirja    34117  unit_tilt_sector     cattle
+      236  bank_a         1000        mirja    34117  unit_tilt_sector      truck
+      237  bank_a         1000        mirja    34117  unit_tilt_sector     cattle
+      238  bank_a         1000        mirja    34117  unit_tilt_sector      truck
+      239  bank_a         1000        mirja    34117  unit_tilt_sector     cattle
+      240  bank_b          500       tilman    12043  unit_isic_4digit    tractor
+      241  bank_b          500       tilman    12043  unit_isic_4digit      steel
+      242  bank_b          500       tilman    12043  unit_isic_4digit        car
+      243  bank_b          500       tilman    12043  unit_isic_4digit    tractor
+      244  bank_b          500       tilman    12043  unit_isic_4digit      steel
+      245  bank_a         1000        bruno    27568  unit_isic_4digit      truck
+      246  bank_a         1000        bruno    27568  unit_isic_4digit        car
+      247  bank_a         1000        bruno    27568  unit_isic_4digit      steel
+      248  bank_a         1000        bruno    27568  unit_isic_4digit      truck
+      249  bank_a         1000        bruno    27568  unit_isic_4digit        car
+      250  bank_a         1000        bruno    27568  unit_isic_4digit      steel
+      251  bank_a         1000        bruno    27568  unit_isic_4digit      truck
+      252  bank_a         1000        bruno    27568  unit_isic_4digit        car
+      253  bank_a         1000        bruno    27568  unit_isic_4digit      steel
+      254  bank_a         1000        bruno    27568  unit_isic_4digit      truck
+      255  bank_a         1000        bruno    27568  unit_isic_4digit        car
+      256  bank_a         1000        bruno    27568  unit_isic_4digit      steel
+      257  bank_a         1000        mirja    34117  unit_isic_4digit      truck
+      258  bank_a         1000        mirja    34117  unit_isic_4digit     cattle
+      259  bank_a         1000        mirja    34117  unit_isic_4digit      truck
+      260  bank_a         1000        mirja    34117  unit_isic_4digit     cattle
+      261  bank_a         1000        mirja    34117  unit_isic_4digit      truck
+      262  bank_a         1000        mirja    34117  unit_isic_4digit     cattle
+      263  bank_a         1000        mirja    34117  unit_isic_4digit      truck
+      264  bank_a         1000        mirja    34117  unit_isic_4digit     cattle
           co2_footprint_product tilt_sector tilt_subsector isic_4digit
       1                     0.1           D              d        4100
       2                     0.2           D              c        4100
@@ -798,271 +798,271 @@
       262                b                           2             500.0000
       263                a                           2             500.0000
       264                b                           2             500.0000
-          worst_case_finance best_case_finance emission_profile profile_ranking
-      1                  500                 0             high             0.7
-      2                  500                 0             high             0.7
-      3                    0              1000           medium             0.4
-      4                  500                 0             high             0.7
-      5                  500                 0             high             0.7
-      6                    0              1000           medium             0.4
-      7                  500                 0             high             0.7
-      8                  500                 0             high             0.7
-      9                    0              1000           medium             0.4
-      10                 500                 0             high             0.7
-      11                 500                 0             high             0.7
-      12                   0              1000           medium             0.4
-      13                 250                 0             high             0.7
-      14                 250                 0             high             0.7
-      15                   0               500           medium             0.4
-      16                 250                 0             high             0.7
-      17                 250                 0             high             0.7
-      18                   0               500           medium             0.4
-      19                 250                 0             high             0.7
-      20                 250                 0             high             0.7
-      21                   0               500           medium             0.4
-      22                 250                 0             high             0.7
-      23                 250                 0             high             0.7
-      24                   0               500           medium             0.4
-      25                   0              1000              low             0.1
-      26                1000                 0             high             0.7
-      27                   0                 0           medium             0.4
-      28                   0              1000              low             0.1
-      29                1000                 0             high             0.7
-      30                   0                 0           medium             0.4
-      31                   0              1000              low             0.1
-      32                1000                 0             high             0.7
-      33                   0                 0           medium             0.4
-      34                   0              1000              low             0.1
-      35                1000                 0             high             0.7
-      36                   0                 0           medium             0.4
-      37                   0              1000              low             0.1
-      38                1000                 0             high             0.7
-      39                   0              1000              low             0.1
-      40                1000                 0             high             0.7
-      41                   0              1000              low             0.1
-      42                1000                 0             high             0.7
-      43                   0              1000              low             0.1
-      44                1000                 0             high             0.7
-      45                 500                 0             high             0.7
-      46                 500                 0             high             0.7
-      47                   0              1000           medium             0.4
-      48                 500                 0             high             0.7
-      49                 500                 0             high             0.7
-      50                   0              1000           medium             0.4
-      51                 500                 0             high             0.7
-      52                 500                 0             high             0.7
-      53                   0              1000           medium             0.4
-      54                 500                 0             high             0.7
-      55                 500                 0             high             0.7
-      56                   0              1000           medium             0.4
-      57                 250                 0             high             0.7
-      58                 250                 0             high             0.7
-      59                   0               500           medium             0.4
-      60                 250                 0             high             0.7
-      61                 250                 0             high             0.7
-      62                   0               500           medium             0.4
-      63                 250                 0             high             0.7
-      64                 500                 0             high             0.7
-      65                 500                 0             high             0.7
-      66                   0              1000           medium             0.4
-      67                 500                 0             high             0.7
-      68                 500                 0             high             0.7
-      69                   0              1000           medium             0.4
-      70                 500                 0             high             0.7
-      71                 500                 0             high             0.7
-      72                   0              1000           medium             0.4
-      73                 500                 0             high             0.7
-      74                 500                 0             high             0.7
-      75                   0              1000           medium             0.4
-      76                 250                 0             high             0.7
-      77                 250                 0             high             0.7
-      78                   0               500           medium             0.4
-      79                 250                 0             high             0.7
-      80                 250                 0             high             0.7
-      81                   0               500           medium             0.4
-      82                 250                 0             high             0.7
-      83                 500                 0             high             0.7
-      84                 500                 0             high             0.7
-      85                   0              1000           medium             0.4
-      86                 500                 0             high             0.7
-      87                 500                 0             high             0.7
-      88                   0              1000           medium             0.4
-      89                 500                 0             high             0.7
-      90                 500                 0             high             0.7
-      91                   0              1000           medium             0.4
-      92                 500                 0             high             0.7
-      93                 500                 0             high             0.7
-      94                   0              1000           medium             0.4
-      95                 250                 0             high             0.7
-      96                 250                 0             high             0.7
-      97                   0               500           medium             0.4
-      98                 250                 0             high             0.7
-      99                 250                 0             high             0.7
-      100                  0               500           medium             0.4
-      101                250                 0             high             0.7
-      102                500                 0             high             0.7
-      103                500                 0             high             0.7
-      104                  0              1000           medium             0.4
-      105                500                 0             high             0.7
-      106                500                 0             high             0.7
-      107                  0              1000           medium             0.4
-      108                500                 0             high             0.7
-      109                500                 0             high             0.7
-      110                  0              1000           medium             0.4
-      111                500                 0             high             0.7
-      112                500                 0             high             0.7
-      113                  0              1000           medium             0.4
-      114                250                 0             high             0.7
-      115                250                 0             high             0.7
-      116                  0               500           medium             0.4
-      117                250                 0             high             0.7
-      118                250                 0             high             0.7
-      119                  0               500           medium             0.4
-      120                250                 0             high             0.7
-      121                500                 0             high             0.7
-      122                500                 0             high             0.7
-      123                  0              1000           medium             0.4
-      124                500                 0             high             0.7
-      125                500                 0             high             0.7
-      126                  0              1000           medium             0.4
-      127                500                 0             high             0.7
-      128                500                 0             high             0.7
-      129                  0              1000           medium             0.4
-      130                500                 0             high             0.7
-      131                500                 0             high             0.7
-      132                  0              1000           medium             0.4
-      133                250                 0             high             0.7
-      134                250                 0             high             0.7
-      135                  0               500           medium             0.4
-      136                250                 0             high             0.7
-      137                250                 0             high             0.7
-      138                  0               500           medium             0.4
-      139                250                 0             high             0.7
-      140                250                 0             high             0.7
-      141                  0               500           medium             0.4
-      142                250                 0             high             0.7
-      143                250                 0             high             0.7
-      144                  0               500           medium             0.4
-      145                  0              1000              low             0.1
-      146               1000                 0             high             0.7
-      147                  0                 0           medium             0.4
-      148                  0              1000              low             0.1
-      149               1000                 0             high             0.7
-      150                  0                 0           medium             0.4
-      151                  0              1000              low             0.1
-      152               1000                 0             high             0.7
-      153                  0                 0           medium             0.4
-      154                  0              1000              low             0.1
-      155               1000                 0             high             0.7
-      156                  0                 0           medium             0.4
-      157                  0              1000              low             0.1
-      158               1000                 0             high             0.7
-      159                  0              1000              low             0.1
-      160               1000                 0             high             0.7
-      161                  0              1000              low             0.1
-      162               1000                 0             high             0.7
-      163                  0              1000              low             0.1
-      164               1000                 0             high             0.7
-      165                250                 0             high             0.7
-      166                  0               500           medium             0.4
-      167                250                 0             high             0.7
-      168                250                 0             high             0.7
-      169                  0               500           medium             0.4
-      170                  0              1000              low             0.1
-      171               1000                 0             high             0.7
-      172                  0                 0           medium             0.4
-      173                  0              1000              low             0.1
-      174               1000                 0             high             0.7
-      175                  0                 0           medium             0.4
-      176                  0              1000              low             0.1
-      177               1000                 0             high             0.7
-      178                  0                 0           medium             0.4
-      179                  0              1000              low             0.1
-      180               1000                 0             high             0.7
-      181                  0                 0           medium             0.4
-      182                  0              1000              low             0.1
-      183               1000                 0             high             0.7
-      184                  0              1000              low             0.1
-      185               1000                 0             high             0.7
-      186                  0              1000              low             0.1
-      187               1000                 0             high             0.7
-      188                  0              1000              low             0.1
-      189               1000                 0             high             0.7
-      190                250                 0             high             0.7
-      191                  0               500           medium             0.4
-      192                250                 0             high             0.7
-      193                250                 0             high             0.7
-      194                  0               500           medium             0.4
-      195                  0              1000              low             0.1
-      196               1000                 0             high             0.7
-      197                  0                 0           medium             0.4
-      198                  0              1000              low             0.1
-      199               1000                 0             high             0.7
-      200                  0                 0           medium             0.4
-      201                  0              1000              low             0.1
-      202               1000                 0             high             0.7
-      203                  0                 0           medium             0.4
-      204                  0              1000              low             0.1
-      205               1000                 0             high             0.7
-      206                  0                 0           medium             0.4
-      207                  0              1000              low             0.1
-      208               1000                 0             high             0.7
-      209                  0              1000              low             0.1
-      210               1000                 0             high             0.7
-      211                  0              1000              low             0.1
-      212               1000                 0             high             0.7
-      213                  0              1000              low             0.1
-      214               1000                 0             high             0.7
-      215                250                 0             high             0.7
-      216                  0               500           medium             0.4
-      217                250                 0             high             0.7
-      218                250                 0             high             0.7
-      219                  0               500           medium             0.4
-      220                  0              1000              low             0.1
-      221               1000                 0             high             0.7
-      222                  0                 0           medium             0.4
-      223                  0              1000              low             0.1
-      224               1000                 0             high             0.7
-      225                  0                 0           medium             0.4
-      226                  0              1000              low             0.1
-      227               1000                 0             high             0.7
-      228                  0                 0           medium             0.4
-      229                  0              1000              low             0.1
-      230               1000                 0             high             0.7
-      231                  0                 0           medium             0.4
-      232                  0              1000              low             0.1
-      233               1000                 0             high             0.7
-      234                  0              1000              low             0.1
-      235               1000                 0             high             0.7
-      236                  0              1000              low             0.1
-      237               1000                 0             high             0.7
-      238                  0              1000              low             0.1
-      239               1000                 0             high             0.7
-      240                250                 0             high             0.7
-      241                  0               500           medium             0.4
-      242                250                 0             high             0.7
-      243                250                 0             high             0.7
-      244                  0               500           medium             0.4
-      245                  0              1000              low             0.1
-      246               1000                 0             high             0.7
-      247                  0                 0           medium             0.4
-      248                  0              1000              low             0.1
-      249               1000                 0             high             0.7
-      250                  0                 0           medium             0.4
-      251                  0              1000              low             0.1
-      252               1000                 0             high             0.7
-      253                  0                 0           medium             0.4
-      254                  0              1000              low             0.1
-      255               1000                 0             high             0.7
-      256                  0                 0           medium             0.4
-      257                  0              1000              low             0.1
-      258               1000                 0             high             0.7
-      259                  0              1000              low             0.1
-      260               1000                 0             high             0.7
-      261                  0              1000              low             0.1
-      262               1000                 0             high             0.7
-      263                  0              1000              low             0.1
-      264               1000                 0             high             0.7
+          worst_case_finance best_case_finance emission_category profile_ranking
+      1                  500                 0              high             0.7
+      2                  500                 0              high             0.7
+      3                    0              1000            medium             0.4
+      4                  500                 0              high             0.7
+      5                  500                 0              high             0.7
+      6                    0              1000            medium             0.4
+      7                  500                 0              high             0.7
+      8                  500                 0              high             0.7
+      9                    0              1000            medium             0.4
+      10                 500                 0              high             0.7
+      11                 500                 0              high             0.7
+      12                   0              1000            medium             0.4
+      13                 250                 0              high             0.7
+      14                 250                 0              high             0.7
+      15                   0               500            medium             0.4
+      16                 250                 0              high             0.7
+      17                 250                 0              high             0.7
+      18                   0               500            medium             0.4
+      19                 250                 0              high             0.7
+      20                 250                 0              high             0.7
+      21                   0               500            medium             0.4
+      22                 250                 0              high             0.7
+      23                 250                 0              high             0.7
+      24                   0               500            medium             0.4
+      25                   0              1000               low             0.1
+      26                1000                 0              high             0.7
+      27                   0                 0            medium             0.4
+      28                   0              1000               low             0.1
+      29                1000                 0              high             0.7
+      30                   0                 0            medium             0.4
+      31                   0              1000               low             0.1
+      32                1000                 0              high             0.7
+      33                   0                 0            medium             0.4
+      34                   0              1000               low             0.1
+      35                1000                 0              high             0.7
+      36                   0                 0            medium             0.4
+      37                   0              1000               low             0.1
+      38                1000                 0              high             0.7
+      39                   0              1000               low             0.1
+      40                1000                 0              high             0.7
+      41                   0              1000               low             0.1
+      42                1000                 0              high             0.7
+      43                   0              1000               low             0.1
+      44                1000                 0              high             0.7
+      45                 500                 0              high             0.7
+      46                 500                 0              high             0.7
+      47                   0              1000            medium             0.4
+      48                 500                 0              high             0.7
+      49                 500                 0              high             0.7
+      50                   0              1000            medium             0.4
+      51                 500                 0              high             0.7
+      52                 500                 0              high             0.7
+      53                   0              1000            medium             0.4
+      54                 500                 0              high             0.7
+      55                 500                 0              high             0.7
+      56                   0              1000            medium             0.4
+      57                 250                 0              high             0.7
+      58                 250                 0              high             0.7
+      59                   0               500            medium             0.4
+      60                 250                 0              high             0.7
+      61                 250                 0              high             0.7
+      62                   0               500            medium             0.4
+      63                 250                 0              high             0.7
+      64                 500                 0              high             0.7
+      65                 500                 0              high             0.7
+      66                   0              1000            medium             0.4
+      67                 500                 0              high             0.7
+      68                 500                 0              high             0.7
+      69                   0              1000            medium             0.4
+      70                 500                 0              high             0.7
+      71                 500                 0              high             0.7
+      72                   0              1000            medium             0.4
+      73                 500                 0              high             0.7
+      74                 500                 0              high             0.7
+      75                   0              1000            medium             0.4
+      76                 250                 0              high             0.7
+      77                 250                 0              high             0.7
+      78                   0               500            medium             0.4
+      79                 250                 0              high             0.7
+      80                 250                 0              high             0.7
+      81                   0               500            medium             0.4
+      82                 250                 0              high             0.7
+      83                 500                 0              high             0.7
+      84                 500                 0              high             0.7
+      85                   0              1000            medium             0.4
+      86                 500                 0              high             0.7
+      87                 500                 0              high             0.7
+      88                   0              1000            medium             0.4
+      89                 500                 0              high             0.7
+      90                 500                 0              high             0.7
+      91                   0              1000            medium             0.4
+      92                 500                 0              high             0.7
+      93                 500                 0              high             0.7
+      94                   0              1000            medium             0.4
+      95                 250                 0              high             0.7
+      96                 250                 0              high             0.7
+      97                   0               500            medium             0.4
+      98                 250                 0              high             0.7
+      99                 250                 0              high             0.7
+      100                  0               500            medium             0.4
+      101                250                 0              high             0.7
+      102                500                 0              high             0.7
+      103                500                 0              high             0.7
+      104                  0              1000            medium             0.4
+      105                500                 0              high             0.7
+      106                500                 0              high             0.7
+      107                  0              1000            medium             0.4
+      108                500                 0              high             0.7
+      109                500                 0              high             0.7
+      110                  0              1000            medium             0.4
+      111                500                 0              high             0.7
+      112                500                 0              high             0.7
+      113                  0              1000            medium             0.4
+      114                250                 0              high             0.7
+      115                250                 0              high             0.7
+      116                  0               500            medium             0.4
+      117                250                 0              high             0.7
+      118                250                 0              high             0.7
+      119                  0               500            medium             0.4
+      120                250                 0              high             0.7
+      121                500                 0              high             0.7
+      122                500                 0              high             0.7
+      123                  0              1000            medium             0.4
+      124                500                 0              high             0.7
+      125                500                 0              high             0.7
+      126                  0              1000            medium             0.4
+      127                500                 0              high             0.7
+      128                500                 0              high             0.7
+      129                  0              1000            medium             0.4
+      130                500                 0              high             0.7
+      131                500                 0              high             0.7
+      132                  0              1000            medium             0.4
+      133                250                 0              high             0.7
+      134                250                 0              high             0.7
+      135                  0               500            medium             0.4
+      136                250                 0              high             0.7
+      137                250                 0              high             0.7
+      138                  0               500            medium             0.4
+      139                250                 0              high             0.7
+      140                250                 0              high             0.7
+      141                  0               500            medium             0.4
+      142                250                 0              high             0.7
+      143                250                 0              high             0.7
+      144                  0               500            medium             0.4
+      145                  0              1000               low             0.1
+      146               1000                 0              high             0.7
+      147                  0                 0            medium             0.4
+      148                  0              1000               low             0.1
+      149               1000                 0              high             0.7
+      150                  0                 0            medium             0.4
+      151                  0              1000               low             0.1
+      152               1000                 0              high             0.7
+      153                  0                 0            medium             0.4
+      154                  0              1000               low             0.1
+      155               1000                 0              high             0.7
+      156                  0                 0            medium             0.4
+      157                  0              1000               low             0.1
+      158               1000                 0              high             0.7
+      159                  0              1000               low             0.1
+      160               1000                 0              high             0.7
+      161                  0              1000               low             0.1
+      162               1000                 0              high             0.7
+      163                  0              1000               low             0.1
+      164               1000                 0              high             0.7
+      165                250                 0              high             0.7
+      166                  0               500            medium             0.4
+      167                250                 0              high             0.7
+      168                250                 0              high             0.7
+      169                  0               500            medium             0.4
+      170                  0              1000               low             0.1
+      171               1000                 0              high             0.7
+      172                  0                 0            medium             0.4
+      173                  0              1000               low             0.1
+      174               1000                 0              high             0.7
+      175                  0                 0            medium             0.4
+      176                  0              1000               low             0.1
+      177               1000                 0              high             0.7
+      178                  0                 0            medium             0.4
+      179                  0              1000               low             0.1
+      180               1000                 0              high             0.7
+      181                  0                 0            medium             0.4
+      182                  0              1000               low             0.1
+      183               1000                 0              high             0.7
+      184                  0              1000               low             0.1
+      185               1000                 0              high             0.7
+      186                  0              1000               low             0.1
+      187               1000                 0              high             0.7
+      188                  0              1000               low             0.1
+      189               1000                 0              high             0.7
+      190                250                 0              high             0.7
+      191                  0               500            medium             0.4
+      192                250                 0              high             0.7
+      193                250                 0              high             0.7
+      194                  0               500            medium             0.4
+      195                  0              1000               low             0.1
+      196               1000                 0              high             0.7
+      197                  0                 0            medium             0.4
+      198                  0              1000               low             0.1
+      199               1000                 0              high             0.7
+      200                  0                 0            medium             0.4
+      201                  0              1000               low             0.1
+      202               1000                 0              high             0.7
+      203                  0                 0            medium             0.4
+      204                  0              1000               low             0.1
+      205               1000                 0              high             0.7
+      206                  0                 0            medium             0.4
+      207                  0              1000               low             0.1
+      208               1000                 0              high             0.7
+      209                  0              1000               low             0.1
+      210               1000                 0              high             0.7
+      211                  0              1000               low             0.1
+      212               1000                 0              high             0.7
+      213                  0              1000               low             0.1
+      214               1000                 0              high             0.7
+      215                250                 0              high             0.7
+      216                  0               500            medium             0.4
+      217                250                 0              high             0.7
+      218                250                 0              high             0.7
+      219                  0               500            medium             0.4
+      220                  0              1000               low             0.1
+      221               1000                 0              high             0.7
+      222                  0                 0            medium             0.4
+      223                  0              1000               low             0.1
+      224               1000                 0              high             0.7
+      225                  0                 0            medium             0.4
+      226                  0              1000               low             0.1
+      227               1000                 0              high             0.7
+      228                  0                 0            medium             0.4
+      229                  0              1000               low             0.1
+      230               1000                 0              high             0.7
+      231                  0                 0            medium             0.4
+      232                  0              1000               low             0.1
+      233               1000                 0              high             0.7
+      234                  0              1000               low             0.1
+      235               1000                 0              high             0.7
+      236                  0              1000               low             0.1
+      237               1000                 0              high             0.7
+      238                  0              1000               low             0.1
+      239               1000                 0              high             0.7
+      240                250                 0              high             0.7
+      241                  0               500            medium             0.4
+      242                250                 0              high             0.7
+      243                250                 0              high             0.7
+      244                  0               500            medium             0.4
+      245                  0              1000               low             0.1
+      246               1000                 0              high             0.7
+      247                  0                 0            medium             0.4
+      248                  0              1000               low             0.1
+      249               1000                 0              high             0.7
+      250                  0                 0            medium             0.4
+      251                  0              1000               low             0.1
+      252               1000                 0              high             0.7
+      253                  0                 0            medium             0.4
+      254                  0              1000               low             0.1
+      255               1000                 0              high             0.7
+      256                  0                 0            medium             0.4
+      257                  0              1000               low             0.1
+      258               1000                 0              high             0.7
+      259                  0              1000               low             0.1
+      260               1000                 0              high             0.7
+      261                  0              1000               low             0.1
+      262               1000                 0              high             0.7
+      263                  0              1000               low             0.1
+      264               1000                 0              high             0.7
           sector_profile scenario year reduction_targets transition_risk_score
       1           medium      IPR 2030               0.3                  0.50
       2           medium      IPR 2030               0.2                  0.45

@@ -6,20 +6,23 @@
 \usage{
 bar_plot_emission_profile_financial(
   data,
-  benchmarks = benchmarks(),
-  mode = c("equal_weight", "worst_case", "best_case")
+  grouping_emission = grouping_emission(),
+  mode = c("equal_weight", "worst_case", "best_case"),
+  risk_category = risk_category()
 )
 }
 \arguments{
 \item{data}{A data frame like \link{financial}.}
 
-\item{benchmarks}{A character vector specifying the benchmarks for which the
+\item{grouping_emission}{A character vector specifying the benchmarks for which the
 emission profiles will be plotted. The user can choose from one to several
 benchmark(s) to be plotted.}
 
 \item{mode}{The mode of financial data to plot.
 It can be one of "equal_weight", "worst_case" or "best_case".
 If nothing is chosen, "equal_weight" is the default case.}
+
+\item{risk_category}{A character vector.}
 }
 \value{
 A \link{ggplot} object.
@@ -29,6 +32,6 @@ Generate a horizontal stacked bar chart showing the distribution of
 the emission risk profiles risks for one or several benchmarks.
 }
 \examples{
-benchmarks <- c("all", "unit", "isic_4digit")
-bar_plot_emission_profile_financial(financial, benchmarks, "equal_weight")
+grouping_emission <- c("all", "unit", "isic_4digit")
+bar_plot_emission_profile_financial(financial, grouping_emission, "equal_weight", risk_category = "emission_category")
 }
