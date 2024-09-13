@@ -42,7 +42,7 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plot_sankey</span><span class="op">(</span></span>
 <span>  <span class="va">data</span>,</span>
 <span>  with_company <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  benchmark <span class="op">=</span> <span class="fu"><a href="benchmarks.html">benchmarks</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  grouping_emission <span class="op">=</span> <span class="fu"><a href="grouping_emission.html">grouping_emission</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"equal_weight"</span>, <span class="st">"worst_case"</span>, <span class="st">"best_case"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -60,7 +60,7 @@
 If FALSE, will plot without the company name node.</p></dd>
 
 
-<dt id="arg-benchmark">benchmark<a class="anchor" aria-label="anchor" href="#arg-benchmark"></a></dt>
+<dt id="arg-grouping-emission">grouping_emission<a class="anchor" aria-label="anchor" href="#arg-grouping-emission"></a></dt>
 <dd><p>The mode of benchmark to plot.
 It can be one of "all", "unit" or "tilt_sector", "unit_tilt_sector",
 "isic_4digit" or "unit_isic_4digit". If nothing is chosen, "all" is the
@@ -80,11 +80,11 @@ or "best_case". If nothing is chosen, "equal_weight" is the default mode.</p></d
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Plot with equal weight and with company name</span></span></span>
-<span class="r-in"><span><span class="fu">plot_sankey</span><span class="op">(</span><span class="va">financial</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">plot_sankey</span><span class="op">(</span><span class="va">financial</span>, grouping_emission <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot_sankey-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Plot with best_case weight and benchmark "all".</span></span></span>
-<span class="r-in"><span><span class="fu">plot_sankey</span><span class="op">(</span><span class="va">financial</span>, benchmark <span class="op">=</span> <span class="st">"all"</span>, mode <span class="op">=</span> <span class="st">"best_case"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Plot with best_case weight and grouping_emission "all".</span></span></span>
+<span class="r-in"><span><span class="fu">plot_sankey</span><span class="op">(</span><span class="va">financial</span>, grouping_emission <span class="op">=</span> <span class="st">"all"</span>, mode <span class="op">=</span> <span class="st">"best_case"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot_sankey-2.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
