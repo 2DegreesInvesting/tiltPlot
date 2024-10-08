@@ -72,7 +72,7 @@ prepare_bar_plot_emission_profile <- function(data, grouping_emission, mode, sce
     group_by(.data[[risk_category]], .data$grouping_emission) |>
     summarise(total_mode = sum(.data[[mode]])) |>
     group_by(.data$grouping_emission) |>
-    mutate(proportion = total_mode / sum(total_mode))
+    mutate(proportion = .data$total_mode / sum(.data$total_mode))
 
   data
 }

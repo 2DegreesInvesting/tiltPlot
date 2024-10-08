@@ -8,7 +8,7 @@
 #' @noRd
 #'
 prepare_geo_data <- function(data,
-                             country_code = c("DE"),
+                             country_code = c("DE", "AT", "FR", "NL", "ES"),
                              grouping_emission = grouping_emission(),
                              mode = modes(),
                              scenario = scenarios(),
@@ -46,8 +46,7 @@ prepare_geo_data <- function(data,
 
   # merge to have zip codes with NUTS file
   shp_1 <- shp_1 |>
-    inner_join(nuts_de, by = "geo") |>
-    mutate(postcode = as.character(postcode))
+    inner_join(nuts_all, by = "geo")
 
   # merge shapefile with financial data
   geo <- data |>
@@ -92,7 +91,7 @@ aggregate_geo <- function(geo, mode, risk_category) {
     group_by(.data$postcode, .data[[risk_category]]) |>
     summarise(total_mode = sum(.data[[mode]])) |>
     group_by(.data$postcode) |>
-    mutate(proportion = total_mode / sum(total_mode)) |>
+    mutate(proportion = .data$total_mode / sum(.data$total_mode)) |>
     ungroup()
 
   # Pivot

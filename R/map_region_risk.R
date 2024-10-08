@@ -23,8 +23,7 @@
 #'   map_region_risk(without_financial, country_code = "DE", benchmark = "unit")
 #' })
 map_region_risk <- function(data,
-                            # TODO: plot for other countries
-                            country_code = c("DE"),
+                            country_code = c("DE", "AT", "FR", "NL", "ES"),
                             grouping_emission = grouping_emission(),
                             mode = modes(),
                             scenario = scenarios(),
