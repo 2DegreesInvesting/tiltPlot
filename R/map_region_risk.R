@@ -48,3 +48,4 @@ map_region_risk <- function(data,
     coord_sf() +
     theme_tiltplot()
 }
+
