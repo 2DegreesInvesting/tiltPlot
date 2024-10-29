@@ -77,9 +77,10 @@ prepare_geo_data <- function(data,
 
 #' Aggregate Geo Data
 #'
-#' @param geo A data frame containing geographical data.
+#' @param geo_example A data frame containing geographical data.
 #' @param mode The mode to plot. It can be one of "equal_weight", "worst_case"
 #' or "best_case". If nothing is chosen, "equal_weight" is the default mode.
+#' @param risk_category The risk category.
 #'
 #' @return A data frame with aggregated data, with the colors proportional to
 #' the risks.
@@ -90,7 +91,7 @@ prepare_geo_data <- function(data,
 #'
 #' # Create a sample geo_data tibble
 #' geo_example <- tibble(
-#'   postcode = c("1", "2", "3"),
+#'   geo = c("1", "2", "3"),
 #'   company_name = c("A", "B", "C"),
 #'   emission_profile = factor(c("low", "medium", "high"),
 #'     levels = c("low", "medium", "high")
@@ -98,12 +99,12 @@ prepare_geo_data <- function(data,
 #' )
 #'
 #' aggregate_geo(geo_example, mode = "emissions_profile_worst_case", risk_category = "emission_category")
-aggregate_geo <- function(geo, mode, risk_category) {
-  aggregated_data <- geo |>
-    group_by(.data$postcode, .data[[risk_category]]) |>
-    summarise(total_mode = sum(.data[[mode]])) |>
-    group_by(.data$postcode) |>
-    mutate(proportion = .data$total_mode / sum(.data$total_mode)) |>
+aggregate_geo <- function(geo_data, mode, risk_category) {
+  aggregated_data <- geo_data |>
+    group_by(.data$geo, .data[[risk_category]]) |>
+    summarise(total_mode = sum(.data[[mode]], na.rm = TRUE)) |>
+    group_by(.data$geo) |>
+    mutate(proportion = .data$total_mode / sum(.data$total_mode, na.rm = TRUE)) |>
     ungroup()
 
   # Pivot
@@ -113,7 +114,7 @@ aggregate_geo <- function(geo, mode, risk_category) {
 
   # Calculate color row by row
   aggregated_data <- aggregated_data |>
-    group_by(.data$postcode) |>
+    group_by(.data$geo) |>
     summarise(
       total_mode = add(.data$total_mode),
       geometry = first(.data$geometry),
