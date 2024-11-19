@@ -17,18 +17,4 @@ Useful links:
 }
 
 }
-\author{
-\strong{Maintainer}: Linda Delacombaz \email{linda@2degrees-investing.org}
-
-Authors:
-\itemize{
-  \item Anne Schoenauer \email{anne.schoenauer@2degrees-investing.org}
-}
-
-Other contributors:
-\itemize{
-  \item 2 Degrees Investing Initiative \email{contact@2degrees-investing.org} [copyright holder, funder]
-}
-
-}
 \keyword{internal}
