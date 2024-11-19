@@ -7,7 +7,7 @@ financial data.}
 \usage{
 map_region_risk(
   data,
-  country_code = c("DE"),
+  country_code = c("DE", "AT", "FR", "NL", "ES"),
   grouping_emission = grouping_emission(),
   mode = modes(),
   scenario = scenarios(),

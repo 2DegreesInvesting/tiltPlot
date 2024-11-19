@@ -215,7 +215,8 @@ modes <- function() {
 scenarios <- function() {
   c(
     "1.5C RPS",
-    "NZ 2050"
+    "NZ 2050",
+    NULL
   )
 }
 
@@ -237,7 +238,8 @@ scenarios_financial <- function() {
 years <- function() {
   c(
     2030,
-    2050
+    2050,
+    NULL
   )
 }
 
@@ -266,6 +268,7 @@ grouping_emission <- function() {
     "tilt_sector",
     "unit",
     "unit_isic_4digit",
-    "unit_tilt_sector"
+    "unit_tilt_sector",
+    NULL
   )
 }

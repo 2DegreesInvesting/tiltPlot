@@ -34,9 +34,9 @@ tilt_title_size <- function() 16
 
 tilt_legend_size <- function() 11
 
-high_hex <- function() "#E3693B"
-medium_hex <- function() "#F6CB4E"
-low_hex <- function() "#B3D15D"
+high_hex <- function() "#FF0000"
+medium_hex <- function() "#00FFFF"
+low_hex <- function() "#00FF00"
 
 score_colors <- function(...) c("low" = low_hex(), "medium" = medium_hex(), "high" = high_hex())
 

@@ -1,3 +1,5 @@
+^renv$
+^renv\.lock$
 ^tiltPlot\.Rproj$
 ^\.Rproj\.user$
 ^README\.Rmd$
