@@ -1,6 +1,8 @@
 #' Create a sankey plot with financial data
 #'
 #' @inheritParams map_region_risk
+#' @param mode The mode to plot. It can be one of "equal_weight", "worst_case"
+#' or "best_case". If nothing is chosen, "equal_weight" is the default mode.
 #' @param with_company Logical. If TRUE, will plot a node with the company name.
 #' If FALSE, will plot without the company name node.
 #'

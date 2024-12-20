@@ -7,9 +7,8 @@ financial data.}
 \usage{
 map_region_risk(
   data,
-  country_code = c("DE"),
+  country_code = c("DE", "AT", "FR", "NL", "ES"),
   grouping_emission = grouping_emission(),
-  mode = modes(),
   scenario = scenarios(),
   year = years(),
   risk_category = risk_category()
@@ -25,9 +24,6 @@ plotted.}
 It can be one of "all", "unit" or "tilt_sector", "unit_tilt_sector",
 "isic_4digit" or "unit_isic_4digit". If nothing is chosen, "all" is the
 default mode.}
-
-\item{mode}{The mode to plot. It can be one of "equal_weight", "worst_case"
-or "best_case". If nothing is chosen, "equal_weight" is the default mode.}
 
 \item{scenario}{A character vector: 1.5C RPS, NZ 2050.}
 

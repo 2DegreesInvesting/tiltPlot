@@ -8,17 +8,13 @@
 #' @noRd
 #'
 prepare_geo_data <- function(data,
-                             country_code = c("DE"),
+                             country_code = c("DE", "AT", "FR", "NL", "ES"),
                              grouping_emission = grouping_emission(),
-                             mode = modes(),
                              scenario = scenarios(),
                              year = years(),
                              risk_category = risk_category()) {
-  grouping_emission <- arg_match(grouping_emission)
   risk_category <- arg_match(risk_category)
   country_code <- arg_match(country_code)
-  scenario <- arg_match(scenario)
-  year <- year
 
   crucial <- c(
     aka("risk_category"),
@@ -32,10 +28,11 @@ prepare_geo_data <- function(data,
 
   shp_0 <- get_eurostat_geospatial(
     resolution = 10,
-    nuts_level = 3,
-    year = 2016,
+    nuts_level = "all",
+    year = 2021,
     crs = 3035
-  )
+  ) |>
+    filter(!(geo %in% c("FRY10", "FRY20", "FRY30", "FRY40", "FRY50")))
 
   # filter for the specified country
   shp_1 <- shp_0 |>
@@ -46,29 +43,41 @@ prepare_geo_data <- function(data,
 
   # merge to have zip codes with NUTS file
   shp_1 <- shp_1 |>
-    inner_join(nuts_de, by = "geo") |>
-    mutate(postcode = as.character(postcode))
+    inner_join(nuts_all, by = "geo")
+
+  filtered_geo_data <- data
+
+  # Apply filtering only if the corresponding argument is not NULL
+  if (!is.null(grouping_emission)) {
+    filtered_geo_data <- filtered_geo_data |>
+      filter(.data$grouping_emission == .env$grouping_emission)
+  }
+
+  if (!is.null(scenario)) {
+    filtered_geo_data <- filtered_geo_data |>
+      filter(.data$scenario == .env$scenario)
+  }
+
+  if (!is.null(year)) {
+    filtered_geo_data <- filtered_geo_data |>
+      filter(.data$year == .env$year)
+  }
 
   # merge shapefile with financial data
-  geo <- data |>
-    filter(
-      .data$grouping_emission == .env$grouping_emission,
-      .data$scenario == .env$scenario,
-      .data$year == .env$year
-    ) |>
+  geo <- filtered_geo_data |>
+    distinct() |>
     left_join(shp_1, by = "postcode") |>
     st_as_sf()
 
-  aggregated_data <- aggregate_geo(geo, mode, risk_category)
+  aggregated_data <- aggregate_geo(geo, risk_category)
 
   list(shp_1, aggregated_data)
 }
 
 #' Aggregate Geo Data
 #'
-#' @param geo A data frame containing geographical data.
-#' @param mode The mode to plot. It can be one of "equal_weight", "worst_case"
-#' or "best_case". If nothing is chosen, "equal_weight" is the default mode.
+#' @param geo_example A data frame containing geographical data.
+#' @param risk_category The risk category.
 #'
 #' @return A data frame with aggregated data, with the colors proportional to
 #' the risks.
@@ -78,21 +87,21 @@ prepare_geo_data <- function(data,
 #' library(tibble)
 #'
 #' # Create a sample geo_data tibble
-#' geo <- tibble(
-#'   postcode = c("1", "2", "3"),
+#' geo_example <- tibble(
+#'   geo = c("1", "2", "3"),
 #'   company_name = c("A", "B", "C"),
 #'   emission_profile = factor(c("low", "medium", "high"),
 #'     levels = c("low", "medium", "high")
 #'   )
 #' )
 #'
-#' aggregate_geo(geo, mode = "emissions_profile_worst_case", risk_category = "emission_category")
-aggregate_geo <- function(geo, mode, risk_category) {
-  aggregated_data <- geo |>
-    group_by(.data$postcode, .data[[risk_category]]) |>
-    summarise(total_mode = sum(.data[[mode]])) |>
-    group_by(.data$postcode) |>
-    mutate(proportion = total_mode / sum(total_mode)) |>
+#' aggregate_geo(geo_example, risk_category = "emission_category")
+aggregate_geo <- function(geo_data, risk_category) {
+  aggregated_data <- geo_data |>
+    group_by(.data$geo, .data[[risk_category]]) |>
+    summarise(total_mode = n_distinct(.data$product, na.rm = TRUE)) |>
+    group_by(.data$geo) |>
+    mutate(proportion = .data$total_mode / sum(.data$total_mode, na.rm = TRUE)) |>
     ungroup()
 
   # Pivot
@@ -102,13 +111,13 @@ aggregate_geo <- function(geo, mode, risk_category) {
 
   # Calculate color row by row
   aggregated_data <- aggregated_data |>
-    group_by(.data$postcode) |>
+    group_by(.data$geo) |>
     summarise(
       total_mode = add(.data$total_mode),
       geometry = first(.data$geometry),
-      low = add(.data$low),
-      medium = add(.data$medium),
-      high = add(.data$high)
+      low = if ("low" %in% names(pick(everything()))) add(.data$low) else 0.0,
+      medium = if ("medium" %in% names(pick(everything()))) add(.data$medium) else 0.0,
+      high = if ("high" %in% names(pick(everything()))) add(.data$high) else 0.0
     ) |>
     mutate(color = pmap(list(.data$high, .data$medium, .data$low), custom_gradient_color))
   aggregated_data

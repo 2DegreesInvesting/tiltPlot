@@ -17,7 +17,10 @@
 #'
 #' @examples
 #' grouping_emission <- c("all", "unit", "isic_4digit")
-#' bar_plot_emission_profile_financial(financial, grouping_emission, "equal_weight", risk_category = "emission_category")
+#' bar_plot_emission_profile_financial(financial, grouping_emission,
+#'   "equal_weight",
+#'   risk_category = "emission_category"
+#' )
 bar_plot_emission_profile_financial <- function(data,
                                                 grouping_emission = grouping_emission(),
                                                 mode = c(
