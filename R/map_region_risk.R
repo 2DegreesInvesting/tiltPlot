@@ -25,7 +25,6 @@
 map_region_risk <- function(data,
                             country_code = c("DE", "AT", "FR", "NL", "ES"),
                             grouping_emission = grouping_emission(),
-                            mode = modes(),
                             scenario = scenarios(),
                             year = years(),
                             risk_category = risk_category()) {
@@ -33,7 +32,6 @@ map_region_risk <- function(data,
     data,
     country_code,
     grouping_emission,
-    mode,
     scenario,
     year,
     risk_category

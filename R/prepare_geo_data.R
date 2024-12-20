@@ -10,7 +10,6 @@
 prepare_geo_data <- function(data,
                              country_code = c("DE", "AT", "FR", "NL", "ES"),
                              grouping_emission = grouping_emission(),
-                             mode = modes(),
                              scenario = scenarios(),
                              year = years(),
                              risk_category = risk_category()) {
@@ -70,7 +69,7 @@ prepare_geo_data <- function(data,
     left_join(shp_1, by = "postcode") |>
     st_as_sf()
 
-  aggregated_data <- aggregate_geo(geo, mode, risk_category)
+  aggregated_data <- aggregate_geo(geo, risk_category)
 
   list(shp_1, aggregated_data)
 }
@@ -78,8 +77,6 @@ prepare_geo_data <- function(data,
 #' Aggregate Geo Data
 #'
 #' @param geo_example A data frame containing geographical data.
-#' @param mode The mode to plot. It can be one of "equal_weight", "worst_case"
-#' or "best_case". If nothing is chosen, "equal_weight" is the default mode.
 #' @param risk_category The risk category.
 #'
 #' @return A data frame with aggregated data, with the colors proportional to
@@ -98,11 +95,11 @@ prepare_geo_data <- function(data,
 #'   )
 #' )
 #'
-#' aggregate_geo(geo_example, mode = "emissions_profile_worst_case", risk_category = "emission_category")
-aggregate_geo <- function(geo_data, mode, risk_category) {
+#' aggregate_geo(geo_example, risk_category = "emission_category")
+aggregate_geo <- function(geo_data, risk_category) {
   aggregated_data <- geo_data |>
     group_by(.data$geo, .data[[risk_category]]) |>
-    summarise(total_mode = sum(.data[[mode]], na.rm = TRUE)) |>
+    summarise(total_mode = n_distinct(.data$product, na.rm = TRUE)) |>
     group_by(.data$geo) |>
     mutate(proportion = .data$total_mode / sum(.data$total_mode, na.rm = TRUE)) |>
     ungroup()
