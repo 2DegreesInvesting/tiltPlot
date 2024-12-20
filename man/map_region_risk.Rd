@@ -30,9 +30,6 @@ default mode.}
 \item{year}{A character vector: 2030, 2050.}
 
 \item{risk_category}{A character vector.}
-
-\item{mode}{The mode to plot. It can be one of "equal_weight", "worst_case"
-or "best_case". If nothing is chosen, "equal_weight" is the default mode.}
 }
 \value{
 A ggplot2 object representing the country data plot.
