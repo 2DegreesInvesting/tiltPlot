@@ -4,8 +4,7 @@ test_that("returns an object of the expected class", {
     postcode = c("53773", "53774", "53775")
   )
   prepared_data <- prepare_geo_data(
-    data, "DE", "all", "emissions_profile_equal_weight", scenarios()[1],
-    years()[1], "emission_category"
+    data, "DE", "all", scenarios()[1], years()[1], "emission_category"
   )
   expect_type(prepared_data, "list")
 })
@@ -13,7 +12,7 @@ test_that("returns an object of the expected class", {
 test_that("aggregation returns correct risk category values colors", {
   skip_on_ci()
   data <- example_without_financial(
-    postcode = c("53773", "53774", "53775")
+    postcode = c("70178", "71088", "71364")
   )
   expected_colors <- list(
     low = low_hex(),
@@ -21,8 +20,7 @@ test_that("aggregation returns correct risk category values colors", {
     high = high_hex()
   )
   prepared_data <- prepare_geo_data(
-    data, "DE", "all", "emissions_profile_equal_weight", scenarios()[1],
-    years()[1], "emission_category"
+    data, "DE", "all", scenarios()[1], years()[1], "emission_category"
   )
   aggregated_data <- prepared_data[[2]]
 
@@ -32,19 +30,31 @@ test_that("aggregation returns correct risk category values colors", {
   expect_true(identical(expected_colors, colors))
 })
 
-test_that("returns the correct postcodes", {
+test_that("returns the correct NUTS codes", {
   skip_on_ci()
-  data <- example_without_financial(
-    postcode = c("53773", "53774", "53775")
-  )
+  data <- example_without_financial(postcode = c("70178", "71088", "71364"))
+
+  shp_0 <- eurostat::get_eurostat_geospatial(
+    resolution = 10,
+    nuts_level = "all",
+    year = 2021,
+    crs = 3035
+  ) |>
+    filter(!(geo %in% c("FRY10", "FRY20", "FRY30", "FRY40", "FRY50"))) |>
+    select(geo = "NUTS_ID", "geometry") |>
+    st_as_sf() |>
+    inner_join(nuts_all, by = "geo")
+
+  data_NUTS <- data |>
+    left_join(shp_0, by = "postcode") |>
+    st_as_sf()
+
   prepared_data <- prepare_geo_data(
-    data, "DE", "all", "emissions_profile_equal_weight", scenarios()[1],
-    years()[1], "emission_category"
+    data, "DE", "all", scenarios()[1], years()[1], "emission_category"
   )
-  aggregated_data <- prepared_data[[2]]
 
-  postcodes <- unique(aggregated_data$postcode)
-  expected_postcodes <- unique(data$postcode)
+  NUTS_from_prepare_geo_data <- prepared_data[[1]] |>
+    filter(postcode %in% c("70178", "71088", "71364"))
 
-  expect_equal(sort(postcodes), sort(expected_postcodes))
+  expect_equal(sort(NUTS_from_prepare_geo_data$geo), sort(data_NUTS$geo))
 })
