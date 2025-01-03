@@ -30,33 +30,31 @@ test_that("aggregation returns correct risk category values colors", {
   expect_true(identical(expected_colors, colors))
 })
 
-# test_that("returns the correct NUTS codes", {
-#   skip_on_ci()
-#   data <- example_without_financial(
-#     postcode = c("70178", "71088", "71364")
-#   )
-#
-#   shp_0 <- eurostat::get_eurostat_geospatial(
-#     resolution = 10,
-#     nuts_level = "all",
-#     year = 2021,
-#     crs = 3035
-#   ) |>
-#     filter(!(geo %in% c("FRY10", "FRY20", "FRY30", "FRY40", "FRY50"))) |>
-#     select(geo = "NUTS_ID", "geometry") |>
-#     st_as_sf() |>
-#     inner_join(nuts_all, by = "geo")
-#
-#   prepared_data <- prepare_geo_data(
-#     data, "DE", "all", scenarios()[1], years()[1], "emission_category"
-#   )
-#
-#   NUTS_codes <- prepared_data[[1]] |>
-#     filter(postcode %in% c("70178", "71088", "71364"))
-#   aggregated_data <- prepared_data[[1]]
-#
-#   postcodes <- unique(aggregated_data$postcode)
-#   expected_postcodes <- unique(data$postcode)
-#
-#   expect_equal(sort(postcodes), sort(expected_postcodes))
-# })
+test_that("returns the correct NUTS codes", {
+  skip_on_ci()
+  data <- example_without_financial(postcode = c("70178", "71088", "71364"))
+
+  shp_0 <- eurostat::get_eurostat_geospatial(
+    resolution = 10,
+    nuts_level = "all",
+    year = 2021,
+    crs = 3035
+  ) |>
+    filter(!(geo %in% c("FRY10", "FRY20", "FRY30", "FRY40", "FRY50"))) |>
+    select(geo = "NUTS_ID", "geometry") |>
+    st_as_sf() |>
+    inner_join(nuts_all, by = "geo")
+
+  data_NUTS <- data |>
+    left_join(shp_0, by = "postcode") |>
+    st_as_sf()
+
+  prepared_data <- prepare_geo_data(
+    data, "DE", "all", scenarios()[1], years()[1], "emission_category"
+  )
+
+  NUTS_from_prepare_geo_data <- prepared_data[[1]] |>
+    filter(postcode %in% c("70178", "71088", "71364"))
+
+  expect_equal(sort(NUTS_from_prepare_geo_data$geo), sort(data_NUTS$geo))
+})
